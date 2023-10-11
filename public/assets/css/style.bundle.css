@@ -628,6 +628,8 @@ pre code {
     max-width: 1340px;
   }
 }
+
+
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5553,10 +5555,16 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 2.25rem;
+  
 }
 
 .card-title {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 3.2rem;
+}
+
+.card-text{
+  font-size: 12px;
 }
 
 .card-subtitle {
@@ -86083,3 +86091,4 @@ body {
     left: 70px;
   }
 }
+

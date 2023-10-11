@@ -7,76 +7,19 @@
         <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid" id="kt_login" style="background-color: rgba(72, 149, 46, 0.15">
             <div class="login-aside login-aside-bg d-flex flex-row-auto ">
                 <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url('assets/media/logos/logo-aside.png')"></div>
-                
-                {{-- <div style="width: 100%; height: 100%; position: relative">
-                    <img style="width: 105px; height: 30.19px; left: 91px; top: 47.29px; position: absolute" src="assets/media/logos/logo-PI-smart.png" />
-                    <img style="width: 105px; height: 46.25px; left: 433px; top: 47.29px; position: absolute" src="assets/media/logos/logo-BUMN.png" />
-                    <img style="width: 105px; height: 47.29px; left: 570px; top: 47.29px; position: absolute" src="assets/media/logos/logo-PI.png" />
-                    <img style="width: 154px; height: 50px; left: 532px; top: 642px; position: absolute" src="assets/media/logos/logo-akhlak.png" />
-                    <div style="left: 532px; top: 709px; position: absolute; text-align: center; color: white; font-size: 10px; font-family: Poppins; font-weight: 500; word-wrap: break-word">AMANAH KOMPETEN HARMONIS<br/>LOYAL ADATIF KOLABORATIF</div>
-                    <div style="width: 448px; height: 169px; left: 217px; top: 169px; position: absolute; text-align: right; color: white; font-size: 40px; font-family: Poppins; font-weight: 600; word-wrap: break-word">Saling Berempati Membangun lingkungan Harmoni</div>
-                    <img style="width: 519px; height: 347px; left: 0px; top: 414px; position: absolute" src="assets/media/logos/logo-ilustrasi-1.png" />
-                </div> --}}
             </div>
 
             <div class="d-flex flex-column flex-row-fluid position-relative p-7 overflow-hidden">
                 <div class="d-flex flex-column-fluid flex-center mt-30 mt-lg-0">
-
-                    {{-- <div class="loginpage">
-                        <div class="text-center mb-10 mb-lg-20">
-                            <h3 class="login-header font-size-h1">Login</h3>
-                        </div>
-                        
-                        <form class="form" action="#" id="kt_login_signin_form" method="post">
-                            <input type="hidden" name="_token" value=" ">
-
-                            <div class="form-container">
-                                <div class="icon icon-login d-flex">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                        <path d="M3.33334 17.5V16.6667C3.33334 13.9053 5.57192 11.6667 8.33334 11.6667H11.6667C14.4281 11.6667 16.6667 13.9053 16.6667 16.6667V17.5" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                                        <path d="M10 9.16667C8.15907 9.16667 6.66669 7.67428 6.66669 5.83333C6.66669 3.99238 8.15907 2.5 10 2.5C11.8409 2.5 13.3334 3.99238 13.3334 5.83333C13.3334 7.67428 11.8409 9.16667 10 9.16667Z" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                                      </svg></span>
-                                </div>
-                                <input type="text" name="username" autocomplete="off" required="">
-                                <label>Username or Email</label>
-                            </div>
-
-                            <div class="form-container">
-                                <input type="password" name="password" autocomplete="off" required="">
-                                <label>Password</label>
-                            </div>
-
-                            <div class="form-group d-flex flex-wrap justify-content-between align-items-center mt-3">
-                                <div  class="checkbox-inline">
-                                    <label class="checkbox checkbox-success text-fp">
-                                        <input type="checkbox" name="remember-me">
-                                        <span class="mr-2" style="border: 2px solid #4C9C30;"></span> Remember Me
-                                    </label>
-                                </div>
-                                <a href="#" class="text-fp text-hover-primary">Forgot Password ?</a>
-							</div>
-                            <!--end::Form group-->
-
-                            <!--begin::Action-->
-                            <div class="form-group">
-                                <button type="submit" class="form-control btn btn-login submit px-3 text-light">LOG IN</button>
-                            </div>
-                            <p class="text-center btn-text">
-                                Don't have an account?<a href="#" class="btn btn-link btn-regist">Register</a>
-                            </p>
-                            
-                        </form>  
-                        
-                    </div> --}}
-           
                     <div class="login-form login-signin">
                         <div class="text-center mb-10 mb-lg-20">
                             <h3 class="login-header font-size-h1">Login</h3>
                         </div>
 
-                        <form class="form" action="#" id="kt_login_signin_form" method="put">
+                        <form class="form" action="{{ route('loginAction') }}" id="kt_login_signin_form" method="post">
                            {{-- <input type="hidden" name="_token" value=" "> --}}
                             <!--begin::Title-->
+                            @csrf
                             <!--begin::Form group-->
                             <div class="form-group">
                                 <label class="form-label">Username or Email</label>
@@ -86,14 +29,14 @@
                                         <path d="M10 9.16667C8.15907 9.16667 6.66669 7.67428 6.66669 5.83333C6.66669 3.99238 8.15907 2.5 10 2.5C11.8409 2.5 13.3334 3.99238 13.3334 5.83333C13.3334 7.67428 11.8409 9.16667 10 9.16667Z" stroke="black" stroke-width="2" stroke-linecap="round"/>
                                       </svg></span>
                                 </div>
-                                <input class="form-control h-67" type="text" name="username" autocomplete="off" required> <span></span>
+                                <input class="form-control h-67" type="text" name="username" autocomplete="off"> <span></span>
                             </div>
                             <!--end::Form group-->
 
                             <!--begin::Form group-->
                             <div class="form-group">
                                 <label class="form-label">Password</label>
-                                <input class="form-control h-67" type="password" name="password" autocomplete="off" required>
+                                <input class="form-control h-67" type="password" name="password" autocomplete="off">
                             </div>
 
                             {{-- <div class="form-group">
@@ -115,12 +58,7 @@
 
                             <!--begin::Action-->
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-login submit px-3 text-light" onclick="Login()">LOG IN</button>
-                                <script>
-                                    function login(){
-                                        window.location = 'home.blade.php';
-                                    }
-                                </script>
+                                <button type="submit" class="form-control btn btn-login submit px-3 text-light">LOG IN</button>
                             </div>
                             <p class="text-center btn-text">
                                 Don't have an account?<a href="/registpage" class="btn btn-link btn-regist">Register</a>
@@ -145,12 +83,24 @@
 								
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        {{-- <script>
-            function login(){
-
-            }
-        </script> --}}
+        <script>
+            function login() {
+                // Ambil nilai username dan password dari input
+                var username = document.querySelector('input[name="username"]').value;
+                var password = document.querySelector('input[name="password"]').value;
         
+                // Lakukan validasi username dan password di sini (contoh sederhana)
+                if (username === "user" && password === "password") {
+                    alert("test")
+                    // Redirect ke halaman utama jika berhasil login
+                    window.location.href = "{{ url('dashboard') }}";
+                } else {
+                    // Tampilkan pesan error jika login gagal
+                    alert("Username atau password salah. Silakan coba lagi.");
+                }
+            }
+        </script>
+
         <!--end::Demo Panel-->
 		<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
 		<!--begin::Global Config(global config for global JS scripts)-->

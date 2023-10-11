@@ -15,10 +15,14 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Head-->
 	<head>
 		<meta charset="utf-8" />
-		<title>Halaman Utama | PI-Smart</title>
+		<title>Document.title</title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<link rel="canonical" href="https://keenthemes.com/metronic" />
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+		<title>Crud Ajax</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -30,18 +34,30 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/pages/login/login-1.css" rel="stylesheet" type="text/css">
+		
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/aside/light-nazwa.css" rel="stylesheet" type="text/css" />
 		<!--end::Layout Themes-->
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="https://pismart.pupuk-indonesia.com/public/media/logos/favicon.ico">
+
+		<style>
+			/* untuk card zoom hover halaman daftar Aplikasi */
+			.card-custom-new {
+            transition: transform 0.2s; /* Add a smooth transition */
+        	}
+
+        .card-custom-new:hover {
+            transform: scale(1.05); /* Increase the size by 5% on hover */
+        	}
+		</style>
 	</head>
 	
-	{{-- <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
         @yield('kontenpage')
-	</body> --}}
+	</body>
 
 </html>

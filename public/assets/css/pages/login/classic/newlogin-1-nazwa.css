@@ -34,7 +34,8 @@
 @media (min-width: 992px) {
   .login.login-1 .login-aside {
     width: 100%;
-    max-width: 730px;
+    margin-top: 40px;
+    max-width: 930px;
   }
   .login.login-1 .login-form {
     width: 100%;
@@ -75,13 +76,7 @@
     border-bottom-left-radius: 30px; 
     border-bottom-right-radius: 30px;
   }
-
-}
-
-.login-aside-bg{
-  background: linear-gradient(162deg, #4C9C30 0%, rgba(0, 126.04, 147.69, 0.76) 95%);
-  border-top-right-radius: 30px; 
-  border-bottom-right-radius: 30px;
+  
 }
 
 .login-header{
@@ -94,34 +89,27 @@
 
 .btn-login{
   border-radius: 10px;
-  background: linear-gradient(180deg, rgba(5, 70, 29, 0.78) 0%, rgba(11, 135, 57, 0.76) 100%);
+  background-color: #1D2657;
 }
 
+.btn-login:hover{
+  border-radius: 10px;
+  background-color: #4285f4;
+}
+
+/* button register  */
 .btn-regist{
-  color: #18340F;
+  color: #1D2657;
   font-family: Poppins;
   font-size: 15px;
   font-weight: 600;
 }
 
-.btn-regist1{
-  color: #1D2657;
-  font-family: Poppins;
-  font-size: 15px;
-  font-weight: bold;
+.btn-regist:hover{
+  color: #4285f4;
 }
 
 .btn-text{
-  color: #18340F;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-}
-
-.btn-text1{
   color: #1D2657;
   text-align: center;
   font-family: Poppins;
@@ -131,8 +119,9 @@
   line-height: normal;
 }
 
+/* forgot pass */
 .text-fp{
-  color: #18340F;
+  color: #1D2657;
   font-family: Poppins;
   font-size: 13px;
   font-style: normal;
@@ -140,7 +129,6 @@
   line-height: normal;
   margin-bottom: 0.35rem;
 }
-
 
 .loginpage{
   position: absolute;
@@ -159,45 +147,119 @@
   text-align: center;
 }
 
-.loginpage .form-container{
+/* background login  */
+.loginpage-bg{
+  background: linear-gradient(180deg, rgba(78, 152, 198, 1.00) 0%,rgba(138, 199, 235, 1.00) 16.66666716337204%,rgba(207, 244, 255, 0.42) 56.77083134651184%,rgba(186, 237, 254, 0.22) 100%);
+}
+
+/* form floating label  */
+.inputBox{
   position: relative;
+  margin: 40px 0 20px;
 }
 
-.loginpage .form-container input{
+.inputBox input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
   width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #18340F;
-  margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid #4C9C30;
+  background-color: transparent;
+  border-bottom: 2px solid #1D2657;
+}
+
+input:focus {
   outline: none;
-  background: transparent;
 }
 
-.loginpage .form-container label{
+.inputBox label {
+  color: #1D2657;
+  font-size: 18px;
+  font-weight: normal;
   position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #18340F;
   pointer-events: none;
-  transition: -5s;
-  margin-top: -1em;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
 }
 
-.loginpage .form-container input:focus ~ label,
-.loginpage .form-container input:valid ~ label{
+input:focus ~ label,
+input:valid ~ label {
   top: -20px;
-  left: 0;
-  color: #18340F;
-  font-size: 12px;
+  font-size: 14px;
+  color: #4285f4;
 }
 
-.icon-login{
-  align-items: flex-end;
-  justify-content: end;
-  margin-bottom: -2em;
-  padding-right: 10px;
+.bar {
+  position: relative;
+  display:block;
+  width:100%;
 }
+
+.bar:before,
+.bar:after {
+  content: '';
+  height: 3px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #4285f4;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* animations */
+@-webkit-keyframes inputHighlighter {
+  from { background: #4285f4; }
+  to   { width: 0; background: transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background: #4285f4; }
+  to   { width: 0; background: transparent; }
+}
+@keyframes inputHighlighter {
+  from { background: #4285f4; }
+  to   { width: 0; background: transparent; }
+}
+/* End form floating label  */
+
+ 
+
+
+
+
+
+
+

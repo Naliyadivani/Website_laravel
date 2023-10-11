@@ -13,8 +13,8 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store()
-    {
-        return request()->all();
-    }
+    // public function store()
+    // {
+    //     return request()->all();
+    // }
 }
