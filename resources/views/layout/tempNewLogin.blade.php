@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login | PI-Smart</title>
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Scripts -->
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
     <!--begin::Page Custom Styles(used by this page)-->
     <!--end::Page Custom Styles-->
@@ -21,7 +24,7 @@
     <link href="assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link href="{{ asset('public\assets\js\scripts.bundle.js') }}" rel="stylesheet" type="text/css"  />
+    {{-- <link href="{{ asset('public\assets\js\scripts.bundle.js') }}" rel="stylesheet" type="text/css"  /> --}}
     <link rel="shortcut icon" href="https://pismart.pupuk-indonesia.com/public/media/logos/favicon.ico">
 
 

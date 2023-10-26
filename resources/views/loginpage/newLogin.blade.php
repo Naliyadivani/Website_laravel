@@ -31,27 +31,18 @@
 							<p class="text-muted font-weight-bold"></p>
 						</div>
 						<!--begin::Form-->
-						<form class="floating-form" id="kt_login_signin_form" action="{{ route('loginAction') }}" method="post">
+						<form class="floating-form" id="login_page" action="http://127.0.0.1:8000/login" method="post">
 							{{-- <input type="hidden" name="_token" value=" "> --}}																												
                             @csrf
-                            {{-- <div class="floatingInputBox">
-							    <input class="floating-input" type="text" name="username" id="username" placeholder=" ">
-								<label>Username or Email</label>
-							</div>
-
-							<div class="floatingInputBox">
-								<input class="floating-input" type="password"name="password" id="password" autocomplete="off" placeholder=" ">
-								<label>Password</label>
-							</div> --}}
 							<div class="inputBox">
-								<input type="text" name="nik" required>
+								<input type="text" name="username" id="username" required>
 								<span class="highlight"></span>
 								<span class="bar"></span>
 								<label>Username or Email</label>
 							  </div>
 							  
 							  <div class="inputBox">
-								<input type="password" name="pw" required>
+								<input type="password" name="password" id="password" required>
 								<span class="highlight"></span>
 								<span class="bar"></span>
 								<label>Password</label>
@@ -64,19 +55,22 @@
                                         <span class="mr-4" style="border: 2px solid #1D2657;"></span>Remember Me
                                     </label>
                                 </div>
-                                <a href="#" class="text-fp text-hover-primary">Forgot Password ?</a>
+                                <a href="http://127.0.0.1:8000/password/reset" class="text-fp text-hover-primary">Forgot Password ?</a>
 							</div>
 							<!--begin::Action-->
-							<div class="form-group">
+						
                                 <button type="submit" class="form-control btn btn-login submit px-3 text-light">Log In</button>
-                            </div>
+							
                             
                             <p class="text-center btn-text1">
-                                Don't have an account?<a href="/registpage" class="btn btn-link btn-regist">Register</a>
+								@if (Route::has('register'))
+									Don't have an account?<a class="btn btn-link btn-regist" href="{{ route('register') }}">{{ __('Register') }}</a>
+                           		@endif
+                                {{-- Don't have an account?<a href="/registpage" class="btn btn-link btn-regist">Register</a> --}}
                             </p>
 
 							<!--end::Action-->
-						</form>
+						{{-- </form> --}}
 						<!--end::Form-->
 					</div>
 					<!--end::Signin-->
@@ -117,6 +111,37 @@
                 }
             }
         </script> --}}
+
+		{{-- <script>
+			function login(){
+				var user = $('#username').val()
+       			 var pass = $("#password").val();
+				 console.log(user);
+					var dataLogin = {
+						"username":user,
+                		"password": pass
+            		}
+				$.ajax({
+					type: "post",
+					url: "http://localhost:9096/login",
+					data: dataLogin,
+					success: function (response) {
+					// 	var arr = result.response;
+					// $('#username').val(arr.user);
+					// 	window.location.href = 'dashboard'; // Change 'dashboard.html' to your actual dashboard URL
+
+						if (response.success) {
+							// Handle successful login here
+							alert('Login success!');
+							// Change 'dashboard' to your actual dashboard URL
+						} else {
+							// Redirect to the dashboard page
+							window.location.href = 'dashboard';
+						}
+					}
+				});
+			}
+		</script> --}}
 
 	    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
 		<script src="assets/plugins/global/plugins.bundle.js"></script>

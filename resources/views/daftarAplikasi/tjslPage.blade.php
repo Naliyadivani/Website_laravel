@@ -53,7 +53,7 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="{{ route('dashboard') }}" class="brand-logo">
+						<a href="{{ route('home') }}" class="brand-logo">
 							<img alt="Logo" src="assets/media/logos/PI-SMART-LOGO.png" width="162.092px" height="48.325px"/>
 						</a>
 						<!--end::Logo-->
@@ -130,7 +130,7 @@
 								</li>
 								
 								<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="{{ route('dashboard') }}" class="menu-link menu-toggle">
+									<a href="{{ route('home') }}" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -145,7 +145,7 @@
 								</li>
 
 								<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-									<a href="{{ route('loginpage') }}" class="menu-link menu-toggle">
+									<a href="{{ route('logout') }}" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
@@ -259,7 +259,7 @@
 															<div class="symbol symbol-40 mr-5 shadow-sm">
 																<span class="symbol-label">
 																	<span class="svg-icon svg-icon-lg svg-icon-danger">
-																		<img src="" alt="">
+																		<img src="assets/media/logos/icon_kpi.png" alt="KPI" width="50px">
 																	</span>
 																</span>
 															</div>
@@ -279,7 +279,7 @@
 																<div class="symbol symbol-40 mr-5 shadow-sm">
 																	<span class="symbol-label">
 																		<span class="svg-icon svg-icon-lg svg-icon-danger">
-																			<img src="" alt="">
+																			<img src="assets/media/logos/icon_akhlak.png" alt="akhlak" width="50px">
 																		</span>
 																	</span>
 																</div>
@@ -299,7 +299,7 @@
 																<div class="symbol symbol-40 mr-5 shadow-sm">
 																	<span class="symbol-label">
 																		<span class="svg-icon svg-icon-lg svg-icon-danger">
-																			<img src="" alt="">
+																			<img src="assets/media/logos/icon_penilaian360.png" alt="360" width="50px">
 																		</span>
 																	</span>
 																</div>
@@ -319,7 +319,7 @@
 																<div class="symbol symbol-40 mr-5 shadow-sm">
 																	<span class="symbol-label">
 																		<span class="svg-icon svg-icon-lg svg-icon-danger">
-																			<img src="" alt="">
+																			<img src="assets/media/logos/icon_diklat.png" alt="diklat" width="50px">
 																		</span>
 																	</span>
 																</div>
@@ -337,7 +337,7 @@
 
 													<!--begin::Action-->
 													<div class="d-flex flex-center pt-7">
-														<a href="#" class="btn btn-light-primary font-weight-bold text-center">See All</a>
+														<a href="{{ route('daftarAplikasi') }}" class="btn btn-light-primary font-weight-bold text-center">See All</a>
 													</div>
 													<!--end::Action-->
 												</div>
@@ -387,12 +387,61 @@
 								<!--end::Quick Actions-->
 								
 								<!--begin::User-->
-								<div class="topbar-item">
-									<div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-										<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-										<span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Alif Friesen (1200024)</span>
-										
-									</div> 
+								<div class="dropdown">
+                
+									<div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px" aria-expanded="false">
+										<div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2">
+											<span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+											<span id="user_acc" class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::user()->name }} ({{ Auth::user()->nik }})</span>
+										</div>
+									</div>
+					
+									<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg p-0" style="">
+										<div class="d-flex align-items-center justify-content-between flex-wrap p-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url('https://pismart-dev.pupuk-indonesia.com/public/media/misc/bg-1.jpg')">
+											<div class="d-flex align-items-center mr-2">
+												{{-- <div class="text-white m-0 flex-grow-1 mr-3 font-size-h5">{{ auth()->user()->username }}</div> --}}
+												<div class="text-white m-0 flex-grow-1 mr-3 font-size-h5">{{ Auth::user()->name }}</div>
+											</div>
+											<span class="label label-success label-lg font-weight-bold label-inline">{{ Auth::user()->nik }}</span>
+										</div>
+					
+										<div class="navi navi-spacer-x-0 pt-5">
+											<div class="d-flex justify-content-center">
+												<div class="symbol symbol-100 mr-5">
+													<img alt="Pic" src="https://pismart-dev.pupuk-indonesia.com/public/assets/media/users/default.jpg">  
+													<i class="symbol-badge bg-success"></i>
+												</div>
+												<div class="d-flex flex-column">
+													<div href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name }}</div>
+													<div class="navi mt-2">
+														<div href="#" class="navi-item">
+															<span class="navi-link p-0 pb-2">
+																<span class="navi-icon mr-1">
+																	<span class="svg-icon svg-icon-primary svg-icon-lg">
+																		<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\User.svg-->
+																		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																			<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																				<polygon points="0 0 24 0 24 24 0 24"></polygon>
+																				<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+																				<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
+																			</g>
+																		</svg><!--end::Svg Icon-->
+																	</span>
+																</span>
+																<span class="navi-text text-muted text-hover-primary">{{ Auth::user()->nik }}</span>
+															</span>
+														</div>
+														<a href="" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">My Profile</a>
+													</div>
+												</div>
+											</div>
+
+											<div class="navi-separator mt-3"></div>
+											<div class="navi-footer px-8 py-5">
+												<a href="{{ route('logout') }}" class="btn btn-light-danger font-weight-bold btn-lg btn-block">Log Out</a>
+											</div>
+										</div>	
+									</div>
 								</div>
 								<!--end::User-->
 							</div>

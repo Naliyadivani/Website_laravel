@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
+// Controller untuk halaman Master Kegiatan
 class CrudController extends Controller
 {
     /**
@@ -14,10 +15,11 @@ class CrudController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     return view('daftarAplikasi.indexCrud');
+   
+    // public function indexMasterKegiatan(){
+    //     return view('daftarAplikasi.masterKegiatan');
     // }
+    
     public function index()
     {
     $data = M_Crud::all();
@@ -36,6 +38,7 @@ class CrudController extends Controller
         // $data = $response->json();
 
         // return view('daftarAplikasi.read')->with(['data' => $data]);
+
         $model = DB::table('kegiatan')->get();
         $data1=[];
         foreach($model as $x){

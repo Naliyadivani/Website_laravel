@@ -14,24 +14,21 @@ class loginController extends Controller
         ]);
     }
 
-    // public function loginAction()
-    // {
-    //     return view('/dashboard.home'); // Nama view home mengacu pada file blade yang akan menampilkan halaman utama.
-    // }
 
     public function loginAction(Request $request)
     {
-        $request->validate([
-            'nik' => 'required',
-            'pw' => 'required',
-        ]);
-        return redirect('/dashboard'); // Nama view home mengacu pada file blade yang akan menampilkan halaman utama.
+    $credentials = $request->only('username', 'password');
+
+    if (Auth::attempt($credentials)) {
+        // Authentication was successful
+        return redirect('/dashboard');
+    } else {
+        // Authentication failed; you can handle this case, e.g., by redirecting back with an error message
+        return redirect()->back()->withInput()->withErrors(['username' => 'Invalid username or password']);
+    }
     }
 
-    // public function logout(Request $request) {
-    //     Auth::logout();
-    //     return redirect('loginpage.indexLogin');
-    //   }
+  
 }
 
 

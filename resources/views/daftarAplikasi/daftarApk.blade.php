@@ -51,7 +51,7 @@
                 <!--begin::Brand-->
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
-                    <a href="{{ route('dashboard') }}" class="brand-logo">
+                    <a href="{{ route('home') }}" class="brand-logo">
                         <img alt="Logo" src="assets/media/logos/PI-SMART-LOGO.png" width="162.092px" height="48.325px"/>
                     </a>
                     <!--end::Logo-->
@@ -80,7 +80,7 @@
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav ">
                             <li class="menu-item menu-item-active" aria-haspopup="true">
-                                <a href="{{ route('dashboard') }}" class="menu-link ">
+                                <a href="{{ route('home') }}" class="menu-link ">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon-->
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -147,23 +147,14 @@
                             </li>
                             
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ url('loginpage') }}" class="menu-link menu-toggle">
+                                <a href="{{ route('logout') }}" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
                                             <path d="M15.5492 13.1195L19.3526 9.34406M19.3526 9.34406L15.5492 5.56864M19.3526 9.34406H6.04069M11.7458 13.1195V14.0633C11.7458 14.8143 11.4452 15.5345 10.9103 16.0656C10.3753 16.5966 9.64978 16.8949 8.89324 16.8949H5.08985C4.33331 16.8949 3.60775 16.5966 3.0728 16.0656C2.53784 15.5345 2.2373 14.8143 2.2373 14.0633V4.62478C2.2373 3.8738 2.53784 3.15358 3.0728 2.62256C3.60775 2.09154 4.33331 1.79321 5.08985 1.79321H8.89324C9.64978 1.79321 10.3753 2.09154 10.9103 2.62256C11.4452 3.15358 11.7458 3.8738 11.7458 4.62478V5.56864" stroke="#8691AD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                          </svg>
-
-                                          {{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                <path d="M14.0069431,7.00607258 C13.4546584,7.00607258 13.0069431,6.55855153 13.0069431,6.00650634 C13.0069431,5.45446114 13.4546584,5.00694009 14.0069431,5.00694009 L15.0069431,5.00694009 C17.2160821,5.00694009 19.0069431,6.7970243 19.0069431,9.00520507 L19.0069431,15.001735 C19.0069431,17.2099158 17.2160821,19 15.0069431,19 L3.00694311,19 C0.797804106,19 -0.993056895,17.2099158 -0.993056895,15.001735 L-0.993056895,8.99826498 C-0.993056895,6.7900842 0.797804106,5 3.00694311,5 L4.00694793,5 C4.55923268,5 5.00694793,5.44752105 5.00694793,5.99956624 C5.00694793,6.55161144 4.55923268,6.99913249 4.00694793,6.99913249 L3.00694311,6.99913249 C1.90237361,6.99913249 1.00694311,7.89417459 1.00694311,8.99826498 L1.00694311,15.001735 C1.00694311,16.1058254 1.90237361,17.0008675 3.00694311,17.0008675 L15.0069431,17.0008675 C16.1115126,17.0008675 17.0069431,16.1058254 17.0069431,15.001735 L17.0069431,9.00520507 C17.0069431,7.90111468 16.1115126,7.00607258 15.0069431,7.00607258 L14.0069431,7.00607258 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.006943, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-9.006943, -12.000000) "></path>
-                                                <rect fill="#000000" opacity="0.3" transform="translate(14.000000, 12.000000) rotate(-270.000000) translate(-14.000000, -12.000000) " x="13" y="6" width="2" height="12" rx="1"></rect>
-                                                <path d="M21.7928932,9.79289322 C22.1834175,9.40236893 22.8165825,9.40236893 23.2071068,9.79289322 C23.5976311,10.1834175 23.5976311,10.8165825 23.2071068,11.2071068 L20.2071068,14.2071068 C19.8165825,14.5976311 19.1834175,14.5976311 18.7928932,14.2071068 L15.7928932,11.2071068 C15.4023689,10.8165825 15.4023689,10.1834175 15.7928932,9.79289322 C16.1834175,9.40236893 16.8165825,9.40236893 17.2071068,9.79289322 L19.5,12.0857864 L21.7928932,9.79289322 Z" fill="#000000" fill-rule="nonzero" transform="translate(19.500000, 12.000000) rotate(-90.000000) translate(-19.500000, -12.000000) "></path>
-                                            </g>
-                                        </svg> --}}
-                                        <!--end::Svg Icon-->
+                                        </svg>
                                     </span>
+
                                     <span class="menu-text">Log Out</span>
                                 </a>
                             </li>
@@ -269,7 +260,7 @@
                                                         <div class="symbol symbol-40 mr-5 shadow-sm">
                                                             <span class="symbol-label">
                                                                 <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                    <img src="" alt="">
+                                                                    <img src="assets/media/logos/icon_kpi.png" alt="KPI" width="50px">
                                                                 </span>
                                                             </span>
                                                         </div>
@@ -289,7 +280,7 @@
                                                             <div class="symbol symbol-40 mr-5 shadow-sm">
                                                                 <span class="symbol-label">
                                                                     <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                        <img src="" alt="">
+                                                                        <img src="assets/media/logos/icon_akhlak.png" alt="akhlak" width="50px">
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -309,7 +300,7 @@
                                                             <div class="symbol symbol-40 mr-5 shadow-sm">
                                                                 <span class="symbol-label">
                                                                     <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                        <img src="" alt="">
+                                                                        <img src="assets/media/logos/icon_penilaian360.png" alt="360" width="50px">
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -329,7 +320,7 @@
                                                             <div class="symbol symbol-40 mr-5 shadow-sm">
                                                                 <span class="symbol-label">
                                                                     <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                        <img src="" alt="">
+                                                                        <img src="assets/media/logos/icon_diklat.png" alt="diklat" width="50px">
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -397,12 +388,61 @@
                             <!--end::Quick Actions-->
                             
                             <!--begin::User-->
-                            <div class="topbar-item">
-                                <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-                                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Alif Friesen (1200024)</span>
-                                    
-                                </div> 
+                            <div class="dropdown">
+                
+                                <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px" aria-expanded="false">
+                                    <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2">
+                                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+                                        <span id="user_acc" class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::user()->name }} ({{ Auth::user()->nik }})</span>
+                                    </div>
+                                </div>
+                
+                                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg p-0" style="">
+                                    <div class="d-flex align-items-center justify-content-between flex-wrap p-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url('https://pismart-dev.pupuk-indonesia.com/public/media/misc/bg-1.jpg')">
+                                        <div class="d-flex align-items-center mr-2">
+                                            {{-- <div class="text-white m-0 flex-grow-1 mr-3 font-size-h5">{{ auth()->user()->username }}</div> --}}
+                                            <div class="text-white m-0 flex-grow-1 mr-3 font-size-h5">{{ Auth::user()->name }}</div>
+                                        </div>
+                                        <span class="label label-success label-lg font-weight-bold label-inline">{{ Auth::user()->nik }}</span>
+                                    </div>
+                
+                                    <div class="navi navi-spacer-x-0 pt-5">
+                                        <div class="d-flex justify-content-center">
+                                            <div class="symbol symbol-100 mr-5">
+                                                <img alt="Pic" src="https://pismart-dev.pupuk-indonesia.com/public/assets/media/users/default.jpg">  
+                                                <i class="symbol-badge bg-success"></i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <div href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name}}</div>
+                                                <div class="navi mt-2">
+                                                    <div href="#" class="navi-item">
+                                                        <span class="navi-link p-0 pb-2">
+                                                            <span class="navi-icon mr-1">
+                                                                <span class="svg-icon svg-icon-primary svg-icon-lg">
+                                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\User.svg-->
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+                                                                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                                        </g>
+                                                                    </svg><!--end::Svg Icon-->
+                                                                </span>
+                                                            </span>
+                                                            <span class="navi-text text-muted text-hover-primary">{{ Auth::user()->nik }}</span>
+                                                        </span>
+                                                    </div>
+                                                    <a href="" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">My Profile</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="navi-separator mt-3"></div>
+                                        <div class="navi-footer px-8 py-5">
+                                            <a href="{{ route('logout') }}" class="btn btn-light-danger font-weight-bold btn-lg btn-block">Log Out</a>
+                                        </div>
+                                    </div>	
+                                </div>
                             </div>
                             <!--end::User-->
                         </div>
@@ -445,10 +485,7 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-primary">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg-->
-                                                                <img src=" "
-                                                                    alt="Kpi" width="50px">
-                                                                <!--end::Svg Icon-->
+                                                                <img src="assets/media/logos/icon_kpi.png" alt="Kpi" width="50px">
                                                             </span>
                                                         </div>
                                                         <!--end::Icon-->
@@ -473,9 +510,7 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-warning">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Clipboard-check.svg-->
-                                                                <img src="" alt="Kpi" width="50px">
-                                                                <!--end::Svg Icon-->
+                                                                <img src="assets/media/logos/icon_akhlak.png" alt="akhlak" width="50px">
                                                             </span>
                                                         </div>
                                                         <!--end::Icon-->
@@ -498,8 +533,7 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-danger svg-icon-4x">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Clipboard-check.svg-->
-                                                                {{-- <svg xmlns="http://www.w3.org/2000/svg"
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                     width="24px" height="24px" viewBox="0 0 24 24"
                                                                     version="1.1">
@@ -515,8 +549,7 @@
                                                                             d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z"
                                                                             fill="#000000" fill-rule="nonzero"></path>
                                                                     </g>
-                                                                </svg> --}}
-                                                                <!--end::Svg Icon-->
+                                                                </svg>
                                                             </span>
                                                         </div>
                                                         <!--end::Icon-->
@@ -540,8 +573,8 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-success svg-icon-4x">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Clipboard-check.svg-->
-                                                                {{-- <svg xmlns="http://www.w3.org/2000/svg"
+                                                                <!--begin::Svg Icon-->
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                     width="24px" height="24px" viewBox="0 0 24 24"
                                                                     version="1.1">
@@ -564,7 +597,7 @@
                                                                             width="9" height="2"
                                                                             rx="1"></rect>
                                                                     </g>
-                                                                </svg> --}}
+                                                                </svg>
                                                                 <!--end::Svg Icon-->
                                                             </span>
                                                         </div>
@@ -589,8 +622,8 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-primary svg-icon-4x">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Clipboard-check.svg-->
-                                                                {{-- <svg xmlns="http://www.w3.org/2000/svg"
+                                                                <!--begin::Svg Icon-->
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                     width="24px" height="24px" viewBox="0 0 24 24"
                                                                     version="1.1">
@@ -606,7 +639,7 @@
                                                                             d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z"
                                                                             fill="#000000" fill-rule="nonzero"></path>
                                                                     </g>
-                                                                </svg> --}}
+                                                                </svg>
                                                                 <!--end::Svg Icon-->
                                                             </span>
                                                         </div>
@@ -631,8 +664,8 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-warning svg-icon-4x">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Clipboard-check.svg-->
-                                                                {{-- <svg xmlns="http://www.w3.org/2000/svg"
+                                                                <!--begin::Svg Icon-->
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                     width="24px" height="24px" viewBox="0 0 24 24"
                                                                     version="1.1">
@@ -647,7 +680,7 @@
                                                                             d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z"
                                                                             fill="#000000" opacity="0.3"></path>
                                                                     </g>
-                                                                </svg> --}}
+                                                                </svg>
                                                                 <!--end::Svg Icon-->
                                                             </span>
                                                         </div>
@@ -672,8 +705,7 @@
                                                     <!--begin::Icon-->
                                                     <div class="mr-6">
                                                         <span class="svg-icon svg-icon-primary svg-icon-4x">
-                                                            <img src="" alt="360" width="50px">
-                                                            <!--end::Svg Icon-->
+                                                            <img src="assets/media/logos/icon_diklat.png" alt="diklat" width="50px">
                                                         </span>
                                                     </div>
                                                     <!--end::Icon-->
@@ -697,8 +729,7 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-primary svg-icon-4x">
-                                                                <img src="" alt="360" width="50px">
-                                                                <!--end::Svg Icon-->
+                                                                <img src="assets/media/logos/icon_penilaian360.png" alt="360" width="50px">
                                                             </span>
                                                         </div>
                                                         <!--end::Icon-->
@@ -723,9 +754,8 @@
                                                         <!--begin::Icon-->
                                                         <div class="mr-6">
                                                             <span class="svg-icon svg-icon-primary svg-icon-4x">
-                                                                <img src=" "
-                                                                    alt="360" width="50px">
-                                                                <!--end::Svg Icon-->
+                                                                <img src="assets/media/logos/icon_tjsl.png"
+                                                                    alt="TJSL" width="50px">
                                                             </span>
                                                         </div>
                                                         <!--end::Icon-->
