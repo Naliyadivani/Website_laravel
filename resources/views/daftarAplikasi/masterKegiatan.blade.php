@@ -852,7 +852,7 @@
 	}
 
 	function clearForm(){
-		$('#id_kegiatan').val('')
+		$('#id_kegiatan').val('');
 		$("#nama_kegiatan").val('');
         $("#deskripsi_kegiatan").val('');
 	}

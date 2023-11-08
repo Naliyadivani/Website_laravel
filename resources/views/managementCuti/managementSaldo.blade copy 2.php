@@ -491,20 +491,6 @@
 
                                         {{-- body table  --}}
                                         <div class="card-body">
-                                            <div class="table-responsive">
-                                                <div id="kt_datatable-wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                    <div class="pull-left">
-                                                        {{-- search --}}
-                                                        <div class="kt_datatable_filter" class="dataTables_filter">
-                                                            <label>
-                                                                Search:
-                                                                <input id="my_input" type="search" class="form-control form-control-sm" aria-controls="kt_datatable">
-                                                            </label>
-                                                        </div>
-                                                        {{-- end-search --}}
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="dataTables_scroll">
                                                 <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
                                                     <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
@@ -848,21 +834,10 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-        }); 
-
-        $(document).ready(function(){
-			readSaldo()
-			//search on crud
-			$("#my_input").on("keyup", function() {
-				var value = $(this).val().toLowerCase();
-				$("#dataSaldo tr").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-				});
-			});
-		});
-
+        });
         
         //read DB
+        readSaldo();
         function readSaldo(){
             $.ajax({
                 type: "post",
@@ -908,12 +883,12 @@
 
         //show untuk edit saldo
         function show(id_saldo) {
-            $.ajax({
-                url: "http://10.9.12.150:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
-                // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
-                type: "get",
-                success: function (result) {
-                    // Assuming 'exampleModal' is your modal element
+		$.ajax({
+			url: "http://10.9.12.150:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
+			// url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
+			type: "get",
+			success: function (result) {
+				// Assuming 'exampleModal' is your modal element
 				$('#managementSaldo').modal('show');
 				readSaldo()
 				clearForm()
@@ -928,14 +903,11 @@
                 // getTipeAbsen($('#kt_select2_6 option:selected').val(arr.nik));
                 // $('#nama_tipe_absen').val(arr.tipe_absen_id).trigger('change');
                 tipeAbsenSelected = arr.tipe_absen_id;
-                console.log(tipeAbsenSelected);
                 $('#kt_touchspin_4').val(arr.saldo);
                 $('#valid_from').val(arr.valid_from);
                 $('#valid_to').val(arr.valid_to);
                 $('#max_hutang').val(arr.max_hutang);
                 $('#valid_from_hutang').val(arr.valid_from_hutang);
-                $('#nama_tipe_absen').prop('disabled',true)
-                $('#kt_select2_6').prop('disabled',true)
 				
 			},
 			error:function(error){
@@ -947,22 +919,22 @@
     //Untuk delete saldo
     function deleteItem(id_saldo) {
     // Use SweetAlert to confirm the deletion
-    Swal.fire({
-        title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
-        text: 'Mohon untuk melakukan pengecekan data kembali',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Ya, Submit!',
-        cancelButtonText: 'Batalkan!',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Send an AJAX request to delete the item
-            $.ajax({
-                url: "http://10.9.12.150:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
-                // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
-                type: 'DELETE',
-                success: function (result) {
+		Swal.fire({
+			title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
+			text: 'Mohon untuk melakukan pengecekan data kembali',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Ya, Submit!',
+			cancelButtonText: 'Batalkan!',
+			reverseButtons: true
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// Send an AJAX request to delete the item
+				$.ajax({
+					url: "http://10.9.12.150:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
+					// url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
+					type: 'DELETE',
+					success: function (result) {
 						if (result.unsuccess) {
 							// Show gagal message with SweetAlert
 							Swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
@@ -970,13 +942,13 @@
 							// Optionally, remove the table row associated with the deleted item
 							// $(`tr[data-slug="${slug}"]`).remove();
 						} else {
-                            // Show a success message with SweetAlert
+							// Show a success message with SweetAlert
 							Swal.fire('Berhasil', 'Berhasil Menghapus Data', 'success');
 							readSaldo()
 						}
 					},
 					error: function (error) {
-                        // Handle the error (e.g., display an error message)
+						// Handle the error (e.g., display an error message)
 						console.error('Error:', error);
 					}
 				});
@@ -985,153 +957,87 @@
 	}
 
     // menyimpan data saldo
-    // function store(){
-    //     var id_saldo =$('#id_saldo_cuti').val()
-    //     var nik = $('#nik_selected').val()
-    //     // console.log(nik)
-    //     var tipe_absen_id = $('#nama_tipe_absen').val()
-    //     var saldo = $('#kt_touchspin_4').val()
-    //     var valid_from = $('#valid_from').val()
-    //     var valid_to = $('#valid_to').val()
-    //     var max_hutang = $('#max_hutang').val()
-    //     var valid_from_hutang = $('#valid_from_hutang').val()
-    //     // console.log(id_saldo,nik,tipe_absen_id,saldo,valid_from,valid_to);
-    //             var storeSaldo = {
-    //                 // created_by:emp_no
-    //                 nik:nik,
-    //                 tipe_absen_id:tipe_absen_id,
-    //                 saldo:saldo,
-    //                 valid_from:valid_from,
-    //                 valid_to:valid_to,
-    //                 max_hutang: max_hutang,
-    //                 valid_from_hutang:valid_from_hutang,
-    //                 created_by:{{ Auth::user()->nik }}
-    //             }
-    //             if (id_saldo != '') {
-    //                 storeSaldo = {
-    //                     nik:nik,
-    //                     tipe_absen_id:tipe_absen_id,
-    //                     saldo:saldo,
-    //                     valid_from:valid_from,
-    //                     valid_to:valid_to,
-    //                     id_saldo: id_saldo,
-    //                     max_hutang: max_hutang,
-    //                     valid_from_hutang:valid_from_hutang,
-    //                     created_by:{{ Auth::user()->nik }}
-    //                 }
-    //             }
-    //             $.ajax({
-    //                 type: "post",
-    //                 url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo", //IP Wifi PI
-    //                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
-    //                 data: storeSaldo,
-    //                 dataType: "json",
-    //                 success: function (response) {
-    //                     readSaldo()
-    //                     $('#managementSaldo').modal('hide');
-    //                     clearForm()
-    //                     Swal.fire({
-    //                         title:"Berhasil",
-    //                         text:"Berhasil Menambahkan Data",
-    //                         icon: "success",
-    //                     })
-    //                 }
-    //             });
-    //         }    
-
-    // menyimpan data saldo
-function store() {
-    var id_saldo = $('#id_saldo_cuti').val();
-    var nik = $('#nik_selected').val();
-    var tipe_absen_id = $('#nama_tipe_absen').val();
-    var saldo = $('#kt_touchspin_4').val();
-    var valid_from = $('#valid_from').val();
-    var valid_to = $('#valid_to').val();
-    var max_hutang = $('#max_hutang').val();
-    var valid_from_hutang = $('#valid_from_hutang').val();
-
-    // Cek apakah semua field telah diisi
-    if (!id_saldo || !nik || !tipe_absen_id || !saldo || !valid_from || !valid_to || !max_hutang || !valid_from_hutang) {
-        // Tampilkan pesan SweetAlert jika ada yang kosong
-        Swal.fire({
-            title: "Gagal",
-            text: "Semua data harus diisi",
-            icon: "error",
-        });
-        return; // Keluar dari fungsi jika ada data yang kosong
-    }
-
-    var storeSaldo = {
-        nik: nik,
-        tipe_absen_id: tipe_absen_id,
-        saldo: saldo,
-        valid_from: valid_from,
-        valid_to: valid_to,
-        max_hutang: max_hutang,
-        valid_from_hutang: valid_from_hutang,
-        created_by: {{ Auth::user()->nik }}
-    }
-
-    if (id_saldo !== '') {
-        storeSaldo = {
-            nik: nik,
-            tipe_absen_id: tipe_absen_id,
-            saldo: saldo,
-            valid_from: valid_from,
-            valid_to: valid_to,
-            id_saldo: id_saldo,
-            max_hutang: max_hutang,
-            valid_from_hutang: valid_from_hutang,
-            created_by: {{ Auth::user()->nik }}
-        }
-    }
-
-    $.ajax({
-        type: "post",
-        url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo",
-        data: storeSaldo,
-        dataType: "json",
-        success: function (response) {
-            readSaldo();
-            $('#managementSaldo').modal('hide');
-            clearForm();
-            Swal.fire({
-                title: "Berhasil",
-                text: "Berhasil Menambahkan Data",
-                icon: "success",
-            });
-        }
-    });
-}
-
+        function store(){
+                var id_saldo =$('#id_saldo_cuti').val()
+                var nik = $('#nik_selected').val()
+                // console.log(nik)
+                var tipe_absen_id = $('#nama_tipe_absen').val()
+                var saldo = $('#kt_touchspin_4').val()
+                var valid_from = $('#valid_from').val()
+                var valid_to = $('#valid_to').val()
+                var max_hutang = $('#max_hutang').val()
+                var valid_from_hutang = $('#valid_from_hutang').val()
+                // console.log(id_saldo,nik,tipe_absen_id,saldo,valid_from,valid_to);
+                var storeSaldo = {
+                    // created_by:emp_no
+                    nik:nik,
+                    tipe_absen_id:tipe_absen_id,
+                    saldo:saldo,
+                    valid_from:valid_from,
+                    valid_to:valid_to,
+                    max_hutang: max_hutang,
+                    valid_from_hutang:valid_from_hutang,
+                    created_by:{{ Auth::user()->nik }}
+                    }
+                if (id_saldo != '') {
+                    storeSaldo = {
+                        nik:nik,
+                        tipe_absen_id:tipe_absen_id,
+                        saldo:saldo,
+                        valid_from:valid_from,
+                        valid_to:valid_to,
+                        id_saldo: id_saldo,
+                        max_hutang: max_hutang,
+                        valid_from_hutang:valid_from_hutang,
+                        created_by:{{ Auth::user()->nik }}
+                    }
+                }
+                $.ajax({
+                    type: "post",
+                    url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo", //IP Wifi PI
+                    // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
+                    data: storeSaldo,
+                    dataType: "json",
+                    success: function (response) {
+                        readSaldo()
+                        $('#managementSaldo').modal('hide');
+                        clearForm()
+                        Swal.fire({
+                            title:"Berhasil",
+                            text:"Berhasil Menambahkan Data",
+                            icon: "success",
+                        })
+                    }
+                });
+            }    
     
-            </script>
+    </script>
 
     {{-- <script>
          function formatRepo(repo){
          if(repo.loading) return repo.text;
-         
+
          var markup=`<div class="d-flex align-items-center">
-             <div class="symbol symbol-40 symbol-light-success flex-shrink-0">
-                 <img class="" src="" alt="photo">
+                 <div class="symbol symbol-40 symbol-light-success flex-shrink-0">
+                     <img class="" src="" alt="photo">
                  </div>
                  <div class="ml-4">
-                     <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">${repo.nama} - ${repo.nik}</div>
-                     <a href="#" class="text-muted font-weight-bold text-hover-primary">${repo.company.name}</a>
-                    </div>
-                </div>`;
-                return markup;
-            }
-            function formatRepoSelection1(repo){
-                if (repo.text == '') {
+                 <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">${repo.nama} - ${repo.nik}</div>
+                 <a href="#" class="text-muted font-weight-bold text-hover-primary">${repo.company.name}</a>
+                 </div>
+             </div>`;
+             return markup;
+     }
+     function formatRepoSelection1(repo){
+         if (repo.text == '') {
          return repo.nama + ' - ' + repo.nik + ' | ' + repo.company.name;
-        } else {
-            return repo.text;
-        }
+         } else {
+             return repo.text;
+         }
+
+         $('#kt_select2_6').on('select2:select', function(e) {
         
-        $('#kt_select2_6').on('select2:select', function(e) {
-            
-            getTipeAbsen()
+          getTipeAbsen()
      });
 
      }
@@ -1144,47 +1050,56 @@ function store() {
 		 		dataType: 'json',
 		 		delay: 250,
 		 		data: function(params) {
-                     return {
-                         key: params.term, // search term
+		 			return {
+		 				key: params.term, // search term
 		 				page: params.page
-                    };
-                },
-                processResults: function(data, params) {
+		 			};
+		 		},
+		 		processResults: function(data, params) {
 		 			params.page = params.page || 1;
-                     
+
                      data.forEach(function(entry, index){
                          entry.id_saldo_cuti= entry.nik
-                        })
-                        
-                        return {
-                            results: data,
-                            pagination: {
-                                more: (params.page * 30) < data.total_count
-                            }
-                        };
-                    },
-                    cache: true
-                },
+                     })
+
+		 			return {
+		 				results: data,
+		 				pagination: {
+		 					more: (params.page * 30) < data.total_count
+		 				}
+		 			};
+		 		},
+		 		cache: true
+		 	},
 		 	escapeMarkup: function(markup) {
 		 		return markup;
-            }, 
+		 	}, 
 		 	minimumInputLength: 4,
 		 	templateResult: formatRepo,
 		 	templateSelection: formatRepoSelection1 
-        });
+		 });
     </script> --}}
 
 <script>
         // onchange pilih karyawan
         $('#kt_select2_6').on('change', function() {
+            // console.log("A");
             var val = $('#kt_select2_6 option:selected').val();
             $('#nik_selected').val(val);
-            if ($('#kt_select2_6').val() != null){
-                getTipeAbsen(val)
-            }
-            // btnCondition()
+            getTipeAbsen(val);
+            btnCondition();
         });
-        
+
+        function btnCondition(){
+				var check = $('#kt_select2_6 option:selected').is(':checked')
+				if(check == true){
+					$('#nama_tipe_absen').prop('disabled',false)
+				}else{
+					$('#nama_tipe_absen').prop('disabled',true)
+                   
+				}
+			}
+
         //search karyawan
         $("#kt_select2_6").select2({
             placeholder: "Masukkan Nama atau Nomor Pegawai",
@@ -1222,7 +1137,7 @@ function store() {
             minimumInputLength: 4
             
         });
-        
+
         // Get Tipe Absen
         function getTipeAbsen(x){
             $.ajax({
@@ -1236,25 +1151,23 @@ function store() {
                     // return arr
                     $('#nama_tipe_absen').html('')
                     var tipeAbsen = '';
-                    var awal = '<option value="">Pilih Tipe Absen</option>';
+                    var awal = '<option value="">Pilih Cuti</option>';
                     $('#nama_tipe_absen').append(awal);
-                    
+
                     arr.forEach((y,i)=>{
                         // console.log(y.id_tipe_absen);
                         tipeAbsen += "<option value='"+y.id_tipe_absen+"'>"+y.nama_tipe_absen+"</option>";
-                        
+                       
                     });
-                    
+
                     $('#nama_tipe_absen').append(tipeAbsen);
-                    $('#nama_tipe_absen').selectpicker("refresh");
+                    $('#nama_tipe_absen').selectpicker("refresh").trigger('change');
                     
                 },
                 complete: function (data){
                     if(tipeAbsenSelected != null){
                         // console.log(tipeAbsenSelected);
                         $('#nama_tipe_absen').val(tipeAbsenSelected).change();
-                        
-                        // $('#nama_tipe_absen').prop('disabled',false)
                     }
                 }
             });
@@ -1269,17 +1182,17 @@ function store() {
                     format:'YYYY-MM-DD'
                 });
                 $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
-            }
-            return{
+              }
+              return{
                 init: function(){
                     baseDemos();
                 }
               }
         }();
-        
+
         // input saldo field
         $('#kt_touchspin_4').TouchSpin({
-            buttondown_class: 'btn btn-secondary',
+			buttondown_class: 'btn btn-secondary',
 			buttonup_class: 'btn btn-secondary',
 			verticalbuttons: true,
 			verticalup: '<i class="ki ki-plus"></i>',
@@ -1295,32 +1208,13 @@ function store() {
 
         function clearForm(){
             $('#kt_select2_6').val('').change();
-            $('#kt_select2_6').prop('disabled',false)
-            $('#nama_tipe_absen').prop('disabled',false)
-            // if($('#kt_select2_6').val() != null){
-            //     console.log("A");
-            //     $('#nama_tipe_absen').prop('disabled',true)
-             //     $('#kt_select2_6 option:selected').prop('disabled',true)
-            // }
-            // btnCondition()
             $('#nama_tipe_absen').val('').change();
-            $('#nik_selected').val('');
             $('#kt_touchspin_4').val('');
             $('#valid_from').val('');
             $('#valid_to').val('');
             $('#max_hutang').val('');
             $('#valid_from_hutang').val('');
         }
-
-        function btnCondition(){
-				var check = $('#kt_select2_6 option:selected').is(':checked')
-				if(check == true){
-					$('#nama_tipe_absen').prop('disabled',false)
-				}else{
-					$('#nama_tipe_absen').prop('disabled',true)
-                   
-				}
-			}
 
         </script>
     

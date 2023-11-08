@@ -765,7 +765,7 @@
 																			<!--end:Item-->
 																			<!--begin:Item-->
 																			<div class="navi-item my-2">
-																				<a href="{{ route('dashboard_cuti') }}" class="navi-link px-0">
+																				<a href="{{ route('dashboard_absen') }}" class="navi-link px-0">
 																					<span class="navi-icon mr-4">
 																						<span class="svg-icon svg-icon-lg">
 																							<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-heart.svg-->
@@ -774,8 +774,8 @@
 																						</span>
 																					</span>
 																					<div class="navi-text">
-																						<div class="text-dark-75 mb-1 font-size-lg">Management Cuti</div>
-																						<div class="text-muted">Menu Management Cuti Karyawan</div>
+																						<div class="text-dark-75 mb-1 font-size-lg">Absence Management System</div>
+																						<div class="text-muted">Menu Manajemen Absen Karyawan</div>
 																					</div>
 																					<div class="navi-label">
 																						&gt;

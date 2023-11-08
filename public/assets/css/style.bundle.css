@@ -54806,7 +54806,7 @@ button {
 }
 .nav.nav-pills.nav-danger .nav-link.active {
   color: #ffffff;
-  background-color: #F64E60;
+  background-color: #5277A7;
 }
 .nav.nav-pills.nav-danger .nav-link.active .nav-text {
   color: #ffffff;
@@ -54903,7 +54903,8 @@ button {
 .nav.nav-pills.nav-group.nav-danger .nav-link:hover,
 .nav.nav-pills.nav-group.nav-danger .nav-link.active {
   color: #ffffff;
-  background-color: #F64E60;
+  /* background-color: #F64E60; */
+  background-color: #5277A7;
 }
 .nav.nav-pills.nav-group.nav-danger .show > .nav-link .nav-text,
 .nav.nav-pills.nav-group.nav-danger .nav-link:hover .nav-text,

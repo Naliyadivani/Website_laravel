@@ -590,7 +590,6 @@
                                                 <div class="form-group">
                                                     <label>Deskripsi Kegiatan <span class="text-danger">*</span></label>
                                                     <textarea class="form-control" name="deskripsi_kegiatan" id="deskripsi_kegiatan" rows="5"></textarea>
-
                                                 </div>
 
                                                 <div class="form-group">

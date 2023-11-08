@@ -34,7 +34,12 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/pages/login/login-1.css" rel="stylesheet" type="text/css">
+		<link href="assets/css/pages/login/login-1.css" rel="stylesheet" type="text/css">
 		
+		<!--begin::Page Custom Styles(used by this page)-->
+		<link href="assets/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Custom Styles-->
+
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />

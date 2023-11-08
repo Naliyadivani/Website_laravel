@@ -4,7 +4,7 @@
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Management Saldo | PI-Smart'
+        document.title='Formulir Pengajuan Absen | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -80,11 +80,11 @@
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav ">
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">DASHBOARD</h4>
+                                <h4 class="menu-text">HOMEPAGE</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
                             <li class="menu-item menu-item-active" aria-haspopup="true">
-                                <a href="{{ route('dashboard_cuti') }}" class="menu-link ">
+                                <a href="{{ route('dashboard_absen') }}" class="menu-link ">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon-->
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -93,26 +93,27 @@
                                           </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Dashboard</a></span>
+                                    <span class="menu-text">Halaman Utama</a></span>
                                 </a>
                             </li>
 
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">MANAGEMENT CUTI</h4>
+                                <h4 class="menu-text">ABSENCE MANAGEMENT</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('pengajuan_cuti') }}" class="menu-link menu-toggle">
+                                <a href="{{ route('pengajuan_absen') }}" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon flaticon-clock-2">
                                     </span>
-                                    <span class="menu-text">Pengajuan Cuti</span>
+                                    <span class="menu-text">Pengajuan Absen</span>
                                 </a>
                             </li>
 
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">ADMIN</h4>
+                                <h4 class="menu-text">MANAGER</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
+                            
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
@@ -124,8 +125,13 @@
                                             </g>
                                         </svg><!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Approval Cuti</span>
+                                    <span class="menu-text">Absence Approver</span>
                                 </a>
+                            </li>
+
+                            <li class="menu-section menu-section--first">
+                                <h4 class="menu-text">ADMIN</h4>
+                                <i class="menu-icon flaticon-more-v2"></i>
                             </li>
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
@@ -432,161 +438,315 @@
                 <!--end::Header-->
 
                 <!--begin::Content Subheader-->
-                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    <!--begin::Subheader-->
-                    <div class="subheader py-2 subheader-solid" id="kt_subheader">
-                        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                            <!--begin::Info-->
-                            <div class="d-flex align-items-center flex-wrap mr-1">
-                                <!--begin::Page Title-->
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Management Saldo</h5>
-                                <!--end::Page Title-->
-                            </div>
-                            <!--end::Info-->
-                        </div>
-                    </div>
-                    <!--end::Subheader-->
+                <!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Subheader-->
+						<div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+							<div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+								<!--begin::Info-->
+								<div class="d-flex align-items-center flex-wrap mr-1">
+									<!--begin::Page Heading-->
+									<div class="d-flex align-items-baseline flex-wrap mr-5">
+										<!--begin::Page Title-->
+										<h5 class="text-dark font-weight-bold my-1 mr-5">Formulir Pengajuan Absen</h5>
+										<!--end::Page Title-->
+									</div>
+									<!--end::Page Heading-->
+								</div>
+								<!--end::Info-->
+							</div>
+						</div>
+						<!--end::Subheader-->
+						<!--begin::Entry-->
+						<div class="d-flex flex-column-fluid">
+							<!--begin::Container-->
+							<div class="container">
+								<div class="card card-custom card-transparent">
+									<div class="card-body p-0">
+										<!--begin: Wizard-->
+										<div class="wizard wizard-4" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
+											<!--begin: Wizard Nav-->
+											<div class="wizard-nav">
+												<div class="wizard-steps">
+													<!--begin::Wizard Step 1 Nav-->
+													<div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+														<div class="wizard-wrapper">
+															<div class="wizard-number">1</div>
+															<div class="wizard-label">
+																<div class="wizard-title">Setup</div>
+																<div class="wizard-desc">Setup Your Absence</div>
+															</div>
+														</div>
+													</div>
+													<!--end::Wizard Step 1 Nav-->
+													{{-- <!--begin::Wizard Step 2 Nav-->
+													<div class="wizard-step" data-wizard-type="step">
+														<div class="wizard-wrapper">
+															<div class="wizard-number">2</div>
+															<div class="wizard-label">
+																<div class="wizard-title">Your Address</div>
+																<div class="wizard-desc">Setup Your Address</div>
+															</div>
+														</div>
+													</div> --}}
+													<!--end::Wizard Step 2 Nav-->
+													<!--begin::Wizard Step 3 Nav-->
+													{{-- <div class="wizard-step" data-wizard-type="step">
+														<div class="wizard-wrapper">
+															<div class="wizard-number">3</div>
+															<div class="wizard-label">
+																<div class="wizard-title">Make Payment</div>
+																<div class="wizard-desc">Add Payment Options</div>
+															</div>
+														</div>
+													</div> --}}
+													<!--end::Wizard Step 3 Nav-->
+													<!--begin::Wizard Step 4 Nav-->
+													<div class="wizard-step" data-wizard-type="step">
+														<div class="wizard-wrapper">
+															<div class="wizard-number">2</div>
+															<div class="wizard-label">
+																<div class="wizard-title">Completed</div>
+																<div class="wizard-desc">Review and Submit</div>
+															</div>
+														</div>
+													</div>
+													<!--end::Wizard Step 4 Nav-->
+												</div>
+											</div>
+											<!--end: Wizard Nav-->
+											<!--begin: Wizard Body-->
+											<div class="card card-custom card-shadowless rounded-top-0">
+												<div class="card-body p-0">
+													<div class="row justify-content-center py-8 px-8">
+														<div class="col-xl-12">
+															<!--begin: Wizard Form-->
+															<form class="form mt-0 mt-lg-10" id="kt_form">
+																<!--begin: Wizard Step 1-->
+																<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+																	<div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>NIK</label>
+																		<input type="text" class="form-control form-control-solid form-control-lg" name="nik" placeholder="NIK" value="{{ Auth::user()->nik }}" readonly/>
+																	</div>
+																	<!--end::Input-->
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Pilih Tipe Absen <span class="text-danger">*</span></label>
+                                                                        <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen">
+                                                                            <option selected value="">Pilih Tipe Absen</option>
+                                                                        </select>
+																	</div>
 
-                    <!--begin::Entry Dashboard Page-->
-                    <div class="d-flex flex-column-fluid">
-                        <div class="container-fluid">
-                            <div class="d-flex flex-column-fluid">
-                                <div class="container-fluid p-0">
-                                    <div class="card card-custom gutter-b">
-                                        {{-- header  --}}
-                                        <div class="card-header">
-                                            <div class="card-title">
-                                                <label>Daftar Management Saldo Karyawan</label>
-                                            </div>
+                                                                    <div class="form-group">
+                                                                        <label>Deskripsi<span class="text-danger"> *</span></label>
+                                                                        <textarea class="form-control" name="deskripsi_absen" id="deskripsi_absen" placeholder="Enter Absence Descriptions" rows="5"></textarea>
+                                                                    </div>
 
-                                            <div class="card-toolbar">
-                                                <button class="btn btn-primary py-2 px-4 font-weight-bolder font-size-m" data-toggle="modal" data-target="#managementSaldo">
-                                                    <i class="flaticon2-plus icon-sm"></i>Buat Saldo
-                                                </button>
-                                            </div>
-                                        </div>
-                                        {{-- end- header  --}}
+                                                                        {{-- <input type="hidden" name="id_trip" id="id_trip" value="0"> --}}
+                                                                    <!--begin::Input-->
+                                                                        <div class="form-group">
+                                                                            <label>Start Date <span class="text-danger"> *</span></label>
+                                                                            <div class="input-group date" id="start_date" data-target-input="nearest">
+                                                                                <input type="text" class="form-control form-control-lg datetimepicker-input" placeholder="Start date" name="start_date" id="start_date_tgl" data-target="#start_date" />
+                                                                                <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
+                                                                                    <span class="input-group-text border-0">
+                                                                                        <i class="ki ki-calendar"></i>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <span class="form-text text-muted">Please enter start date.</span>
+                                                                        </div>
+                                                                    <!--end::Input-->  
+                                                                    <!--begin::Input-->
+                                                                    <div class="form-group">
+                                                                        <label>End Date<span class="text-danger"> *</span></label>
+                                                                        <div class="input-group date" id="start_date" onchange="changeDateTravel()" data-target-input="nearest">
+                                                                            <input type="text" class="form-control  form-control-lg datetimepicker-input" placeholder="End date" name="end_date" id="end_date_tgl" data-target="#end_date" />
+                                                                            <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">
+                                                                                <span class="input-group-text border-0">
+                                                                                    <i class="ki ki-calendar"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Please enter end date.</span>
+                                                                    </div>
+                                                                <!--end::Input--> 
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Dokumentasi Kegiatan<span class="text-muted">(.jpg)</span></label>
+                                                                    <div class="dropzone dropzone-default dropzone-success dz-clickable" id="customFile">
+                                                                        <div class="dropzone-msg dz-message needsclick">
+                                                                            <h3 class="dropzone-msg-title">Upload Gambar disini</h3>
+                                                                            <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>      
 
-                                        {{-- body table  --}}
-                                        <div class="card-body">
-                                            <div class="dataTables_scroll">
-                                                <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
-                                                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
-                                                        <table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" role="grid" id="kt_datatable">
-                                                            <thead>
-                                                                <tr class="text-center" role="row">
-                                                                    <th>#</th>
-                                                                    <th>NIK</th>
-                                                                    <th>Tipe Cuti</th>
-                                                                    <th>Saldo</th>
-                                                                    <th>Valid From</th>
-                                                                    <th>Valid To</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-
-                                                            <tbody id="dataSaldo">
-                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7235822" />
-																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- End- body table  --}}
-
-                                        {{-- modal body  --}}
-                                        <div class="modal fade" id="managementSaldo" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="managementSaldoLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="managementSaldoLabel">Input Saldo Cuti Karyawan</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <i aria-hidden="true" class="ki ki-close"></i>
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <input type="hidden" id="id_saldo_cuti">
-
-                                                        <div class="form-group">
-                                                            <label for="">Pilih Karyawan <span class="text-danger">*</span></label>
-                                                            <select class="form-control select2" id="kt_select2_6" name="nik" style="width: 100% !important;">
-                                                                <option label="Label"></option>
-                                                            </select>
-                                                        </div>
-
-                                                    {{-- <div class="form_tipeCuti" style="display: none"> --}}
-                                                        <div class="form-group"id="select_cuti">
-                                                            <label for="">Tipe Cuti <span class="text-danger">*</span></label>
-                                                            {{-- <span class="form-text text-muted"></span> --}}
-                                                            <select class="form-control selectpicker" id="nama_tipe_absen">
-                                                                {{-- <option label="Label"></option> --}}
-                                                                <option selected="pilih">Pilih Tipe Cuti</option>
-                                                                <option value="CutiTahunan">Cuti Tahunan</option>
-                                                                <option value="CutiMelahirkan">Cuti Melahirkan</option>
-                                                                <option value="CutiSakit">Cuti Sakit</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="">Saldo Cuti <span class="text-danger">*</span></label>
-                                                            <input class="form-control bootstrap-touchspin-vertical-btn" id="kt_touchspin_4" placeholder="0" type="number" name="saldo" id="saldo" min="0">
-                                                            <span id="error-message" class="text-danger"></span>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Valid From <span class="text-danger">*</span></label>
-                                                            <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From" name="valid_from" id="valid_from" data-target="#kt_datetimepicker_7_1"/>
-                                                                <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
-                                                                    <span class="input-group-text">
-                                                                        <i class="ki ki-calendar"></i>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Valid To <span class="text-danger">*</span></label>
-                                                            <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#kt_datetimepicker_7_2"/>
-                                                                <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
-                                                                    <span class="input-group-text">
-                                                                        <i class="ki ki-calendar"></i>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- <div class="form-group">
-                                                            <label>Valid To <span class="text-danger">*</span></label>
-                                                            <div class="input-group date" id="valid_to" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#valid_to" />
-                                                                <div class="input-group-append"  data-target="#valid_to" data-toggle="datetimepicker">
-                                                                    <span class="input-group-text border-0">
-                                                                        <i class="ki ki-calendar"></i>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div> --}}
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal" id="btn-save">Save</button>
-                                                        </div>
-                                                    {{-- </div> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- End- modal body  --}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <!--end::Entry Dashboard Page-->
-
-                </div>
+																	<!--end::Input-->
+																	{{-- <div class="row">
+																		<div class="col-xl-6">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Phone</label>
+																				<input type="tel" class="form-control form-control-solid form-control-lg" name="phone" placeholder="phone" value="+61412345678" />
+																				<span class="form-text text-muted">Please enter your phone number.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																		<div class="col-xl-6">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Email</label>
+																				<input type="email" class="form-control form-control-solid form-control-lg" name="email" placeholder="Email" value="john.wick@reeves.com" />
+																				<span class="form-text text-muted">Please enter your email address.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																	</div> --}}
+																</div>
+																<!--end: Wizard Step 1-->
+																<!--begin: Wizard Step 2-->
+																{{-- <div class="pb-5" data-wizard-type="step-content">
+																	<div class="mb-10 font-weight-bold text-dark">Setup Your Address</div>
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Address Line 1</label>
+																		<input type="text" class="form-control form-control-solid form-control-lg" name="address1" placeholder="Address Line 1" value="Address Line 1" />
+																		<span class="form-text text-muted">Please enter your Address.</span>
+																	</div>
+																	<!--end::Input-->
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Address Line 2</label>
+																		<input type="text" class="form-control form-control-solid form-control-lg" name="address2" placeholder="Address Line 2" value="Address Line 2" />
+																		<span class="form-text text-muted">Please enter your Address.</span>
+																	</div>
+																	<!--end::Input-->
+																</div> --}}
+																<!--end: Wizard Step 2-->
+																<!--begin: Wizard Step 3-->
+																{{-- <div class="pb-5" data-wizard-type="step-content">
+																	<div class="mb-10 font-weight-bold text-dark">Enter your Payment Details</div>
+																	<div class="row">
+																		<div class="col-xl-6">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Name on Card</label>
+																				<input type="text" class="form-control form-control-solid form-control-lg" name="ccname" placeholder="Card Name" value="John Wick" />
+																				<span class="form-text text-muted">Please enter your Card Name.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																		<div class="col-xl-6">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Card Number</label>
+																				<input type="text" class="form-control form-control-solid form-control-lg" name="ccnumber" placeholder="Card Number" value="4444 3333 2222 1111" />
+																				<span class="form-text text-muted">Please enter your Address.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-xl-4">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Card Expiry Month</label>
+																				<input type="number" class="form-control form-control-solid form-control-lg" name="ccmonth" placeholder="Card Expiry Month" value="01" />
+																				<span class="form-text text-muted">Please enter your Card Expiry Month.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																		<div class="col-xl-4">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Card Expiry Year</label>
+																				<input type="number" class="form-control form-control-solid form-control-lg" name="ccyear" placeholder="Card Expire Year" value="21" />
+																				<span class="form-text text-muted">Please enter your Card Expiry Year.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																		<div class="col-xl-4">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Card CVV Number</label>
+																				<input type="password" class="form-control form-control-solid form-control-lg" name="cccvv" placeholder="Card CVV Number" value="123" />
+																				<span class="form-text text-muted">Please enter your Card CVV Number.</span>
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																	</div>
+																</div> --}}
+																<!--end: Wizard Step 3-->
+																<!--begin: Wizard Step 4-->
+																<div class="pb-5" data-wizard-type="step-content">
+																	<!--begin::Section-->
+																	<h4 class="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
+																	<h6 class="font-weight-bolder mb-3">Current Address:</h6>
+																	<div class="text-dark-50 line-height-lg">
+																		<div>Address Line 1</div>
+																		<div>Address Line 2</div>
+																		<div>Melbourne 3000, VIC, Australia</div>
+																	</div>
+																	<div class="separator separator-dashed my-5"></div>
+																	<!--end::Section-->
+																	<!--begin::Section-->
+																	<h6 class="font-weight-bolder mb-3">Delivery Details:</h6>
+																	<div class="text-dark-50 line-height-lg">
+																		<div>Package: Complete Workstation (Monitor, Computer, Keyboard &amp; Mouse)</div>
+																		<div>Weight: 25kg</div>
+																		<div>Dimensions: 110cm (w) x 90cm (h) x 150cm (L)</div>
+																	</div>
+																	<div class="separator separator-dashed my-5"></div>
+																	<!--end::Section-->
+																	<!--begin::Section-->
+																	<h6 class="font-weight-bolder mb-3">Delivery Service Type:</h6>
+																	<div class="text-dark-50 line-height-lg">
+																		<div>Overnight Delivery with Regular Packaging</div>
+																		<div>Preferred Morning (8:00AM - 11:00AM) Delivery</div>
+																	</div>
+																	<div class="separator separator-dashed my-5"></div>
+																	<!--end::Section-->
+																	<!--begin::Section-->
+																	<h6 class="font-weight-bolder mb-3">Delivery Address:</h6>
+																	<div class="text-dark-50 line-height-lg">
+																		<div>Address Line 1</div>
+																		<div>Address Line 2</div>
+																		<div>Preston 3072, VIC, Australia</div>
+																	</div>
+																	<!--end::Section-->
+																</div>
+																<!--end: Wizard Step 4-->
+																<!--begin: Wizard Actions-->
+																<div class="d-flex justify-content-between border-top mt-5 pt-10">
+																	<div class="mr-2">
+																		<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
+																	</div>
+																	<div>
+																		<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button>
+																		<button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
+																	</div>
+																</div>
+																<!--end: Wizard Actions-->
+															</form>
+															<!--end: Wizard Form-->
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--end: Wizard Bpdy-->
+										</div>
+										<!--end: Wizard-->
+									</div>
+								</div>
+							</div>
+							<!--end::Container-->
+						</div>
+						<!--end::Entry-->
+					</div>
+					<!--end::Content-->
                 <!--end::Content Subheader-->
 
                 <!--begin::Footer-->
@@ -647,169 +807,36 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
-    <script src="assets/js/pages/crud/forms/widgets/select2.js"></script>
-    <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
-    
-    {{-- <script>
-        function pilihKaryawan() {
-            $(document).ready(function() {
-                // Listen for the change event on the "Pilih Karyawan" select element
-                $("#kt_select2_6").on("change", function() {
-                    var selectedValue = $(this).val();
-    
-                    // Check if a value is selected (you may need to adjust this condition)
-                    if (selectedValue) {
-                        $("#form_tipeCuti").show(); // Show the second form
-                    } else {
-                        $("#form_tipeCuti").hide(); // Hide the second form
-                    }
-                });
-            });
-        }
-    
-        // Call the function to activate the event listener
-        pilihKaryawan();
-    </script> --}}
+    <script src="assets/js/pages/custom/wizard/wizard-4.js"></script>
 
     <script>
-        var KTBootstrapDatetimepicker = function () {
-            var baseDemos = function () {
-                $('#kt_datetimepicker_7_1').datetimepicker();
-                $('#kt_datetimepicker_7_2').datetimepicker({
-                    useCurrent: false
-                });
-
-              }
-              return{
-                init: function(){
-                    baseDemos();
-                }
-              }
-        }();
-        
-        $('#kt_touchspin_4').TouchSpin({
-			buttondown_class: 'btn btn-secondary',
-			buttonup_class: 'btn btn-secondary',
-			verticalbuttons: true,
-			verticalup: '<i class="ki ki-plus"></i>',
-			verticaldown: '<i class="ki ki-minus"></i>'
-		});
-
-        var emp_no = $("#nik_user").val();
-        var company = $("#company").val();
-        var year = 2023;
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-</script>
-
-<script>
-        //read DB
-        function readSaldo(){
-            console.log(bau);
+        function getTipeAbsen(x){
             $.ajax({
-                type: "post",
-                url: "http://10.9.12.150:9096/api/cuti/listAdminSaldo",
-                data: {
-                    nik:emp_no,
-                    tahun: year,
-                },
-                success: function (data) {
-                    var sc=data.data
-                    $('#dataSaldo').html('')
-                    sc.forEach((y,i)=>{
-                        var html=`<tr>
-                        <td>${i+1}</td>
-                        <td>${y.nik}</td>
-                        <td>${y.nama_tipe_absen}</td>
-                        <td>${y.saldo}</td>
-                        <td>${y.valid_from}</td>
-                        <td>${y.valid_to}</td>
-						<td class=" dt-body-nowarp">
-							<button type="button" onclick="show('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                            <i class="flaticon2-edit"></i>
-                            </button> <button type="button" onclick="deleteItem('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
-                            <i class="flaticon2-trash"></i>
-                            </button>
-						</td>
-                    </tr>`
-                    $('#dataSaldo').append(html)
+                type: "get",
+                url: "http://10.9.12.150:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
+                // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
+                // data: "data",
+                success: function (response) {
+                    var arr = response.data
+                    // console.log(arr);
+                    // return arr
+                    $('#nama_tipe_absen').html('')
+                    var tipeAbsen = '';
+                    var awal = '<option value="">Pilih Cuti</option>';
+                    $('#nama_tipe_absen').append(awal);
+
+                    arr.forEach((y,i)=>{
+                        // console.log(y.id_tipe_absen);
+                        tipeAbsen += "<option value='"+y.id_tipe_absen+"'>"+y.nama_tipe_absen+"</option>";
+                        // var tipeAbsen = '<option value=${y.id_tipe_absen}>${y.nama_tipe_absen}</option>'
+                  //      $('#nama_tipe_absen').append(tipeAbsen);
                     });
+
+                    $('#nama_tipe_absen').append(tipeAbsen);
+                    $('#nama_tipe_absen').selectpicker("refresh");
                 }
             });
         }
-
-        //create saldo
-        function managementSaldo(){
-            $('#managementSaldo').modal('show');
-        }
-
-        //menyimpan data saldo
-            // function store(){
-            //     var id_saldo =$('#id_saldo_cuti').val()
-            //     var nik = $('#kt_select2_6').val()
-            //     var tipe_absen_id = $('#tipe_absen_id').val()
-            //     var saldo = $('#saldo')
-            //     var valid_from = $('#kt_datetimepicker_7_1').val()
-            //     var valid_to = $('#kt_datetimepicker_7_2').val()
-            //     var storeSaldo = {
-            //         created_by:emp_no,
-                    
-            //     }
-
-            // }
     </script>
-
-    {{-- <script>
-        function formatRepoSelection(repo) {
-			return repo.full_name || repo.text;
-		}
-
-		$("#kt_select2_6").select2({
-			placeholder: "Masukkan Nama atau Nomor Pegawai",
-			allowClear: true,
-			ajax: {
-				url: "http://10.9.12.150:9096/getKaryawanAll",
-				dataType: 'json',
-				delay: 250,
-				data: function(params) {
-					return {
-						search: params.term, // search term
-						page: params.page
-					};
-				},
-				processResults: function(data, params) {
-					// parse the results into the format expected by Select2
-					// since we are using custom formatting functions we do not need to
-					// alter the remote JSON data, except to indicate that infinite
-					// scrolling can be used
-					params.page = params.page || 4;
-
-					return {
-						results: data.items,
-						pagination: {
-							more: (params.page * 30) < data.total_count
-						}
-					};
-				},
-				cache: true
-			},
-			escapeMarkup: function(markup) {
-				return markup;
-			}, // let our custom formatter work
-			minimumInputLength: 4,
-			templateResult: formatRepo, // omitted for brevity, see the source of this page
-			templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-		});
-
-        // Initialization
-        jQuery(document).ready(function() {
-            KTSelect2.init();
-        });
-    </script> --}}
-    
-    
 </body>
 @endsection

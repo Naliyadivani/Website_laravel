@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 
 class ManagementCutiController extends Controller
 {
-    public function IndexCuti(){
-        return view('managementCuti.dashboardCuti');
+    public function IndexAbsen(){
+        return view('managementCuti.dashboardAbsen');
     }
 
-    public function PengajuanCuti(){
-        return view('managementCuti.pengajuanCuti');
+    public function PengajuanAbsen(){
+        return view('managementCuti.pengajuanAbsen');
     }
+
 }

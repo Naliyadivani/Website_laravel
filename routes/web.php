@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\daftarApkController;
+use App\Http\Controllers\FormPengajuanAbsenController;
 use App\Http\Controllers\TambahLaporanController;
 use App\Http\Controllers\KoordinatorKegiatanController;
 use App\Http\Controllers\ManagementCutiController;
@@ -69,8 +70,11 @@ Route::get('/edit/{id}',[CrudController::class,'edit']);
 Route::get('/destroy/{id}',[CrudController::class,'delete']);
 
 // Menu Management Cuti
-Route::get('/dashboard_cuti',[ManagementCutiController::class,'IndexCuti'])->name('dashboard_cuti');
-Route::get('/pengajuan_cuti',[ManagementCutiController::class,'PengajuanCuti'])->name('pengajuan_cuti');
+Route::get('/dashboard_absen',[ManagementCutiController::class,'IndexAbsen'])->name('dashboard_absen');
+Route::get('/pengajuan_absen',[ManagementCutiController::class,'PengajuanAbsen'])->name('pengajuan_absen');
+//Form pengajuan Cuti
+Route::get('/form_pengajuan_absen',[FormPengajuanAbsenController::class,'FormAbsen'])->name('form_pengajuan_absen');
+Route::get('/form_pengajuan_absen',[FormPengajuanAbsenController::class,'FormAbsen'])->name('form_pengajuan_absen');
 
 // Management Saldo Cuti
 Route::get('/management_saldo',[ManagementSaldoController::class,'ManagementSaldo'])->name('management_saldo');
@@ -81,5 +85,13 @@ Route::post('/store',[ManagementSaldoController::class,'store']);
 Route::get('/show{id}',[ManagementSaldoController::class,'show']);
 Route::get('/edit{id}',[ManagementSaldoController::class,'edit']);
 Route::get('/destroy{id}',[ManagementSaldoController::class,'delete']);
+
+//show search karyawan
+Route::get('/searchData',[ManagementSaldoController::class,'searchData']);
+
+//Upload excel file menu management saldo
+Route::get('/upload',[ManagementSaldoController::class,'uploadExcel']);
+
+
 
 

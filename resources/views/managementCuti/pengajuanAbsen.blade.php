@@ -4,7 +4,7 @@
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Management Cuti | PI-Smart'
+        document.title='Pengajuan Absen | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -80,11 +80,11 @@
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav ">
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">DASHBOARD</h4>
+                                <h4 class="menu-text">HALAMAN UTAMA</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
                             <li class="menu-item menu-item-active" aria-haspopup="true">
-                                <a href="{{ route('dashboard_cuti') }}" class="menu-link ">
+                                <a href="{{ route('dashboard_absen') }}" class="menu-link ">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon-->
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -93,26 +93,27 @@
                                           </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Dashboard</a></span>
+                                    <span class="menu-text">Halaman Utama</a></span>
                                 </a>
                             </li>
 
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">MANAGEMENT CUTI</h4>
+                                <h4 class="menu-text">ABSENCE MANAGEMENT</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('pengajuan_cuti') }}" class="menu-link menu-toggle">
+                                <a href="{{ route('pengajuan_absen') }}" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon flaticon-clock-2">
                                     </span>
-                                    <span class="menu-text">Pengajuan Cuti</span>
+                                    <span class="menu-text">Pengajuan Absen</span>
                                 </a>
                             </li>
 
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">ADMIN</h4>
+                                <h4 class="menu-text">MANAGER</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
+                            
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
@@ -124,8 +125,13 @@
                                             </g>
                                         </svg><!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Approval Cuti</span>
+                                    <span class="menu-text">Absence Approver</span>
                                 </a>
+                            </li>
+
+                            <li class="menu-section menu-section--first">
+                                <h4 class="menu-text">ADMIN</h4>
+                                <i class="menu-icon flaticon-more-v2"></i>
                             </li>
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
@@ -439,7 +445,7 @@
                             <!--begin::Info-->
                             <div class="d-flex align-items-center flex-wrap mr-1">
                                 <!--begin::Page Title-->
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Dashboard</h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Pengajuan Absen Pegawai </h5>
                                 <!--end::Page Title-->
                             </div>
                             <!--end::Info-->
@@ -448,6 +454,74 @@
                     <!--end::Subheader-->
 
                     <!--begin::Entry Dashboard Page-->
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container-fluid">
+                            <div class="d-flex flex-column-fluid">
+                                <div class="container-fluid p-0">
+                                    <div class="card card-custom gutter-b">
+                                        {{-- header  --}}
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <label>Daftar Pengajuan Absen Anda</label>
+                                            </div>
+
+                                            <div class="card-toolbar">
+                                                <a href="{{ route('form_pengajuan_absen') }}" class="btn btn-primary py-2 px-4 font-weight-bolder font-size-m">
+                                                    <i class="flaticon2-plus icon-sm"></i>Ajukan Absen
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {{-- end- header  --}}
+
+                                        {{-- body table  --}}
+                                        <div class="card-body py-10">
+
+                                            <div class="pull-left">
+                                            </div>
+
+                                            <div class="pull-right">
+                                                <div class="dataTables_length" id="kt_datatable_length">
+                                                    <label>Show 
+                                                        <select name="kt_datatable_length" aria-controls="kt_datatable" class="custom-select custom-select-sm form-control form-control-sm">
+                                                            <option value="10">10</option>
+                                                            <option value="25">25</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select> entries
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="dataTables_scroll">
+                                                <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                                                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
+                                                        <table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" role="grid" id="kt_datatable">
+                                                            <thead>
+                                                                <tr class="text-center" role="row">
+                                                                    <th>#</th>
+                                                                    <th>Tipe Absen</th>
+                                                                    <th>Deskripsi</th>
+                                                                    <th>Tanggal Mulai</th>
+                                                                    <th>Tanggal Akhir</th>
+                                                                    <th>Status</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody id="dataSaldo">
+                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
+																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                    
                     <!--end::Entry Dashboard Page-->
 

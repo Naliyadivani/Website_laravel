@@ -4,7 +4,7 @@
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Pengajuan Cuti | PI-Smart'
+        document.title='Absence Management | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -80,11 +80,11 @@
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav ">
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">DASHBOARD</h4>
+                                <h4 class="menu-text">HALAMAN UTAMA</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
                             <li class="menu-item menu-item-active" aria-haspopup="true">
-                                <a href="{{ route('dashboard_cuti') }}" class="menu-link ">
+                                <a href="{{ route('dashboard_absen') }}" class="menu-link ">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon-->
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -93,26 +93,27 @@
                                           </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Dashboard</a></span>
+                                    <span class="menu-text">Halaman Utama</a></span>
                                 </a>
                             </li>
 
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">MANAGEMENT CUTI</h4>
+                                <h4 class="menu-text">ABSENCE MANAGEMENT</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('pengajuan_cuti') }}" class="menu-link menu-toggle">
+                                <a href="{{ route('pengajuan_absen') }}" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon flaticon-clock-2">
                                     </span>
-                                    <span class="menu-text">Pengajuan Cuti</span>
+                                    <span class="menu-text">Pengajuan Absen</span>
                                 </a>
                             </li>
 
                             <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">ADMIN</h4>
+                                <h4 class="menu-text">MANAGER</h4>
                                 <i class="menu-icon flaticon-more-v2"></i>
                             </li>
+                            
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
@@ -124,9 +125,15 @@
                                             </g>
                                         </svg><!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Approval Cuti</span>
+                                    <span class="menu-text">Absence Approver</span>
                                 </a>
                             </li>
+
+                            <li class="menu-section menu-section--first">
+                                <h4 class="menu-text">ADMIN</h4>
+                                <i class="menu-icon flaticon-more-v2"></i>
+                            </li>
+                            
 
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('management_saldo') }}" class="menu-link menu-toggle">
@@ -439,7 +446,7 @@
                             <!--begin::Info-->
                             <div class="d-flex align-items-center flex-wrap mr-1">
                                 <!--begin::Page Title-->
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Pengajuan Cuti</h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Halaman Utama Sistem Manajemen Absen</h5>
                                 <!--end::Page Title-->
                             </div>
                             <!--end::Info-->
@@ -448,34 +455,26 @@
                     <!--end::Subheader-->
 
                     <!--begin::Entry Dashboard Page-->
-                    <div class="d-flex flex-column-fluid">
+                    {{-- <div class="d-flex flex-column-fluid">
                         <div class="container-fluid">
                             <div class="d-flex flex-column-fluid">
                                 <div class="container-fluid p-0">
                                     <div class="card card-custom gutter-b">
-                                        {{-- header  --}}
+                                        
                                         <div class="card-header">
                                             <div class="card-title">
-                                                <label>Daftar Pengajuan Cuti</label>
-                                            </div>
-
-                                            <div class="card-toolbar">
-                                                <button class="btn btn-primary py-2 px-4 font-weight-bolder font-size-m">
-                                                    <i class="flaticon2-plus icon-sm"></i>Ajukan Cuti
-                                                </button>
+                                                <label>Daftar Pengajuan Absen Anda</label>
                                             </div>
                                         </div>
-                                        {{-- end- header  --}}
+                                        
+                                        <div class="card-body py-10">
 
-                                        <div class="card-body">
-                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                   
+                    </div> --}}
                     <!--end::Entry Dashboard Page-->
 
                 </div>

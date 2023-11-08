@@ -498,8 +498,8 @@
 															</a>
 														</div>
 													</div>
-
 													<!--end::Header-->
+
 													<div class="card-body py-10">
 														<div class="table-responsive">
 														<div id="kt_datatable1_" class="dataTables-wrapper dr-bootstrap4 no-footer">

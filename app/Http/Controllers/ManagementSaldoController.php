@@ -25,6 +25,56 @@ class ManagementSaldoController extends Controller
         return response()->json(['status'=>200,'data'=>$dataSaldo],200);
     }
 
+    // public function searchData(Request $request){
+    //     if($request->ajax()){
+    //         $dataSaldo=DB::where('nik','like','%',$request->searchData,'%')->get();
+            
+    //     }
+    // }
+
+    // Get Data Pegawai
+    public function searchData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->input('key'); // Get the search query from the request
+            
+            $results = DB::table('saldo_cuti') 
+                ->select('nik', 'nama') // Adjust columns as needed
+                ->where('nik', 'like', "%$data%")
+                ->get();
+                
+            return response()->json($results);
+        }
+    }
+
+    //Get Tipe Absen
+    public function getTipeAbsen(Request $request){
+        
+    }
+
+    public function indexPagination(){
+        
+    }
+    
+
+    public function uploadExcel(Request $request){
+        $request->validate([
+            'customFile' => 'required|mimes:xlsx,xls',
+        ]);
+
+        if ($request->file('customFile')) {
+            $file = $request->file('customFile');
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('uploads', $fileName); // Adjust the storage path as needed
+
+            // You can save the file information to the database or perform other actions here
+            // Return a response with any necessary data
+            return response()->json(['message' => 'File uploaded successfully']);
+        } else {
+            return response()->json(['message' => 'File not found'], 400);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,8 +108,8 @@ class ManagementSaldoController extends Controller
     {
         $dataSaldo = [
             'nik' => $request->input('nik'),
-            'tipe_cuti_id' => $request->input('tipe_cuti_id'),
-            'nama_tipe_cuti' => $request->input('nama_tipe_cuti'),
+            'tipe_absen_id' => $request->input('tipe_absen_id'),
+            'nama_tipe_absen' => $request->input('nama_tipe_absen'),
             'saldo' => $request->input('saldo'),
             'valid_from' => $request->input('valid_from'),
             'valid_to' => $request->input('valid_to'),
@@ -107,8 +157,8 @@ class ManagementSaldoController extends Controller
     {
         $dataSaldo = [
             'nik' => $request->input('nik'),
-            'tipe_cuti_id' => $request->input('tipe_cuti_id'),
-            'nama_tipe_cuti' => $request->input('nama_tipe_cuti'),
+            'tipe_absen_id' => $request->input('tipe_absen_id'),
+            'nama_tipe_absen' => $request->input('nama_tipe_absen'),
             'saldo' => $request->input('saldo'),
             'valid_from' => $request->input('valid_from'),
             'valid_to' => $request->input('valid_to'),
@@ -133,4 +183,5 @@ class ManagementSaldoController extends Controller
 
         return redirect()->route('')->with('success', 'Data deleted successfully');
     }
+
 }

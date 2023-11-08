@@ -15,13 +15,13 @@ class CreateSaldoCutisTable extends Migration
     {
         Schema::create('saldo_cuti', function (Blueprint $table) {
             $table->id();
-            $table->string('tipe_cuti_id');
-            $table->string('nama_tipe_cuti');
+            $table->string('tipe_absen_id');
+            $table->string('nama_tipe_absen');
             $table->string('nik');
             $table->integer('saldo');
             $table->date('valid_from');
             $table->date('valid_to');
-            $table->string('tipe_cuti');
+            $table->string('tipe_absen');
             $table->integer('periode');
             $table->string('created_by');
             $table->timestamps();

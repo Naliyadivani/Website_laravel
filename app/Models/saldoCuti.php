@@ -11,7 +11,7 @@ class saldoCuti extends Model
     protected $table = 'saldo_cuti';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nik','tipe_cuti_id','saldo','valid_from','valid_to','created_by',
+        'nik','tipe_absen_id','saldo','valid_from','valid_to','created_by',
     ];
     protected $hidden;
 }
