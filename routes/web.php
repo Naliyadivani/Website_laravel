@@ -71,10 +71,17 @@ Route::get('/destroy/{id}',[CrudController::class,'delete']);
 
 // Menu Management Cuti
 Route::get('/dashboard_absen',[ManagementCutiController::class,'IndexAbsen'])->name('dashboard_absen');
-Route::get('/pengajuan_absen',[ManagementCutiController::class,'PengajuanAbsen'])->name('pengajuan_absen');
+Route::get('/pengajuan_absen',[FormPengajuanAbsenController ::class,'PengajuanAbsen'])->name('pengajuan_absen');
+
 //Form pengajuan Cuti
 Route::get('/form_pengajuan_absen',[FormPengajuanAbsenController::class,'FormAbsen'])->name('form_pengajuan_absen');
-Route::get('/form_pengajuan_absen',[FormPengajuanAbsenController::class,'FormAbsen'])->name('form_pengajuan_absen');
+Route::get('/readFormAbsen',[FormPengajuanAbsenController::class,'readFormAbsen']);
+Route::get('/read_JSON_form_absen',[FormPengajuanAbsenController::class,'readJSON'])->name('read_JSON_form_absen');
+Route::get('/create',[FormPengajuanAbsenController::class,'create']);
+Route::post('/store',[FormPengajuanAbsenController::class,'store']);
+Route::get('/show{id}',[FormPengajuanAbsenController::class,'show']);
+Route::get('/edit{id}',[FormPengajuanAbsenController::class,'edit']);
+Route::get('/destroy{id}',[FormPengajuanAbsenController::class,'delete']);
 
 // Management Saldo Cuti
 Route::get('/management_saldo',[ManagementSaldoController::class,'ManagementSaldo'])->name('management_saldo');

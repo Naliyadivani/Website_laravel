@@ -474,9 +474,9 @@
                                         {{-- end- header  --}}
 
                                         {{-- body table  --}}
-                                        <div class="card-body py-10">
+                                        <div class="card-body">
 
-                                            <div class="pull-left">
+                                            {{-- <div class="pull-left">
                                             </div>
 
                                             <div class="pull-right">
@@ -490,7 +490,7 @@
                                                         </select> entries
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="dataTables_scroll">
                                                 <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
@@ -508,7 +508,7 @@
                                                                 </tr>
                                                             </thead>
 
-                                                            <tbody id="dataSaldo">
+                                                            <tbody id="formAbsen">
                                                                 <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
 																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
                                                             </tbody>
@@ -586,5 +586,51 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
+
+    <script>
+        var emp_no = $("#nik_user").val();
+        var company = $("#company").val();
+        var year = 2023;
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        }); 
+        
+        readFormAbsen()
+        //read DB
+        function readFormAbsen(){
+            $.ajax({
+                type: "get",
+                url: "http://10.9.12.150:9096/api/cuti/myCuti?nik="+{{ Auth::user()->nik }}+"&tahun="+year,
+                
+                success: function (data) {
+                    var arr = data.data
+                    $('#formAbsen').html('')
+                    arr.forEach((y,i) => {
+                        var html=`<tr>
+                        <td>${i+1}</td>
+                        <td>${y.tipe_absen.nama_tipe_absen}</td>
+                        <td>${y.deskripsi}</td>
+                        <td>${y.mulai_absen}</td>
+                        <td>${y.akhir_absen}</td>
+                        <td>${y.status}</td>
+						<td class=" dt-body-nowarp">
+							<button type="button" onclick="show('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                            <i class="flaticon2-edit"></i>
+                            </button> <button type="button" onclick="deleteItem('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
+                            <i class="flaticon2-trash"></i>
+                            </button>
+						</td>
+                    </tr>`
+                    $('#formAbsen').append(html)
+                    });
+                }
+            });
+        }
+        
+        
+    </script>
+
 </body>
 @endsection

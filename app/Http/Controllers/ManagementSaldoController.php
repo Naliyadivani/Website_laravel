@@ -48,13 +48,14 @@ class ManagementSaldoController extends Controller
     }
 
     //Get Tipe Absen
-    public function getTipeAbsen(Request $request){
-        
-    }
+    // public function getTipeAbsen(Request $request){
+    //     //
+    // }
 
-    public function indexPagination(){
-        
-    }
+    // //pagination 
+    // public function indexPagination(){
+    //     //
+    // }
     
 
     public function uploadExcel(Request $request){

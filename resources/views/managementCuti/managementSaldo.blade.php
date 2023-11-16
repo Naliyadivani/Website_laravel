@@ -602,6 +602,7 @@
                                                             <input class="form-control bootstrap-touchspin-vertical-btn" id="kt_touchspin_4" placeholder="0" type="number" name="saldo"min="0">
                                                             <span id="error-message" class="text-danger"></span>
                                                         </div>
+
                                                         <div class="form-group">
                                                             <label>Valid From <span class="text-danger">*</span></label>
                                                             <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
@@ -723,7 +724,7 @@
     {{-- <script src="assets/js/pages/crud/forms/widgets/select2.js"></script> --}}
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
     <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
-    <script src="assets/js/"></script>
+    {{-- <script src="assets/js/"></script> --}}
 
 {{-- UPLOAD EXCEL SCRIPT  --}}
 {{-- <script>
@@ -878,8 +879,8 @@
                     arr.forEach((y,i) => {
                         var html=`<tr>
                         <td>${i+1}</td>
-                        <td>${y.nik} - ${y.nama_karyawan}</td>
-                        <td>${y.nama_tipe_absen}</td>
+                        <td>${y.nik} - ${y.nama}</td>
+                        <td>${y.tipe_absen.nama_tipe_absen}</td>
                         <td>${y.saldo}</td>
                         <td>${y.valid_from}</td>
                         <td>${y.valid_to}</td>
@@ -923,11 +924,11 @@
                 $('#id_saldo_cuti').val(arr.id_saldo_cuti);
                 // $('#nik_selected').val(arr.nik);
                 // $('#kt_select2_6').append(`<option selected>${arr.nik}</option>`).trigger('change');
-                var option = new Option(arr.nik + ' - ' + arr.nama_karyawan + ' | ' + arr.company_name,arr.nik, true, true);
+                var option = new Option(arr.nik + ' - ' + arr.nama + ' | ' + arr.company.name,arr.nik, true, true);
                 $('#kt_select2_6').append(option).change();
                 // getTipeAbsen($('#kt_select2_6 option:selected').val(arr.nik));
                 // $('#nama_tipe_absen').val(arr.tipe_absen_id).trigger('change');
-                tipeAbsenSelected = arr.tipe_absen_id;
+                tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
                 console.log(tipeAbsenSelected);
                 $('#kt_touchspin_4').val(arr.saldo);
                 $('#valid_from').val(arr.valid_from);
@@ -1041,6 +1042,7 @@
 
     // menyimpan data saldo
 function store() {
+    
     var id_saldo = $('#id_saldo_cuti').val();
     var nik = $('#nik_selected').val();
     var tipe_absen_id = $('#nama_tipe_absen').val();
@@ -1049,16 +1051,30 @@ function store() {
     var valid_to = $('#valid_to').val();
     var max_hutang = $('#max_hutang').val();
     var valid_from_hutang = $('#valid_from_hutang').val();
-
+    // console.log(id_saldo, nik,tipe_absen_id,saldo,valid_from,valid_to,max_hutang,valid_from_hutang);
     // Cek apakah semua field telah diisi
-    if (!id_saldo || !nik || !tipe_absen_id || !saldo || !valid_from || !valid_to || !max_hutang || !valid_from_hutang) {
-        // Tampilkan pesan SweetAlert jika ada yang kosong
+    // if (
+    //     nik.trim() === '' ||
+    //     tipe_absen_id.trim() === '' ||
+    //     saldo.trim() === '' ||
+    //     valid_from.trim() === '' ||
+    //     valid_to.trim() === ''
+    // ) {
+    //     Swal.fire({
+    //         title: "Peringatan",
+    //         text: "Harap isi semua data yang diperlukan",
+    //         icon: "warning",
+    //     });
+    //     return; // Menghentikan eksekusi jika ada field yang kosong
+    // }
+
+    if (nik === '' || tipe_absen_id === '' || saldo === '' || valid_from === '' || valid_to === '' || max_hutang === '' || valid_from_hutang === '') {
         Swal.fire({
-            title: "Gagal",
-            text: "Semua data harus diisi",
-            icon: "error",
+            title: "Gagal Menyimpan Data",
+            text: "Semua Data Harus Diisi",
+            icon: "warning",
         });
-        return; // Keluar dari fungsi jika ada data yang kosong
+        return; // Hentikan eksekusi jika ada kolom yang kosong
     }
 
     var storeSaldo = {
@@ -1072,18 +1088,22 @@ function store() {
         created_by: {{ Auth::user()->nik }}
     }
 
+    // if (id_saldo !== '') {
+    //     storeSaldo = {
+    //         nik: nik,
+    //         tipe_absen_id: tipe_absen_id,
+    //         saldo: saldo,
+    //         valid_from: valid_from,
+    //         valid_to: valid_to,
+    //         id_saldo: id_saldo,
+    //         max_hutang: max_hutang,
+    //         valid_from_hutang: valid_from_hutang,
+    //         created_by: {{ Auth::user()->nik }}
+    //     }
+    // }
+
     if (id_saldo !== '') {
-        storeSaldo = {
-            nik: nik,
-            tipe_absen_id: tipe_absen_id,
-            saldo: saldo,
-            valid_from: valid_from,
-            valid_to: valid_to,
-            id_saldo: id_saldo,
-            max_hutang: max_hutang,
-            valid_from_hutang: valid_from_hutang,
-            created_by: {{ Auth::user()->nik }}
-        }
+        storeSaldo.id_saldo = id_saldo;
     }
 
     $.ajax({
@@ -1103,9 +1123,7 @@ function store() {
         }
     });
 }
-
-    
-            </script>
+</script>
 
     {{-- <script>
          function formatRepo(repo){
@@ -1260,22 +1278,29 @@ function store() {
             });
         }
 
-        // valid from, valid to
-        var KTBootstrapDatetimepicker = function () {
-            var baseDemos = function () {
-                $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
+        $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
                 $('#kt_datetimepicker_7_2').datetimepicker({
                     useCurrent: false,
                     format:'YYYY-MM-DD'
                 });
                 $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
-            }
-            return{
-                init: function(){
-                    baseDemos();
-                }
-              }
-        }();
+        // valid from, valid to
+        // KTBootstrapDatetimepicker()
+        // var KTBootstrapDatetimepicker = function () {
+        //     var baseDemos = function () {
+        //         $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
+        //         $('#kt_datetimepicker_7_2').datetimepicker({
+        //             useCurrent: false,
+        //             format:'YYYY-MM-DD'
+        //         });
+        //         $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
+        //     }
+        //     return{
+        //         init: function(){
+        //             baseDemos();
+        //         }
+        //       }
+        // }
         
         // input saldo field
         $('#kt_touchspin_4').TouchSpin({

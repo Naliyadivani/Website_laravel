@@ -10,8 +10,8 @@ class ManagementCutiController extends Controller
         return view('managementCuti.dashboardAbsen');
     }
 
-    public function PengajuanAbsen(){
-        return view('managementCuti.pengajuanAbsen');
-    }
-
+    // public function PengajuanAbsen(){
+    //     return view('managementCuti.pengajuanAbsen');
+    // }
+    
 }

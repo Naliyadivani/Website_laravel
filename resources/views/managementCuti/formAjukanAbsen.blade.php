@@ -526,6 +526,7 @@
 																<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 																	<div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
 																	<!--begin::Input-->
+                                                                    <input type="hidden" id="id_tipe_absen">
 																	<div class="form-group">
 																		<label>NIK</label>
 																		<input type="text" class="form-control form-control-solid form-control-lg" name="nik" placeholder="NIK" value="{{ Auth::user()->nik }}" readonly/>
@@ -539,14 +540,27 @@
                                                                         </select>
 																	</div>
 
+                                                                    {{-- <div id="form_Absen" style="display: none"> --}}
                                                                     <div class="form-group">
                                                                         <label>Deskripsi<span class="text-danger"> *</span></label>
                                                                         <textarea class="form-control" name="deskripsi_absen" id="deskripsi_absen" placeholder="Enter Absence Descriptions" rows="5"></textarea>
                                                                     </div>
 
-                                                                        {{-- <input type="hidden" name="id_trip" id="id_trip" value="0"> --}}
+                                                                        {{-- <input type="hidden" name="" id="" value="0"> --}}
                                                                     <!--begin::Input-->
-                                                                        <div class="form-group">
+                                                                    <div class="form-group">
+                                                                        <label>Start Date <span class="text-danger">*</span></label>
+                                                                        <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
+                                                                            <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Start Date" name="start_Date" id="start_Date" data-target="#kt_datetimepicker_7_1"/>
+                                                                            <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="ki ki-calendar"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Please enter start date.</span>
+                                                                    </div>
+                                                                        {{-- <div class="form-group">
                                                                             <label>Start Date <span class="text-danger"> *</span></label>
                                                                             <div class="input-group date" id="start_date" data-target-input="nearest">
                                                                                 <input type="text" class="form-control form-control-lg datetimepicker-input" placeholder="Start date" name="start_date" id="start_date_tgl" data-target="#start_date" />
@@ -557,12 +571,24 @@
                                                                                 </div>
                                                                             </div>
                                                                             <span class="form-text text-muted">Please enter start date.</span>
-                                                                        </div>
+                                                                        </div> --}}
                                                                     <!--end::Input-->  
                                                                     <!--begin::Input-->
                                                                     <div class="form-group">
+                                                                        <label>End Date<span class="text-danger">*</span></label>
+                                                                        <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
+                                                                            <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="End Date" name="end_Date" id="end_Date" data-target="#kt_datetimepicker_7_2"/>
+                                                                            <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
+                                                                                <span class="input-group-text">
+                                                                                    <i class="ki ki-calendar"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <span class="form-text text-muted">Please enter end date.</span>
+                                                                    </div>
+                                                                    {{-- <div class="form-group">
                                                                         <label>End Date<span class="text-danger"> *</span></label>
-                                                                        <div class="input-group date" id="start_date" onchange="changeDateTravel()" data-target-input="nearest">
+                                                                        <div class="input-group date" id="start_date" data-target-input="nearest">
                                                                             <input type="text" class="form-control  form-control-lg datetimepicker-input" placeholder="End date" name="end_date" id="end_date_tgl" data-target="#end_date" />
                                                                             <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">
                                                                                 <span class="input-group-text border-0">
@@ -571,7 +597,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <span class="form-text text-muted">Please enter end date.</span>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 <!--end::Input--> 
                                                                 
                                                                 <div class="form-group">
@@ -582,7 +608,8 @@
                                                                             <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
                                                                         </div>
                                                                     </div>
-                                                                </div>      
+                                                                </div>  
+                                                            {{-- </div>     --}}
 
 																	<!--end::Input-->
 																	{{-- <div class="row">
@@ -605,7 +632,7 @@
 																			<!--end::Input-->
 																		</div>
 																	</div> --}}
-																</div>
+																
 																<!--end: Wizard Step 1-->
 																<!--begin: Wizard Step 2-->
 																{{-- <div class="pb-5" data-wizard-type="step-content">
@@ -808,16 +835,56 @@
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
     <script src="assets/js/pages/custom/wizard/wizard-4.js"></script>
+    <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
 
     <script>
-        function getTipeAbsen(x){
+        var emp_no = $("#nik_user").val();
+        var company = $("#company").val();
+        var year = 2023;
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        }); 
+        $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
+                $('#kt_datetimepicker_7_2').datetimepicker({
+                    useCurrent: false,
+                    format:'YYYY-MM-DD'
+                });
+                $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
+        // KTBootstrapDatetimepicker()
+        // var KTBootstrapDatetimepicker = function () {
+        //     var baseDemos = function () {
+                
+        //     }
+        //     return{
+        //         init: function(){
+        //             baseDemos();
+        //         }
+        //       }
+        // }
+
+
+        function  storeAbsen(){
+            var id_absen = $('#id_tipe_absen').val();
+            var tipe_absen_id = $('#nama_tipe_absen').val();
+            var deskripsi = $('#deskripsi_absen').val();
+            var mulai_absen = $('#mulai_absen').val();
+            var akhir_absen = $('#akhir_absen').val();
+
+
+        }
+
+
+        getTipeAbsen()
+        function getTipeAbsen(){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
-                // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
-                // data: "data",
+                // url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
+                url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
                 success: function (response) {
                     var arr = response.data
+                    // var myMaxAbsen = arr.my_max_absen;
                     // console.log(arr);
                     // return arr
                     $('#nama_tipe_absen').html('')
@@ -834,6 +901,17 @@
 
                     $('#nama_tipe_absen').append(tipeAbsen);
                     $('#nama_tipe_absen').selectpicker("refresh");
+
+                //     $('#form_Absen').hide();
+                    
+
+                //     if (myMaxAbsen === null) {
+                //         $('#start_Date').prop('disabled', true); // Disable the input
+                //         $('#start_Date').closest('.form-group').hide(); // Hide the entire form group
+                //     } else {
+                //         $('#start_Date').prop('disabled', false); // Enable the input
+                //         $('#start_Date').closest('.form-group').show(); // Show the entire form group
+                //     }
                 }
             });
         }
