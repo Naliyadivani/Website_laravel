@@ -71,6 +71,7 @@ var KTWizard4 = function () {
 			}).then(function (result) {
 				if (result.value) {
 					_formEl.submit(); // Submit form
+					//functin store
 				} else if (result.dismiss === 'cancel') {
 					Swal.fire({
 						text: "Your form has not been submitted!.",

@@ -527,20 +527,27 @@
 																	<div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
 																	<!--begin::Input-->
                                                                     <input type="hidden" id="id_tipe_absen">
+
 																	<div class="form-group">
 																		<label>NIK</label>
 																		<input type="text" class="form-control form-control-solid form-control-lg" name="nik" placeholder="NIK" value="{{ Auth::user()->nik }}" readonly/>
 																	</div>
 																	<!--end::Input-->
 																	<!--begin::Input-->
-																	<div class="form-group">
+																	{{-- <div class="form-group">
 																		<label>Pilih Tipe Absen <span class="text-danger">*</span></label>
                                                                         <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen">
                                                                             <option selected value="">Pilih Tipe Absen</option>
                                                                         </select>
-																	</div>
-
-                                                                    {{-- <div id="form_Absen" style="display: none"> --}}
+																	</div> --}}
+                                                                    <div class="form-group">
+                                                                        <label>Pilih Tipe Absen <span class="text-danger">*</span></label>
+                                                                        <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen" name="nama_tipe_absen" onchange="handleTipeAbsenChange(this)">
+                                                                            <option selected value="">Pilih Tipe Absen</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    
+                                                                    <div id="form_absen" style="display: none">
                                                                     <div class="form-group">
                                                                         <label>Deskripsi<span class="text-danger"> *</span></label>
                                                                         <textarea class="form-control" name="deskripsi_absen" id="deskripsi_absen" placeholder="Enter Absence Descriptions" rows="5"></textarea>
@@ -574,7 +581,7 @@
                                                                         </div> --}}
                                                                     <!--end::Input-->  
                                                                     <!--begin::Input-->
-                                                                    <div class="form-group">
+                                                                    <div class="form-group" id="end_Date_div">
                                                                         <label>End Date<span class="text-danger">*</span></label>
                                                                         <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
                                                                             <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="End Date" name="end_Date" id="end_Date" data-target="#kt_datetimepicker_7_2"/>
@@ -608,8 +615,8 @@
                                                                             <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
                                                                         </div>
                                                                     </div>
-                                                                </div>  
-                                                            {{-- </div>     --}}
+                                                                </div>   
+                                                                    </div>   
 
 																	<!--end::Input-->
 																	{{-- <div class="row">
@@ -632,7 +639,7 @@
 																			<!--end::Input-->
 																		</div>
 																	</div> --}}
-																
+																</div>
 																<!--end: Wizard Step 1-->
 																<!--begin: Wizard Step 2-->
 																{{-- <div class="pb-5" data-wizard-type="step-content">
@@ -752,7 +759,7 @@
 																		<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
 																	</div>
 																	<div>
-																		<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button>
+																		<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit" onclick="storeAbsen()">Submit</button>
 																		<button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
 																	</div>
 																</div>
@@ -863,16 +870,70 @@
         //         }
         //       }
         // }
+        function handleTipeAbsenChange(selectElement) {
+        // Get the selected option
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+    
+        // Get the data-max-absen attribute value
+        var maxAbsen = selectedOption.getAttribute('data-max-absen');
+        // var maxAbsen = selectedOption.getAttribute('data-max-absen');
+
+        $('#form_absen').show();
+        if (maxAbsen === '[object Object]') {
+            $('#end_Date_div').hide();
+            // _formEl.formValidation('revalidateField', 'end_Date');
+            //     _formEl.formValidation('updateFieldStatus', 'end_Date', 'NotValidated');
+            // $("#end_Date").prop('disabled', true).val('');
+        } else {
+            $('#end_Date_div').show();
+            // _formEl.formValidation('enableValidator', 'end_Date', true);
+            // $("#end_Date").prop('disabled', false).val('');
+        }
+    }
 
 
         function  storeAbsen(){
             var id_absen = $('#id_tipe_absen').val();
+            var nik = '{{ Auth::user()->nik }}';
             var tipe_absen_id = $('#nama_tipe_absen').val();
             var deskripsi = $('#deskripsi_absen').val();
-            var mulai_absen = $('#mulai_absen').val();
-            var akhir_absen = $('#akhir_absen').val();
+            var mulai_absen = $('#start_Date').val();
+            var akhir_absen = $('#end_Date').val();
+            console.log(id_absen,nik,tipe_absen_id,deskripsi,mulai_absen,akhir_absen);
 
+            // if (tipe_absen_id === '' || deskripsi === '' || mulai_absen === '' || akhir_absen === '') {
+            //     Swal.fire({
+            //         title: "Gagal Menyimpan Data",
+            //         text: "Semua Data Harus Diisi",
+            //         icon: "warning",
+            //     });
+            //     return; // Hentikan eksekusi jika ada kolom yang kosong
+            // }
 
+            var storeAbsen ={
+                nik:nik,
+                tipe_absen_id: tipe_absen_id,
+                deskripsi:deskripsi,
+                mulai_absen:mulai_absen,
+                akhir_absen:akhir_absen,
+                created_by: {{ Auth::user()->nik }}
+            }
+
+            if (id_absen !== '') {
+                storeAbsen.id_absen = id_absen;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "http://10.9.12.150:9096/api/cuti/storeCuti",
+                data: storeAbsen,
+                dataType: "json",
+                success: function (response) {
+                    
+                    readFormAbsen();
+                    
+                }
+            });
         }
 
 
@@ -884,7 +945,7 @@
                 url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
                 success: function (response) {
                     var arr = response.data
-                    // var myMaxAbsen = arr.my_max_absen;
+                    var myMaxAbsen = arr.my_max_absen;
                     // console.log(arr);
                     // return arr
                     $('#nama_tipe_absen').html('')
@@ -894,27 +955,172 @@
 
                     arr.forEach((y,i)=>{
                         // console.log(y.id_tipe_absen);
-                        tipeAbsen += "<option value='"+y.id_tipe_absen+"'>"+y.nama_tipe_absen+"</option>";
+                        // tipeAbsen += "<option value='"+y.id_tipe_absen+"'>"+y.nama_tipe_absen+"</option>";
+                        tipeAbsen += "<option value='" + y.id_tipe_absen + "' data-max-absen='" + y.my_max_absen + "'>" + y.nama_tipe_absen + "</option>";
                         // var tipeAbsen = '<option value=${y.id_tipe_absen}>${y.nama_tipe_absen}</option>'
                   //      $('#nama_tipe_absen').append(tipeAbsen);
                     });
 
                     $('#nama_tipe_absen').append(tipeAbsen);
                     $('#nama_tipe_absen').selectpicker("refresh");
-
-                //     $('#form_Absen').hide();
-                    
-
-                //     if (myMaxAbsen === null) {
-                //         $('#start_Date').prop('disabled', true); // Disable the input
-                //         $('#start_Date').closest('.form-group').hide(); // Hide the entire form group
-                //     } else {
-                //         $('#start_Date').prop('disabled', false); // Enable the input
-                //         $('#start_Date').closest('.form-group').show(); // Show the entire form group
-                //     }
                 }
             });
         }
+    </script>
+
+    <script>
+        "use strict";
+
+// Class definition
+var KTWizard4 = function () {
+	// Base elements
+	var _wizardEl;
+	var _formEl;
+	var _wizardObj;
+	var _validations = [];
+
+	// Private functions
+	var _initWizard = function () {
+		// Initialize form wizard
+		_wizardObj = new KTWizard(_wizardEl, {
+			startStep: 1, // initial active step number
+			clickableSteps: true  // allow step clicking
+		});
+
+		// Validation before going to next page
+		_wizardObj.on('change', function (wizard) {
+			if (wizard.getStep() > wizard.getNewStep()) {
+				return; // Skip if stepped back
+			}
+
+			// Validate form before change wizard step
+			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
+
+			if (validator) {
+				validator.validate().then(function (status) {
+					if (status == 'Valid') {
+						wizard.goTo(wizard.getNewStep());
+
+						KTUtil.scrollTop();
+					} else {
+						// Swal.fire({
+						// 	text: "Sorry, looks like there are some errors detected, please try again.",
+						// 	icon: "error",
+						// 	buttonsStyling: false,
+						// 	confirmButtonText: "Ok, got it!",
+						// 	customClass: {
+						// 		confirmButton: "btn font-weight-bold btn-light"
+						// 	}
+						// }).then(function () {
+						// 	KTUtil.scrollTop();
+						// });
+					}
+				});
+			}
+
+			return false;  // Do not change wizard step, further action will be handled by he validator
+		});
+
+		// Change event
+		_wizardObj.on('changed', function (wizard) {
+			KTUtil.scrollTop();
+		});
+
+		// Submit event
+		_wizardObj.on('submit', function (wizard) {
+			Swal.fire({
+				text: "All is good! Please confirm the form submission.",
+				icon: "success",
+				showCancelButton: true,
+				buttonsStyling: false,
+				confirmButtonText: "Yes, submit!",
+				cancelButtonText: "No, cancel",
+				customClass: {
+					confirmButton: "btn font-weight-bold btn-primary",
+					cancelButton: "btn font-weight-bold btn-default"
+				}
+			}).then(function (result) {
+				if (result.value) {
+					_formEl.submit(); // Submit form
+					//functin store
+				} else if (result.dismiss === 'cancel') {
+					Swal.fire({
+						text: "Your form has not been submitted!.",
+						icon: "error",
+						buttonsStyling: false,
+						confirmButtonText: "Ok, got it!",
+						customClass: {
+							confirmButton: "btn font-weight-bold btn-primary",
+						}
+					});
+				}
+			});
+		});
+	}
+
+	var _initValidation = function () {
+		// Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+		// Step 1
+		_validations.push(FormValidation.formValidation(
+			_formEl,
+			{
+				fields: {
+					nama_tipe_absen: {
+						validators: {
+							notEmpty: {
+								message: 'Absence Type is required'
+							}
+						}
+					},
+					deskripsi_absen: {
+						validators: {
+							notEmpty: {
+								message: 'Description is required'
+							}
+						}
+					},
+					start_Date: {
+						validators: {
+							notEmpty: {
+								message: 'Start Date is required'
+							}
+						}
+					},
+					end_Date: {
+						validators: {
+							notEmpty: {
+								message: 'End Date is required'
+							}
+						}
+					}
+				},
+				plugins: {
+					trigger: new FormValidation.plugins.Trigger(),
+					// Bootstrap Framework Integration
+					bootstrap: new FormValidation.plugins.Bootstrap({
+						//eleInvalidClass: '',
+						eleValidClass: '',
+					})
+				}
+			}
+		));
+
+	return {
+		// public functions
+		init: function () {
+			_wizardEl = KTUtil.getById('kt_wizard');
+			_formEl = KTUtil.getById('kt_form');
+
+			_initWizard();
+			_initValidation();
+		}
+	};
+}();
+
+jQuery(document).ready(function () {
+	KTWizard4.init();
+});
+
     </script>
 </body>
 @endsection

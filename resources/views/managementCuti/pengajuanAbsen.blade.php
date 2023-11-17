@@ -628,6 +628,18 @@
                 }
             });
         }
+
+        function showAbsen(id_absen){
+            $.ajax({
+                type: "method",
+                url: "url"+ id_absen,
+                data: "data",
+                dataType: "dataType",
+                success: function (response) {
+                    
+                }
+            });
+        }
         
         
     </script>
