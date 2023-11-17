@@ -616,7 +616,7 @@
                         <td>${y.akhir_absen}</td>
                         <td>${y.status}</td>
 						<td class=" dt-body-nowarp">
-							<button type="button" onclick="show('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+							<button type="button" onclick="showAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
                             <i class="flaticon2-edit"></i>
                             </button> <button type="button" onclick="deleteItem('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
                             <i class="flaticon2-trash"></i>
@@ -631,12 +631,15 @@
 
         function showAbsen(id_absen){
             $.ajax({
-                type: "method",
-                url: "url"+ id_absen,
+                type: "get",
+                url: "http://10.9.12.150:9096/api/cuti/showPengajuanCuti/"+ id_absen,
                 data: "data",
-                dataType: "dataType",
+
                 success: function (response) {
-                    
+                    window.location.href = 'form_pengajuan_absen';
+                    readFormAbsen()
+                    var arr= response.data;
+                
                 }
             });
         }

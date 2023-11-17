@@ -534,12 +534,6 @@
 																	</div>
 																	<!--end::Input-->
 																	<!--begin::Input-->
-																	{{-- <div class="form-group">
-																		<label>Pilih Tipe Absen <span class="text-danger">*</span></label>
-                                                                        <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen">
-                                                                            <option selected value="">Pilih Tipe Absen</option>
-                                                                        </select>
-																	</div> --}}
                                                                     <div class="form-group">
                                                                         <label>Pilih Tipe Absen <span class="text-danger">*</span></label>
                                                                         <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen" name="nama_tipe_absen" onchange="handleTipeAbsenChange(this)">
@@ -567,20 +561,7 @@
                                                                         </div>
                                                                         <span class="form-text text-muted">Please enter start date.</span>
                                                                     </div>
-                                                                        {{-- <div class="form-group">
-                                                                            <label>Start Date <span class="text-danger"> *</span></label>
-                                                                            <div class="input-group date" id="start_date" data-target-input="nearest">
-                                                                                <input type="text" class="form-control form-control-lg datetimepicker-input" placeholder="Start date" name="start_date" id="start_date_tgl" data-target="#start_date" />
-                                                                                <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
-                                                                                    <span class="input-group-text border-0">
-                                                                                        <i class="ki ki-calendar"></i>
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <span class="form-text text-muted">Please enter start date.</span>
-                                                                        </div> --}}
-                                                                    <!--end::Input-->  
-                                                                    <!--begin::Input-->
+                                                                    
                                                                     <div class="form-group" id="end_Date_div">
                                                                         <label>End Date<span class="text-danger">*</span></label>
                                                                         <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
@@ -593,19 +574,6 @@
                                                                         </div>
                                                                         <span class="form-text text-muted">Please enter end date.</span>
                                                                     </div>
-                                                                    {{-- <div class="form-group">
-                                                                        <label>End Date<span class="text-danger"> *</span></label>
-                                                                        <div class="input-group date" id="start_date" data-target-input="nearest">
-                                                                            <input type="text" class="form-control  form-control-lg datetimepicker-input" placeholder="End date" name="end_date" id="end_date_tgl" data-target="#end_date" />
-                                                                            <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">
-                                                                                <span class="input-group-text border-0">
-                                                                                    <i class="ki ki-calendar"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="form-text text-muted">Please enter end date.</span>
-                                                                    </div> --}}
-                                                                <!--end::Input--> 
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Dokumentasi Kegiatan<span class="text-muted">(.jpg)</span></label>
@@ -618,148 +586,50 @@
                                                                 </div>   
                                                                     </div>   
 
-																	<!--end::Input-->
-																	{{-- <div class="row">
-																		<div class="col-xl-6">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Phone</label>
-																				<input type="tel" class="form-control form-control-solid form-control-lg" name="phone" placeholder="phone" value="+61412345678" />
-																				<span class="form-text text-muted">Please enter your phone number.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																		<div class="col-xl-6">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Email</label>
-																				<input type="email" class="form-control form-control-solid form-control-lg" name="email" placeholder="Email" value="john.wick@reeves.com" />
-																				<span class="form-text text-muted">Please enter your email address.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																	</div> --}}
 																</div>
-																<!--end: Wizard Step 1-->
+																
 																<!--begin: Wizard Step 2-->
-																{{-- <div class="pb-5" data-wizard-type="step-content">
-																	<div class="mb-10 font-weight-bold text-dark">Setup Your Address</div>
-																	<!--begin::Input-->
-																	<div class="form-group">
-																		<label>Address Line 1</label>
-																		<input type="text" class="form-control form-control-solid form-control-lg" name="address1" placeholder="Address Line 1" value="Address Line 1" />
-																		<span class="form-text text-muted">Please enter your Address.</span>
-																	</div>
-																	<!--end::Input-->
-																	<!--begin::Input-->
-																	<div class="form-group">
-																		<label>Address Line 2</label>
-																		<input type="text" class="form-control form-control-solid form-control-lg" name="address2" placeholder="Address Line 2" value="Address Line 2" />
-																		<span class="form-text text-muted">Please enter your Address.</span>
-																	</div>
-																	<!--end::Input-->
-																</div> --}}
-																<!--end: Wizard Step 2-->
-																<!--begin: Wizard Step 3-->
-																{{-- <div class="pb-5" data-wizard-type="step-content">
-																	<div class="mb-10 font-weight-bold text-dark">Enter your Payment Details</div>
-																	<div class="row">
-																		<div class="col-xl-6">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Name on Card</label>
-																				<input type="text" class="form-control form-control-solid form-control-lg" name="ccname" placeholder="Card Name" value="John Wick" />
-																				<span class="form-text text-muted">Please enter your Card Name.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																		<div class="col-xl-6">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Card Number</label>
-																				<input type="text" class="form-control form-control-solid form-control-lg" name="ccnumber" placeholder="Card Number" value="4444 3333 2222 1111" />
-																				<span class="form-text text-muted">Please enter your Address.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-xl-4">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Card Expiry Month</label>
-																				<input type="number" class="form-control form-control-solid form-control-lg" name="ccmonth" placeholder="Card Expiry Month" value="01" />
-																				<span class="form-text text-muted">Please enter your Card Expiry Month.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																		<div class="col-xl-4">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Card Expiry Year</label>
-																				<input type="number" class="form-control form-control-solid form-control-lg" name="ccyear" placeholder="Card Expire Year" value="21" />
-																				<span class="form-text text-muted">Please enter your Card Expiry Year.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																		<div class="col-xl-4">
-																			<!--begin::Input-->
-																			<div class="form-group">
-																				<label>Card CVV Number</label>
-																				<input type="password" class="form-control form-control-solid form-control-lg" name="cccvv" placeholder="Card CVV Number" value="123" />
-																				<span class="form-text text-muted">Please enter your Card CVV Number.</span>
-																			</div>
-																			<!--end::Input-->
-																		</div>
-																	</div>
-																</div> --}}
-																<!--end: Wizard Step 3-->
-																<!--begin: Wizard Step 4-->
 																<div class="pb-5" data-wizard-type="step-content">
 																	<!--begin::Section-->
 																	<h4 class="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
-																	<h6 class="font-weight-bolder mb-3">Current Address:</h6>
+																	<h6 class="font-weight-bolder mb-3">Absence Details:</h6>
 																	<div class="text-dark-50 line-height-lg">
-																		<div>Address Line 1</div>
-																		<div>Address Line 2</div>
-																		<div>Melbourne 3000, VIC, Australia</div>
+                                                                        <div class="col-12">
+                                                                            <div class="form-group row mb-3 mx-2">
+                                                                                <label class="col-3 col-form-label p-0">Tipe Absen</label>
+                                                                                <label class="col-1 text-right px-0">:</label>
+                                                                                <label class="col-8 px-3 mb-0" id="tipe_absen_detail">Not Yet</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-3 mx-2">
+                                                                                <label class="col-3 col-form-label p-0">Deskripsi</label>
+                                                                                <label class="col-1 text-right px-0">:</label>
+                                                                                <label class="col-8 px-3 mb-0" id="deskripsi_detail">Not Yet</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-3 mx-2">
+                                                                                <label class="col-3 col-form-label p-0">Start Date</label>
+                                                                                <label class="col-1 text-right px-0">:</label>
+                                                                                <label class="col-8 px-3 mb-0" id="start_Date_detail">Not Yet</label>
+                                                                            </div>
+                                                                            <div class="form-group row mb-3 mx-2">
+                                                                                <label class="col-3 col-form-label p-0">End Date</label>
+                                                                                <label class="col-1 text-right px-0">:</label>
+                                                                                <label class="col-8 px-3 mb-0" id="end_Date_detail">Not Yet</label>
+                                                                            </div>
+                                                                        </div>
 																	</div>
 																	<div class="separator separator-dashed my-5"></div>
+                                                                    <h6 class="font-weight-bolder mb-3">Approver:</h6>
 																	<!--end::Section-->
-																	<!--begin::Section-->
-																	<h6 class="font-weight-bolder mb-3">Delivery Details:</h6>
-																	<div class="text-dark-50 line-height-lg">
-																		<div>Package: Complete Workstation (Monitor, Computer, Keyboard &amp; Mouse)</div>
-																		<div>Weight: 25kg</div>
-																		<div>Dimensions: 110cm (w) x 90cm (h) x 150cm (L)</div>
-																	</div>
-																	<div class="separator separator-dashed my-5"></div>
-																	<!--end::Section-->
-																	<!--begin::Section-->
-																	<h6 class="font-weight-bolder mb-3">Delivery Service Type:</h6>
-																	<div class="text-dark-50 line-height-lg">
-																		<div>Overnight Delivery with Regular Packaging</div>
-																		<div>Preferred Morning (8:00AM - 11:00AM) Delivery</div>
-																	</div>
-																	<div class="separator separator-dashed my-5"></div>
-																	<!--end::Section-->
-																	<!--begin::Section-->
-																	<h6 class="font-weight-bolder mb-3">Delivery Address:</h6>
-																	<div class="text-dark-50 line-height-lg">
-																		<div>Address Line 1</div>
-																		<div>Address Line 2</div>
-																		<div>Preston 3072, VIC, Australia</div>
-																	</div>
-																	<!--end::Section-->
+																
 																</div>
-																<!--end: Wizard Step 4-->
+																<!--end: Wizard Step 2-->
 																<!--begin: Wizard Actions-->
 																<div class="d-flex justify-content-between border-top mt-5 pt-10">
 																	<div class="mr-2">
 																		<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
 																	</div>
 																	<div>
-																		<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit" onclick="storeAbsen()">Submit</button>
+																		<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4 btn-submit" data-wizard-type="action-submit" onclick="storeAbsen()">Submit</button>
 																		<button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
 																	</div>
 																</div>
@@ -879,13 +749,19 @@
         // var maxAbsen = selectedOption.getAttribute('data-max-absen');
 
         $('#form_absen').show();
+        // Get the FormValidation instance
+        var formValidation = KTWizard4.getValidations()[0]; // Adjust the index as needed
         if (maxAbsen === '[object Object]') {
             $('#end_Date_div').hide();
+            formValidation.disableValidator('end_Date', 'notEmpty');
+
             // _formEl.formValidation('revalidateField', 'end_Date');
             //     _formEl.formValidation('updateFieldStatus', 'end_Date', 'NotValidated');
             // $("#end_Date").prop('disabled', true).val('');
         } else {
             $('#end_Date_div').show();
+            formValidation.enableValidator('end_Date', 'notEmpty');
+
             // _formEl.formValidation('enableValidator', 'end_Date', true);
             // $("#end_Date").prop('disabled', false).val('');
         }
@@ -928,10 +804,69 @@
                 url: "http://10.9.12.150:9096/api/cuti/storeCuti",
                 data: storeAbsen,
                 dataType: "json",
-                success: function (response) {
-                    
-                    readFormAbsen();
-                    
+                // success: function (response) {
+
+                //     // Redirect ke halaman pengajuan_absen setelah pengiriman berhasil
+                //     window.location.href = 'pengajuan_absen';
+                // },
+                // error: function (error) {
+                //     // Handle error jika pengiriman gagal
+                //     console.error('Error:', error);
+                //     // Tambahkan logika atau tindakan lain jika diperlukan
+                //     Swal.fire({
+				// 		text: "Maaf, Saldo Anda Tidak Cukup!",
+				// 		icon: "error",
+				// 		buttonsStyling: false,
+				// 		confirmButtonText: "Ok, got it!",
+				// 		customClass: {
+				// 			confirmButton: "btn font-weight-bold btn-primary",
+				// 		}
+				// 	});
+                // }
+                success:function(response){
+                    Swal.fire({
+				text: "All is good! Berhasil Mengajukan Absen!",
+				icon: "success",
+				showCancelButton: true,
+				buttonsStyling: false,
+				confirmButtonText: "Yes, submit!",
+				cancelButtonText: "No, cancel",
+				customClass: {
+					confirmButton: "btn font-weight-bold btn-primary",
+					cancelButton: "btn font-weight-bold btn-default"
+				}
+                // window.location.href = 'pengajuan_absen';
+			}).then(function (result) {
+				if (result.value) {
+					_formEl.submit(); // Submit form
+					//functin store
+                    // storeAbsen();
+				} else if (result.dismiss === 'cancel') {
+					Swal.fire({
+						text: "Your form has not been submitted!",
+						icon: "error",
+						buttonsStyling: false,
+						confirmButtonText: "Ok, got it!",
+						customClass: {
+							confirmButton: "btn font-weight-bold btn-primary",
+						}
+					});
+				}
+			});
+                },
+                error: function (error) {
+                    // Handle error jika pengiriman gagal
+                    console.error('Error:', error);
+                    // Tambahkan logika atau tindakan lain jika diperlukan
+                    Swal.fire({
+						text: "Maaf, Saldo Anda Tidak Cukup!",
+						icon: "error",
+						buttonsStyling: false,
+						confirmButtonText: "Ok, got it!",
+						customClass: {
+							confirmButton: "btn font-weight-bold btn-primary",
+						}
+					});
                 }
             });
         }
@@ -966,6 +901,14 @@
                 }
             });
         }
+
+    function fetchDataAndUpdateLabels() {
+        $('#tipe_absen_detail').text($('#nama_tipe_absen').find(':selected').text())
+        $('#deskripsi_detail').text($('#deskripsi_absen').val())
+        $('#start_Date_detail').text($('#start_Date').val())
+        $('#end_Date_detail').text($('#end_Date').val())
+    }
+
     </script>
 
     <script>
@@ -992,6 +935,8 @@ var KTWizard4 = function () {
 			if (wizard.getStep() > wizard.getNewStep()) {
 				return; // Skip if stepped back
 			}
+            // Call the function to fetch and update data
+        fetchDataAndUpdateLabels();
 
 			// Validate form before change wizard step
 			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
@@ -1028,33 +973,35 @@ var KTWizard4 = function () {
 
 		// Submit event
 		_wizardObj.on('submit', function (wizard) {
-			Swal.fire({
-				text: "All is good! Please confirm the form submission.",
-				icon: "success",
-				showCancelButton: true,
-				buttonsStyling: false,
-				confirmButtonText: "Yes, submit!",
-				cancelButtonText: "No, cancel",
-				customClass: {
-					confirmButton: "btn font-weight-bold btn-primary",
-					cancelButton: "btn font-weight-bold btn-default"
-				}
-			}).then(function (result) {
-				if (result.value) {
-					_formEl.submit(); // Submit form
-					//functin store
-				} else if (result.dismiss === 'cancel') {
-					Swal.fire({
-						text: "Your form has not been submitted!.",
-						icon: "error",
-						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
-						customClass: {
-							confirmButton: "btn font-weight-bold btn-primary",
-						}
-					});
-				}
-			});
+
+			// Swal.fire({
+			// 	text: "All is good! Berhasil Mengajukan Absen!",
+			// 	icon: "success",
+			// 	showCancelButton: true,
+			// 	buttonsStyling: false,
+			// 	confirmButtonText: "Yes, submit!",
+			// 	cancelButtonText: "No, cancel",
+			// 	customClass: {
+			// 		confirmButton: "btn font-weight-bold btn-primary",
+			// 		cancelButton: "btn font-weight-bold btn-default"
+			// 	}
+			// }).then(function (result) {
+			// 	if (result.value) {
+			// 		_formEl.submit(); // Submit form
+			// 		//functin store
+            //         // storeAbsen();
+			// 	} else if (result.dismiss === 'cancel') {
+			// 		Swal.fire({
+			// 			text: "Your form has not been submitted!",
+			// 			icon: "error",
+			// 			buttonsStyling: false,
+			// 			confirmButtonText: "Ok, got it!",
+			// 			customClass: {
+			// 				confirmButton: "btn font-weight-bold btn-primary",
+			// 			}
+			// 		});
+			// 	}
+			// });
 		});
 	}
 
@@ -1114,7 +1061,11 @@ var KTWizard4 = function () {
 
 			_initWizard();
 			_initValidation();
-		}
+		},
+
+        getValidations:function(){
+            return _validations
+        }
 	};
 }();
 
