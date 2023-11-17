@@ -1104,6 +1104,7 @@ var KTWizard4 = function () {
 				}
 			}
 		));
+	}
 
 	return {
 		// public functions
