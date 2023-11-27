@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsenceApproverController;
 use App\Models\KoordinatorKegiatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,5 @@ Route::get('/searchData',[ManagementSaldoController::class,'searchData']);
 //Upload excel file menu management saldo
 Route::get('/upload',[ManagementSaldoController::class,'uploadExcel']);
 
-
-
-
+// Menu Absence Approver
+Route::get('/absence_approver',[AbsenceApproverController::class,'Index'])->name('absence_approver');

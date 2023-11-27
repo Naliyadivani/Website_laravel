@@ -58,11 +58,14 @@ License: You must have a valid license purchased only from themeforest(the above
         .card-custom-new:hover {
             transform: scale(1.05); /* Increase the size by 5% on hover */
         	}
+		
 		</style>
 	</head>
 	
 	<body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
         @yield('kontenpage')
+		{{-- @include('layout.sidebarAbsence') --}}
+		@include('layout.navbar')
 	</body>
 
 </html>

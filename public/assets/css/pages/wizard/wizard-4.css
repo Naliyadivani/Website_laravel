@@ -17,6 +17,7 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
+
 .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -45,397 +45,9 @@
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
         <div class="d-flex flex-row flex-column-fluid page">
-
-            <!--begin::Aside-->
-            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside"> 
-                <!--begin::Brand-->
-                <div class="brand flex-column-auto" id="kt_brand">
-                    <!--begin::Logo-->
-                    <a href="{{ route('home') }}" class="brand-logo">
-                        <img alt="Logo" src="assets/media/logos/PI-SMART-LOGO.png" width="162.092px" height="48.325px"/>
-                    </a>
-                    <!--end::Logo-->
-                    <!--begin::Toggle-->
-                    <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
-                        <span class="svg-icon svg-icon svg-icon-xl">
-                            <!--begin::Svg Icon-->
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                    <path d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999)" />
-                                    <path d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999)" />
-                                </g>
-                            </svg>
-                            <!--end::Svg Icon-->
-                        </span>
-                    </button>
-                    <!--end::Toolbar-->
-                </div>
-                <!--end::Brand-->
-
-                <!--begin::Aside Menu-->
-                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
-                    <!--begin::Menu Container-->
-                    <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1">
-                        <!--begin::Menu Nav-->
-                        <ul class="menu-nav ">
-                            <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">HOMEPAGE</h4>
-                                <i class="menu-icon flaticon-more-v2"></i>
-                            </li>
-                            <li class="menu-item menu-item-active" aria-haspopup="true">
-                                <a href="{{ route('dashboard_absen') }}" class="menu-link ">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                            <path d="M1.34888 13.9299L9.17584 19.6697C9.53775 19.9351 10.0321 19.9269 10.385 19.6496L17.6646 13.9299" stroke="#264178" stroke-width="1.5" stroke-linecap="round"/>
-                                            <path d="M18.4005 7.81967L10.4329 1.50117C10.0583 1.20407 9.52575 1.21375 9.16216 1.52427L1.14752 8.36902C0.668865 8.7778 0.682391 9.52185 1.17558 9.91297L9.14314 16.2315C9.51778 16.5286 10.0503 16.5189 10.4139 16.2084L18.4286 9.36362C18.9072 8.95483 18.8937 8.21078 18.4005 7.81967Z" fill="#264178"/>
-                                          </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Halaman Utama</a></span>
-                                </a>
-                            </li>
-
-                            <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">ABSENCE MANAGEMENT</h4>
-                                <i class="menu-icon flaticon-more-v2"></i>
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('pengajuan_absen') }}" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon flaticon-clock-2">
-                                    </span>
-                                    <span class="menu-text">Pengajuan Absen</span>
-                                </a>
-                            </li>
-
-                            <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">MANAGER</h4>
-                                <i class="menu-icon flaticon-more-v2"></i>
-                            </li>
-                            
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="javascript:;" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"/>
-                                                <path d="M12.9863016,8.83409843 C12.9953113,8.88805868 13,8.94348179 13,9 L13,11 L17,11 C18.1045695,11 19,11.8954305 19,13 L19,16 L5,16 L5,13 C5,11.8954305 5.8954305,11 7,11 L11,11 L11,9 C11,8.94348179 11.0046887,8.88805868 11.0136984,8.83409843 C9.84135601,8.42615464 9,7.31133193 9,6 C9,4.34314575 10.3431458,3 12,3 C13.6568542,3 15,4.34314575 15,6 C15,7.31133193 14.158644,8.42615464 12.9863016,8.83409843 Z" fill="#000000"/>
-                                                <rect fill="#000000" opacity="0.3" x="5" y="18" width="14" height="2" rx="1"/>
-                                            </g>
-                                        </svg><!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Absence Approver</span>
-                                </a>
-                            </li>
-
-                            <li class="menu-section menu-section--first">
-                                <h4 class="menu-text">ADMIN</h4>
-                                <i class="menu-icon flaticon-more-v2"></i>
-                            </li>
-
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('management_saldo') }}" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon flaticon-add">
-                                    </span>
-                                    <span class="menu-text">Management Saldo</span>
-                                </a>
-                            </li>
-
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{route('home')}}" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                <path d="M3.95709826,8.41510662 L11.47855,3.81866389 C11.7986624,3.62303967 12.2013376,3.62303967 12.52145,3.81866389 L20.0429,8.41510557 C20.6374094,8.77841684 21,9.42493654 21,10.1216692 L21,19.0000642 C21,20.1046337 20.1045695,21.0000642 19,21.0000642 L4.99998155,21.0000673 C3.89541205,21.0000673 2.99998155,20.1046368 2.99998155,19.0000673 L2.99999828,10.1216672 C2.99999935,9.42493561 3.36258984,8.77841732 3.95709826,8.41510662 Z M10,13 C9.44771525,13 9,13.4477153 9,14 L9,17 C9,17.5522847 9.44771525,18 10,18 L14,18 C14.5522847,18 15,17.5522847 15,17 L15,14 C15,13.4477153 14.5522847,13 14,13 L10,13 Z" fill="#000000"></path>
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Back To Home</span>
-                                </a>
-                            </li>
-                            
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('logout') }}" class="menu-link menu-toggle">
-                                    <span class="svg-icon menu-icon">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
-                                            <path d="M15.5492 13.1195L19.3526 9.34406M19.3526 9.34406L15.5492 5.56864M19.3526 9.34406H6.04069M11.7458 13.1195V14.0633C11.7458 14.8143 11.4452 15.5345 10.9103 16.0656C10.3753 16.5966 9.64978 16.8949 8.89324 16.8949H5.08985C4.33331 16.8949 3.60775 16.5966 3.0728 16.0656C2.53784 15.5345 2.2373 14.8143 2.2373 14.0633V4.62478C2.2373 3.8738 2.53784 3.15358 3.0728 2.62256C3.60775 2.09154 4.33331 1.79321 5.08985 1.79321H8.89324C9.64978 1.79321 10.3753 2.09154 10.9103 2.62256C11.4452 3.15358 11.7458 3.8738 11.7458 4.62478V5.56864" stroke="#8691AD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-
-                                    <span class="menu-text">Log Out</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <!--end::Menu Nav-->
-                    </div>
-                    <!--end::Menu Container-->
-                </div>
-                <!--end::Aside Menu-->
-            </div>
-            <!--end::Aside-->
-
+            @include('layout.sidebarAbsence')
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-                <!--begin::Header-->
-                <div id="kt_header" class="header header-fixed">
-                    <!--begin::Container-->
-                    <div class="container-fluid d-flex align-items-stretch justify-content-between">
-                        <!--begin::Header Menu Wrapper-->
-                        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
-                            <!--begin::Header Menu-->
-                            <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
-                                <!--begin::Header Nav-->
-                                <ul class="menu-nav">
-                                </ul>
-                                <!--end::Header Nav-->
-                            </div>
-                            <!--end::Header Menu-->
-                        </div>
-                        <!--end::Header Menu Wrapper-->
-                        <!--begin::Topbar-->
-                        <div class="topbar">
-                            
-                            <!--begin::Notifications-->
-                            <div class="dropdown">
-                                <!--begin::Toggle-->
-                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-                                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1 pulse pulse-primary">
-                                        <span class="svg-icon svg-icon-xl svg-icon-primary">
-                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
-                                                    <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
-                                                </g>
-                                            </svg>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                    </div>
-                                </div>
-                                <!--end::Toggle-->
-                                <!--begin::Dropdown-->
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
-                                    <form>
-                                        <!--begin::Header-->
-                                        <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top py-5" style="background-image: url(assets/media/misc/bg-1.jpg)">
-                                            <!--begin::Title-->
-                                            <h4 class="d-flex flex-center rounded-top mb-5">
-                                                <span class="text-white">Modul Aplikasi</span>
-                                            </h4>
-                                            <!--end::Title-->
-                                            
-                                        </div>
-                                        <!--end::Header-->
-                                        <!--begin::Content-->
-                                        <div class="tab-content">
-                                            <!--begin::Tabpane-->
-                                            <div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
-                                                <!--begin::Hover-->
-                                                <div class="navi navi-hover scroll ps ps-active-y" data-scroll="true" data-height="250" data-mobile-height="200" style="height: 250px; overflow:hidden;">
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                    <div class="navi-link d-flex align-items-center">
-
-                                                        <div class="symbol symbol-40 mr-5 shadow-sm">
-                                                            <span class="symbol-label">
-                                                                <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                    <img src="assets/media/logos/icon_kpi.png" alt="KPI" width="50px">
-                                                                </span>
-                                                            </span>
-                                                        </div>
-
-                                                        <div class="navi-text">
-                                                            <div class="text-dark-75 mb-1 font-size-lg">Performance Management System</div>
-                                                            <div class="text-muted">Key Performance Indicator (KPI)</div>
-                                                        </div>
-                                                    </div>
-                                                    </a>
-                                                    <!--End::Item-->
-
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link d-flex align-items-center">
-
-                                                            <div class="symbol symbol-40 mr-5 shadow-sm">
-                                                                <span class="symbol-label">
-                                                                    <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                        <img src="assets/media/logos/icon_akhlak.png" alt="akhlak" width="50px">
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="navi-text">
-                                                                <div class="text-dark-75 mb-1 font-size-lg">AKHLAK</div>
-                                                                <div class="text-muted">Penilaian AKHLAK Pegawai</div>
-                                                            </div>
-                                                        </div>
-                                                        </a>
-                                                        <!--End::Item-->
-                                                    
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link d-flex align-items-center">
-
-                                                            <div class="symbol symbol-40 mr-5 shadow-sm">
-                                                                <span class="symbol-label">
-                                                                    <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                        <img src="assets/media/logos/icon_penilaian360.png" alt="360" width="50px">
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="navi-text">
-                                                                <div class="text-dark-75 mb-1 font-size-lg">Penilaian 360</div>
-                                                                <div class="text-muted">Penilaian Kompetensi Perilaku</div>
-                                                            </div>
-                                                        </div>
-                                                        </a>
-                                                        <!--End::Item-->
-                                                    
-                                                    <!--begin::Item-->
-                                                    <a href="#" class="navi-item">
-                                                        <div class="navi-link d-flex align-items-center">
-
-                                                            <div class="symbol symbol-40 mr-5 shadow-sm">
-                                                                <span class="symbol-label">
-                                                                    <span class="svg-icon svg-icon-lg svg-icon-danger">
-                                                                        <img src="assets/media/logos/icon_diklat.png" alt="diklat" width="50px">
-                                                                    </span>
-                                                                </span>
-                                                            </div>
-
-                                                            <div class="navi-text">
-                                                                <div class="text-dark-75 mb-1 font-size-lg">LDMS</div>
-                                                                <div class="text-muted">Aplikasi PI-LDMS</div>
-                                                            </div>
-                                                        </div>
-                                                        </a>
-                                                        <!--End::Item-->
-
-                                                </div>
-                                                <!--End::Hover-->
-
-                                                <!--begin::Action-->
-                                                <div class="d-flex flex-center pt-7">
-                                                    <a href="{{ route('daftarAplikasi') }}" class="btn btn-light-primary font-weight-bold text-center">See All</a>
-                                                </div>
-                                                <!--end::Action-->
-                                            </div>
-                                            <!--end::Tabpane-->
-                                            
-                                        </div>
-                                        <!--end::Content-->
-                                    </form>
-                                </div>
-                                <!--end::Dropdown-->
-                            </div>
-                            <!--end::Notifications-->
-
-                            <!--begin::Quick Actions-->
-                            <div class="dropdown">
-                                <!--begin::Toggle-->
-                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-                                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1 pulse pulse-primary">
-                                                <i class="flaticon2-bell-5 text-primary"></i>
-                                                <span class="pulse-ring"></span>
-                                    </div>
-                                </div>
-                                <!--end::Toggle-->
-                                <!--begin::Dropdown-->
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
-                                    <!--begin:Header-->
-                                    <div class="d-flex flex-column flex-center py-10 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url(assets/media/misc/bg-1.jpg)">
-                                        <h4 class="text-white font-weight-bold">Notifikasi</h4>
-                                        <span class="btn btn-success btn-sm font-weight-bold font-size-sm mt-2">0 Belum dibaca</span>
-                                    </div>
-                                    <!--end:Header-->
-                                    <!--begin:Nav-->
-                                    <div class="row row-paddingless">
-                                        <!--begin:Item-->
-                                        <div class="col-6">
-                                            <a href="#" class="d-block py-10 px-5 text-center bg-hover-light border-right border-bottom">
-                                                <span class="svg-icon svg-icon-3x svg-icon-success">
-                                                    
-                                            </a>
-                                        </div>
-                                        
-                                    </div>
-                                    <!--end:Nav-->
-                                </div>
-                                <!--end::Dropdown-->
-                            </div>
-                            <!--end::Quick Actions-->
-                            
-                            <!--begin::User-->
-                            <div class="dropdown">
-                
-                                <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px" aria-expanded="false">
-                                    <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2">
-                                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                                        <span id="user_acc" class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::user()->name }} ({{ Auth::user()->nik }})</span>
-                                    </div>
-                                </div>
-                
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg p-0" style="">
-                                    <div class="d-flex align-items-center justify-content-between flex-wrap p-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url('https://pismart-dev.pupuk-indonesia.com/public/media/misc/bg-1.jpg')">
-                                        <div class="d-flex align-items-center mr-2">
-                                            {{-- <div class="text-white m-0 flex-grow-1 mr-3 font-size-h5">{{ auth()->user()->username }}</div> --}}
-                                            <div class="text-white m-0 flex-grow-1 mr-3 font-size-h5">{{ Auth::user()->name }}</div>
-                                        </div>
-                                        <span class="label label-success label-lg font-weight-bold label-inline">{{ Auth::user()->nik }}</span>
-                                    </div>
-                
-                                    <div class="navi navi-spacer-x-0 pt-5">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="symbol symbol-100 mr-5">
-                                                <img alt="Pic" src="https://pismart-dev.pupuk-indonesia.com/public/assets/media/users/default.jpg">  
-                                                <i class="symbol-badge bg-success"></i>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <div href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::user()->name}}</div>
-                                                <div class="navi mt-2">
-                                                    <div href="#" class="navi-item">
-                                                        <span class="navi-link p-0 pb-2">
-                                                            <span class="navi-icon mr-1">
-                                                                <span class="svg-icon svg-icon-primary svg-icon-lg">
-                                                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\User.svg-->
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
-                                                                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                        </g>
-                                                                    </svg><!--end::Svg Icon-->
-                                                                </span>
-                                                            </span>
-                                                            <span class="navi-text text-muted text-hover-primary">{{ Auth::user()->nik }}</span>
-                                                        </span>
-                                                    </div>
-                                                    <a href="" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">My Profile</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="navi-separator mt-3"></div>
-                                        <div class="navi-footer px-8 py-5">
-                                            <a href="{{ route('logout') }}" class="btn btn-light-danger font-weight-bold btn-lg btn-block">Log Out</a>
-                                        </div>
-                                    </div>	
-                                </div>
-                            </div>
-                            <!--end::User-->
-                        </div>
-                        <!--end::Topbar-->
-                    </div>
-                    <!--end::Container-->
-                </div>
-                <!--end::Header-->
 
                 <!--begin::Content Subheader-->
                 <!--begin::Content-->
@@ -478,30 +90,8 @@
 															</div>
 														</div>
 													</div>
-													<!--end::Wizard Step 1 Nav-->
-													{{-- <!--begin::Wizard Step 2 Nav-->
-													<div class="wizard-step" data-wizard-type="step">
-														<div class="wizard-wrapper">
-															<div class="wizard-number">2</div>
-															<div class="wizard-label">
-																<div class="wizard-title">Your Address</div>
-																<div class="wizard-desc">Setup Your Address</div>
-															</div>
-														</div>
-													</div> --}}
-													<!--end::Wizard Step 2 Nav-->
-													<!--begin::Wizard Step 3 Nav-->
-													{{-- <div class="wizard-step" data-wizard-type="step">
-														<div class="wizard-wrapper">
-															<div class="wizard-number">3</div>
-															<div class="wizard-label">
-																<div class="wizard-title">Make Payment</div>
-																<div class="wizard-desc">Add Payment Options</div>
-															</div>
-														</div>
-													</div> --}}
-													<!--end::Wizard Step 3 Nav-->
-													<!--begin::Wizard Step 4 Nav-->
+													
+													<!--begin::Wizard Step 2 Nav-->
 													<div class="wizard-step" data-wizard-type="step">
 														<div class="wizard-wrapper">
 															<div class="wizard-number">2</div>
@@ -526,7 +116,7 @@
 																<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 																	<div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
 																	<!--begin::Input-->
-                                                                    <input type="hidden" id="id_tipe_absen">
+                                                                    <input type="hidden" id="id_pengajuan_absen">
 
 																	<div class="form-group">
 																		<label>NIK</label>
@@ -537,7 +127,7 @@
                                                                     <div class="form-group">
                                                                         <label>Pilih Tipe Absen <span class="text-danger">*</span></label>
                                                                         <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen" name="nama_tipe_absen" onchange="handleTipeAbsenChange(this)">
-                                                                            <option selected value="">Pilih Tipe Absen</option>
+                                                                            <option selected value="">Pilih Cuti</option>
                                                                         </select>
                                                                     </div>
                                                                     
@@ -723,53 +313,165 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         }); 
-        $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
-                $('#kt_datetimepicker_7_2').datetimepicker({
-                    useCurrent: false,
-                    format:'YYYY-MM-DD'
-                });
-                $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
-        // KTBootstrapDatetimepicker()
-        // var KTBootstrapDatetimepicker = function () {
-        //     var baseDemos = function () {
-                
-        //     }
-        //     return{
-        //         init: function(){
-        //             baseDemos();
-        //         }
-        //       }
-        // }
-        function handleTipeAbsenChange(selectElement) {
-        // Get the selected option
-        var selectedOption = selectElement.options[selectElement.selectedIndex];
-    
-        // Get the data-max-absen attribute value
-        var maxAbsen = selectedOption.getAttribute('data-max-absen');
-        // var maxAbsen = selectedOption.getAttribute('data-max-absen');
 
+        
+        function refreshDatetimepicker(){
+            $('#kt_datetimepicker_7_1').datetimepicker('destroy');
+            $('#kt_datetimepicker_7_1').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+
+            $('#kt_datetimepicker_7_2').datetimepicker('destroy');
+            $('#kt_datetimepicker_7_2').datetimepicker({
+                useCurrent: false,
+                format: 'YYYY-MM-DD'
+            });
+        }
+        
+        $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
+
+        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function (datetimepicker) {
+            var jmlhHariKalender = 0;
+            var JmlHariKerja = 0;
+            var selectedDate = datetimepicker.date.toDate();
+            
+            if (my_max_absen != null) {
+                console.log(my_max_absen);
+                if (my_max_absen.tipe_max_absen == "hari_kalender"){
+                    while (jmlhHariKalender < my_max_absen.max_absen) {
+                        jmlhHariKalender++;
+                        
+                        // Check if the current day is not Saturday or Sunday
+                        if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                            JmlHariKerja++;
+                        }
+                        selectedDate.setDate(selectedDate.getDate() + 1);
+                    }
+                }else if (my_max_absen.tipe_max_absen == "hari_kerja"){
+                    console.log("Hari Kerja: ", my_max_absen.max_absen);
+                    while (JmlHariKerja < my_max_absen.max_absen) {
+                        jmlhHariKalender++;
+                        
+                        // Check if the current day is not Saturday or Sunday
+                        if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                            JmlHariKerja++;
+                        }
+                        selectedDate.setDate(selectedDate.getDate() + 1);
+                    }
+                }
+                var endDate = new Date(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
+                // console.log("Hari Kalender:",jmlhHariKalender,"\nHari Kerja:",JmlHariKerja);
+                // console.log("EndDate After:",endDate.toISOString().slice(0, 10));
+                $('#end_Date').val(endDate.toISOString().slice(0, 10))
+            }else{
+                // console.log(saldoObject.saldo);
+                while (jmlhHariKalender < my_saldo.saldo) {
+                    jmlhHariKalender++;
+                    
+                    // Check if the current day is not Saturday or Sunday
+                    if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                        JmlHariKerja++;
+                    }
+                    selectedDate.setDate(selectedDate.getDate() + 1);
+                }
+                console.log("Hari Kalender:",jmlhHariKalender,"\nHari Kerja:",JmlHariKerja);
+                
+                Swal.fire({
+                    text: "Batas maksimal pengajuan absen anda pada tanggal: " + selectedDate.toISOString().slice(0, 10),
+                    icon: "warning",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok!",
+                    customClass: {
+                        confirmButton: "btn font-weight-bold btn-primary",
+                    }
+                });
+            }
+        });
+        
+        var my_max_absen
+        var my_saldo
+        function handleTipeAbsenChange(selectElement) {
+            if (arrReadFormAbsen == null) {
+                clear();
+            }else{
+                refreshDatetimepicker();
+                $('#start_Date').val(arrReadFormAbsen.mulai_absen);
+                $('#end_Date').val(arrReadFormAbsen.akhir_absen);
+            }
+            // if arrReadFormAbsen == null{
+            //     clear();
+            // }
+            // Get the selected option
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            
+            // // Get the data-max-absen attribute value
+        // var maxAbsen = selectedOption.getAttribute('data-max-absen');
+        my_max_absen = arrTipeCuti[selectElement.selectedIndex-1].my_max_absen
+        my_saldo = arrTipeCuti[selectElement.selectedIndex-1].my_saldo
+        // console.log(max_absen);
+       
+        // var maxAbsen = selectedOption.getAttribute('data-max-absen');
+        
         $('#form_absen').show();
         // Get the FormValidation instance
         var formValidation = KTWizard4.getValidations()[0]; // Adjust the index as needed
-        if (maxAbsen === '[object Object]') {
-            $('#end_Date_div').hide();
+        if (my_max_absen != null){
+            $('#end_Date_div :input').prop('disabled', true);
             formValidation.disableValidator('end_Date', 'notEmpty');
-
-            // _formEl.formValidation('revalidateField', 'end_Date');
-            //     _formEl.formValidation('updateFieldStatus', 'end_Date', 'NotValidated');
-            // $("#end_Date").prop('disabled', true).val('');
-        } else {
-            $('#end_Date_div').show();
+        }else{
+            Swal.fire({
+                text: "Anda Memiliki Sisa Saldo: " + my_saldo.saldo,
+                icon: "warning",
+                buttonsStyling: false,
+                confirmButtonText: "Ok!",
+                customClass: {
+                confirmButton: "btn font-weight-bold btn-primary",
+                }
+            });
+            $('#end_Date_div :input').prop('disabled', false);
             formValidation.enableValidator('end_Date', 'notEmpty');
-
-            // _formEl.formValidation('enableValidator', 'end_Date', true);
-            // $("#end_Date").prop('disabled', false).val('');
         }
     }
 
+    // Read the 'arr' data from localStorage
+    var tipeAbsenSelected = null
+    var arrReadFormAbsen
+function readFormAbsen() {
+    var arrData = localStorage.getItem('arrData');
+    
+    if (arrData) {
+        // Parse the JSON string back to an object
+        var arr = JSON.parse(arrData);
+        arrReadFormAbsen = arr
+        console.log(arrReadFormAbsen);
+        $('#id_pengajuan_absen').val(arr.id_pengajuan_absen);
+        tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
+        $('#nama_tipe_absen').prop('disabled',true)
+
+        $('#deskripsi_absen').val(arr.deskripsi);
+        // if(arr.tipe_absen.max_absen == null){
+        //     $('#start_Date').val(arr.mulai_absen);
+        //     $('#end_Date').val(arr.akhir_absen);
+        // }else{
+        //     $('#start_Date').val(arr.mulai_absen);
+        // }
+        
+        // Now you can use the 'arr' data as needed
+        console.log(arr);
+        
+        // Optionally, clear the data from localStorage if it's no longer needed
+        localStorage.removeItem('arrData');
+    } else {
+        // Handle the case where 'arr' data is not available
+        console.error('No data available');
+    }
+}
+
+// Call the function to read 'arr' data
+readFormAbsen();
 
         function  storeAbsen(){
-            var id_absen = $('#id_tipe_absen').val();
+            var id_absen = $('#id_pengajuan_absen').val();
             var nik = '{{ Auth::user()->nik }}';
             var tipe_absen_id = $('#nama_tipe_absen').val();
             var deskripsi = $('#deskripsi_absen').val();
@@ -796,7 +498,7 @@
             }
 
             if (id_absen !== '') {
-                storeAbsen.id_absen = id_absen;
+                storeAbsen.id_pengajuan_absen = id_absen;
             }
 
             $.ajax({
@@ -835,10 +537,10 @@
 					confirmButton: "btn font-weight-bold btn-primary",
 					cancelButton: "btn font-weight-bold btn-default"
 				}
-                // window.location.href = 'pengajuan_absen';
 			}).then(function (result) {
-				if (result.value) {
-					_formEl.submit(); // Submit form
+                if (result.value) {
+                    window.location.href = 'pengajuan_absen';
+                    _formEl.submit(); // Submit form
 					//functin store
                     // storeAbsen();
 				} else if (result.dismiss === 'cancel') {
@@ -873,6 +575,7 @@
 
 
         getTipeAbsen()
+        var arrTipeCuti = [];
         function getTipeAbsen(){
             $.ajax({
                 type: "get",
@@ -880,24 +583,25 @@
                 url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
                 success: function (response) {
                     var arr = response.data
-                    var myMaxAbsen = arr.my_max_absen;
                     // console.log(arr);
                     // return arr
                     $('#nama_tipe_absen').html('')
                     var tipeAbsen = '';
                     var awal = '<option value="">Pilih Cuti</option>';
                     $('#nama_tipe_absen').append(awal);
-
+                    arrTipeCuti = arr;
                     arr.forEach((y,i)=>{
-                        // console.log(y.id_tipe_absen);
-                        // tipeAbsen += "<option value='"+y.id_tipe_absen+"'>"+y.nama_tipe_absen+"</option>";
-                        tipeAbsen += "<option value='" + y.id_tipe_absen + "' data-max-absen='" + y.my_max_absen + "'>" + y.nama_tipe_absen + "</option>";
-                        // var tipeAbsen = '<option value=${y.id_tipe_absen}>${y.nama_tipe_absen}</option>'
-                  //      $('#nama_tipe_absen').append(tipeAbsen);
+                        tipeAbsen += "<option value='" + y.id_tipe_absen + "'>" + y.nama_tipe_absen + "</option>";
                     });
 
                     $('#nama_tipe_absen').append(tipeAbsen);
                     $('#nama_tipe_absen').selectpicker("refresh");
+                },
+                complete: function (data){
+                    if(tipeAbsenSelected != null){
+                        // console.log(tipeAbsenSelected);
+                        $('#nama_tipe_absen').val(tipeAbsenSelected).change();
+                    }
                 }
             });
         }
@@ -907,6 +611,13 @@
         $('#deskripsi_detail').text($('#deskripsi_absen').val())
         $('#start_Date_detail').text($('#start_Date').val())
         $('#end_Date_detail').text($('#end_Date').val())
+    }
+
+    function clear(){
+        $('#start_Date').val('');
+        $('#end_Date').val('');
+        $('#deskripsi_absen').val('');
+        refreshDatetimepicker();
     }
 
     </script>
@@ -936,7 +647,7 @@ var KTWizard4 = function () {
 				return; // Skip if stepped back
 			}
             // Call the function to fetch and update data
-        fetchDataAndUpdateLabels();
+            fetchDataAndUpdateLabels();
 
 			// Validate form before change wizard step
 			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step

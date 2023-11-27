@@ -57,7 +57,7 @@
                             <!--begin::Info-->
                             <div class="d-flex align-items-center flex-wrap mr-1">
                                 <!--begin::Page Title-->
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Pengajuan Absen Pegawai </h5>
+                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Absence Approver</h5>
                                 <!--end::Page Title-->
                             </div>
                             <!--end::Info-->
@@ -74,14 +74,9 @@
                                         {{-- header  --}}
                                         <div class="card-header">
                                             <div class="card-title">
-                                                <label>Daftar Pengajuan Absen Anda</label>
+                                                <label>Daftar</label>
                                             </div>
 
-                                            <div class="card-toolbar">
-                                                <a href="{{ route('form_pengajuan_absen') }}" class="btn btn-primary py-2 px-4 font-weight-bolder font-size-m">
-                                                    <i class="flaticon2-plus icon-sm"></i>Ajukan Absen
-                                                </a>
-                                            </div>
                                         </div>
                                         {{-- end- header  --}}
 
@@ -111,17 +106,15 @@
                                                             <thead>
                                                                 <tr class="text-center" role="row">
                                                                     <th>#</th>
+                                                                    <th>Nama Pegawai</th>
                                                                     <th>Tipe Absen</th>
-                                                                    <th>Deskripsi</th>
-                                                                    <th>Tanggal Mulai</th>
-                                                                    <th>Tanggal Akhir</th>
-                                                                    <th>Status</th>
-                                                                    <th>Action</th>
+                                                                    <th>Tanggal Pengajuan</th>
+                                                                    <th>Detail Pengajuan</th>
                                                                 </tr>
                                                             </thead>
 
-                                                            <tbody id="formAbsen">
-                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
+                                                            <tbody id="absenceApprover">
+                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="82105096" />
 																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
                                                             </tbody>
                                                         </table>
@@ -129,6 +122,62 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="modal fade" tabindex="-1" data-backdrop="static" id="modalApprover"  aria-hidden="true" role="dialog">
+                                            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Detail Pengajuan Absen</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <i aria-hidden="true" class="ki ki-close"></i>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">NIK</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="detail_nik">Not Yet</label>
+                                                        </div>
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">Nama</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="detail_nama">Not Yet</label>
+                                                        </div>
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">Tipe Absen</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="tipe_absen_detail">Not Yet</label>
+                                                        </div>
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">Deskripsi</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="deskripsi_detail">Not Yet</label>
+                                                        </div>
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">Start Date</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="start_Date_detail">Not Yet</label>
+                                                        </div>
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">End Date</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="end_Date_detail">Not Yet</label>
+                                                        </div>
+                                                        <div class="form-group row mb-3 mx-2">
+                                                            <label class="col-3 col-form-label p-0">File</label>
+                                                            <label class="col-1 text-right px-0">:</label>
+                                                            <label class="col-8 px-3 mb-0" id="file_detail">Not Yet</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Reject</button>
+                                                        <button type="button" class="btn btn-success font-weight-bold">Approve</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>
@@ -198,6 +247,7 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
+    <script src="assets/js/pages/widgets.js"></script>
 
     <script>
         var emp_no = $("#nik_user").val();
@@ -208,105 +258,59 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         }); 
-        
-        readFormAbsen()
-        //read DB
-        function readFormAbsen(){
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+        readAbsenceApprover();
+        function readAbsenceApprover(){
             $.ajax({
-                type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/myCuti?nik="+{{ Auth::user()->nik }}+"&tahun="+year,
-                
-                success: function (data) {
-                    var arr = data.data
-                    $('#formAbsen').html('')
+                type: "post",
+                url: "http://10.9.12.150:9096/api/cuti/listApprovalCuti",
+                data: {
+                    nik:emp_no,
+                    tahun:year,
+                },
+                success: function (response) {
+                    var arr = response.data
+                    console.log(response);
+                    $('#absenceApprover').html('')
                     arr.forEach((y,i) => {
-                        // console.log(y.status);
-                        if (y.status == "WaitApproved"){
-                            statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
-                            </td>`
-                        }else if (y.status == "Approved"){
-                            statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
-                            </td>`
-                        }else{
-                            statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
-                            </td>
-                            `
-                        }
                         var html=`<tr>
                         <td>${i+1}</td>
+                        <td>${y.nik} - ${y.nama}</td>
                         <td>${y.tipe_absen.nama_tipe_absen}</td>
-                        <td>${y.deskripsi}</td>
-                        <td>${y.mulai_absen}</td>
-                        <td>${y.akhir_absen}</td>
-                        ${statusHtml};
+                        <td>${y.tgl_pengajuan}</td>
 						<td class=" dt-body-nowarp">
-							<button type="button" onclick="showAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                                <i class="flaticon2-edit"></i>
-                                </button> <button type="button" onclick="deleteListAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
-                                    <i class="flaticon2-trash"></i>
-                                    </button>
-                                    </td>
-                                    </tr>`
-                    $('#formAbsen').append(html)
+							<button type="button" onclick="show('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-light-primary" data-toggle="tooltip" title:"Lihat Detail" data-placement:"bottom">
+                            <i class="flaticon-eye"></i>
+                            </button>
+						</td>
+                    </tr>`
+                    $('#absenceApprover').append(html)
                     });
                 }
             });
         }
 
-        function showAbsen(id_absen){
+        function show(id_pengajuan_absen){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/showPengajuanCuti/"+ id_absen,
-                data: "data",
+                url: "http://10.9.12.150:9096/api/cuti/showApprovalPengajuanCuti/"+id_pengajuan_absen,
                 success: function (response) {
-                    // Store the 'arr' data in localStorage
-            localStorage.setItem('arrData', JSON.stringify(response.data));
+                    console.log(response.data);
+                    $('#modalApprover').modal('show');
+				// read()
 
-            // Redirect to the 'form_pengajuan_absen' page
-            window.location.href = 'form_pengajuan_absen';
-                    // readFormAbsen()
-                    // $('nama_tipe_absen').val(arr.nama_tipe_absen);
-                    // $('deskripsi').val(arr.deskripsi);
-                    // $('start_Date').val(arr.start_date);
-                    // $('end_Date').val(arr.end_Date);
-                    
+                $('#tipe_absen_detail').text($('#nama_tipe_absen').find(':selected').text())
+                $('#deskripsi_detail').text($('#deskripsi_absen').val())
+                $('#start_Date_detail').text($('#start_Date').val())
+                $('#end_Date_detail').text($('#end_Date').val())
                 }
             });
         }
-        
-        function deleteListAbsen(id_absen){
-            swal.fire({
-                title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
-                text: 'Mohon untuk melakukan pengecekan data kembali',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, Submit!',
-                cancelButtonText: 'Batalkan!',
-                reverseButtons: true
-            }).then((result) => {
-                $.ajax({
-                    type: "DELETE",
-                    url: "http://10.9.12.150:9096/api/cuti/deletePengajuanCuti/"+id_absen,
-                    success: function (response) {
-                        if(response.unsuccess){
-                            swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
-                        }else{
-                            swal.fire('Berhasil', 'Berhasil Menghapus Data','success');
-                            readFormAbsen()
-                        }
-                    },
-                    error:function(error){
-                        console.error('Error:', error);
-                    }
-                });
-            })
-        }
+
     </script>
 
 </body>
