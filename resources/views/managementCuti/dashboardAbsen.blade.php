@@ -79,7 +79,7 @@
                                 <div class="container-fluid p-0">
                                     <div class="card card-custom gutter-b">
 
-                                        <div class="card bg-primary bg-gradient">
+                                        <div class="card-dashboard card bg-primary bg-gradient">
                                             {{-- <div class="card-img-container">
                                               <img src="your-image-url.jpg" class="card-img-top" alt="Card Image">
                                             </div> --}}
@@ -97,7 +97,7 @@
                                                         <p class="text-light">
                                                             <strong>Absence Management System</strong>
                                                             adalah sistem yang dibuat untuk mempermudah proses pengajuan cuti karyawan di PT Pupuk Indonesia. 
-                                                            Melalui sistem ini karyawan dapat dengan mudah melakukan pengajuan pengajuan cuti.
+                                                            Melalui sistem ini karyawan dapat dengan mudah melakukan pengajuan cuti.
                                                         </p>
                                                         <br>
                                                             <button class="btn btn-light-primary" type="button" data-toggle="modal" data-target="modalWorkFlow" onclick="modalWorkFlow()">Alur Pengajuan Cuti 
@@ -194,6 +194,79 @@
                                             </table>
                                         </div> --}}
                                     </div>
+
+                                    <div class="card card-custom gutter-b">
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <strong>Pengertian Warna Tipe Cuti</strong>
+                                            </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="col-lg-12 col-sm-12 col-md-12 text-right">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered text-center" style="width:85%">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Warna</td>
+                                                            <td>Tipe Absen</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                    <span class="card card-custom">
+                                                                        <div class="card-header bg-light ribbon ribbon-clip ribbon-right">
+                                                                         <div class="ribbon-target" style="top: 12px;">
+                                                                          <span class="ribbon-inner bg-green"></span>Cuti Tahunan
+                                                                         </div>
+                                                                         
+                                                                        </div>
+                                                                    </span>
+                                                            </td>
+                                                            <td class="text-left">
+                                                                Cuti Tahunan
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                    <span class="card card-custom">
+                                                                        <div class="ribbon">
+                                                                         <div class="ribbon-target">
+                                                                          <span class="ribbon-inner bg-teal"></span>Cuti Besar
+                                                                         </div>
+                                                                         
+                                                                        </div>
+                                                                    </span>
+                                                            </td>
+                                                            <td class="text-left">
+                                                                Cuti Besar
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        {{-- <div class="card-body py-10">
+                                            <table class="table border">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Status</th>
+                                                        <th>Keterangan</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Waiting Approval</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div> --}}
+                                    </div>
+
 
                                 </div>
                             </div>

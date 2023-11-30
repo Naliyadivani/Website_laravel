@@ -468,7 +468,7 @@
         function readSaldo(){
             $.ajax({
                 type: "post",
-                url: "http://10.9.12.150:9096/api/cuti/listAdminSaldo",
+                url: "http://10.9.12.43:9096/api/cuti/listAdminSaldo",
                 // url: "http://10.9.12.223:9096/api/cuti/listAdminSaldo",
                 data: {
                     nik:emp_no,
@@ -511,7 +511,7 @@
         //show untuk edit saldo
         function show(id_saldo) {
             $.ajax({
-                url: "http://10.9.12.150:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
+                url: "http://10.9.12.43:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 type: "get",
                 success: function (result) {
@@ -561,7 +561,7 @@
         if (result.isConfirmed) {
             // Send an AJAX request to delete the item
             $.ajax({
-                url: "http://10.9.12.150:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
+                url: "http://10.9.12.43:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
                 // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
                 type: 'DELETE',
                 success: function (result) {
@@ -709,7 +709,7 @@ function store() {
 
     $.ajax({
         type: "post",
-        url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo",
+        url: "http://10.9.12.43:9096/api/cuti/storeAdminSaldo",
         data: storeSaldo,
         dataType: "json",
         success: function (response) {
@@ -809,7 +809,7 @@ function store() {
             placeholder: "Masukkan Nama atau Nomor Pegawai",
             allowClear: true, 
             ajax: {
-                url: 'http://10.9.12.150:9096/api/mobile/dataPegawai', // Use the named route to generate the URL
+                url: 'http://10.9.12.43:9096/api/mobile/dataPegawai', // Use the named route to generate the URL
                 // url: 'http://10.9.12.223:9096/api/mobile/dataPegawai',
                 dataType: 'json',
                 delay: 250,
@@ -846,7 +846,7 @@ function store() {
         function getTipeAbsen(x){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
+                url: "http://10.9.12.43:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // data: "data",
                 success: function (response) {
@@ -885,23 +885,7 @@ function store() {
                     format:'YYYY-MM-DD'
                 });
                 $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
-        // valid from, valid to
-        // KTBootstrapDatetimepicker()
-        // var KTBootstrapDatetimepicker = function () {
-        //     var baseDemos = function () {
-        //         $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
-        //         $('#kt_datetimepicker_7_2').datetimepicker({
-        //             useCurrent: false,
-        //             format:'YYYY-MM-DD'
-        //         });
-        //         $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
-        //     }
-        //     return{
-        //         init: function(){
-        //             baseDemos();
-        //         }
-        //       }
-        // }
+     
         
         // input saldo field
         $('#kt_touchspin_4').TouchSpin({

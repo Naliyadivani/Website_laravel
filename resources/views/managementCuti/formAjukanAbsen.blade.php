@@ -303,6 +303,7 @@
     <!--end::Page Scripts-->
     <script src="assets/js/pages/custom/wizard/wizard-4.js"></script>
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
+    <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
 
     <script>
         var emp_no = $("#nik_user").val();
@@ -365,7 +366,7 @@
                 $('#end_Date').val(endDate.toISOString().slice(0, 10))
             }else{
                 // console.log(saldoObject.saldo);
-                while (jmlhHariKalender < my_saldo.saldo) {
+                while (JmlHariKerja < my_saldo.saldo) {
                     jmlhHariKalender++;
                     
                     // Check if the current day is not Saturday or Sunday
@@ -375,9 +376,10 @@
                     selectedDate.setDate(selectedDate.getDate() + 1);
                 }
                 console.log("Hari Kalender:",jmlhHariKalender,"\nHari Kerja:",JmlHariKerja);
+                var endDate = new Date(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
                 
                 Swal.fire({
-                    text: "Batas maksimal pengajuan absen anda pada tanggal: " + selectedDate.toISOString().slice(0, 10),
+                    text: "Batas maksimal pengajuan absen anda pada tanggal: " + endDate.toISOString().slice(0, 10),
                     icon: "warning",
                     buttonsStyling: false,
                     confirmButtonText: "Ok!",
@@ -479,15 +481,6 @@ readFormAbsen();
             var akhir_absen = $('#end_Date').val();
             console.log(id_absen,nik,tipe_absen_id,deskripsi,mulai_absen,akhir_absen);
 
-            // if (tipe_absen_id === '' || deskripsi === '' || mulai_absen === '' || akhir_absen === '') {
-            //     Swal.fire({
-            //         title: "Gagal Menyimpan Data",
-            //         text: "Semua Data Harus Diisi",
-            //         icon: "warning",
-            //     });
-            //     return; // Hentikan eksekusi jika ada kolom yang kosong
-            // }
-
             var storeAbsen ={
                 nik:nik,
                 tipe_absen_id: tipe_absen_id,
@@ -501,49 +494,53 @@ readFormAbsen();
                 storeAbsen.id_pengajuan_absen = id_absen;
             }
 
-            $.ajax({
-                type: "post",
-                url: "http://10.9.12.150:9096/api/cuti/storeCuti",
-                data: storeAbsen,
-                dataType: "json",
-                // success: function (response) {
+            
+            Swal.fire({
+                        title: 'Apakah anda yakin untuk mengajukan absen ?',
+                        text: 'Mohon untuk melakukan pengecekan data kembali',
+                        // text: "All is good! Berhasil Mengajukan Absen!",
+                        icon: "question",
+                        showCancelButton: true,
+                        buttonsStyling: false,
+                        confirmButtonText: "Yes, submit!",
+                        cancelButtonText: "No, cancel",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-primary",
+                            cancelButton: "btn font-weight-bold btn-default"
+                        }
+			}).then(function (result){
+                if(result.value){
+                    $.ajax({
+                        type: "post",
+                        url: "http://10.9.12.43:9096/api/cuti/storeCuti",
+                        data: storeAbsen,
+                        dataType: "json",
+                        success: function (response) {
+                            Swal.fire({
+                            title: "Berhasil",
+                            text: "Berhasil Menambahkan Data",
+                            icon: "success",
+                        });
+                        window.location.href = 'pengajuan_absen';
+                        _formEl.submit();  
+                        },
+                        error: function (error) {
+                            // Handle error jika pengiriman gagal
+                            console.error('Error:', error);
+                            // Tambahkan logika atau tindakan lain jika diperlukan
+                            Swal.fire({
+                                text: "Maaf, Saldo Anda Tidak Cukup!",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-primary",
+                                }
+                            });
+                        }
 
-                //     // Redirect ke halaman pengajuan_absen setelah pengiriman berhasil
-                //     window.location.href = 'pengajuan_absen';
-                // },
-                // error: function (error) {
-                //     // Handle error jika pengiriman gagal
-                //     console.error('Error:', error);
-                //     // Tambahkan logika atau tindakan lain jika diperlukan
-                //     Swal.fire({
-				// 		text: "Maaf, Saldo Anda Tidak Cukup!",
-				// 		icon: "error",
-				// 		buttonsStyling: false,
-				// 		confirmButtonText: "Ok, got it!",
-				// 		customClass: {
-				// 			confirmButton: "btn font-weight-bold btn-primary",
-				// 		}
-				// 	});
-                // }
-                success:function(response){
-                    Swal.fire({
-				text: "All is good! Berhasil Mengajukan Absen!",
-				icon: "success",
-				showCancelButton: true,
-				buttonsStyling: false,
-				confirmButtonText: "Yes, submit!",
-				cancelButtonText: "No, cancel",
-				customClass: {
-					confirmButton: "btn font-weight-bold btn-primary",
-					cancelButton: "btn font-weight-bold btn-default"
-				}
-			}).then(function (result) {
-                if (result.value) {
-                    window.location.href = 'pengajuan_absen';
-                    _formEl.submit(); // Submit form
-					//functin store
-                    // storeAbsen();
-				} else if (result.dismiss === 'cancel') {
+                    });
+                }else if (result.dismiss === 'cancel') {
 					Swal.fire({
 						text: "Your form has not been submitted!",
 						icon: "error",
@@ -554,23 +551,67 @@ readFormAbsen();
 						}
 					});
 				}
-			});
-                },
-                error: function (error) {
-                    // Handle error jika pengiriman gagal
-                    console.error('Error:', error);
-                    // Tambahkan logika atau tindakan lain jika diperlukan
-                    Swal.fire({
-						text: "Maaf, Saldo Anda Tidak Cukup!",
-						icon: "error",
-						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
-						customClass: {
-							confirmButton: "btn font-weight-bold btn-primary",
-						}
-					});
-                }
             });
+
+            // $.ajax({
+            //     type: "post",
+            //     url: "http://10.9.12.43:9096/api/cuti/storeCuti",
+            //     data: storeAbsen,
+            //     dataType: "json",
+            //     success:function(response){
+            //         Swal.fire({
+            //             title: 'Apakah anda yakin untuk mengajukan absen ?',
+            //             text: 'Mohon untuk melakukan pengecekan data kembali',
+            //             // text: "All is good! Berhasil Mengajukan Absen!",
+            //             icon: "question",
+            //             showCancelButton: true,
+            //             buttonsStyling: false,
+            //             confirmButtonText: "Yes, submit!",
+            //             cancelButtonText: "No, cancel",
+            //             customClass: {
+            //                 confirmButton: "btn font-weight-bold btn-primary",
+            //                 cancelButton: "btn font-weight-bold btn-default"
+            //             }
+			// }).then(function (result) {
+            //     if (result.value) {
+            //         // Swal.fire('Berhasil', 'Berhasil Menambahkan Data', 'success');
+            //         Swal.fire({
+            //             title: "Berhasil",
+            //             text: "Berhasil Menambahkan Data",
+            //             icon: "success",
+            //         });
+            //         window.location.href = 'pengajuan_absen';
+            //         _formEl.submit(); // Submit form
+			// 		//functin store
+            //         // storeAbsen();
+			// 	} else if (result.dismiss === 'cancel') {
+			// 		Swal.fire({
+			// 			text: "Your form has not been submitted!",
+			// 			icon: "error",
+			// 			buttonsStyling: false,
+			// 			confirmButtonText: "Ok, got it!",
+			// 			customClass: {
+			// 				confirmButton: "btn font-weight-bold btn-primary",
+			// 			}
+			// 		});
+			// 	}
+			// });
+            //     },
+            //     error: function (error) {
+            //         // Handle error jika pengiriman gagal
+            //         console.error('Error:', error);
+            //         // Tambahkan logika atau tindakan lain jika diperlukan
+            //         Swal.fire({
+			// 			text: "Maaf, Saldo Anda Tidak Cukup!",
+			// 			icon: "error",
+			// 			buttonsStyling: false,
+			// 			confirmButtonText: "Ok, got it!",
+			// 			customClass: {
+			// 				confirmButton: "btn font-weight-bold btn-primary",
+			// 			}
+			// 		});
+            //     }
+            // });
         }
 
 
@@ -580,7 +621,7 @@ readFormAbsen();
             $.ajax({
                 type: "get",
                 // url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
-                url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
+                url: "http://10.9.12.43:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
                 success: function (response) {
                     var arr = response.data
                     // console.log(arr);

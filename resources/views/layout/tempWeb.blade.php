@@ -28,6 +28,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--end::Fonts-->
 		<!--begin::Page Vendors Styles(used by this page)-->
 		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		
 		<!--end::Page Vendors Styles-->
 		<!--begin::Global Theme Styles(used by all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
@@ -60,6 +61,80 @@ License: You must have a valid license purchased only from themeforest(the above
         	}
 		
 		</style>
+		 <style>
+			.select-info {
+				margin-left: 5px;
+			}
+		
+			.card-information {
+				transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+				cursor: pointer;
+			}
+		
+			.card-information:hover {
+				transform: scale(0.94);
+			}
+		
+			.card-information-active {
+				transform: scale(0.94);
+			}
+		
+		
+			.card-waiting-approval {
+				height: 150px;
+				width: 100%;
+				min-width: 320px;
+				display: flex;
+				flex-direction: row;
+				background: linear-gradient(86deg, #FFF 24.3%, #FFEBCF 89.32%);
+			}
+		
+			.card-history-approval {
+				height: 150px;
+				width: 100%;
+				min-width: 320px;
+				display: flex;
+				flex-direction: row;
+				background: linear-gradient(86deg, #FFF 24.3%, #CDE6FF 89.32%);
+			}
+		</style>
+		
+				<style>
+				/* Chrome, Safari, Edge, Opera */
+				input::-webkit-outer-spin-button,
+				input::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
+				}
+		
+				/* Firefox */
+				input[type=number] {
+					-moz-appearance: textfield;
+				}
+
+				.bg-pink{
+					background-color: #FF3FA4 !important;
+				}
+				.bg-blue{
+					background-color: #057bb6 !important;
+				}
+				.bg-purple{
+					background-color: #7B66FF !important;
+				}
+				.bg-green{ 
+					background-color: #5F8D4E !important;
+				}
+				.bg-teal{ 
+					background-color: #B33030 !important;
+				}
+				.bg-orange{ 
+					background-color: #FF5B22!important;
+				}
+				.bg-yellow{ 
+					background-color: #f9b412!important;
+				}
+			</style>
+			
 	</head>
 	
 	<body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
