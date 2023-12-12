@@ -1,3 +1,13 @@
+<style>
+    .dt-body-nowarp {
+        white-space: nowrap;
+    }
+
+    #kt_datatable_filter input {
+        width: 400px !important;
+    }
+</style>
+
 @extends('layout.tempWeb')
 
 @section('kontenpage')
@@ -87,66 +97,35 @@
                                         </div>
                                         {{-- end- header  --}}
 
-                                        {{-- body table  --}}
-                                        <div class="card-body py-10">
-                                            <div class="table-responsive">
-                                                <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                    <div class="pull-left">
-                                                        {{-- search --}}
-                                                        <div class="kt_datatable_filter" class="dataTables_filter">
-                                                            <label>
-                                                                Search:
-                                                                <input id="my_input" type="search" class="form-control form-control-sm" aria-controls="kt_datatable">
-                                                            </label>
-                                                        </div>
-                                                        {{-- end-search --}}
-                                                    </div>
+                                        <div class="card-body">
+                                        <div class="dataTables_scroll">
+                                            <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                                                <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
+                                                    <table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" role="grid" id="kt_datatable">
+                                                        <thead>
+                                                            <tr class="text-center" role="row">
+                                                                <th>#</th>
+                                                                <th>Tipe Absen</th>
+                                                                <th>Deskripsi</th>
+                                                                <th>Tanggal Mulai</th>
+                                                                <th>Tanggal Akhir</th>
+                                                                <th>Status</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
-                                            <div class="dataTables_scroll">
-                                                <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
-                                                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
-                                                        <table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" role="grid" id="kt_datatable">
-                                                            <thead>
-                                                                <tr class="text-center" role="row">
-                                                                    <th>#</th>
-                                                                    <th>Tipe Absen</th>
-                                                                    {{-- <th>Deskripsi</th> --}}
-                                                                    <th>Tanggal Mulai</th>
-                                                                    <th>Tanggal Akhir</th>
-                                                                    <th>Status</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-
-                                                            <tbody id="formAbsen">
-                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
-																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="dataTables_info" id="kt_datatable_info" role="status" aria-live="polite">Showing 1 to 2 of 2 entries</div>
-                                            <div class="dataTables_paginate paging_simple_numbers" id="kt_datatable_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="kt_datatable_previous"><a href="#" aria-controls="kt_datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="kt_datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                    <li class="paginate_button page-item next disabled" id="kt_datatable_next"><a href="#" aria-controls="kt_datatable" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
-                                                </ul>
-                                            </div>
-                                            </div>
                                         </div>
-                                        </div>
-                                        </div>
-
+                                    </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                   
                     <!--end::Entry Dashboard Page-->
 
                 </div>
@@ -163,14 +142,15 @@
                         </div>
 
                         <div class="nav nav-dark order-1 order-md-2">
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">Panduan Pengguna</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">Kebijakan Privasi</a>
+                            <a href="" target="_blank" class="nav-link pr-3 pl-0">Panduan Pengguna</a>
+                            <a href="" target="_blank" class="nav-link pr-3 pl-0">Kebijakan Privasi</a>
                         </div>
                         <!--end::Copyright-->
                     </div>
                     <!--end::Container-->
                 </div>
                 <!--end::Footer-->
+
             </div>
             <!--end::Wrapper-->
         </div>
@@ -206,11 +186,18 @@
     <!--end::Global Theme Bundle-->
     <!--begin::Page Vendors(used by this page)-->
     <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    {{-- <script src="assets/js/plugins/custom/datatables/datatables.bundle.js"></script> --}}
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="https://pismart.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" /> -->
+    <!-- <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script> -->
+
+
 
     <script>
         var emp_no = $("#nik_user").val();
@@ -232,60 +219,146 @@
             });
         });
 
+        let table = $('#kt_datatable').DataTable({
+            dom: '<"pull-left"f><"pull-right"l>tip',
+            scrollY: '80vh',
+            scrollX: true,
+            scrollCollapse: true,
+            searching: true,
+            columnDefs: [{
+                className: 'dt-body-nowarp',
+                targets: "_all"
+            }],
+            processing: true,
+            bLengthChange: false,
+            pageLength: 6, // Set the number of rows per page as per your requirement
+        });
+
+
         readFormAbsen()
         //read DB
         function readFormAbsen(){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.43:9096/api/cuti/myCuti?nik="+{{ Auth::user()->nik }}+"&tahun="+year,
+                url: "http://10.9.12.197:9096/api/cuti/myCuti?nik="+{{ Auth::user()->nik }}+"&tahun="+year,
                 
                 success: function (data) {
                     var arr = data.data
-                    $('#formAbsen').html('')
+                    table.clear().draw()
                     arr.forEach((y,i) => {
-                        // console.log(y.status);
                         if (y.status == "WaitApproved"){
-                            statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
-                            </td>`
+                            statusHtml = `<span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>`
                         }else if (y.status == "Approved"){
-                            statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
-                            </td>`
+                            statusHtml = `<span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>`
                         }else{
-                            statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
-                            </td>
-                            `
+                            statusHtml = `<span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>`
                         }
-                        var html=`<tr>
-                        <td>${i+1}</td>
-                        <td>${y.tipe_absen.nama_tipe_absen}</td>
-                        
-                        <td>${y.mulai_absen}</td>
-                        <td>${y.akhir_absen}</td>
-                        ${statusHtml};
-						<td class=" dt-body-nowarp">
-							<button type="button" onclick="showAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                                <i class="flaticon2-edit"></i>
-                                </button> <button type="button" onclick="deleteListAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
-                                    <i class="flaticon2-trash"></i>
-                                    </button>
-                                    </td>
-                                    </tr>`
-                    $('#formAbsen').append(html)
+                        var iteration = `<span class="font-weight-bold font-size-sm text-dark-50">${i+1}</span>`
+                        var tipeAbsen = `<span class="font-weight-bold font-size-sm text-dark-50">${y.tipe_absen.nama_tipe_absen}</span>`
+                        var mulaiAbsen = `<span class="font-weight-bold font-size-sm text-dark-50">${y.mulai_absen}</span>`
+                        var akhirAbsen = `<span class="font-weight-bold font-size-sm text-dark-50">${y.akhir_absen}</span>`
+                        var status = statusHtml
+                        var action = `<button type="button" onclick="showAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                                            <i class="flaticon2-edit"></i>
+                                      </button> 
+                                      <button type="button" onclick="deleteListAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
+                                            <i class="flaticon2-trash"></i>
+                                      </button>`
+                    // $('#formAbsen').append(html)
+                    table.row.add([iteration,tipeAbsen,mulaiAbsen,akhirAbsen,status,action]).draw(false)
                     });
                 }
             });
         }
 
+        // Fungsi untuk menampilkan data dengan pagination
+    function displayDataWithPagination(data) {
+        // Tentukan jumlah item per halaman
+        var itemsPerPage = 6;
+
+        // Hitung jumlah halaman
+        var totalPages = Math.ceil(data.length / itemsPerPage);
+
+        // Inisialisasi halaman saat ini
+        var currentPage = 1;
+
+        // Fungsi untuk menampilkan data pada halaman tertentu
+        function displayDataOnPage(page) {
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = startIndex + itemsPerPage;
+            var currentPageData = data.slice(startIndex, endIndex);
+            console.log(currentPageData[0].status);
+
+            // Tampilkan data pada halaman saat ini
+            $('#formAbsen').empty();
+            currentPageData.forEach((y,i) => {
+                // console.log(y.status);
+                if (y.status == "WaitApproved"){
+                    statusHtml = `
+                    <td>
+                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
+                    </td>`
+                }else if (y.status == "Approved"){
+                    statusHtml = `
+                    <td>
+                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
+                    </td>`
+                }else{
+                    statusHtml = `
+                    <td>
+                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
+                    </td>
+                    `
+                }
+                var html=`<tr>
+                <td>${i+1}</td>
+                <td>${y.tipe_absen.nama_tipe_absen}</td>
+                
+                <td>${y.mulai_absen}</td>
+                <td>${y.akhir_absen}</td>
+                ${statusHtml};
+                <td class=" dt-body-nowarp">
+                    <button type="button" onclick="showAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                        <i class="flaticon2-edit"></i>
+                        </button> <button type="button" onclick="deleteListAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
+                            <i class="flaticon2-trash"></i>
+                            </button>
+                            </td>
+                            </tr>`
+            $('#formAbsen').append(html)
+            });
+            // currentPageData.forEach(function(item) {
+            //     // Tampilkan data sesuai kebutuhan
+            //     $('#formAbsen').append('<div>' + item + '</div>');
+            // });
+        }
+
+        // Fungsi untuk menampilkan pagination
+        function displayPagination() {
+            $('#pagination-container').empty();
+
+            for (var i = 1; i <= totalPages; i++) {
+                // Tambahkan tombol pagination
+                $('#pagination-container').append('<button onclick="changePage(' + i + ')">' + i + '</button>');
+            }
+        }
+
+        // Fungsi untuk mengubah halaman saat tombol pagination diklik
+        window.changePage = function(page) {
+            currentPage = page;
+            displayDataOnPage(currentPage);
+            displayPagination();
+        };
+
+        // Tampilkan data dan pagination untuk halaman pertama
+        displayDataOnPage(currentPage);
+        displayPagination();
+    }
+
         function showAbsen(id_absen){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/showPengajuanCuti/"+ id_absen,
+                url: "http://10.9.12.197:9096/api/cuti/showPengajuanCuti/"+ id_absen,
                 data: "data",
                 success: function (response) {
                     // Store the 'arr' data in localStorage
@@ -315,7 +388,7 @@
             }).then((result) => {
                 $.ajax({
                     type: "DELETE",
-                    url: "http://10.9.12.43:9096/api/cuti/deletePengajuanCuti/"+id_absen,
+                    url: "http://10.9.12.197:9096/api/cuti/deletePengajuanCuti/"+id_absen,
                     success: function (response) {
                         if(response.unsuccess){
                             swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
@@ -331,6 +404,7 @@
             })
         }
     </script>
+
 
 </body>
 @endsection

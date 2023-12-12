@@ -442,7 +442,7 @@
         function getDataAbsenceAll(history = false) {
             $.ajax({
                 type: 'POST',
-                url: 'http://10.9.12.43:9096/api/cuti/listApprovalCuti',
+                url: 'http://10.9.12.197:9096/api/cuti/listApprovalCuti',
                 data: {
                     nik: "82105096",
                     tahun: 2023,
@@ -645,6 +645,7 @@
         }
         
         function imgError(image, defaultSrc) {
+            image.onerror = "";
         image.src = defaultSrc;
         }
 
@@ -662,7 +663,7 @@
             
             $.ajax({
                 type:'GET',
-                url: 'http://10.9.12.43:9096/api/cuti/showApprovalPengajuanCuti/'+id_pengajuan,
+                url: 'http://10.9.12.197:9096/api/cuti/showApprovalPengajuanCuti/'+id_pengajuan,
                 success: function(result) {
                     var dataIndiv = result.data;
                     $('#tgl_pengajuan_detail_' + dataIndiv.karyawan.emp_no + "_" + dataIndiv.id_pengajuan_absen + '').html(dataIndiv.tgl_pengajuan);
@@ -702,7 +703,7 @@
                     }
 
                     $.ajax({
-                        url: 'http://10.9.12.43:9096/api/cuti/approve',
+                        url: 'http://10.9.12.197:9096/api/cuti/approve',
                         type: "POST",
                         data: obj,
                         success: function(result) {

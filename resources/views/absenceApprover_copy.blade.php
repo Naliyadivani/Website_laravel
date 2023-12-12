@@ -267,7 +267,7 @@
         function readAbsenceApprover(){
             $.ajax({
                 type: "post",
-                url: "http://10.9.12.150:9096/api/cuti/listApprovalCuti",
+                url: "http://10.9.12.197:9096/api/cuti/listApprovalCuti",
                 data: {
                     nik:emp_no,
                     tahun:year,
@@ -297,7 +297,7 @@
         function show(id_pengajuan_absen){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/showApprovalPengajuanCuti/"+id_pengajuan_absen,
+                url: "http://10.9.12.197:9096/api/cuti/showApprovalPengajuanCuti/"+id_pengajuan_absen,
                 success: function (response) {
                     var result = response.data; 
                     console.log(response.data);

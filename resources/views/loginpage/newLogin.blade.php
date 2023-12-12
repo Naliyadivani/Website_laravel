@@ -9,13 +9,13 @@
 		<!--begin::Login-->
 		<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-gradient" id="kt_login">
 			<!--begin::Aside-->
-				<div class="login-aside d-flex flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10" style="background-image: url('assets/media/logos/newBackground.png')">
+				<div class="login-aside d-flex flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10" style="background-image: url('assets/media/logos/asset_loginpage.png')">
 					<!--begin: Aside Container-->
-                    <div class="image-logo">
+                    {{-- <div class="image-logo">
                         <img src="assets/media/logos/pi-bg-white.png">
                         <img src="assets/media/logos/bumn-bg-white.png">
                         <img src="assets/media/logos/pi-white.png">
-                    </div>
+                    </div> --}}
 					
 				<!--end: Aside Container-->
 			</div>
@@ -123,7 +123,7 @@
             		}
 				$.ajax({
 					type: "post",
-					url: "http://localhost:9096/login",
+					url: "http://10.9.12.197:9096/login",
 					data: dataLogin,
 					success: function (response) {
 					// 	var arr = result.response;

@@ -711,7 +711,7 @@
         function read(){
             $.ajax({
             type:"post",
-            url:"http://10.9.12.150:9096/api/tjsl/listKegiatan",
+            url:"http://10.9.12.197:9096/api/tjsl/listKegiatan",
             data: {
                 nik:emp_no,
                 tahun: year,
@@ -772,7 +772,7 @@
         $.ajax({
             type: "post", // Use "post" method for storing data
             
-            url: "http://localhost:9096/api/tjsl/storeMasterKegiatan",
+            url: "http://10.9.12.197:9096/api/tjsl/storeMasterKegiatan",
             
             data: dataStore,
             success: function(data) {
@@ -793,7 +793,7 @@
     // Untuk modal halaman edit (show)
     function show(slug) {
 		$.ajax({
-			url: "http://localhost:9096/api/tjsl/getMasterKegiatan/" + slug,
+			url: "http://10.9.12.197:9096/api/tjsl/getMasterKegiatan/" + slug,
 			type: "get",
 			success: function (result) {
 				// Assuming 'exampleModal' is your modal element
@@ -827,7 +827,7 @@
 			if (result.isConfirmed) {
 				// Send an AJAX request to delete the item
 				$.ajax({
-					url: "http://localhost:9096/api/tjsl/deleteMasterKegiatan/" + slug, // Replace with your API endpoint
+					url: "http://10.9.12.197:9096/api/tjsl/deleteMasterKegiatan/" + slug, // Replace with your API endpoint
 					type: 'DELETE',
 					success: function (result) {
 						if (result.unsuccess) {

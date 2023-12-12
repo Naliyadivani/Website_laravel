@@ -1,3 +1,13 @@
+<style>
+    .dt-body-nowarp {
+        white-space: nowrap;
+    }
+
+    #kt_datatable_filter input {
+        width: 400px !important;
+    }
+</style>
+
 @extends('layout.tempWeb')
 
 @section('kontenpage')
@@ -92,20 +102,20 @@
 
                                         {{-- body table  --}}
                                         <div class="card-body">
-                                            <div class="table-responsive">
-                                                <div id="kt_datatable-wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                    <div class="pull-left">
+                                            {{-- <div class="table-responsive">
+                                                <div id="kt_datatable-wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"> --}}
+                                                    {{-- <div class="pull-left"> --}}
                                                         {{-- search --}}
-                                                        <div class="kt_datatable_filter" class="dataTables_filter">
+                                                        {{-- <div class="kt_datatable_filter" class="dataTables_filter">
                                                             <label>
                                                                 Search:
                                                                 <input id="my_input" type="search" class="form-control form-control-sm" aria-controls="kt_datatable">
                                                             </label>
-                                                        </div>
+                                                        </div> --}}
                                                         {{-- end-search --}}
-                                                    </div>
+                                                    {{-- </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="dataTables_scroll">
                                                 <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
                                                     <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
@@ -123,6 +133,10 @@
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
+
+                                                            <tbody>
+                                                                
+                                                            </tbody>
 
                                                             <tbody id="dataSaldo">
                                                                 <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
@@ -326,6 +340,9 @@
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
     <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
     {{-- <script src="assets/js/"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    
+    <script src="https://pismart.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
 
 {{-- UPLOAD EXCEL SCRIPT  --}}
 {{-- <script>
@@ -333,7 +350,7 @@
 
     function initDropzone() {
         $('#customFile').dropzone({
-            url: `http://10.9.12.150:9096/api/cuti/storeAdminSaldo`,
+            url: `http://10.9.12.197:9096/api/cuti/storeAdminSaldo`,
             autoProcessQueue: true,
             uploadMultiple: true,
             parallelUploads: 5,
@@ -414,7 +431,7 @@
     function initDropzone() {
         // Initialize Dropzone
         var myDropzone = new Dropzone("#customFile", {
-            url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo",
+            url: "http://10.9.12.197:9096/api/cuti/storeAdminSaldo",
             // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
             autoProcessQueue: true,
             uploadMultiple: true,
@@ -462,13 +479,27 @@
 				});
 			});
 		});
+        let table = $('#kt_datatable').DataTable({
+            dom: '<"pull-left"f><"pull-right"l>tip',
+            scrollY: '80vh',
+            scrollX: true,
+            scrollCollapse: true,
+            searching: true,
+            columnDefs: [{
+                className: 'dt-body-nowarp',
+                targets: "_all"
+            }],
+            processing: true,
+            bLengthChange: false,
+            pageLength: 6, // Set the number of rows per page as per your requirement
+        });
 
         
         //read DB
         function readSaldo(){
             $.ajax({
                 type: "post",
-                url: "http://10.9.12.43:9096/api/cuti/listAdminSaldo",
+                url: "http://10.9.12.197:9096/api/cuti/listAdminSaldo",
                 // url: "http://10.9.12.223:9096/api/cuti/listAdminSaldo",
                 data: {
                     nik:emp_no,
@@ -476,26 +507,23 @@
                 },
                 success: function (data) {
                     var arr = data.data
-                    $('#dataSaldo').html('')
+                    table.clear().draw()
                     arr.forEach((y,i) => {
-                        var html=`<tr>
-                        <td>${i+1}</td>
-                        <td>${y.nik} - ${y.nama}</td>
-                        <td>${y.tipe_absen.nama_tipe_absen}</td>
-                        <td>${y.saldo}</td>
-                        <td>${y.valid_from}</td>
-                        <td>${y.valid_to}</td>
-                        <td>${y.max_hutang}</td>
-                        <td>${y.valid_from_hutang}</td>
-						<td class=" dt-body-nowarp">
-							<button type="button" onclick="show('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                            <i class="flaticon2-edit"></i>
-                            </button> <button type="button" onclick="deleteItem('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
-                            <i class="flaticon2-trash"></i>
-                            </button>
-						</td>
-                    </tr>`
-                    $('#dataSaldo').append(html)
+                        var iteration = `<span class="font-weight-bold font-size-sm text-dark-50">${i+1}</span>`
+                        var nikKaryawan = `<span class="font-weight-bold font-size-sm text-dark-50">${y.nik} - ${y.nama}</span>`
+                        var tipeAbsen = `<span class="font-weight-bold font-size-sm text-dark-50">${y.tipe_absen.nama_tipe_absen}</span>`
+                        var saldo = `<span class="font-weight-bold font-size-sm text-dark-50">${y.saldo}</span>`
+                        var valid_from = `<span class="font-weight-bold font-size-sm text-dark-50">${y.valid_from}</span>`
+                        var valid_to = `<span class="font-weight-bold font-size-sm text-dark-50">${y.valid_to}</span>`
+                        var max_hutang = `<span class="font-weight-bold font-size-sm text-dark-50">${y.max_hutang}</span>`
+                        var valid_from_hutang = `<span class="font-weight-bold font-size-sm text-dark-50">${y.valid_from_hutang}</span>`
+                        var action = `<button type="button" onclick="show('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                                            <i class="flaticon2-edit"></i>
+                                      </button> 
+                                      <button type="button" onclick="deleteItem('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
+                                            <i class="flaticon2-trash"></i>
+                                      </button>`
+                        table.row.add([iteration,nikKaryawan,tipeAbsen,saldo,valid_from,valid_to,max_hutang,valid_from_hutang,action]).draw(false)
                     });
                 }
             });
@@ -511,7 +539,7 @@
         //show untuk edit saldo
         function show(id_saldo) {
             $.ajax({
-                url: "http://10.9.12.43:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
+                url: "http://10.9.12.197:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 type: "get",
                 success: function (result) {
@@ -561,7 +589,7 @@
         if (result.isConfirmed) {
             // Send an AJAX request to delete the item
             $.ajax({
-                url: "http://10.9.12.43:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
+                url: "http://10.9.12.197:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
                 // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
                 type: 'DELETE',
                 success: function (result) {
@@ -584,62 +612,7 @@
 				});
 			}
 		});
-	}
-
-    // menyimpan data saldo
-    // function store(){
-    //     var id_saldo =$('#id_saldo_cuti').val()
-    //     var nik = $('#nik_selected').val()
-    //     // console.log(nik)
-    //     var tipe_absen_id = $('#nama_tipe_absen').val()
-    //     var saldo = $('#kt_touchspin_4').val()
-    //     var valid_from = $('#valid_from').val()
-    //     var valid_to = $('#valid_to').val()
-    //     var max_hutang = $('#max_hutang').val()
-    //     var valid_from_hutang = $('#valid_from_hutang').val()
-    //     // console.log(id_saldo,nik,tipe_absen_id,saldo,valid_from,valid_to);
-    //             var storeSaldo = {
-    //                 // created_by:emp_no
-    //                 nik:nik,
-    //                 tipe_absen_id:tipe_absen_id,
-    //                 saldo:saldo,
-    //                 valid_from:valid_from,
-    //                 valid_to:valid_to,
-    //                 max_hutang: max_hutang,
-    //                 valid_from_hutang:valid_from_hutang,
-    //                 created_by:{{ Auth::user()->nik }}
-    //             }
-    //             if (id_saldo != '') {
-    //                 storeSaldo = {
-    //                     nik:nik,
-    //                     tipe_absen_id:tipe_absen_id,
-    //                     saldo:saldo,
-    //                     valid_from:valid_from,
-    //                     valid_to:valid_to,
-    //                     id_saldo: id_saldo,
-    //                     max_hutang: max_hutang,
-    //                     valid_from_hutang:valid_from_hutang,
-    //                     created_by:{{ Auth::user()->nik }}
-    //                 }
-    //             }
-    //             $.ajax({
-    //                 type: "post",
-    //                 url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo", //IP Wifi PI
-    //                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
-    //                 data: storeSaldo,
-    //                 dataType: "json",
-    //                 success: function (response) {
-    //                     readSaldo()
-    //                     $('#managementSaldo').modal('hide');
-    //                     clearForm()
-    //                     Swal.fire({
-    //                         title:"Berhasil",
-    //                         text:"Berhasil Menambahkan Data",
-    //                         icon: "success",
-    //                     })
-    //                 }
-    //             });
-    //         }    
+	} 
 
     // menyimpan data saldo
 function store() {
@@ -709,7 +682,7 @@ function store() {
 
     $.ajax({
         type: "post",
-        url: "http://10.9.12.43:9096/api/cuti/storeAdminSaldo",
+        url: "http://10.9.12.197:9096/api/cuti/storeAdminSaldo",
         data: storeSaldo,
         dataType: "json",
         success: function (response) {
@@ -759,7 +732,7 @@ function store() {
 		 	allowClear: true,
 		 	ajax: {
                  // type: "post",
-		 		url: "http://10.9.12.150:9096/api/mobile/dataPegawai",
+		 		url: "http://10.9.12.197:9096/api/mobile/dataPegawai",
 		 		dataType: 'json',
 		 		delay: 250,
 		 		data: function(params) {
@@ -809,7 +782,7 @@ function store() {
             placeholder: "Masukkan Nama atau Nomor Pegawai",
             allowClear: true, 
             ajax: {
-                url: 'http://10.9.12.43:9096/api/mobile/dataPegawai', // Use the named route to generate the URL
+                url: 'http://10.9.12.197:9096/api/mobile/dataPegawai', // Use the named route to generate the URL
                 // url: 'http://10.9.12.223:9096/api/mobile/dataPegawai',
                 dataType: 'json',
                 delay: 250,
@@ -846,7 +819,7 @@ function store() {
         function getTipeAbsen(x){
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.43:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
+                url: "http://10.9.12.197:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // data: "data",
                 success: function (response) {

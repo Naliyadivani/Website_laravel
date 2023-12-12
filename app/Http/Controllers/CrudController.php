@@ -34,7 +34,7 @@ class CrudController extends Controller
     }
 
     public function read(){
-        // $response = Http::post('localhost:9096/listKegiatan');
+        // $response = Http::post('10.9.12.197:9096/listKegiatan');
         // $data = $response->json();
 
         // return view('daftarAplikasi.read')->with(['data' => $data]);

@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<link href="assets/css/pages/login/login-1.css" rel="stylesheet" type="text/css">
 		
 		<!--begin::Page Custom Styles(used by this page)-->
-		<link href="assets/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
+		{{-- <link href="assets/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" /> --}}
 		<!--end::Page Custom Styles-->
 
 		<!--end::Global Theme Styles-->
@@ -141,6 +141,8 @@ License: You must have a valid license purchased only from themeforest(the above
         @yield('kontenpage')
 		{{-- @include('layout.sidebarAbsence') --}}
 		@include('layout.navbar')
+		
 	</body>
+
 
 </html>

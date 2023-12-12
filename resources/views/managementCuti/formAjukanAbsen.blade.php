@@ -1,3 +1,176 @@
+<style>
+    .wizard.wizard-4 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: grid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(50% - 0.25rem);
+  flex: 0 0 calc(50% - 0.25rem);
+  width: calc(50% - 0.25rem);
+  background-color: #F3F6F9;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  color: #3F4254;
+  padding: 2rem 2.5rem;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-number {
+  font-size: 1.3rem;
+  font-weight: 600;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 2.75rem;
+  flex: 0 0 2.75rem;
+  height: 2.75rem;
+  width: 2.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: rgba(54, 153, 255, 0.08);
+  color: #3699FF;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-label .wizard-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] {
+  /* background-color: #f39c9c; */
+  background-color: #ffffff;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-number {
+  color: #ffffff;
+  background-color: #3699FF;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-title {
+  color: #3699FF;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="2"] .wizard-step {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(50% - 0.25rem);
+  flex: 0 0 calc(50% - 0.25rem);
+  width: calc(50% - 0.25rem);
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="3"] .wizard-step {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(33.3333333333% - 0.25rem);
+  flex: 0 0 calc(33.3333333333% - 0.25rem);
+  width: calc(33.3333333333% - 0.25rem);
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="4"] .wizard-step {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 calc(25% - 0.25rem);
+  flex: 0 0 calc(25% - 0.25rem);
+  width: calc(25% - 0.25rem);
+}
+
+@media (max-width: 1399.98px) {
+  .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(50% - 0.25rem);
+    flex: 0 0 calc(50% - 0.25rem);
+    width: calc(50% - 0.25rem);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="2"] .wizard-step, .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="4"] .wizard-step {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(50% - 0.25rem);
+    flex: 0 0 calc(50% - 0.25rem);
+    width: calc(50% - 0.25rem);
+  }
+  .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="3"] .wizard-step {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 767.98px) {
+  .wizard.wizard-4 .wizard-nav .wizard-steps {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+  .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
+    -webkit-box-flex: 0 !important;
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    position: relative;
+    width: 100% !important;
+  }
+  .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    padding: 0.5rem 2rem;
+  }
+}
+</style>
 @extends('layout.tempWeb')
 
 @section('kontenpage')
@@ -167,7 +340,7 @@
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Dokumentasi Kegiatan<span class="text-muted">(.jpg)</span></label>
-                                                                    <div class="dropzone dropzone-default dropzone-success dz-clickable" id="customFile">
+                                                                    <div class="dropzone dropzone-default dropzone-success dz-clickable" id="kt_dropzone_3">
                                                                         <div class="dropzone-msg dz-message needsclick">
                                                                             <h3 class="dropzone-msg-title">Upload Gambar disini</h3>
                                                                             <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
@@ -175,7 +348,6 @@
                                                                     </div>
                                                                 </div>   
                                                                     </div>   
-
 																</div>
 																
 																<!--begin: Wizard Step 2-->
@@ -304,6 +476,37 @@
     <script src="assets/js/pages/custom/wizard/wizard-4.js"></script>
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
     <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
+
+    <script>
+        $('#kt_dropzone_3').dropzone({
+            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+            paramName: "file", // The name that will be used to transfer the file
+            maxFiles: 10,
+            maxFilesize: 10, // MB
+            addRemoveLinks: true,
+            acceptedFiles: "image/*,application/pdf,.psd",
+            accept: function(file, done) {
+                if (file.size > 2 * 1024 * 1024) {
+                    done("File size exceeds 2MB limit.");
+                } else {
+                 function upload_object(string $bucketName, string $objectName, string $source): void
+                {
+                    $storage = new StorageClient();
+                    if (!$file = fopen($source, 'r')) {
+                        throw new \InvalidArgumentException('Unable to open file for reading');
+                    }
+                    $bucket = $storage->bucket($bucketName);
+                    $object = $bucket->upload($file, [
+                        'name' => $objectName
+                    ]);
+                    printf('Uploaded %s to gs://%s/%s' . PHP_EOL, basename($source), $bucketName, $objectName);
+                }
+                                }
+                            }
+                        });
+    
+    </script>
+    
 
     <script>
         var emp_no = $("#nik_user").val();
@@ -512,7 +715,7 @@ readFormAbsen();
                 if(result.value){
                     $.ajax({
                         type: "post",
-                        url: "http://10.9.12.43:9096/api/cuti/storeCuti",
+                        url: "http://10.9.12.197:9096/api/cuti/storeCuti",
                         data: storeAbsen,
                         dataType: "json",
                         success: function (response) {
@@ -555,7 +758,7 @@ readFormAbsen();
 
             // $.ajax({
             //     type: "post",
-            //     url: "http://10.9.12.43:9096/api/cuti/storeCuti",
+            //     url: "http://10.9.12.197:9096/api/cuti/storeCuti",
             //     data: storeAbsen,
             //     dataType: "json",
             //     success:function(response){
@@ -620,8 +823,8 @@ readFormAbsen();
         function getTipeAbsen(){
             $.ajax({
                 type: "get",
-                // url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
-                url: "http://10.9.12.43:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
+                // url: "http://10.9.12.197:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
+                url: "http://10.9.12.197:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
                 success: function (response) {
                     var arr = response.data
                     // console.log(arr);
