@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\saldoCuti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ManagementSaldoController extends Controller
 {
@@ -14,21 +15,26 @@ class ManagementSaldoController extends Controller
      * @return \Illuminate\Http\Response
      */
     //create
-    public function ManagementSaldo(){
+    public function ManagementSaldo()
+    {
         $dataSaldo = saldoCuti::all();
-        return view('managementCuti.managementSaldo',compact('dataSaldo'));
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('managementCuti.managementSaldo', compact('dataSaldo'), ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
-    
+
     public function readJSON()
     {
         $dataSaldo = saldoCuti::all(); // saldoCuti model
-        return response()->json(['status'=>200,'data'=>$dataSaldo],200);
+        return response()->json(['status' => 200, 'data' => $dataSaldo], 200);
     }
 
     // public function searchData(Request $request){
     //     if($request->ajax()){
     //         $dataSaldo=DB::where('nik','like','%',$request->searchData,'%')->get();
-            
+
     //     }
     // }
 
@@ -37,12 +43,12 @@ class ManagementSaldoController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->input('key'); // Get the search query from the request
-            
-            $results = DB::table('saldo_cuti') 
+
+            $results = DB::table('saldo_cuti')
                 ->select('nik', 'nama') // Adjust columns as needed
                 ->where('nik', 'like', "%$data%")
                 ->get();
-                
+
             return response()->json($results);
         }
     }
@@ -56,9 +62,10 @@ class ManagementSaldoController extends Controller
     // public function indexPagination(){
     //     //
     // }
-    
 
-    public function uploadExcel(Request $request){
+
+    public function uploadExcel(Request $request)
+    {
         $request->validate([
             'customFile' => 'required|mimes:xlsx,xls',
         ]);
@@ -82,18 +89,20 @@ class ManagementSaldoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function readSaldo(){
+    public function readSaldo()
+    {
         $modelSaldo = DB::table('saldo_cuti')->get();
-        $ds1=[];
-        foreach($modelSaldo as $y){
-            $ds1[]=$y;
+        $ds1 = [];
+        foreach ($modelSaldo as $y) {
+            $ds1[] = $y;
         }
-        $dataSaldo=['status'=>200,
-        'data'=>$ds1
+        $dataSaldo = [
+            'status' => 200,
+            'data' => $ds1
         ];
-        return response()->json($dataSaldo,200);
+        return response()->json($dataSaldo, 200);
     }
-    
+
     public function create()
     {
         return view('managementCuti.managementSaldo');
@@ -131,7 +140,7 @@ class ManagementSaldoController extends Controller
     {
         $dataSaldo = saldoCuti::findOrFail($id);
         return view('edit')->with([
-            'dataSaldo'=>$dataSaldo
+            'dataSaldo' => $dataSaldo
         ]);
     }
 
@@ -184,5 +193,4 @@ class ManagementSaldoController extends Controller
 
         return redirect()->route('')->with('success', 'Data deleted successfully');
     }
-
 }

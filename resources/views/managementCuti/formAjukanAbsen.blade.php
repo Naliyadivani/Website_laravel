@@ -1,10 +1,200 @@
+<style>
+    .wizard.wizard-4 {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: space-between;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: grid;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(50% - 0.25rem);
+        flex: 0 0 calc(50% - 0.25rem);
+        width: calc(50% - 0.25rem);
+        background-color: #F3F6F9;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        color: #3F4254;
+        padding: 2rem 2.5rem;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-number {
+        font-size: 1.3rem;
+        font-weight: 600;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 2.75rem;
+        flex: 0 0 2.75rem;
+        height: 2.75rem;
+        width: 2.75rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        background-color: rgba(54, 153, 255, 0.08);
+        color: #3699FF;
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-label {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-label .wizard-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] {
+        /* background-color: #f39c9c; */
+        background-color: #ffffff;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-number {
+        color: #ffffff;
+        background-color: #3699FF;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-title {
+        color: #3699FF;
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="2"] .wizard-step {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(50% - 0.25rem);
+        flex: 0 0 calc(50% - 0.25rem);
+        width: calc(50% - 0.25rem);
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="3"] .wizard-step {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(33.3333333333% - 0.25rem);
+        flex: 0 0 calc(33.3333333333% - 0.25rem);
+        width: calc(33.3333333333% - 0.25rem);
+    }
+
+    .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="4"] .wizard-step {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 calc(25% - 0.25rem);
+        flex: 0 0 calc(25% - 0.25rem);
+        width: calc(25% - 0.25rem);
+    }
+
+    @media (max-width: 1399.98px) {
+        .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 calc(50% - 0.25rem);
+            flex: 0 0 calc(50% - 0.25rem);
+            width: calc(50% - 0.25rem);
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="2"] .wizard-step,
+        .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="4"] .wizard-step {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 calc(50% - 0.25rem);
+            flex: 0 0 calc(50% - 0.25rem);
+            width: calc(50% - 0.25rem);
+        }
+
+        .wizard.wizard-4 .wizard-nav .wizard-steps[data-total-steps="3"] .wizard-step {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .wizard.wizard-4 .wizard-nav .wizard-steps {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+
+        .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step {
+            -webkit-box-flex: 0 !important;
+            -ms-flex: 0 0 100% !important;
+            flex: 0 0 100% !important;
+            position: relative;
+            width: 100% !important;
+        }
+
+        .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+            padding: 0.5rem 2rem;
+        }
+    }
+</style>
 @extends('layout.tempWeb')
 
 @section('kontenpage')
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Formulir Pengajuan Absen | PI-Smart'
+        document.title = 'Formulir Pengajuan Absen | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -22,7 +212,7 @@
                 <span></span>
             </button>
             <!--end::Aside Mobile Toggle-->
-            
+
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
                 <span class="svg-icon svg-icon-xl">
@@ -51,98 +241,106 @@
 
                 <!--begin::Content Subheader-->
                 <!--begin::Content-->
-					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-						<!--begin::Subheader-->
-						<div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-							<div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-								<!--begin::Info-->
-								<div class="d-flex align-items-center flex-wrap mr-1">
-									<!--begin::Page Heading-->
-									<div class="d-flex align-items-baseline flex-wrap mr-5">
-										<!--begin::Page Title-->
-										<h5 class="text-dark font-weight-bold my-1 mr-5">Formulir Pengajuan Absen</h5>
-										<!--end::Page Title-->
-									</div>
-									<!--end::Page Heading-->
-								</div>
-								<!--end::Info-->
-							</div>
-						</div>
-						<!--end::Subheader-->
-						<!--begin::Entry-->
-						<div class="d-flex flex-column-fluid">
-							<!--begin::Container-->
-							<div class="container">
-								<div class="card card-custom card-transparent">
-									<div class="card-body p-0">
-										<!--begin: Wizard-->
-										<div class="wizard wizard-4" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
-											<!--begin: Wizard Nav-->
-											<div class="wizard-nav">
-												<div class="wizard-steps">
-													<!--begin::Wizard Step 1 Nav-->
-													<div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
-														<div class="wizard-wrapper">
-															<div class="wizard-number">1</div>
-															<div class="wizard-label">
-																<div class="wizard-title">Setup</div>
-																<div class="wizard-desc">Setup Your Absence</div>
-															</div>
-														</div>
-													</div>
-													
-													<!--begin::Wizard Step 2 Nav-->
-													<div class="wizard-step" data-wizard-type="step">
-														<div class="wizard-wrapper">
-															<div class="wizard-number">2</div>
-															<div class="wizard-label">
-																<div class="wizard-title">Completed</div>
-																<div class="wizard-desc">Review and Submit</div>
-															</div>
-														</div>
-													</div>
-													<!--end::Wizard Step 4 Nav-->
-												</div>
-											</div>
-											<!--end: Wizard Nav-->
-											<!--begin: Wizard Body-->
-											<div class="card card-custom card-shadowless rounded-top-0">
-												<div class="card-body p-0">
-													<div class="row justify-content-center py-8 px-8">
-														<div class="col-xl-12">
-															<!--begin: Wizard Form-->
-															<form class="form mt-0 mt-lg-10" id="kt_form">
-																<!--begin: Wizard Step 1-->
-																<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-																	<div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
-																	<!--begin::Input-->
-                                                                    <input type="hidden" id="id_pengajuan_absen">
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <!--begin::Subheader-->
+                    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+                        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                            <!--begin::Info-->
+                            <div class="d-flex align-items-center flex-wrap mr-1">
+                                <!--begin::Page Heading-->
+                                <div class="d-flex align-items-baseline flex-wrap mr-5">
+                                    <!--begin::Page Title-->
+                                    <h5 class="text-dark font-weight-bold my-1 mr-5">Formulir Pengajuan Absen</h5>
+                                    <!--end::Page Title-->
+                                </div>
+                                <!--end::Page Heading-->
+                            </div>
+                            <!--end::Info-->
+                            <div class="d-flex align-items-center">
+                                <div id="selectYear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Subheader-->
+                    <!--begin::Entry-->
+                    <div class="d-flex flex-column-fluid">
+                        <!--begin::Container-->
+                        <div class="container">
+                            <div class="card card-custom card-transparent">
+                                <div class="card-body p-0">
+                                    <!--begin: Wizard-->
+                                    <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
+                                        <!--begin: Wizard Nav-->
+                                        <div class="wizard-nav">
+                                            <div class="wizard-steps">
+                                                <!--begin::Wizard Step 1 Nav-->
+                                                <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                                    <div class="wizard-wrapper">
+                                                        <div class="wizard-number">1</div>
+                                                        <div class="wizard-label">
+                                                            <div class="wizard-title">Setup</div>
+                                                            <div class="wizard-desc">Setup Your Absence</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-																	<div class="form-group">
-																		<label>NIK</label>
-																		<input type="text" class="form-control form-control-solid form-control-lg" name="nik" placeholder="NIK" value="{{ Auth::user()->nik }}" readonly/>
-																	</div>
-																	<!--end::Input-->
-																	<!--begin::Input-->
-                                                                    <div class="form-group">
-                                                                        <label>Pilih Tipe Absen <span class="text-danger">*</span></label>
-                                                                        <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen" name="nama_tipe_absen" onchange="handleTipeAbsenChange(this)">
-                                                                            <option selected value="">Pilih Cuti</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    
-                                                                    <div id="form_absen" style="display: none">
+                                                <!--begin::Wizard Step 2 Nav-->
+                                                <div class="wizard-step" data-wizard-type="step">
+                                                    <div class="wizard-wrapper">
+                                                        <div class="wizard-number">2</div>
+                                                        <div class="wizard-label">
+                                                            <div class="wizard-title">Completed</div>
+                                                            <div class="wizard-desc">Review and Submit</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end::Wizard Step 4 Nav-->
+                                            </div>
+                                        </div>
+                                        <!--end: Wizard Nav-->
+                                        <!--begin: Wizard Body-->
+                                        <div class="card card-custom card-shadowless rounded-top-0">
+                                            <div class="card-body p-0">
+                                                <div class="row justify-content-center py-8 px-8">
+                                                    <div class="col-xl-12">
+                                                        <!--begin: Wizard Form-->
+                                                        <form class="form mt-0 mt-lg-10" id="kt_form">
+                                                            @csrf
+                                                            <!--begin: Wizard Step 1-->
+                                                            <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+                                                                <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
+                                                                <!--begin::Input-->
+                                                                <input type="hidden" id="id_pengajuan_absen">
+
+                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                                                                <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
+
+                                                                <div class="form-group">
+                                                                    <label>NIK</label>
+                                                                    <input type="text" class="form-control form-control-solid form-control-lg" name="nik" placeholder="NIK" value="{{ $user['nik'] }}" readonly />
+                                                                </div>
+                                                                <!--end::Input-->
+                                                                <!--begin::Input-->
+                                                                <div class="form-group">
+                                                                    <label>Pilih Tipe Absen <span class="text-danger">*</span></label>
+                                                                    <select class="form-control form-control-lg selectpicker" id="nama_tipe_absen" name="nama_tipe_absen" onchange="handleTipeAbsenChange(this)">
+                                                                        <option selected value="">Pilih Cuti</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div id="form_absen" style="display: none">
                                                                     <div class="form-group">
                                                                         <label>Deskripsi<span class="text-danger"> *</span></label>
                                                                         <textarea class="form-control" name="deskripsi_absen" id="deskripsi_absen" placeholder="Enter Absence Descriptions" rows="5"></textarea>
                                                                     </div>
 
-                                                                        {{-- <input type="hidden" name="" id="" value="0"> --}}
+                                                                    {{-- <input type="hidden" name="" id="" value="0"> --}}
                                                                     <!--begin::Input-->
                                                                     <div class="form-group">
                                                                         <label>Start Date <span class="text-danger">*</span></label>
                                                                         <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
-                                                                            <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Start Date" name="start_Date" id="start_Date" data-target="#kt_datetimepicker_7_1"/>
+                                                                            <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Start Date" name="start_Date" id="start_Date" data-target="#kt_datetimepicker_7_1" />
                                                                             <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
                                                                                 <span class="input-group-text">
                                                                                     <i class="ki ki-calendar"></i>
@@ -151,11 +349,11 @@
                                                                         </div>
                                                                         <span class="form-text text-muted">Please enter start date.</span>
                                                                     </div>
-                                                                    
+
                                                                     <div class="form-group" id="end_Date_div">
                                                                         <label>End Date<span class="text-danger">*</span></label>
                                                                         <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
-                                                                            <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="End Date" name="end_Date" id="end_Date" data-target="#kt_datetimepicker_7_2"/>
+                                                                            <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="End Date" name="end_Date" id="end_Date" data-target="#kt_datetimepicker_7_2" />
                                                                             <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
                                                                                 <span class="input-group-text">
                                                                                     <i class="ki ki-calendar"></i>
@@ -164,83 +362,83 @@
                                                                         </div>
                                                                         <span class="form-text text-muted">Please enter end date.</span>
                                                                     </div>
-                                                                
-                                                                <div class="form-group">
-                                                                    <label>Dokumentasi Kegiatan<span class="text-muted">(.jpg)</span></label>
-                                                                    <div class="dropzone dropzone-default dropzone-success dz-clickable" id="customFile">
-                                                                        <div class="dropzone-msg dz-message needsclick">
-                                                                            <h3 class="dropzone-msg-title">Upload Gambar disini</h3>
-                                                                            <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
+
+                                                                    <div class="form-group">
+                                                                        <label>Dokumentasi Kegiatan<span class="text-muted">(.jpg)</span></label>
+                                                                        <div name="attachment[]" class="dropzone dropzone-default dropzone-success dz-clickable" id="FileAbsence">
+                                                                            <div class="dropzone-msg dz-message needsclick">
+                                                                                <h3 class="dropzone-msg-title">Upload Gambar disini</h3>
+                                                                                <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>   
-                                                                    </div>   
+                                                                </div>
 
-																</div>
-																
-																<!--begin: Wizard Step 2-->
-																<div class="pb-5" data-wizard-type="step-content">
-																	<!--begin::Section-->
-																	<h4 class="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
-																	<h6 class="font-weight-bolder mb-3">Absence Details:</h6>
-																	<div class="text-dark-50 line-height-lg">
-                                                                        <div class="col-12">
-                                                                            <div class="form-group row mb-3 mx-2">
-                                                                                <label class="col-3 col-form-label p-0">Tipe Absen</label>
-                                                                                <label class="col-1 text-right px-0">:</label>
-                                                                                <label class="col-8 px-3 mb-0" id="tipe_absen_detail">Not Yet</label>
-                                                                            </div>
-                                                                            <div class="form-group row mb-3 mx-2">
-                                                                                <label class="col-3 col-form-label p-0">Deskripsi</label>
-                                                                                <label class="col-1 text-right px-0">:</label>
-                                                                                <label class="col-8 px-3 mb-0" id="deskripsi_detail">Not Yet</label>
-                                                                            </div>
-                                                                            <div class="form-group row mb-3 mx-2">
-                                                                                <label class="col-3 col-form-label p-0">Start Date</label>
-                                                                                <label class="col-1 text-right px-0">:</label>
-                                                                                <label class="col-8 px-3 mb-0" id="start_Date_detail">Not Yet</label>
-                                                                            </div>
-                                                                            <div class="form-group row mb-3 mx-2">
-                                                                                <label class="col-3 col-form-label p-0">End Date</label>
-                                                                                <label class="col-1 text-right px-0">:</label>
-                                                                                <label class="col-8 px-3 mb-0" id="end_Date_detail">Not Yet</label>
-                                                                            </div>
+                                                            </div>
+
+                                                            <!--begin: Wizard Step 2-->
+                                                            <div class="pb-5" data-wizard-type="step-content">
+                                                                <!--begin::Section-->
+                                                                <h4 class="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
+                                                                <h6 class="font-weight-bolder mb-3">Absence Details:</h6>
+                                                                <div class="text-dark-50 line-height-lg">
+                                                                    <div class="col-12">
+                                                                        <div class="form-group row mb-3 mx-2">
+                                                                            <label class="col-3 col-form-label p-0">Tipe Absen</label>
+                                                                            <label class="col-1 text-right px-0">:</label>
+                                                                            <label class="col-8 px-3 mb-0" id="tipe_absen_detail">Not Yet</label>
                                                                         </div>
-																	</div>
-																	<div class="separator separator-dashed my-5"></div>
-                                                                    <h6 class="font-weight-bolder mb-3">Approver:</h6>
-																	<!--end::Section-->
-																
-																</div>
-																<!--end: Wizard Step 2-->
-																<!--begin: Wizard Actions-->
-																<div class="d-flex justify-content-between border-top mt-5 pt-10">
-																	<div class="mr-2">
-																		<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
-																	</div>
-																	<div>
-																		<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4 btn-submit" data-wizard-type="action-submit" onclick="storeAbsen()">Submit</button>
-																		<button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
-																	</div>
-																</div>
-																<!--end: Wizard Actions-->
-															</form>
-															<!--end: Wizard Form-->
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--end: Wizard Bpdy-->
-										</div>
-										<!--end: Wizard-->
-									</div>
-								</div>
-							</div>
-							<!--end::Container-->
-						</div>
-						<!--end::Entry-->
-					</div>
-					<!--end::Content-->
+                                                                        <div class="form-group row mb-3 mx-2">
+                                                                            <label class="col-3 col-form-label p-0">Deskripsi</label>
+                                                                            <label class="col-1 text-right px-0">:</label>
+                                                                            <label class="col-8 px-3 mb-0" id="deskripsi_detail">Not Yet</label>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3 mx-2">
+                                                                            <label class="col-3 col-form-label p-0">Start Date</label>
+                                                                            <label class="col-1 text-right px-0">:</label>
+                                                                            <label class="col-8 px-3 mb-0" id="start_Date_detail">Not Yet</label>
+                                                                        </div>
+                                                                        <div class="form-group row mb-3 mx-2">
+                                                                            <label class="col-3 col-form-label p-0">End Date</label>
+                                                                            <label class="col-1 text-right px-0">:</label>
+                                                                            <label class="col-8 px-3 mb-0" id="end_Date_detail">Not Yet</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="separator separator-dashed my-5"></div>
+                                                                <h6 class="font-weight-bolder mb-3">Approver:</h6>
+                                                                <!--end::Section-->
+
+                                                            </div>
+                                                            <!--end: Wizard Step 2-->
+                                                            <!--begin: Wizard Actions-->
+                                                            <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                                                <div class="mr-2">
+                                                                    <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
+                                                                </div>
+                                                                <div>
+                                                                    <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4 btn-submit" data-wizard-type="action-submit" onclick="storeAbsen()">Submit</button>
+                                                                    <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
+                                                                </div>
+                                                            </div>
+                                                            <!--end: Wizard Actions-->
+                                                        </form>
+                                                        <!--end: Wizard Form-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end: Wizard Bpdy-->
+                                    </div>
+                                    <!--end: Wizard-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Container-->
+                    </div>
+                    <!--end::Entry-->
+                </div>
+                <!--end::Content-->
                 <!--end::Content Subheader-->
 
                 <!--begin::Footer-->
@@ -284,11 +482,72 @@
         </span>
     </div>
     <!--end::Scrolltop-->
-    
+
     <!--end::Demo Panel-->
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
     <!--begin::Global Config(global config for global JS scripts)-->
-    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -303,20 +562,100 @@
     <!--end::Page Scripts-->
     <script src="assets/js/pages/custom/wizard/wizard-4.js"></script>
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
-    <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
-
+    {{-- <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script> --}}
     <script>
+        $('#FileAbsence').dropzone({
+            url: "{{ url('upload_file') }}", // The name that will be used to transfer the file
+            maxFiles: 10,
+            maxFilesize: 2, // MB
+            addRemoveLinks: true,
+            autoProcessQueue: true,
+            uploadMultiple: true,
+            acceptedFiles: "image/*,application/pdf,.psd",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            init: function() {
+                dzClosure = this;
+
+
+                dzClosure.on('addedfile', function(file) {
+
+
+                });
+                dzClosure.on("sendingmultiple", function(data, xhr, formData) {
+                    formData.append('type', 'request');
+                })
+                dzClosure.on("successmultiple", function(files, response) {
+                    var arr = response.data
+                    // console.log(arr);
+                    arr.forEach(x => {
+                        file_absen.push(x);
+                        // arr_files.push(arr_files,x);
+                        // attachFile.push(x)
+                    })
+                });
+                dzClosure.on("removedfile", function(file) {
+                    file_absen = file_absen.filter(function(item) {
+                        return item !== file;
+                    });
+                });
+                dzClosure.on("errormultiple", function(files, response) {
+                    if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
+                        var _this = this;
+                        // Remove all files
+                        // _this.removeAllFiles();
+                    }
+                    // location.reload();
+                });
+            }
+        });
+
+        var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
-        var year = 2023;
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        }); 
 
-        
-        function refreshDatetimepicker(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var current_year = new Date().getFullYear();
+        selectYear(current_year)
+
+        var year = $('#absence_year').val();
+        $("#absence_year").change(function() {
+            year = $('#absence_year').val();
+            readFormAbsen()
+        });
+
+        function selectYear(year) {
+            var start_year = new Date();
+            start_year.setFullYear(year - 1)
+            var html =
+                '<select class="form-control selectpicker" id="absence_year" data-style="btn-primary">' +
+                '<optgroup label="Periode Tahun" id="listYear">' +
+                '</optgroup>' +
+                '</select>'
+            $('#selectYear').html(html)
+            var get_year = start_year.getFullYear();
+            for (let i = 0; i < 3; i++) {
+                if (get_year == (current_year)) {
+                    $('#listYear').append($("<option></option>").attr({
+                        value: get_year,
+                        selected: 'selected'
+                    }).text('Periode thn ' + get_year));
+                } else {
+                    $('#listYear').append($("<option></option>").attr('value', get_year).text('Periode thn ' +
+                        get_year));
+                }
+                get_year++
+            }
+            $('absence_year').selectpicker('refresh')
+        }
+
+        function refreshDatetimepicker() {
             $('#kt_datetimepicker_7_1').datetimepicker('destroy');
             $('#kt_datetimepicker_7_1').datetimepicker({
                 format: 'YYYY-MM-DD'
@@ -328,203 +667,201 @@
                 format: 'YYYY-MM-DD'
             });
         }
-        
-        $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
 
-        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function (datetimepicker) {
-            var jmlhHariKalender = 0;
-            var JmlHariKerja = 0;
-            var selectedDate = datetimepicker.date.toDate();
-            
-            if (my_max_absen != null) {
-                console.log(my_max_absen);
-                if (my_max_absen.tipe_max_absen == "hari_kalender"){
-                    while (jmlhHariKalender < my_max_absen.max_absen) {
-                        jmlhHariKalender++;
-                        
-                        // Check if the current day is not Saturday or Sunday
-                        if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
-                            JmlHariKerja++;
-                        }
-                        selectedDate.setDate(selectedDate.getDate() + 1);
-                    }
-                }else if (my_max_absen.tipe_max_absen == "hari_kerja"){
-                    console.log("Hari Kerja: ", my_max_absen.max_absen);
-                    while (JmlHariKerja < my_max_absen.max_absen) {
-                        jmlhHariKalender++;
-                        
-                        // Check if the current day is not Saturday or Sunday
-                        if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
-                            JmlHariKerja++;
-                        }
-                        selectedDate.setDate(selectedDate.getDate() + 1);
-                    }
-                }
-                var endDate = new Date(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
-                // console.log("Hari Kalender:",jmlhHariKalender,"\nHari Kerja:",JmlHariKerja);
-                // console.log("EndDate After:",endDate.toISOString().slice(0, 10));
-                $('#end_Date').val(endDate.toISOString().slice(0, 10))
-            }else{
-                // console.log(saldoObject.saldo);
-                while (JmlHariKerja < my_saldo.saldo) {
-                    jmlhHariKalender++;
-                    
-                    // Check if the current day is not Saturday or Sunday
-                    if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
-                        JmlHariKerja++;
-                    }
-                    selectedDate.setDate(selectedDate.getDate() + 1);
-                }
-                console.log("Hari Kalender:",jmlhHariKalender,"\nHari Kerja:",JmlHariKerja);
-                var endDate = new Date(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
-                
-                Swal.fire({
-                    text: "Batas maksimal pengajuan absen anda pada tanggal: " + endDate.toISOString().slice(0, 10),
-                    icon: "warning",
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok!",
-                    customClass: {
-                        confirmButton: "btn font-weight-bold btn-primary",
-                    }
-                });
-            }
+        $('#kt_datetimepicker_7_3').datetimepicker({
+            format: 'YYYY-MM-DD'
         });
-        
-        var my_max_absen
+
+        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function(datetimepicker) {
+            var kerja = 0;
+            var kalender = 0;
+            var selectedDate = datetimepicker.date.toDate();
+
+            if (max_absen != null) {
+                if (tipe_max_absen == "hari_kalender") {
+                    while (kalender < max_absen) {
+                        kalender++;
+
+                        // Check if the current day is not Saturday or Sunday
+                        if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                            kerja++;
+                        }
+                        selectedDate.setDate(selectedDate.getDate() + 1);
+                    }
+                } else if (tipe_max_absen == "hari_kerja") {
+                    while (kerja < max_absen) {
+                        kalender++;
+
+                        // Check if the current day is not Saturday or Sunday
+                        if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                            kerja++;
+                        }
+                        selectedDate.setDate(selectedDate.getDate() + 1);
+                    }
+                }
+                console.log(max_absen, tipe_max_absen, kerja, kalender);
+                var endDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+                $('#end_Date').val(endDate.toISOString().slice(0, 10));
+            }
+
+        });
+
+        var max_absen
+        var tipe_max_absen
         var my_saldo
+
         function handleTipeAbsenChange(selectElement) {
             if (arrReadFormAbsen == null) {
                 clear();
-            }else{
+            } else {
                 refreshDatetimepicker();
                 $('#start_Date').val(arrReadFormAbsen.mulai_absen);
                 $('#end_Date').val(arrReadFormAbsen.akhir_absen);
             }
-            // if arrReadFormAbsen == null{
-            //     clear();
-            // }
+
             // Get the selected option
             var selectedOption = selectElement.options[selectElement.selectedIndex];
-            
-            // // Get the data-max-absen attribute value
-        // var maxAbsen = selectedOption.getAttribute('data-max-absen');
-        my_max_absen = arrTipeCuti[selectElement.selectedIndex-1].my_max_absen
-        my_saldo = arrTipeCuti[selectElement.selectedIndex-1].my_saldo
-        // console.log(max_absen);
-       
-        // var maxAbsen = selectedOption.getAttribute('data-max-absen');
-        
-        $('#form_absen').show();
-        // Get the FormValidation instance
-        var formValidation = KTWizard4.getValidations()[0]; // Adjust the index as needed
-        if (my_max_absen != null){
-            $('#end_Date_div :input').prop('disabled', true);
-            formValidation.disableValidator('end_Date', 'notEmpty');
-        }else{
-            Swal.fire({
-                text: "Anda Memiliki Sisa Saldo: " + my_saldo.saldo,
-                icon: "warning",
-                buttonsStyling: false,
-                confirmButtonText: "Ok!",
-                customClass: {
-                confirmButton: "btn font-weight-bold btn-primary",
-                }
-            });
-            $('#end_Date_div :input').prop('disabled', false);
-            formValidation.enableValidator('end_Date', 'notEmpty');
+
+            max_absen = arrTipeCuti[selectElement.selectedIndex - 1].max_absen
+            tipe_max_absen = arrTipeCuti[selectElement.selectedIndex - 1].tipe_max_absen
+            my_saldo = arrTipeCuti[selectElement.selectedIndex - 1].my_saldo
+
+            $('#form_absen').show();
+            // Get the FormValidation instance
+            var formValidation = KTWizard4.getValidations()[0]; // Adjust the index as needed
+            if (max_absen != null) {
+                $('#end_Date_div :input').prop('disabled', true);
+                formValidation.disableValidator('end_Date', 'notEmpty');
+            } else {
+                $('#end_Date_div :input').prop('disabled', false);
+                formValidation.enableValidator('end_Date', 'notEmpty');
+            }
         }
-    }
 
-    // Read the 'arr' data from localStorage
-    var tipeAbsenSelected = null
-    var arrReadFormAbsen
-function readFormAbsen() {
-    var arrData = localStorage.getItem('arrData');
-    
-    if (arrData) {
-        // Parse the JSON string back to an object
-        var arr = JSON.parse(arrData);
-        arrReadFormAbsen = arr
-        console.log(arrReadFormAbsen);
-        $('#id_pengajuan_absen').val(arr.id_pengajuan_absen);
-        tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
-        $('#nama_tipe_absen').prop('disabled',true)
+        // Read the 'arr' data from localStorage
+        var tipeAbsenSelected = null
+        var arrReadFormAbsen
 
-        $('#deskripsi_absen').val(arr.deskripsi);
-        // if(arr.tipe_absen.max_absen == null){
-        //     $('#start_Date').val(arr.mulai_absen);
-        //     $('#end_Date').val(arr.akhir_absen);
-        // }else{
-        //     $('#start_Date').val(arr.mulai_absen);
-        // }
-        
-        // Now you can use the 'arr' data as needed
-        console.log(arr);
-        
-        // Optionally, clear the data from localStorage if it's no longer needed
-        localStorage.removeItem('arrData');
-    } else {
-        // Handle the case where 'arr' data is not available
-        console.error('No data available');
-    }
-}
+        function readFormAbsen() {
+            var arrData = localStorage.getItem('arrData');
 
-// Call the function to read 'arr' data
-readFormAbsen();
+            if (arrData) {
+                // Parse the JSON string back to an object
+                var arr = JSON.parse(arrData);
+                arrReadFormAbsen = arr
 
-        function  storeAbsen(){
+
+            var fileData = arr.file_absen;
+            if (fileData && fileData.length > 0) {
+                // Handle the file information here, you can loop through the files
+                fileData.forEach(function(file) {
+                    // Perform actions with each file data (e.g., display, manipulate, etc.)
+                    console.log("File Name:", file.name);
+                    console.log("File Size:", file.size);
+                    console.log("File Type:", file.type);
+                    // ... Handle other file properties or actions as needed
+                });
+            }
+
+
+                // console.log(arrReadFormAbsen);
+                $('#id_pengajuan_absen').val(arr.id_pengajuan_absen);
+                tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
+                $('#nama_tipe_absen').prop('disabled', true)
+
+                $('#deskripsi_absen').val(arr.deskripsi);
+
+
+                // Now you can use the 'arr' data as needed
+                console.log(arr);
+
+                // Optionally, clear the data from localStorage if it's no longer needed
+                localStorage.removeItem('arrData');
+            } else {
+                // Handle the case where 'arr' data is not available
+                console.error('No data available');
+            }
+        }
+
+        // Call the function to read 'arr' data
+        readFormAbsen();
+
+        var file_absen = new Array();
+
+        function storeAbsen() {
             var id_absen = $('#id_pengajuan_absen').val();
-            var nik = '{{ Auth::user()->nik }}';
+            var nik = "{{ $user['nik'] }}";
             var tipe_absen_id = $('#nama_tipe_absen').val();
             var deskripsi = $('#deskripsi_absen').val();
             var mulai_absen = $('#start_Date').val();
             var akhir_absen = $('#end_Date').val();
-            console.log(id_absen,nik,tipe_absen_id,deskripsi,mulai_absen,akhir_absen);
 
-            var storeAbsen ={
-                nik:nik,
+
+            // console.log(id_absen, nik, tipe_absen_id, deskripsi, mulai_absen, akhir_absen,file_absen);
+
+            var storeAbsen = {
+                nik: nik,
                 tipe_absen_id: tipe_absen_id,
-                deskripsi:deskripsi,
-                mulai_absen:mulai_absen,
-                akhir_absen:akhir_absen,
-                created_by: {{ Auth::user()->nik }}
+                deskripsi: deskripsi,
+                mulai_absen: mulai_absen,
+                akhir_absen: akhir_absen,
+                file_absen: file_absen,
+                created_by: "{{$user['nik']}}"
             }
 
             if (id_absen !== '') {
                 storeAbsen.id_pengajuan_absen = id_absen;
             }
 
-            
+
             Swal.fire({
-                        title: 'Apakah anda yakin untuk mengajukan absen ?',
-                        text: 'Mohon untuk melakukan pengecekan data kembali',
-                        // text: "All is good! Berhasil Mengajukan Absen!",
-                        icon: "question",
-                        showCancelButton: true,
-                        buttonsStyling: false,
-                        confirmButtonText: "Yes, submit!",
-                        cancelButtonText: "No, cancel",
-                        customClass: {
-                            confirmButton: "btn font-weight-bold btn-primary",
-                            cancelButton: "btn font-weight-bold btn-default"
-                        }
-			}).then(function (result){
-                if(result.value){
+                title: 'Apakah anda yakin untuk mengajukan absen ?',
+                text: 'Mohon untuk melakukan pengecekan data kembali',
+                // text: "All is good! Berhasil Mengajukan Absen!",
+                icon: "question",
+                showCancelButton: true,
+                buttonsStyling: false,
+                confirmButtonText: "Yes, submit!",
+                cancelButtonText: "No, cancel",
+                customClass: {
+                    confirmButton: "btn font-weight-bold btn-primary",
+                    cancelButton: "btn font-weight-bold btn-default"
+                }
+            }).then(function(result) {
+                if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "http://10.9.12.43:9096/api/cuti/storeCuti",
-                        data: storeAbsen,
+                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeCuti",
+                        // data: storeAbsen,
+                        data: JSON.stringify(storeAbsen),
+                        contentType: "application/json",
                         dataType: "json",
-                        success: function (response) {
+                        beforeSend: function(xhr) {
                             Swal.fire({
-                            title: "Berhasil",
-                            text: "Berhasil Menambahkan Data",
-                            icon: "success",
-                        });
-                        window.location.href = 'pengajuan_absen';
-                        _formEl.submit();  
+                                html: 'Please Wait ...',
+                                allowEscapeKey: false,
+                                allowOutsideClick: false,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                }
+                            });
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                         },
-                        error: function (error) {
+                        success: function(response) {
+                            Swal.fire({
+                                title: "Berhasil",
+                                text: "Berhasil Menambahkan Data",
+                                icon: "success",
+                                confirmButtonText: "Ok!"
+                            }).then(function(result) {
+                                console.log(result);
+                                if (result.isConfirmed) {
+                                    window.location.href = 'pengajuan_absen';
+                                    // _formEl.submit();
+                                }
+                            });
+                        },
+                        error: function(error) {
                             // Handle error jika pengiriman gagal
                             console.error('Error:', error);
                             // Tambahkan logika atau tindakan lain jika diperlukan
@@ -540,106 +877,48 @@ readFormAbsen();
                         }
 
                     });
-                }else if (result.dismiss === 'cancel') {
-					Swal.fire({
-						text: "Your form has not been submitted!",
-						icon: "error",
-						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
-						customClass: {
-							confirmButton: "btn font-weight-bold btn-primary",
-						}
-					});
-				}
+                } else {
+                    Swal.fire({
+                        text: "Your form has not been submitted!",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok, got it!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-primary",
+                        }
+                    });
+                }
             });
-
-            // $.ajax({
-            //     type: "post",
-            //     url: "http://10.9.12.43:9096/api/cuti/storeCuti",
-            //     data: storeAbsen,
-            //     dataType: "json",
-            //     success:function(response){
-            //         Swal.fire({
-            //             title: 'Apakah anda yakin untuk mengajukan absen ?',
-            //             text: 'Mohon untuk melakukan pengecekan data kembali',
-            //             // text: "All is good! Berhasil Mengajukan Absen!",
-            //             icon: "question",
-            //             showCancelButton: true,
-            //             buttonsStyling: false,
-            //             confirmButtonText: "Yes, submit!",
-            //             cancelButtonText: "No, cancel",
-            //             customClass: {
-            //                 confirmButton: "btn font-weight-bold btn-primary",
-            //                 cancelButton: "btn font-weight-bold btn-default"
-            //             }
-			// }).then(function (result) {
-            //     if (result.value) {
-            //         // Swal.fire('Berhasil', 'Berhasil Menambahkan Data', 'success');
-            //         Swal.fire({
-            //             title: "Berhasil",
-            //             text: "Berhasil Menambahkan Data",
-            //             icon: "success",
-            //         });
-            //         window.location.href = 'pengajuan_absen';
-            //         _formEl.submit(); // Submit form
-			// 		//functin store
-            //         // storeAbsen();
-			// 	} else if (result.dismiss === 'cancel') {
-			// 		Swal.fire({
-			// 			text: "Your form has not been submitted!",
-			// 			icon: "error",
-			// 			buttonsStyling: false,
-			// 			confirmButtonText: "Ok, got it!",
-			// 			customClass: {
-			// 				confirmButton: "btn font-weight-bold btn-primary",
-			// 			}
-			// 		});
-			// 	}
-			// });
-            //     },
-            //     error: function (error) {
-            //         // Handle error jika pengiriman gagal
-            //         console.error('Error:', error);
-            //         // Tambahkan logika atau tindakan lain jika diperlukan
-            //         Swal.fire({
-			// 			text: "Maaf, Saldo Anda Tidak Cukup!",
-			// 			icon: "error",
-			// 			buttonsStyling: false,
-			// 			confirmButtonText: "Ok, got it!",
-			// 			customClass: {
-			// 				confirmButton: "btn font-weight-bold btn-primary",
-			// 			}
-			// 		});
-            //     }
-            // });
         }
 
 
         getTipeAbsen()
         var arrTipeCuti = [];
-        function getTipeAbsen(){
+
+        function getTipeAbsen() {
             $.ajax({
                 type: "get",
-                // url: "http://10.9.12.150:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
-                url: "http://10.9.12.43:9096/api/cuti/getTipeAbsenSaldoPengajuan?nik="+ {{ Auth::user()->nik }}+"&tahun="+year,
-                success: function (response) {
+                // url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(response) {
                     var arr = response.data
-                    // console.log(arr);
-                    // return arr
                     $('#nama_tipe_absen').html('')
                     var tipeAbsen = '';
                     var awal = '<option value="">Pilih Cuti</option>';
                     $('#nama_tipe_absen').append(awal);
                     arrTipeCuti = arr;
-                    arr.forEach((y,i)=>{
-                        tipeAbsen += "<option value='" + y.id_tipe_absen + "'>" + y.nama_tipe_absen + "</option>";
+                    arr.forEach((y, i) => {
+                        tipeAbsen += "<option value='" + y.id_tipe_absen + "'>" + y.nama_tipe_absen + "</option>";
                     });
 
                     $('#nama_tipe_absen').append(tipeAbsen);
                     $('#nama_tipe_absen').selectpicker("refresh");
                 },
-                complete: function (data){
-                    if(tipeAbsenSelected != null){
+                complete: function(data) {
+                    if (tipeAbsenSelected != null) {
                         // console.log(tipeAbsenSelected);
                         $('#nama_tipe_absen').val(tipeAbsenSelected).change();
                     }
@@ -647,184 +926,301 @@ readFormAbsen();
             });
         }
 
-    function fetchDataAndUpdateLabels() {
-        $('#tipe_absen_detail').text($('#nama_tipe_absen').find(':selected').text())
-        $('#deskripsi_detail').text($('#deskripsi_absen').val())
-        $('#start_Date_detail').text($('#start_Date').val())
-        $('#end_Date_detail').text($('#end_Date').val())
-    }
+        function fetchDataAndUpdateLabels() {
+            $('#tipe_absen_detail').text($('#nama_tipe_absen').find(':selected').text())
+            $('#deskripsi_detail').text($('#deskripsi_absen').val())
+            $('#start_Date_detail').text($('#start_Date').val())
+            $('#end_Date_detail').text($('#end_Date').val())
+        }
 
-    function clear(){
-        $('#start_Date').val('');
-        $('#end_Date').val('');
-        $('#deskripsi_absen').val('');
-        refreshDatetimepicker();
-    }
-
+        function clear() {
+            $('#start_Date').val('');
+            $('#end_Date').val('');
+            $('#deskripsi_absen').val('');
+            refreshDatetimepicker();
+        }
     </script>
 
     <script>
         "use strict";
 
-// Class definition
-var KTWizard4 = function () {
-	// Base elements
-	var _wizardEl;
-	var _formEl;
-	var _wizardObj;
-	var _validations = [];
+        // Class definition
+        var KTWizard4 = function() {
+            // Base elements
+            var _wizardEl;
+            var _formEl;
+            var _wizardObj;
+            var _validations = [];
 
-	// Private functions
-	var _initWizard = function () {
-		// Initialize form wizard
-		_wizardObj = new KTWizard(_wizardEl, {
-			startStep: 1, // initial active step number
-			clickableSteps: true  // allow step clicking
-		});
+            // Private functions
+            var _initWizard = function() {
+                // Initialize form wizard
+                _wizardObj = new KTWizard(_wizardEl, {
+                    startStep: 1, // initial active step number
+                    clickableSteps: true // allow step clicking
+                });
 
-		// Validation before going to next page
-		_wizardObj.on('change', function (wizard) {
-			if (wizard.getStep() > wizard.getNewStep()) {
-				return; // Skip if stepped back
-			}
-            // Call the function to fetch and update data
-            fetchDataAndUpdateLabels();
+                // Validation before going to next page
+                _wizardObj.on('change', function(wizard) {
 
-			// Validate form before change wizard step
-			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
+                    if (wizard.getStep() > wizard.getNewStep()) {
+                        return; // Skip if stepped back
+                    }
+                    // Call the function to fetch and update data
+                    fetchDataAndUpdateLabels();
 
-			if (validator) {
-				validator.validate().then(function (status) {
-					if (status == 'Valid') {
-						wizard.goTo(wizard.getNewStep());
 
-						KTUtil.scrollTop();
-					} else {
-						// Swal.fire({
-						// 	text: "Sorry, looks like there are some errors detected, please try again.",
-						// 	icon: "error",
-						// 	buttonsStyling: false,
-						// 	confirmButtonText: "Ok, got it!",
-						// 	customClass: {
-						// 		confirmButton: "btn font-weight-bold btn-light"
-						// 	}
-						// }).then(function () {
-						// 	KTUtil.scrollTop();
-						// });
-					}
-				});
-			}
+                    // Validate form before change wizard step
+                    var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
 
-			return false;  // Do not change wizard step, further action will be handled by he validator
-		});
+                    if (validator) {
+                        validator.validate().then(function(status) {
+                            if (status == 'Valid') {
+                                const mulai_absen = $('#start_Date').val();
+                                const akhir_absen = $('#end_Date').val();
+                                const result = perhitungan(mulai_absen, akhir_absen);
+                                var keterangan = "";
 
-		// Change event
-		_wizardObj.on('changed', function (wizard) {
-			KTUtil.scrollTop();
-		});
+                                const checkSaldo = () => {
+                                    if (my_saldo != null) {
+                                        if ((tipe_max_absen == "hari_kalender" && result[0] <= my_saldo.saldo) ||
+                                            (tipe_max_absen == "hari_kerja" && result[1] <= my_saldo.saldo)) {
+                                            return true;
+                                        }
 
-		// Submit event
-		_wizardObj.on('submit', function (wizard) {
+                                        const maxHutangCondition1 = result[0] <= (my_saldo.saldo + my_saldo.max_hutang) &&
+                                            Date(my_saldo.valid_from_hutang) >= Date(mulai_absen);
+                                        const maxHutangCondition2 = result[1] <= (my_saldo.saldo + my_saldo.max_hutang) &&
+                                            Date(my_saldo.valid_from_hutang) >= Date(mulai_absen);
 
-			// Swal.fire({
-			// 	text: "All is good! Berhasil Mengajukan Absen!",
-			// 	icon: "success",
-			// 	showCancelButton: true,
-			// 	buttonsStyling: false,
-			// 	confirmButtonText: "Yes, submit!",
-			// 	cancelButtonText: "No, cancel",
-			// 	customClass: {
-			// 		confirmButton: "btn font-weight-bold btn-primary",
-			// 		cancelButton: "btn font-weight-bold btn-default"
-			// 	}
-			// }).then(function (result) {
-			// 	if (result.value) {
-			// 		_formEl.submit(); // Submit form
-			// 		//functin store
-            //         // storeAbsen();
-			// 	} else if (result.dismiss === 'cancel') {
-			// 		Swal.fire({
-			// 			text: "Your form has not been submitted!",
-			// 			icon: "error",
-			// 			buttonsStyling: false,
-			// 			confirmButtonText: "Ok, got it!",
-			// 			customClass: {
-			// 				confirmButton: "btn font-weight-bold btn-primary",
-			// 			}
-			// 		});
-			// 	}
-			// });
-		});
-	}
+                                        if ((tipe_max_absen == "hari_kalender" && maxHutangCondition1) ||
+                                            (tipe_max_absen == "hari_kerja" && maxHutangCondition2)) {
+                                            return true;
+                                        }
 
-	var _initValidation = function () {
-		// Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-		// Step 1
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					nama_tipe_absen: {
-						validators: {
-							notEmpty: {
-								message: 'Absence Type is required'
-							}
-						}
-					},
-					deskripsi_absen: {
-						validators: {
-							notEmpty: {
-								message: 'Description is required'
-							}
-						}
-					},
-					start_Date: {
-						validators: {
-							notEmpty: {
-								message: 'Start Date is required'
-							}
-						}
-					},
-					end_Date: {
-						validators: {
-							notEmpty: {
-								message: 'End Date is required'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					// Bootstrap Framework Integration
-					bootstrap: new FormValidation.plugins.Bootstrap({
-						//eleInvalidClass: '',
-						eleValidClass: '',
-					})
-				}
-			}
-		));
-	}
+                                        const saldoCondition1 = result[0] > (my_saldo.saldo + my_saldo.max_hutang) &&
+                                            Date(my_saldo.valid_from_hutang) >= Date(mulai_absen);
+                                        const saldoCondition2 = result[1] > (my_saldo.saldo + my_saldo.max_hutang) &&
+                                            Date(my_saldo.valid_from_hutang) >= Date(mulai_absen);
 
-	return {
-		// public functions
-		init: function () {
-			_wizardEl = KTUtil.getById('kt_wizard');
-			_formEl = KTUtil.getById('kt_form');
+                                        if ((tipe_max_absen == "hari_kalender" && saldoCondition1) ||
+                                            (tipe_max_absen == "hari_kerja" && saldoCondition2)) {
+                                            var selectedDate = new Date(mulai_absen);
 
-			_initWizard();
-			_initValidation();
-		},
+                                            if (tipe_max_absen == "hari_kalender") {
+                                                while (kalender < max_absen) {
+                                                    kalender++;
 
-        getValidations:function(){
-            return _validations
+                                                    // Check if the current day is not Saturday or Sunday
+                                                    if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                                                        kerja++;
+                                                    }
+                                                    selectedDate.setDate(selectedDate.getDate() + 1);
+                                                }
+                                            } else if (tipe_max_absen == "hari_kerja") {
+                                                while (kerja < max_absen) {
+                                                    kalender++;
+
+                                                    // Check if the current day is not Saturday or Sunday
+                                                    if (selectedDate.getDay() !== 0 && selectedDate.getDay() !== 6) {
+                                                        kerja++;
+                                                    }
+                                                    selectedDate.setDate(selectedDate.getDate() + 1);
+                                                }
+                                            }
+                                            console.log(max_absen, tipe_max_absen, kerja, kalender);
+                                            var endDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+                                            $('#end_Date').val(endDate.toISOString().slice(0, 10));
+                                            // console.log(endDate);
+                                            // endDate.setDate(endDate.getDate() + my_saldo.saldo + my_saldo.max_hutang);
+                                            // console.log(endDate);
+                                            // end_date = endDate.toISOString().slice(0, 10);
+                                            // console.log(end_date);
+                                            keterangan = "Saldo Anda Tidak Cukup, Anda Memiliki Saldo Yaitu " + my_saldo +
+                                                ", Dan anda dapat melakukan hutang sebesar " + my_saldo.max_hutang +
+                                                ", Batas Maksimal Pengajuan Absen: " + end_date;
+                                            console.log(keterangan);
+                                        }
+
+                                        if (Date(my_saldo.valid_from_hutang) < Date(mulai_absen)) {
+                                            keterangan = keterangan + "Anda berada di luar masa berlaku hutang, Masa berlaku di mulai pada " + my_saldo.valid_from_hutang;
+                                        }
+
+                                    }
+
+                                    return false;
+                                };
+
+                                if (checkSaldo()) {
+                                    wizard.goTo(wizard.getNewStep());
+                                } else {
+                                    Swal.fire({
+                                        text: keterangan,
+                                        icon: "error",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok, got it!",
+                                        customClass: {
+                                            confirmButton: "btn font-weight-bold btn-light"
+                                        }
+                                    });
+                                }
+
+                                KTUtil.scrollTop();
+                            } else {
+                                // Swal.fire({
+                                // 	text: "Sorry, looks like there are some errors detected, please try again.",
+                                // 	icon: "error",
+                                // 	buttonsStyling: false,
+                                // 	confirmButtonText: "Ok, got it!",
+                                // 	customClass: {
+                                // 		confirmButton: "btn font-weight-bold btn-light"
+                                // 	}
+                                // }).then(function () {
+                                // 	KTUtil.scrollTop();
+                                // });
+                            }
+                        });
+                    }
+
+                    return false; // Do not change wizard step, further action will be handled by he validator
+                });
+
+                // Change event
+                _wizardObj.on('changed', function(wizard) {
+                    KTUtil.scrollTop();
+                });
+
+                // Submit event
+                _wizardObj.on('submit', function(wizard) {
+
+                    // Swal.fire({
+                    // 	text: "All is good! Berhasil Mengajukan Absen!",
+                    // 	icon: "success",
+                    // 	showCancelButton: true,
+                    // 	buttonsStyling: false,
+                    // 	confirmButtonText: "Yes, submit!",
+                    // 	cancelButtonText: "No, cancel",
+                    // 	customClass: {
+                    // 		confirmButton: "btn font-weight-bold btn-primary",
+                    // 		cancelButton: "btn font-weight-bold btn-default"
+                    // 	}
+                    // }).then(function (result) {
+                    // 	if (result.value) {
+                    // 		_formEl.submit(); // Submit form
+                    // 		//functin store
+                    //         // storeAbsen();
+                    // 	} else if (result.dismiss === 'cancel') {
+                    // 		Swal.fire({
+                    // 			text: "Your form has not been submitted!",
+                    // 			icon: "error",
+                    // 			buttonsStyling: false,
+                    // 			confirmButtonText: "Ok, got it!",
+                    // 			customClass: {
+                    // 				confirmButton: "btn font-weight-bold btn-primary",
+                    // 			}
+                    // 		});
+                    // 	}
+                    // });
+                });
+            }
+
+            var _initValidation = function() {
+                // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+                // Step 1
+                _validations.push(FormValidation.formValidation(
+                    _formEl, {
+                        fields: {
+                            nama_tipe_absen: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Absence Type is required'
+                                    }
+                                }
+                            },
+                            deskripsi_absen: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Description is required'
+                                    }
+                                }
+                            },
+                            start_Date: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Start Date is required'
+                                    }
+                                }
+                            },
+                            end_Date: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'End Date is required'
+                                    }
+                                }
+                            },
+                            FileAbsence: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'File Absence is required'
+                                    }
+                                }
+                            }
+
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            // Bootstrap Framework Integration
+                            bootstrap: new FormValidation.plugins.Bootstrap({
+                                //eleInvalidClass: '',
+                                eleValidClass: '',
+                            })
+                        }
+                    }
+                ));
+            }
+
+            return {
+                // public functions
+                init: function() {
+                    _wizardEl = KTUtil.getById('kt_wizard');
+                    _formEl = KTUtil.getById('kt_form');
+
+                    _initWizard();
+                    _initValidation();
+                },
+
+                getValidations: function() {
+                    return _validations
+                }
+            };
+        }();
+
+        jQuery(document).ready(function() {
+            KTWizard4.init();
+        });
+    </script>
+
+    <script>
+        function perhitungan(mulai, akhir) {
+            let jmlhHariKalender = 0;
+            let JmlHariKerja = 0;
+
+            const currentDate = new Date(mulai);
+            const endDate = new Date(akhir);
+
+            while (currentDate <= endDate) {
+                jmlhHariKalender++;
+
+                const dayOfWeek = currentDate.getDay();
+                if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                    JmlHariKerja++;
+                }
+
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            return [jmlhHariKalender, JmlHariKerja];
         }
-	};
-}();
-
-jQuery(document).ready(function () {
-	KTWizard4.init();
-});
-
     </script>
 </body>
 @endsection

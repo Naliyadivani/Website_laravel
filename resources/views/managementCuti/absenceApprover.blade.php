@@ -4,7 +4,7 @@
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Absence Management | PI-Smart'
+        document.title = 'Absence Management | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -22,7 +22,7 @@
                 <span></span>
             </button>
             <!--end::Aside Mobile Toggle-->
-            
+
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
                 <span class="svg-icon svg-icon-xl">
@@ -52,7 +52,7 @@
 
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-                
+
                 {{-- <!--begin::Navbar use include in layout.navbar-->
                 <!--end::Navbar--> --}}
 
@@ -78,101 +78,60 @@
                     <!--begin::Entry Dashboard Page-->
                     <div class="d-flex flex-column-fluid">
                         <div class="container-fluid">
-                            <input class="form-control" type="hidden" id="position_temp" name="position_temp"
-                                value="50000248" />
-                            <input class="form-control" type="hidden" id="nik_id" name="nik_id"
-                                value="1160081" />
-                            <input class="form-control" type="hidden" id="nik_login_user" name="nik_login_user"
-                                value="1160081" />
+                            <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                            <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                            <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
                             <div class="d-flex flex-column-fluid" id="kt_content">
                                 <!--begin::Container-->
                                 <div class="container-fluid p-0">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12 col-sm-12 py-3 px-2 mx-0 mb-0">
-                                            <div class="card-waiting-approval shadow-sm row rounded-xl card-information mx-2"
-                                                onclick="cardActive()">
+                                            <div class="card-waiting-approval shadow-sm row rounded-xl card-information mx-2" onclick="cardActive()">
                                                 <div class="col-8 ml-6 mr-0 mt-6 mb-0" style="height:30px">
-                                                    <span
-                                                        class="font-weight-bold font-size-h3-lg font-size-h2-md font-size-h2-sm font-size-h2 text-dark"
-                                                        style="white-space: nowrap;">Outstanding Approval</span>
+                                                    <span class="font-weight-bold font-size-h3-lg font-size-h2-md font-size-h2-sm font-size-h2 text-dark" style="white-space: nowrap;">Outstanding Approval</span>
                                                 </div>
-                                                <div class="col d-flex justify-content-end mx-2 mt-3 mb-0"
-                                                    style="height:30px">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38"
-                                                        height="25" viewBox="0 0 38 25" fill="none">
-                                                        <ellipse cx="2" cy="3.06194" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="2" cy="12.8584" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="2" cy="22.6549" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="19" cy="3.06194" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="19" cy="12.8584" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="19" cy="22.6549" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="36" cy="3.06194" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="36" cy="12.8584" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
-                                                        <ellipse cx="36" cy="22.6549" rx="2"
-                                                            ry="2.17699" fill="#FFC87D"></ellipse>
+                                                <div class="col d-flex justify-content-end mx-2 mt-3 mb-0" style="height:30px">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="25" viewBox="0 0 38 25" fill="none">
+                                                        <ellipse cx="2" cy="3.06194" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="2" cy="12.8584" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="2" cy="22.6549" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="19" cy="3.06194" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="19" cy="12.8584" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="19" cy="22.6549" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="36" cy="3.06194" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="36" cy="12.8584" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <ellipse cx="36" cy="22.6549" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
                                                     </svg>
                                                 </div>
                                                 <div class="col-12 d-flex flex-row" style="height:65%">
-                                                    <div class="col-3 ml-3 d-flex align-items-center flex-row"
-                                                        style="width: 100%; display:relative; z-index: 1;">
-                                                        <img class="d-flex align-self-start pt-3"
-                                                            src="https://pismart.pupuk-indonesia.com/public/assets/media/icon-menu/waiting_icon.png"
-                                                            alt="Card image">
-                                                        <span
-                                                            class="font-weight-bolder text-waiting text-dark ml-3 d-flex align-self-start"
-                                                            style="font-size: 40px;">0
+                                                    <div class="col-3 ml-3 d-flex align-items-center flex-row" style="width: 100%; display:relative; z-index: 1;">
+                                                        <img class="d-flex align-self-start pt-3" src="https://pismart.pupuk-indonesia.com/public/assets/media/icon-menu/waiting_icon.png" alt="Card image">
+                                                        <span class="font-weight-bolder text-waiting text-dark ml-3 d-flex align-self-start" style="font-size: 40px;">0
                                                         </span>
                                                     </div>
                                                     <div class="col-9 row">
                                                         <div class="col-12" style="height: 20px;">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" height="80"
-                                                                width="100%" viewBox="0 0 515 80"
-                                                                preserveAspectRatio="none" fill="none">
-                                                                <path
-                                                                    d="M2 78.5841C40.5 37.7655 135.7 -30.9186 208.5 20.8938C299.5 85.6593 441.5 99.2655 513 27.969"
-                                                                    stroke="url(#paint0_linear_4072_16248)"
-                                                                    stroke-width="4" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="80" width="100%" viewBox="0 0 515 80" preserveAspectRatio="none" fill="none">
+                                                                <path d="M2 78.5841C40.5 37.7655 135.7 -30.9186 208.5 20.8938C299.5 85.6593 441.5 99.2655 513 27.969" stroke="url(#paint0_linear_4072_16248)" stroke-width="4" />
                                                                 <defs>
-                                                                    <linearGradient id="paint0_linear_4072_16248"
-                                                                        x1="257.5" y1="2.30319" x2="471.5"
-                                                                        y2="96.5" gradientUnits="userSpaceOnUse">
+                                                                    <linearGradient id="paint0_linear_4072_16248" x1="257.5" y1="2.30319" x2="471.5" y2="96.5" gradientUnits="userSpaceOnUse">
                                                                         <stop stop-color="white" />
-                                                                        <stop offset="1" stop-color="white"
-                                                                            stop-opacity="0" />
+                                                                        <stop offset="1" stop-color="white" stop-opacity="0" />
                                                                     </linearGradient>
                                                                 </defs>
                                                             </svg>
                                                         </div>
-                                                        <div class="col-7 d-flex justify-content-center"
-                                                            style="width: 100%; height: 20px!important; display:relative; z-index: 1;">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="38"
-                                                                height="25" viewBox="0 0 38 25" fill="none">
-                                                                <ellipse cx="2" cy="3.06194" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="2" cy="12.8584" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="2" cy="22.6549" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="19" cy="3.06194" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="19" cy="12.8584" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="19" cy="22.6549" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="36" cy="3.06194" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="36" cy="12.8584" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
-                                                                <ellipse cx="36" cy="22.6549" rx="2"
-                                                                    ry="2.17699" fill="#FFC87D"></ellipse>
+                                                        <div class="col-7 d-flex justify-content-center" style="width: 100%; height: 20px!important; display:relative; z-index: 1;">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="25" viewBox="0 0 38 25" fill="none">
+                                                                <ellipse cx="2" cy="3.06194" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="2" cy="12.8584" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="2" cy="22.6549" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="19" cy="3.06194" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="19" cy="12.8584" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="19" cy="22.6549" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="36" cy="3.06194" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="36" cy="12.8584" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
+                                                                <ellipse cx="36" cy="22.6549" rx="2" ry="2.17699" fill="#FFC87D"></ellipse>
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -180,17 +139,12 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-12 col-sm-12 py-3 px-2 mx-0 mb-0">
-                                            <div class="card-history-approval shadow-sm row card-information rounded-xl mx-2"
-                                                onclick="cardActive(true)">
+                                            <div class="card-history-approval shadow-sm row card-information rounded-xl mx-2" onclick="cardActive(true)">
                                                 <div class="col-8 ml-6 mr-0 mt-6 mb-0" style="height:30px">
-                                                    <span
-                                                        class="font-weight-bold font-size-h3-lg font-size-h2-md font-size-h2-sm font-size-h2 text-dark"
-                                                        style="white-space: nowrap;">History Approval</span>
+                                                    <span class="font-weight-bold font-size-h3-lg font-size-h2-md font-size-h2-sm font-size-h2 text-dark" style="white-space: nowrap;">History Approval</span>
                                                 </div>
-                                                <div class="col d-flex justify-content-end mx-2 mt-3 mb-0"
-                                                    style="height:30px">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38"
-                                                        height="22" viewBox="0 0 38 22" fill="none">
+                                                <div class="col d-flex justify-content-end mx-2 mt-3 mb-0" style="height:30px">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="22" viewBox="0 0 38 22" fill="none">
                                                         <circle cx="2" cy="2" r="2" fill="#A0D0FF" />
                                                         <circle cx="2" cy="11" r="2" fill="#A0D0FF" />
                                                         <circle cx="2" cy="20" r="2" fill="#A0D0FF" />
@@ -203,54 +157,32 @@
                                                     </svg>
                                                 </div>
                                                 <div class="col-12 d-flex flex-row" style="height:65%">
-                                                    <div class="col-3 ml-3 d-flex align-items-center flex-row"
-                                                        style="width: 100%; display:relative; z-index: 1;">
-                                                        <img class="d-flex align-self-start pt-3"
-                                                            src="https://pismart.pupuk-indonesia.com/public/assets/media/icon-menu/history_icon.png"
-                                                            alt="Card image">
+                                                    <div class="col-3 ml-3 d-flex align-items-center flex-row" style="width: 100%; display:relative; z-index: 1;">
+                                                        <img class="d-flex align-self-start pt-3" src="https://pismart.pupuk-indonesia.com/public/assets/media/icon-menu/history_icon.png" alt="Card image">
                                                     </div>
                                                     <div class="col-9 row">
                                                         <div class="col-12" style="height: 20px;">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" height="80"
-                                                                width="100%" viewBox="0 0 515 80"
-                                                                preserveAspectRatio="none" fill="none">
-                                                                <path
-                                                                    d="M2 78.5841C40.5 37.7655 135.7 -30.9186 208.5 20.8938C299.5 85.6593 441.5 99.2655 513 27.969"
-                                                                    stroke="url(#paint0_linear_4072_16248)"
-                                                                    stroke-width="4" />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="80" width="100%" viewBox="0 0 515 80" preserveAspectRatio="none" fill="none">
+                                                                <path d="M2 78.5841C40.5 37.7655 135.7 -30.9186 208.5 20.8938C299.5 85.6593 441.5 99.2655 513 27.969" stroke="url(#paint0_linear_4072_16248)" stroke-width="4" />
                                                                 <defs>
-                                                                    <linearGradient id="paint0_linear_4072_16248"
-                                                                        x1="257.5" y1="2.30319" x2="471.5"
-                                                                        y2="96.5" gradientUnits="userSpaceOnUse">
+                                                                    <linearGradient id="paint0_linear_4072_16248" x1="257.5" y1="2.30319" x2="471.5" y2="96.5" gradientUnits="userSpaceOnUse">
                                                                         <stop stop-color="white" />
-                                                                        <stop offset="1" stop-color="white"
-                                                                            stop-opacity="0" />
+                                                                        <stop offset="1" stop-color="white" stop-opacity="0" />
                                                                     </linearGradient>
                                                                 </defs>
                                                             </svg>
                                                         </div>
-                                                        <div class="col-7 d-flex justify-content-center"
-                                                            style="width: 100%; height: 20px!important; display:relative; z-index: 1;">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="38"
-                                                                height="22" viewBox="0 0 38 22" fill="none">
-                                                                <circle cx="2" cy="2" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="2" cy="11" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="2" cy="20" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="19" cy="2" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="19" cy="11" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="19" cy="20" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="36" cy="2" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="36" cy="11" r="2"
-                                                                    fill="#A0D0FF" />
-                                                                <circle cx="36" cy="20" r="2"
-                                                                    fill="#A0D0FF" />
+                                                        <div class="col-7 d-flex justify-content-center" style="width: 100%; height: 20px!important; display:relative; z-index: 1;">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="22" viewBox="0 0 38 22" fill="none">
+                                                                <circle cx="2" cy="2" r="2" fill="#A0D0FF" />
+                                                                <circle cx="2" cy="11" r="2" fill="#A0D0FF" />
+                                                                <circle cx="2" cy="20" r="2" fill="#A0D0FF" />
+                                                                <circle cx="19" cy="2" r="2" fill="#A0D0FF" />
+                                                                <circle cx="19" cy="11" r="2" fill="#A0D0FF" />
+                                                                <circle cx="19" cy="20" r="2" fill="#A0D0FF" />
+                                                                <circle cx="36" cy="2" r="2" fill="#A0D0FF" />
+                                                                <circle cx="36" cy="11" r="2" fill="#A0D0FF" />
+                                                                <circle cx="36" cy="20" r="2" fill="#A0D0FF" />
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -261,22 +193,19 @@
                                     <div id="filter_detail">
                                         <ul class="nav nav-pills mt-3" id="myTab" role="tablist">
                                             <li class="card card-custom gutter-b mb-3 nav-item">
-                                                <a class="nav-link" data-toggle="tab" id="null"
-                                                    onclick="filterCard()" href="#all_data" id="all_data">
+                                                <a class="nav-link" data-toggle="tab" id="null" onclick="filterCard()" href="#all_data" id="all_data">
                                                     <span class="nav-text text-all-data font-weight-bolder mr-2">0</span>
                                                     <span class="nav-text font-weight-bold">All Data</span>
                                                 </a>
                                             </li>
                                             <li class="card card-custom gutter-b mb-3 nav-item">
-                                                <a class="nav-link" data-toggle="tab" id="null"
-                                                    onclick="filterCard('rejected')" href="#rejected" id="rejected">
+                                                <a class="nav-link" data-toggle="tab" id="null" onclick="filterCard('rejected')" href="#rejected" id="rejected">
                                                     <span class="nav-text text-rejected font-weight-bolder mr-2">0</span>
                                                     <span class="nav-text font-weight-bold">Rejected</span>
                                                 </a>
                                             </li>
                                             <li class="card card-custom gutter-b mb-3 nav-item">
-                                                <a class="nav-link text-success" data-toggle="tab" id="null"
-                                                    onclick="filterCard('approved')" href="#approved" id="approved">
+                                                <a class="nav-link text-success" data-toggle="tab" id="null" onclick="filterCard('approved')" href="#approved" id="approved">
                                                     <span class="nav-text text-approved font-weight-bolder mr-2">0</span>
                                                     <span class="nav-text font-weight-bold">Approved</span>
                                                 </a>
@@ -351,11 +280,72 @@
         </span>
     </div>
     <!--end::Scrolltop-->
-    
+
     <!--end::Demo Panel-->
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
     <!--begin::Global Config(global config for global JS scripts)-->
-    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -369,7 +359,10 @@
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
     <script>
-        var base_url_web = 'https://pismart.pupuk-indonesia.com/';
+        var token_oauth = $('#token_oauth').val();
+        var emp_no = $("#nik_user").val();
+        var company = $("#company").val();
+        var base_url_web = window.location.origin + "/";
         var year = $('#absence_year').val();
         // var nik = $('#nik_id').val();
         var current_year = new Date().getFullYear();
@@ -377,10 +370,11 @@
 
         var year = $('#absence_year').val();
         $("#absence_year").change(function() {
+            console.log("XXXX");
             year = $('#absence_year').val();
             // cardActive()
         });
-        
+
         function selectYear(year) {
             var start_year = new Date();
             start_year.setFullYear(year - 1)
@@ -407,6 +401,7 @@
         }
 
         cardActive()
+
         function cardActive(history = false) {
             // countWaitingApproval()
             $('#filter_detail').hide();
@@ -427,32 +422,39 @@
             getDataAbsenceAll(history);
             // getDataAppraissalAll(history);
         }
+
         function countWaitingApproval(count) {
             $('.text-waiting').text(count)
         }
+
         function countRejectedApproval(count) {
             $('.text-rejected').text(count)
         }
+
         function countApprovedApproval(count) {
             $('.text-approved').text(count)
         }
+
         function countAllDataApproval(count) {
             $('.text-all-data').text(count)
         }
+
         function getDataAbsenceAll(history = false) {
             $.ajax({
                 type: 'POST',
-                url: 'http://10.9.12.43:9096/api/cuti/listApprovalCuti',
+                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listApprovalCuti',
                 data: {
-                    nik: "82105096",
-                    tahun: 2023,
+                    nik: emp_no,
+                    tahun: year,
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(result) {
                     var countWaittingApproval = 0;
                     var countRejected = 0;
                     var countApproved = 0;
-                    var nik_login_user = $('#nik_login_user').val();
-
+                    
                     var arr = result.data;
 
                     arr.forEach(x => {
@@ -465,8 +467,8 @@
                                 status_card = 'waiting-card'
                                 kondisi = '<div class="float-right mr-3">' +
                                     '<a onclick="rejectedAction(\'' + x.id_pengajuan_absen + '\', \'Rejected\')" data-target="#detailRevisi" data-toggle="modal" class="btn btn-light-danger mr-2">Reject</a>' +
-                                    '<a onclick="approvalAction(\''+ x.id_pengajuan_absen +'\',\'Approved\')" class="btn btn-light-primary">Approve</a>' +
-                                '</div>'
+                                    '<a onclick="approvalAction(\'' + x.id_pengajuan_absen + '\',\'Approved\')" class="btn btn-light-primary">Approve</a>' +
+                                    '</div>'
 
                                 status_badge = 'label-light-warning';
                             } else if (x.status == 'Rejected') {
@@ -479,19 +481,19 @@
                                 status_badge = 'label-light-success';
                             }
 
-                            if(x.tipe_absen.nama_tipe_absen == 'Cuti Tahunan'){
+                            if (x.tipe_absen.nama_tipe_absen == 'Cuti Tahunan') {
                                 status_tipe_absen = 'ribbon-inner bg-green'
-                            }else if(x.tipe_absen.nama_tipe_absen == 'Cuti Besar'){
+                            } else if (x.tipe_absen.nama_tipe_absen == 'Cuti Besar') {
                                 status_tipe_absen = 'ribbon-inner bg-teal'
-                            }else if(x.tipe_absen.nama_tipe_absen == 'Cuti Ibadah'){
+                            } else if (x.tipe_absen.nama_tipe_absen == 'Cuti Ibadah') {
                                 status_tipe_absen = 'ribbon-inner bg-blue'
-                            }else if(x.tipe_absen.nama_tipe_absen == 'Cuti Istri Melahirkan'){
+                            } else if (x.tipe_absen.nama_tipe_absen == 'Cuti Istri Melahirkan') {
                                 status_tipe_absen = 'ribbon-inner bg-purple'
-                            }else if(x.tipe_absen.nama_tipe_absen == 'Cuti Keluarga Inti Wafat'){
+                            } else if (x.tipe_absen.nama_tipe_absen == 'Cuti Keluarga Inti Wafat') {
                                 status_tipe_absen = 'ribbon-inner bg-yellow'
-                            }else if(x.tipe_absen.nama_tipe_absen == 'Cuti Keluarga Rumah Wafat'){
+                            } else if (x.tipe_absen.nama_tipe_absen == 'Cuti Keluarga Rumah Wafat') {
                                 status_tipe_absen = 'ribbon-inner bg-orange'
-                            }else if(x.tipe_absen.nama_tipe_absen == 'Cuti Melahirkan'){
+                            } else if (x.tipe_absen.nama_tipe_absen == 'Cuti Melahirkan') {
                                 status_tipe_absen = 'ribbon-inner bg-pink'
                             }
 
@@ -506,7 +508,7 @@
                                 '<div class="card-body pt-3">' +
                                 '<div class="d-flex align-items-center justify-content-between mb-3 ribbon ribbon-clip ribbon-right mb-5 pb-6">' +
                                 '<div class="ribbon-target bg-warning" style="top: 5px; right: -40px;">' +
-                                '<span class="'+status_tipe_absen+'"></span>' + x.tipe_absen.nama_tipe_absen +
+                                '<span class="' + status_tipe_absen + '"></span>' + x.tipe_absen.nama_tipe_absen +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="d-flex mb-9">' +
@@ -528,7 +530,7 @@
                                 '</span>' +
                                 '</div>' +
                                 '<div class="my-lg-0 my-3">' +
-                                '<img src="' + base_url_web + '' + x.companys.assets_logo +
+                                '<img src="' + base_url_web + '' + x.companys.assets_logo_full +
                                 '" style="height:40px;width:auto;" alt="Pupuk Indonesia">' +
                                 '</div>' +
                                 '</div>' +
@@ -568,49 +570,49 @@
                                 '" class="collapse" data-parent="#accordionExample2">' +
                                 '<div class="card-body" style="overflow-x:auto;">' +
                                 '<div class="card border gutter-b p-4 m-4" style="overflow-x:auto;">' +
-                                '<h6 class="font-weight-bolder mb-3">Absence Details:</h6>'+
+                                '<h6 class="font-weight-bolder mb-3">Absence Details:</h6>' +
                                 '<div class="text-dark-50 line-height-lg">' +
-                                    '<div class="col-12">' +
-                                        '<div class="form-group row mb-3 mx-2">' +
-                                            '<label class="col-3 col-form-label p-0">Tanggal Pengajuan</label>' +
-                                           ' <label class="col-1 text-right px-0">:</label>' +
-                                           '<label class="col-8 px-3 mb-0" id="tgl_pengajuan_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
-                                            '">Not Yet</label>' +
-                                        '</div>' +
-                                        '<div class="form-group row mb-3 mx-2">' +
-                                            '<label class="col-3 col-form-label p-0">Tipe Absen</label>' +
-                                           ' <label class="col-1 text-right px-0">:</label>' +
-                                           '<label class="col-8 px-3 mb-0" id="tipe_absen_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
-                                            '">Not Yet</label>' +
-                                        '</div>' +
-                                           '<div class="form-group row mb-3 mx-2">' +
-                                            '<label class="col-3 col-form-label p-0">Deskripsi</label> '+
-                                            '<label class="col-1 text-right px-0">:</label>' +
-                                            '<label class="col-8 px-3 mb-0" id="deskripsi_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
-                                            '">Not Yet</label>' +
-                                        '</div>' +
-                                        '<div class="form-group row mb-3 mx-2">' +
-                                            '<label class="col-3 col-form-label p-0">Start Date</label>' +
-                                            '<label class="col-1 text-right px-0">:</label>' +
-                                            '<label class="col-8 px-3 mb-0" id="start_Date_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
-                                            '">Not Yet</label>'+
-                                        '</div>' +
-                                        '<div class="form-group row mb-3 mx-2">' +
-                                            '<label class="col-3 col-form-label p-0">End Date</label>'+
-                                            '<label class="col-1 text-right px-0">:</label>' +
-                                            '<label class="col-8 px-3 mb-0" id="end_Date_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
-                                            '">Not Yet</label>' +
-                                        '</div>' +
-                                    '</div>' +
+                                '<div class="col-12">' +
+                                '<div class="form-group row mb-3 mx-2">' +
+                                '<label class="col-3 col-form-label p-0">Tanggal Pengajuan</label>' +
+                                ' <label class="col-1 text-right px-0">:</label>' +
+                                '<label class="col-8 px-3 mb-0" id="tgl_pengajuan_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
+                                '">Not Yet</label>' +
+                                '</div>' +
+                                '<div class="form-group row mb-3 mx-2">' +
+                                '<label class="col-3 col-form-label p-0">Tipe Absen</label>' +
+                                ' <label class="col-1 text-right px-0">:</label>' +
+                                '<label class="col-8 px-3 mb-0" id="tipe_absen_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
+                                '">Not Yet</label>' +
+                                '</div>' +
+                                '<div class="form-group row mb-3 mx-2">' +
+                                '<label class="col-3 col-form-label p-0">Deskripsi</label> ' +
+                                '<label class="col-1 text-right px-0">:</label>' +
+                                '<label class="col-8 px-3 mb-0" id="deskripsi_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
+                                '">Not Yet</label>' +
+                                '</div>' +
+                                '<div class="form-group row mb-3 mx-2">' +
+                                '<label class="col-3 col-form-label p-0">Start Date</label>' +
+                                '<label class="col-1 text-right px-0">:</label>' +
+                                '<label class="col-8 px-3 mb-0" id="start_Date_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
+                                '">Not Yet</label>' +
+                                '</div>' +
+                                '<div class="form-group row mb-3 mx-2">' +
+                                '<label class="col-3 col-form-label p-0">End Date</label>' +
+                                '<label class="col-1 text-right px-0">:</label>' +
+                                '<label class="col-8 px-3 mb-0" id="end_Date_detail_' + x.karyawan.emp_no + "_" + x.id_pengajuan_absen +
+                                '">Not Yet</label>' +
+                                '</div>' +
+                                '</div>' +
                                 '</div>' +
                                 '</div>' +
                                 '<div class="card border gutter-b p-4 m-4" style="overflow-x:auto;">' +
-                                '<h6 class="font-weight-bolder mb-3">Attachment File:</h6>'+
+                                '<h6 class="font-weight-bolder mb-3">Attachment File:</h6>' +
                                 '<div class="text-dark-50 line-height-lg">' +
-                                    //file
+                                //file
                                 '</div>' +
                                 '</div>' +
-                                    kondisi+
+                                kondisi +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +
@@ -623,7 +625,7 @@
                         countWaitingApproval(countWaittingApproval)
                         countRejectedApproval(countRejected)
                         countApprovedApproval(countApproved)
-                        countAllDataApproval(countRejected+countApproved)
+                        countAllDataApproval(countRejected + countApproved)
                         // console.log(x.kpi_title);
                     });
 
@@ -643,9 +645,9 @@
                 }
             });
         }
-        
+
         function imgError(image, defaultSrc) {
-        image.src = defaultSrc;
+            image.src = defaultSrc;
         }
 
         function filterCard(tipe = null) {
@@ -656,13 +658,17 @@
                 $('.approved-card').hide();
             } else if (tipe == 'approved') {
                 $('.rejected-card').hide();
-            }
-        }
+            }
+        }
+
         function getDataAbsenceIndi(id_pengajuan) {
-            
+
             $.ajax({
-                type:'GET',
-                url: 'http://10.9.12.43:9096/api/cuti/showApprovalPengajuanCuti/'+id_pengajuan,
+                type: 'GET',
+                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
                 success: function(result) {
                     var dataIndiv = result.data;
                     $('#tgl_pengajuan_detail_' + dataIndiv.karyawan.emp_no + "_" + dataIndiv.id_pengajuan_absen + '').html(dataIndiv.tgl_pengajuan);
@@ -673,10 +679,10 @@
                     KTApp.unblock('#kt_content');
                 }
             });
-                    // <h6 class="font-weight-bolder mb-3">Absence Details:</h6>
-                    // 														
+            // <h6 class="font-weight-bolder mb-3">Absence Details:</h6>
+            // 														
         }
-        
+
         function rejectedAction(id, status_laporan) {
             Swal.fire({
                 title: 'Apakah Anda yakin untuk menolak pengajuan ini ? ',
@@ -702,9 +708,12 @@
                     }
 
                     $.ajax({
-                        url: 'http://10.9.12.43:9096/api/cuti/approve',
+                        url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/approve',
                         type: "POST",
                         data: obj,
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                        },
                         success: function(result) {
                             Swal.fire("Rejected Berhasil", "Pengajuan Absence berhasil direject.", "success");
                             cardActive();
@@ -742,9 +751,12 @@
             }).then(function(result) {
                 if (result.value) {
                     $.ajax({
-                        url: 'http://10.9.12.43:9096/api/cuti/approve',
+                        url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/approve',
                         type: "POST",
                         data: obj,
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                        },  
                         success: function(result) {
                             Swal.fire("Approved Berhasil", "Pengajuan Absence berhasil disetujui.", "success");
                             cardActive();
@@ -758,7 +770,27 @@
                 }
             })
         }
+    </script>
+    <script>
+        var currentRoute = window.location.href;
 
+        // Remove the 'menu-item-active' class from all menu items
+        $('ul.menu-nav li.menu-item').removeClass('menu-item-active');
+
+        // Add the 'menu-item-active' class to the corresponding menu item based on the current route
+        if (currentRoute === "{{route('dashboard_absen')}}") {
+            // console.log("A");
+            $('#menu-item-dashboard').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('pengajuan_absen')}}") {
+            // console.log("B");
+            $('#menu-item-pengajuan-absen').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('absence_approver')}}") {
+            // console.log("C");
+            $('#menu-item-absence-approver').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('management_saldo')}}") {
+            // console.log("D");
+            $('#menu-item-management-saldo').addClass('menu-item-active');
+        }
     </script>
 </body>
 

@@ -4,7 +4,7 @@
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Pengajuan Absen | PI-Smart'
+        document.title = 'Pengajuan Absen | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -22,7 +22,7 @@
                 <span></span>
             </button>
             <!--end::Aside Mobile Toggle-->
-            
+
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
                 <span class="svg-icon svg-icon-xl">
@@ -61,6 +61,9 @@
                                 <!--end::Page Title-->
                             </div>
                             <!--end::Info-->
+                            <div class="d-flex align-items-center">
+                                <div id="selectYear"></div>
+                            </div>
                         </div>
                     </div>
                     <!--end::Subheader-->
@@ -120,14 +123,15 @@
                                                             </thead>
 
                                                             <tbody id="formAbsen">
-                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
-																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
+                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                                                                <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="dataTables_info" id="kt_datatable_info" role="status" aria-live="polite">Showing 1 to 2 of 2 entries</div>
                                             <div class="dataTables_paginate paging_simple_numbers" id="kt_datatable_paginate">
                                                 <ul class="pagination">
@@ -136,45 +140,45 @@
                                                     <li class="paginate_button page-item next disabled" id="kt_datatable_next"><a href="#" aria-controls="kt_datatable" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
                                                 </ul>
                                             </div>
-                                            </div>
                                         </div>
-                                        </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                   
-                    <!--end::Entry Dashboard Page-->
-
                 </div>
-                <!--end::Content Subheader-->
-
-                <!--begin::Footer-->
-                <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
-                    <!--begin::Container-->
-                    <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <!--begin::Copyright-->
-                        <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted font-weight-bold mr-2">2023 ©</span>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">PI-Smart</a>
-                        </div>
-
-                        <div class="nav nav-dark order-1 order-md-2">
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">Panduan Pengguna</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">Kebijakan Privasi</a>
-                        </div>
-                        <!--end::Copyright-->
-                    </div>
-                    <!--end::Container-->
-                </div>
-                <!--end::Footer-->
             </div>
-            <!--end::Wrapper-->
         </div>
-        <!--end::Page-->
+
+        <!--end::Entry Dashboard Page-->
+
+    </div>
+    <!--end::Content Subheader-->
+
+    <!--begin::Footer-->
+    <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+        <!--begin::Container-->
+        <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <!--begin::Copyright-->
+            <div class="text-dark order-2 order-md-1">
+                <span class="text-muted font-weight-bold mr-2">2023 ©</span>
+                <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">PI-Smart</a>
+            </div>
+
+            <div class="nav nav-dark order-1 order-md-2">
+                <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">Panduan Pengguna</a>
+                <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">Kebijakan Privasi</a>
+            </div>
+            <!--end::Copyright-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
     </div>
     <!--end::Main-->
 
@@ -193,11 +197,72 @@
         </span>
     </div>
     <!--end::Scrolltop-->
-    
+
     <!--end::Demo Panel-->
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
     <!--begin::Global Config(global config for global JS scripts)-->
-    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -210,17 +275,51 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
     <script>
+        var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
-        var year = 2023;
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        
+        var current_year = new Date().getFullYear();
+        selectYear(current_year)
+
+        var year = $('#absence_year').val();
+        $("#absence_year").change(function() {
+            year = $('#absence_year').val();
+            readFormAbsen()
+        });
+
+        function selectYear(year) {
+            var start_year = new Date();
+            start_year.setFullYear(year - 1)
+            var html =
+                '<select class="form-control selectpicker" id="absence_year" data-style="btn-primary">' +
+                '<optgroup label="Periode Tahun" id="listYear">' +
+                '</optgroup>' +
+                '</select>'
+            $('#selectYear').html(html)
+            var get_year = start_year.getFullYear();
+            for (let i = 0; i < 3; i++) {
+                if (get_year == (current_year)) {
+                    $('#listYear').append($("<option></option>").attr({
+                        value: get_year,
+                        selected: 'selected'
+                    }).text('Periode thn ' + get_year));
+                } else {
+                    $('#listYear').append($("<option></option>").attr('value', get_year).text('Periode thn ' +
+                        get_year));
+                }
+                get_year++
+            }
+            $('absence_year').selectpicker('refresh')
         }
-        }); 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         $(document).ready(function() {
             // Function to perform table data search
@@ -234,34 +333,37 @@
 
         readFormAbsen()
         //read DB
-        function readFormAbsen(){
+        function readFormAbsen() {
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.43:9096/api/cuti/myCuti?nik="+{{ Auth::user()->nik }}+"&tahun="+year,
-                
-                success: function (data) {
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(data) {
                     var arr = data.data
                     $('#formAbsen').html('')
-                    arr.forEach((y,i) => {
-                        // console.log(y.status);
-                        if (y.status == "WaitApproved"){
-                            statusHtml = `
+                    if (arr != null) {
+                        arr.forEach((y, i) => {
+                            // console.log(y.status);
+                            if (y.status == "WaitApproved") {
+                                statusHtml = `
                             <td>
                                 <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
                             </td>`
-                        }else if (y.status == "Approved"){
-                            statusHtml = `
+                            } else if (y.status == "Approved") {
+                                statusHtml = `
                             <td>
                                 <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
                             </td>`
-                        }else{
-                            statusHtml = `
+                            } else {
+                                statusHtml = `
                             <td>
                                 <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
                             </td>
                             `
-                        }
-                        var html=`<tr>
+                            }
+                            var html = `<tr>
                         <td>${i+1}</td>
                         <td>${y.tipe_absen.nama_tipe_absen}</td>
                         
@@ -276,59 +378,87 @@
                                     </button>
                                     </td>
                                     </tr>`
-                    $('#formAbsen').append(html)
-                    });
+                            $('#formAbsen').append(html)
+                        });
+                    };
                 }
             });
         }
 
-        function showAbsen(id_absen){
+        function showAbsen(id_absen) {
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.150:9096/api/cuti/showPengajuanCuti/"+ id_absen,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showPengajuanCuti/" + id_absen,
                 data: "data",
-                success: function (response) {
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(response) {
                     // Store the 'arr' data in localStorage
-            localStorage.setItem('arrData', JSON.stringify(response.data));
-
-            // Redirect to the 'form_pengajuan_absen' page
-            window.location.href = 'form_pengajuan_absen';
-                    // readFormAbsen()
-                    // $('nama_tipe_absen').val(arr.nama_tipe_absen);
-                    // $('deskripsi').val(arr.deskripsi);
-                    // $('start_Date').val(arr.start_date);
-                    // $('end_Date').val(arr.end_Date);
+                    localStorage.setItem('arrData', JSON.stringify(response.data));
                     
+                    // Redirect to the 'form_pengajuan_absen' page
+                    window.location.href = 'form_pengajuan_absen';
                 }
             });
         }
-        
-        function deleteListAbsen(id_absen){
+
+        function deleteListAbsen(id_absen) {
             swal.fire({
-                title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
+                title: 'Apakah anda yakin ingin Menghapus Permohonan Pengajuan Absen ini ?',
                 text: 'Mohon untuk melakukan pengecekan data kembali',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: 'Ya, Submit!',
                 cancelButtonText: 'Batalkan!',
                 reverseButtons: true
-            }).then((result) => {
-                $.ajax({
-                    type: "DELETE",
-                    url: "http://10.9.12.43:9096/api/cuti/deletePengajuanCuti/"+id_absen,
-                    success: function (response) {
-                        if(response.unsuccess){
-                            swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
-                        }else{
-                            swal.fire('Berhasil', 'Berhasil Menghapus Data','success');
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deletePengajuanCuti/" + id_absen,
+                        beforeSend: function(xhr) {
+                            Swal.fire({
+                                html: 'Please Wait ...',
+                                allowEscapeKey: false,
+                                allowOutsideClick: false,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                }
+                            });
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                        },
+                        success: function(response) {
+                            Swal.fire("Berhasil", "Berhasil Menghapus Data", "success");
                             readFormAbsen()
+                        },
+                        error: function(data) {
+                            Swal.fire("Gagal", "Gagal Menghapus Data", "error");
                         }
-                    },
-                    error:function(error){
-                        console.error('Error:', error);
-                    }
-                });
-            })
+                    });
+                }
+            });
+        }
+    </script>
+    <script>
+        var currentRoute = window.location.href;
+
+        // Remove the 'menu-item-active' class from all menu items
+        $('ul.menu-nav li.menu-item').removeClass('menu-item-active');
+
+        // Add the 'menu-item-active' class to the corresponding menu item based on the current route
+        if (currentRoute === "{{route('dashboard_absen')}}") {
+            console.log("A");
+            $('#menu-item-dashboard').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('pengajuan_absen')}}") {
+            console.log("B");
+            $('#menu-item-pengajuan-absen').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('absence_approver')}}") {
+            console.log("C");
+            $('#menu-item-absence-approver').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('management_saldo')}}") {
+            console.log("D");
+            $('#menu-item-management-saldo').addClass('menu-item-active');
         }
     </script>
 

@@ -3,20 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TambahLaporanController extends Controller
 {
-    public function indexAddLaporan(){
-        return view('daftarAplikasi.addLaporan');
+    public function indexAddLaporan()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('daftarAplikasi.addLaporan', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
-    public function indexTambahLaporan(){
-        return view('daftarAplikasi.laporanKegiatan');
+    public function indexTambahLaporan()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('daftarAplikasi.laporanKegiatan', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
 
-    public function indexKoordinatorKegiatan(){
-        return view('daftarAplikasi.koordinatorKegiatan');
+    public function indexKoordinatorKegiatan()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('daftarAplikasi.koordinatorKegiatan', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
-    public function modalTambahPeserta(){
-        return view('daftarAplikasi.koordinatorKegiatan');
+    public function modalTambahPeserta()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('daftarAplikasi.koordinatorKegiatan', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
 }

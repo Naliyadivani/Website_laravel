@@ -53,6 +53,16 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
 
+        'gcs' => [
+            'driver' => 'gcs',
+            'project_id' => 'hris-321010',
+            'key_file' => 'C:\Users\OSK\Documents\newversion\Website_laravel\serviceAccount.json', // Path to your service account JSON key file
+            'bucket' => 'lumen-oauth-storage',
+            'path_prefix' => null,
+            'storage_api_uri' => null,
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

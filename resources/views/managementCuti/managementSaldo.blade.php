@@ -4,7 +4,7 @@
 
 <body id="kt_body" class="page-loading-enabled quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-minimize-hoverable aside-fixed">
     <script>
-        document.title='Management Saldo | PI-Smart'
+        document.title = 'Management Saldo | PI-Smart'
     </script>
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -22,7 +22,7 @@
                 <span></span>
             </button>
             <!--end::Aside Mobile Toggle-->
-            
+
             <!--begin::Topbar Mobile Toggle-->
             <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
                 <span class="svg-icon svg-icon-xl">
@@ -61,6 +61,9 @@
                                 <!--end::Page Title-->
                             </div>
                             <!--end::Info-->
+                            <div class="d-flex align-items-center">
+                                <div id="selectYear"></div>
+                            </div>
                         </div>
                     </div>
                     <!--end::Subheader-->
@@ -125,8 +128,9 @@
                                                             </thead>
 
                                                             <tbody id="dataSaldo">
-                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="7222622" />
-																<input class="form-control" type="hidden" id="company" name="company" value="A000" />
+                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                                                                <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -190,9 +194,9 @@
                                                                 <option value="nik"></option>
                                                             </select>
                                                         </div>
-                                                  
-                                                    {{-- <div class="form_tipeCuti" style="display: none"> --}}
-                                                        <div class="form-group"id="select_cuti">
+
+                                                        {{-- <div class="form_tipeCuti" style="display: none"> --}}
+                                                        <div class="form-group" id="select_cuti">
                                                             <label>Tipe Absen <span class="text-danger">*</span></label>
                                                             <select class="form-control selectpicker" id="nama_tipe_absen" name="nama_tipe_absen">
                                                                 <option selected value="">Pilih Tipe Absen</option>
@@ -200,14 +204,14 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Saldo Cuti <span class="text-danger">*</span></label>
-                                                            <input class="form-control bootstrap-touchspin-vertical-btn" id="kt_touchspin_4" placeholder="0" type="number" name="saldo"min="0">
+                                                            <input class="form-control bootstrap-touchspin-vertical-btn" id="kt_touchspin_4" placeholder="0" type="number" name="saldo" min="0">
                                                             <span id="error-message" class="text-danger"></span>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label>Valid From <span class="text-danger">*</span></label>
                                                             <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From" name="valid_from" id="valid_from" data-target="#kt_datetimepicker_7_1"/>
+                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From" name="valid_from" id="valid_from" data-target="#kt_datetimepicker_7_1" />
                                                                 <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
                                                                     <span class="input-group-text">
                                                                         <i class="ki ki-calendar"></i>
@@ -218,7 +222,7 @@
                                                         <div class="form-group">
                                                             <label>Valid To <span class="text-danger">*</span></label>
                                                             <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#kt_datetimepicker_7_2"/>
+                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#kt_datetimepicker_7_2" />
                                                                 <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
                                                                     <span class="input-group-text">
                                                                         <i class="ki ki-calendar"></i>
@@ -228,13 +232,13 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="">Maximum Debt <span class="text-danger">*</span></label>
-                                                            <input class="form-control bootstrap-touchspin-vertical-btn" id="max_hutang" placeholder="0" type="number" name="max_hutang"min="0">
+                                                            <input class="form-control bootstrap-touchspin-vertical-btn" id="max_hutang" placeholder="0" type="number" name="max_hutang" min="0">
                                                             <span id="error-message" class="text-danger"></span>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Valid From Debt <span class="text-danger">*</span></label>
                                                             <div class="input-group date" id="kt_datetimepicker_7_3" data-target-input="nearest">
-                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From Debt" name="valid_from_hutang" id="valid_from_hutang" data-target="#kt_datetimepicker_7_3"/>
+                                                                <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From Debt" name="valid_from_hutang" id="valid_from_hutang" data-target="#kt_datetimepicker_7_3" />
                                                                 <div class="input-group-append" data-target="#kt_datetimepicker_7_3" data-toggle="datetimepicker">
                                                                     <span class="input-group-text">
                                                                         <i class="ki ki-calendar"></i>
@@ -242,12 +246,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-             
+
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-light-primary font-weight-bold" onclick="clearForm()" data-dismiss="modal">Close</button>
                                                             <button type="button" class="btn btn-primary font-weight-bold" onclick="store()" data-dismiss="modal" id="btn-save">Save</button>
                                                         </div>
-                                                    {{-- </div> --}}
+                                                        {{-- </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -258,7 +262,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <!--end::Entry Dashboard Page-->
 
                 </div>
@@ -305,11 +309,72 @@
         </span>
     </div>
     <!--end::Scrolltop-->
-    
+
     <!--end::Demo Panel-->
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
     <!--begin::Global Config(global config for global JS scripts)-->
-    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
     <!--end::Global Config-->
     <!--begin::Global Theme Bundle(used by all pages)-->
     <script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -327,13 +392,13 @@
     <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
     {{-- <script src="assets/js/"></script> --}}
 
-{{-- UPLOAD EXCEL SCRIPT  --}}
-{{-- <script>
+    {{-- UPLOAD EXCEL SCRIPT  --}}
+    {{-- <script>
     initDropzone()
 
     function initDropzone() {
         $('#customFile').dropzone({
-            url: `http://10.9.12.150:9096/api/cuti/storeAdminSaldo`,
+            url: `https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo`,
             autoProcessQueue: true,
             uploadMultiple: true,
             parallelUploads: 5,
@@ -343,6 +408,9 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
+            beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
             init: function() {
                 dzClosure = this;
                 file_attach.forEach(x => {
@@ -404,81 +472,124 @@
         })
     }
 </script> --}}
-<script>
-    //modal upload file excel
-    function uploadeExcel(){
-        $('#uploadExcelFile').modal('show');
-    }
+    <script>
+        //modal upload file excel
+        function uploadeExcel() {
+            $('#uploadExcelFile').modal('show');
+        }
 
-    initDropzone();
-    function initDropzone() {
-        // Initialize Dropzone
-        var myDropzone = new Dropzone("#customFile", {
-            url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo",
-            // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
-            autoProcessQueue: true,
-            uploadMultiple: true,
-            parallelUploads: 5,
-            addRemoveLinks: true,
-            maxFiles: 1,
-            maxFilesize: 2,
+        initDropzone();
+
+        function initDropzone() {
+            // Initialize Dropzone
+            var myDropzone = new Dropzone("#customFile", {
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo",
+                // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                autoProcessQueue: true,
+                uploadMultiple: true,
+                parallelUploads: 5,
+                addRemoveLinks: true,
+                maxFiles: 1,
+                maxFilesize: 2,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Handle successful uploads
+            myDropzone.on("success", function(file, response) {
+                console.log('File uploaded successfully');
+                // Handle the response data as needed
+            });
+
+            // Handle errors
+            myDropzone.on("error", function(file, errorMessage, xhr) {
+                console.error('Error uploading file: ' + errorMessage);
+                // Handle the error message as needed
+            });
+        }
+    </script>
+
+    {{-- CRUD SCRIPT  --}}
+    <script>
+        var token_oauth = $('#token_oauth').val();
+        var emp_no = $("#nik_user").val();
+        var company = $("#company").val();
+        var year = $('#absence_year').val();
+        // var nik = $('#nik_id').val();
+        var current_year = new Date().getFullYear();
+        selectYear(current_year)
+
+        var year = $('#absence_year').val();
+        $("#absence_year").change(function() {
+            console.log("XXXX");
+            year = $('#absence_year').val();
+            // cardActive()
+        });
+
+        function selectYear(year) {
+            var start_year = new Date();
+            start_year.setFullYear(year - 1)
+            var html =
+                '<select class="form-control selectpicker" id="absence_year" data-style="btn-primary">' +
+                '<optgroup label="Periode Tahun" id="listYear">' +
+                '</optgroup>' +
+                '</select>'
+            $('#selectYear').html(html)
+            var get_year = start_year.getFullYear();
+            for (let i = 0; i < 3; i++) {
+                if (get_year == (current_year)) {
+                    $('#listYear').append($("<option></option>").attr({
+                        value: get_year,
+                        selected: 'selected'
+                    }).text('Periode thn ' + get_year));
+                } else {
+                    $('#listYear').append($("<option></option>").attr('value', get_year).text('Periode thn ' +
+                        get_year));
+                }
+                get_year++
+            }
+            $('absence_year').selectpicker('refresh')
+        }
+        $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        // Handle successful uploads
-        myDropzone.on("success", function (file, response) {
-            console.log('File uploaded successfully');
-            // Handle the response data as needed
+        $(document).ready(function() {
+            readSaldo()
+            //search on crud
+            $("#my_input").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#dataSaldo tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
 
-        // Handle errors
-        myDropzone.on("error", function (file, errorMessage, xhr) {
-            console.error('Error uploading file: ' + errorMessage);
-            // Handle the error message as needed
-        });
-    }
-</script>
 
-{{-- CRUD SCRIPT  --}}
-<script>
-        var emp_no = $("#nik_user").val();
-        var company = $("#company").val();
-        var year = 2023;
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        }); 
-
-        $(document).ready(function(){
-			readSaldo()
-			//search on crud
-			$("#my_input").on("keyup", function() {
-				var value = $(this).val().toLowerCase();
-				$("#dataSaldo tr").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-				});
-			});
-		});
-
-        
         //read DB
-        function readSaldo(){
+        function readSaldo() {
             $.ajax({
                 type: "post",
-                url: "http://10.9.12.43:9096/api/cuti/listAdminSaldo",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listAdminSaldo",
                 // url: "http://10.9.12.223:9096/api/cuti/listAdminSaldo",
                 data: {
-                    nik:emp_no,
+                    nik: emp_no,
                     tahun: year,
                 },
-                success: function (data) {
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(data) {
                     var arr = data.data
                     $('#dataSaldo').html('')
-                    arr.forEach((y,i) => {
-                        var html=`<tr>
+                    arr.forEach((y, i) => {
+                        var html = `<tr>
                         <td>${i+1}</td>
                         <td>${y.nik} - ${y.nama}</td>
                         <td>${y.tipe_absen.nama_tipe_absen}</td>
@@ -495,14 +606,14 @@
                             </button>
 						</td>
                     </tr>`
-                    $('#dataSaldo').append(html)
+                        $('#dataSaldo').append(html)
                     });
                 }
             });
         }
 
         //create saldo
-        function managementSaldo(){
+        function managementSaldo() {
             $('#managementSaldo').modal('show');
         }
 
@@ -511,220 +622,229 @@
         //show untuk edit saldo
         function show(id_saldo) {
             $.ajax({
-                url: "http://10.9.12.43:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 type: "get",
-                success: function (result) {
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(result) {
                     // Assuming 'exampleModal' is your modal element
-				$('#managementSaldo').modal('show');
-				readSaldo()
-				clearForm()
-				var arr = result.data;
-				// Populate modal content here
-                // console.log(arr.id_saldo_cuti);
-                $('#id_saldo_cuti').val(arr.id_saldo_cuti);
-                // $('#nik_selected').val(arr.nik);
-                // $('#kt_select2_6').append(`<option selected>${arr.nik}</option>`).trigger('change');
-                var option = new Option(arr.nik + ' - ' + arr.nama + ' | ' + arr.company.name,arr.nik, true, true);
-                $('#kt_select2_6').append(option).change();
-                // getTipeAbsen($('#kt_select2_6 option:selected').val(arr.nik));
-                // $('#nama_tipe_absen').val(arr.tipe_absen_id).trigger('change');
-                tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
-                console.log(tipeAbsenSelected);
-                $('#kt_touchspin_4').val(arr.saldo);
-                $('#valid_from').val(arr.valid_from);
-                $('#valid_to').val(arr.valid_to);
-                $('#max_hutang').val(arr.max_hutang);
-                $('#valid_from_hutang').val(arr.valid_from_hutang);
-                $('#nama_tipe_absen').prop('disabled',true)
-                $('#kt_select2_6').prop('disabled',true)
-				
-			},
-			error:function(error){
-				Swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
-			}
-		});
-	}
+                    $('#managementSaldo').modal('show');
+                    readSaldo()
+                    clearForm()
+                    var arr = result.data;
+                    // Populate modal content here
+                    // console.log(arr.id_saldo_cuti);
+                    $('#id_saldo_cuti').val(arr.id_saldo_cuti);
+                    // $('#nik_selected').val(arr.nik);
+                    // $('#kt_select2_6').append(`<option selected>${arr.nik}</option>`).trigger('change');
+                    var option = new Option(arr.nik + ' - ' + arr.nama + ' | ' + arr.company.name, arr.nik, true, true);
+                    $('#kt_select2_6').append(option).change();
+                    // getTipeAbsen($('#kt_select2_6 option:selected').val(arr.nik));
+                    // $('#nama_tipe_absen').val(arr.tipe_absen_id).trigger('change');
+                    tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
+                    console.log(tipeAbsenSelected);
+                    $('#kt_touchspin_4').val(arr.saldo);
+                    $('#valid_from').val(arr.valid_from);
+                    $('#valid_to').val(arr.valid_to);
+                    $('#max_hutang').val(arr.max_hutang);
+                    $('#valid_from_hutang').val(arr.valid_from_hutang);
+                    $('#nama_tipe_absen').prop('disabled', true)
+                    $('#kt_select2_6').prop('disabled', true)
 
-    //Untuk delete saldo
-    function deleteItem(id_saldo) {
-    // Use SweetAlert to confirm the deletion
-    Swal.fire({
-        title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
-        text: 'Mohon untuk melakukan pengecekan data kembali',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Ya, Submit!',
-        cancelButtonText: 'Batalkan!',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Send an AJAX request to delete the item
-            $.ajax({
-                url: "http://10.9.12.43:9096/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
-                // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
-                type: 'DELETE',
-                success: function (result) {
-						if (result.unsuccess) {
-							// Show gagal message with SweetAlert
-							Swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
-							
-							// Optionally, remove the table row associated with the deleted item
-							// $(`tr[data-slug="${slug}"]`).remove();
-						} else {
-                            // Show a success message with SweetAlert
-							Swal.fire('Berhasil', 'Berhasil Menghapus Data', 'success');
-							readSaldo()
-						}
-					},
-					error: function (error) {
-                        // Handle the error (e.g., display an error message)
-						console.error('Error:', error);
-					}
-				});
-			}
-		});
-	}
-
-    // menyimpan data saldo
-    // function store(){
-    //     var id_saldo =$('#id_saldo_cuti').val()
-    //     var nik = $('#nik_selected').val()
-    //     // console.log(nik)
-    //     var tipe_absen_id = $('#nama_tipe_absen').val()
-    //     var saldo = $('#kt_touchspin_4').val()
-    //     var valid_from = $('#valid_from').val()
-    //     var valid_to = $('#valid_to').val()
-    //     var max_hutang = $('#max_hutang').val()
-    //     var valid_from_hutang = $('#valid_from_hutang').val()
-    //     // console.log(id_saldo,nik,tipe_absen_id,saldo,valid_from,valid_to);
-    //             var storeSaldo = {
-    //                 // created_by:emp_no
-    //                 nik:nik,
-    //                 tipe_absen_id:tipe_absen_id,
-    //                 saldo:saldo,
-    //                 valid_from:valid_from,
-    //                 valid_to:valid_to,
-    //                 max_hutang: max_hutang,
-    //                 valid_from_hutang:valid_from_hutang,
-    //                 created_by:{{ Auth::user()->nik }}
-    //             }
-    //             if (id_saldo != '') {
-    //                 storeSaldo = {
-    //                     nik:nik,
-    //                     tipe_absen_id:tipe_absen_id,
-    //                     saldo:saldo,
-    //                     valid_from:valid_from,
-    //                     valid_to:valid_to,
-    //                     id_saldo: id_saldo,
-    //                     max_hutang: max_hutang,
-    //                     valid_from_hutang:valid_from_hutang,
-    //                     created_by:{{ Auth::user()->nik }}
-    //                 }
-    //             }
-    //             $.ajax({
-    //                 type: "post",
-    //                 url: "http://10.9.12.150:9096/api/cuti/storeAdminSaldo", //IP Wifi PI
-    //                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
-    //                 data: storeSaldo,
-    //                 dataType: "json",
-    //                 success: function (response) {
-    //                     readSaldo()
-    //                     $('#managementSaldo').modal('hide');
-    //                     clearForm()
-    //                     Swal.fire({
-    //                         title:"Berhasil",
-    //                         text:"Berhasil Menambahkan Data",
-    //                         icon: "success",
-    //                     })
-    //                 }
-    //             });
-    //         }    
-
-    // menyimpan data saldo
-function store() {
-    
-    var id_saldo = $('#id_saldo_cuti').val();
-    var nik = $('#nik_selected').val();
-    var tipe_absen_id = $('#nama_tipe_absen').val();
-    var saldo = $('#kt_touchspin_4').val();
-    var valid_from = $('#valid_from').val();
-    var valid_to = $('#valid_to').val();
-    var max_hutang = $('#max_hutang').val();
-    var valid_from_hutang = $('#valid_from_hutang').val();
-    // console.log(id_saldo, nik,tipe_absen_id,saldo,valid_from,valid_to,max_hutang,valid_from_hutang);
-    // Cek apakah semua field telah diisi
-    // if (
-    //     nik.trim() === '' ||
-    //     tipe_absen_id.trim() === '' ||
-    //     saldo.trim() === '' ||
-    //     valid_from.trim() === '' ||
-    //     valid_to.trim() === ''
-    // ) {
-    //     Swal.fire({
-    //         title: "Peringatan",
-    //         text: "Harap isi semua data yang diperlukan",
-    //         icon: "warning",
-    //     });
-    //     return; // Menghentikan eksekusi jika ada field yang kosong
-    // }
-
-    if (nik === '' || tipe_absen_id === '' || saldo === '' || valid_from === '' || valid_to === '' || max_hutang === '' || valid_from_hutang === '') {
-        Swal.fire({
-            title: "Gagal Menyimpan Data",
-            text: "Semua Data Harus Diisi",
-            icon: "warning",
-        });
-        return; // Hentikan eksekusi jika ada kolom yang kosong
-    }
-
-    var storeSaldo = {
-        nik: nik,
-        tipe_absen_id: tipe_absen_id,
-        saldo: saldo,
-        valid_from: valid_from,
-        valid_to: valid_to,
-        max_hutang: max_hutang,
-        valid_from_hutang: valid_from_hutang,
-        created_by: {{ Auth::user()->nik }}
-    }
-
-    // if (id_saldo !== '') {
-    //     storeSaldo = {
-    //         nik: nik,
-    //         tipe_absen_id: tipe_absen_id,
-    //         saldo: saldo,
-    //         valid_from: valid_from,
-    //         valid_to: valid_to,
-    //         id_saldo: id_saldo,
-    //         max_hutang: max_hutang,
-    //         valid_from_hutang: valid_from_hutang,
-    //         created_by: {{ Auth::user()->nik }}
-    //     }
-    // }
-
-    if (id_saldo !== '') {
-        storeSaldo.id_saldo = id_saldo;
-    }
-
-    $.ajax({
-        type: "post",
-        url: "http://10.9.12.43:9096/api/cuti/storeAdminSaldo",
-        data: storeSaldo,
-        dataType: "json",
-        success: function (response) {
-            readSaldo();
-            $('#managementSaldo').modal('hide');
-            clearForm();
-            Swal.fire({
-                title: "Berhasil",
-                text: "Berhasil Menambahkan Data",
-                icon: "success",
+                },
+                error: function(error) {
+                    Swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
+                }
             });
         }
-    });
-}
-</script>
+
+        //Untuk delete saldo
+        function deleteItem(id_saldo) {
+            // Use SweetAlert to confirm the deletion
+            Swal.fire({
+                title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
+                text: 'Mohon untuk melakukan pengecekan data kembali',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Submit!',
+                cancelButtonText: 'Batalkan!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Send an AJAX request to delete the item
+                    $.ajax({
+                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
+                        // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
+                        type: 'DELETE',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                        },
+                        success: function(result) {
+                            if (result.unsuccess) {
+                                // Show gagal message with SweetAlert
+                                Swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
+
+                                // Optionally, remove the table row associated with the deleted item
+                                // $(`tr[data-slug="${slug}"]`).remove();
+                            } else {
+                                // Show a success message with SweetAlert
+                                Swal.fire('Berhasil', 'Berhasil Menghapus Data', 'success');
+                                readSaldo()
+                            }
+                        },
+                        error: function(error) {
+                            // Handle the error (e.g., display an error message)
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+            });
+        }
+
+        // menyimpan data saldo
+        // function store(){
+        //     var id_saldo =$('#id_saldo_cuti').val()
+        //     var nik = $('#nik_selected').val()
+        //     // console.log(nik)
+        //     var tipe_absen_id = $('#nama_tipe_absen').val()
+        //     var saldo = $('#kt_touchspin_4').val()
+        //     var valid_from = $('#valid_from').val()
+        //     var valid_to = $('#valid_to').val()
+        //     var max_hutang = $('#max_hutang').val()
+        //     var valid_from_hutang = $('#valid_from_hutang').val()
+        //     // console.log(id_saldo,nik,tipe_absen_id,saldo,valid_from,valid_to);
+        //             var storeSaldo = {
+        //                 // created_by:emp_no
+        //                 nik:nik,
+        //                 tipe_absen_id:tipe_absen_id,
+        //                 saldo:saldo,
+        //                 valid_from:valid_from,
+        //                 valid_to:valid_to,
+        //                 max_hutang: max_hutang,
+        //                 valid_from_hutang:valid_from_hutang,
+        //                 created_by:{{ $user['nik'] }}
+        //             }
+        //             if (id_saldo != '') {
+        //                 storeSaldo = {
+        //                     nik:nik,
+        //                     tipe_absen_id:tipe_absen_id,
+        //                     saldo:saldo,
+        //                     valid_from:valid_from,
+        //                     valid_to:valid_to,
+        //                     id_saldo: id_saldo,
+        //                     max_hutang: max_hutang,
+        //                     valid_from_hutang:valid_from_hutang,
+        //                     created_by:{{ $user['nik'] }}
+        //                 }
+        //             }
+        //             $.ajax({
+        //                 type: "post",
+        //                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo", //IP Wifi PI
+        //                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
+        //                 data: storeSaldo,
+        //                 dataType: "json",
+        //                 success: function (response) {
+        //                     readSaldo()
+        //                     $('#managementSaldo').modal('hide');
+        //                     clearForm()
+        //                     Swal.fire({
+        //                         title:"Berhasil",
+        //                         text:"Berhasil Menambahkan Data",
+        //                         icon: "success",
+        //                     })
+        //                 }
+        //             });
+        //         }    
+
+        // menyimpan data saldo
+        function store() {
+
+            var id_saldo = $('#id_saldo_cuti').val();
+            var nik = $('#nik_selected').val();
+            var tipe_absen_id = $('#nama_tipe_absen').val();
+            var saldo = $('#kt_touchspin_4').val();
+            var valid_from = $('#valid_from').val();
+            var valid_to = $('#valid_to').val();
+            var max_hutang = $('#max_hutang').val();
+            var valid_from_hutang = $('#valid_from_hutang').val();
+            // console.log(id_saldo, nik,tipe_absen_id,saldo,valid_from,valid_to,max_hutang,valid_from_hutang);
+            // Cek apakah semua field telah diisi
+            // if (
+            //     nik.trim() === '' ||
+            //     tipe_absen_id.trim() === '' ||
+            //     saldo.trim() === '' ||
+            //     valid_from.trim() === '' ||
+            //     valid_to.trim() === ''
+            // ) {
+            //     Swal.fire({
+            //         title: "Peringatan",
+            //         text: "Harap isi semua data yang diperlukan",
+            //         icon: "warning",
+            //     });
+            //     return; // Menghentikan eksekusi jika ada field yang kosong
+            // }
+
+            if (nik === '' || tipe_absen_id === '' || saldo === '' || valid_from === '' || valid_to === '' || max_hutang === '' || valid_from_hutang === '') {
+                Swal.fire({
+                    title: "Gagal Menyimpan Data",
+                    text: "Semua Data Harus Diisi",
+                    icon: "warning",
+                });
+                return; // Hentikan eksekusi jika ada kolom yang kosong
+            }
+
+            var storeSaldo = {
+                nik: nik,
+                tipe_absen_id: tipe_absen_id,
+                saldo: saldo,
+                valid_from: valid_from,
+                valid_to: valid_to,
+                max_hutang: max_hutang,
+                valid_from_hutang: valid_from_hutang,
+                created_by: "{{$user['nik']}}"
+            }
+
+            // if (id_saldo !== '') {
+            //     storeSaldo = {
+            //         nik: nik,
+            //         tipe_absen_id: tipe_absen_id,
+            //         saldo: saldo,
+            //         valid_from: valid_from,
+            //         valid_to: valid_to,
+            //         id_saldo: id_saldo,
+            //         max_hutang: max_hutang,
+            //         valid_from_hutang: valid_from_hutang,
+            //         created_by: {{ $user['nik'] }}
+            //     }
+            // }
+
+            if (id_saldo !== '') {
+                storeSaldo.id_saldo = id_saldo;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo",
+                data: storeSaldo,
+                dataType: "json",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(response) {
+                    readSaldo();
+                    $('#managementSaldo').modal('hide');
+                    clearForm();
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: "Berhasil Menambahkan Data",
+                        icon: "success",
+                    });
+                }
+            });
+        }
+    </script>
 
     {{-- <script>
          function formatRepo(repo){
@@ -759,7 +879,7 @@ function store() {
 		 	allowClear: true,
 		 	ajax: {
                  // type: "post",
-		 		url: "http://10.9.12.150:9096/api/mobile/dataPegawai",
+		 		url: "https://601zgltt-9096.asse.devtunnels.ms/api/mobile/dataPegawai",
 		 		dataType: 'json',
 		 		delay: 250,
 		 		data: function(params) {
@@ -793,39 +913,42 @@ function store() {
         });
     </script> --}}
 
-<script>
+    <script>
         // onchange pilih karyawan
         $('#kt_select2_6').on('change', function() {
             var val = $('#kt_select2_6 option:selected').val();
             $('#nik_selected').val(val);
-            if ($('#kt_select2_6').val() != null){
+            if ($('#kt_select2_6').val() != null) {
                 getTipeAbsen(val)
             }
             // btnCondition()
         });
-        
+
         //search karyawan
         $("#kt_select2_6").select2({
             placeholder: "Masukkan Nama atau Nomor Pegawai",
-            allowClear: true, 
+            allowClear: true,
             ajax: {
-                url: 'http://10.9.12.43:9096/api/mobile/dataPegawai', // Use the named route to generate the URL
+                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/mobile/dataPegawai', // Use the named route to generate the URL
                 // url: 'http://10.9.12.223:9096/api/mobile/dataPegawai',
                 dataType: 'json',
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
                 delay: 250,
-                data: function (params) {
+                data: function(params) {
                     return {
-                        key: params.term,   
+                        key: params.term,
                         // company_name: com_code_user,
                         page: params.page
                     };
                 },
-                processResults: function (respon) {
+                processResults: function(respon) {
                     // The response should have 'nik', 'nama', and 'company_name' fields
                     // console.log(respon);
                     return {
-                        results: $.map(respon.data, function (item) {
-                            
+                        results: $.map(respon.data, function(item) {
+
                             return {
                                 id: item.nik,
                                 text: item.nik + ' - ' + item.nama + ' | ' + item.company_name
@@ -835,21 +958,24 @@ function store() {
                 },
                 cache: true
             },
-            escapeMarkup: function (markup) {
+            escapeMarkup: function(markup) {
                 return markup;
             },
             minimumInputLength: 4
-            
+
         });
-        
+
         // Get Tipe Absen
-        function getTipeAbsen(x){
+        function getTipeAbsen(x) {
             $.ajax({
                 type: "get",
-                url: "http://10.9.12.43:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminTipeAbsen?nik=" + x,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // data: "data",
-                success: function (response) {
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(response) {
                     var arr = response.data
                     // console.log(arr);
                     // return arr
@@ -857,60 +983,64 @@ function store() {
                     var tipeAbsen = '';
                     var awal = '<option value="">Pilih Tipe Absen</option>';
                     $('#nama_tipe_absen').append(awal);
-                    
-                    arr.forEach((y,i)=>{
+
+                    arr.forEach((y, i) => {
                         // console.log(y.id_tipe_absen);
-                        tipeAbsen += "<option value='"+y.id_tipe_absen+"'>"+y.nama_tipe_absen+"</option>";
-                        
+                        tipeAbsen += "<option value='" + y.id_tipe_absen + "'>" + y.nama_tipe_absen + "</option>";
+
                     });
-                    
+
                     $('#nama_tipe_absen').append(tipeAbsen);
                     $('#nama_tipe_absen').selectpicker("refresh");
-                    
+
                 },
-                complete: function (data){
-                    if(tipeAbsenSelected != null){
+                complete: function(data) {
+                    if (tipeAbsenSelected != null) {
                         // console.log(tipeAbsenSelected);
                         $('#nama_tipe_absen').val(tipeAbsenSelected).change();
-                        
+
                         // $('#nama_tipe_absen').prop('disabled',false)
                     }
                 }
             });
         }
 
-        $('#kt_datetimepicker_7_1').datetimepicker({format:'YYYY-MM-DD'});
-                $('#kt_datetimepicker_7_2').datetimepicker({
-                    useCurrent: false,
-                    format:'YYYY-MM-DD'
-                });
-                $('#kt_datetimepicker_7_3').datetimepicker({format:'YYYY-MM-DD'});
-     
-        
+        $('#kt_datetimepicker_7_1').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#kt_datetimepicker_7_2').datetimepicker({
+            useCurrent: false,
+            format: 'YYYY-MM-DD'
+        });
+        $('#kt_datetimepicker_7_3').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+
+
         // input saldo field
         $('#kt_touchspin_4').TouchSpin({
             buttondown_class: 'btn btn-secondary',
-			buttonup_class: 'btn btn-secondary',
-			verticalbuttons: true,
-			verticalup: '<i class="ki ki-plus"></i>',
-			verticaldown: '<i class="ki ki-minus"></i>'
-		});
+            buttonup_class: 'btn btn-secondary',
+            verticalbuttons: true,
+            verticalup: '<i class="ki ki-plus"></i>',
+            verticaldown: '<i class="ki ki-minus"></i>'
+        });
         $('#max_hutang').TouchSpin({
-			buttondown_class: 'btn btn-secondary',
-			buttonup_class: 'btn btn-secondary',
-			verticalbuttons: true,
-			verticalup: '<i class="ki ki-plus"></i>',
-			verticaldown: '<i class="ki ki-minus"></i>'
-		});
+            buttondown_class: 'btn btn-secondary',
+            buttonup_class: 'btn btn-secondary',
+            verticalbuttons: true,
+            verticalup: '<i class="ki ki-plus"></i>',
+            verticaldown: '<i class="ki ki-minus"></i>'
+        });
 
-        function clearForm(){
+        function clearForm() {
             $('#kt_select2_6').val('').change();
-            $('#kt_select2_6').prop('disabled',false)
-            $('#nama_tipe_absen').prop('disabled',false)
+            $('#kt_select2_6').prop('disabled', false)
+            $('#nama_tipe_absen').prop('disabled', false)
             // if($('#kt_select2_6').val() != null){
             //     console.log("A");
             //     $('#nama_tipe_absen').prop('disabled',true)
-             //     $('#kt_select2_6 option:selected').prop('disabled',true)
+            //     $('#kt_select2_6 option:selected').prop('disabled',true)
             // }
             // btnCondition()
             $('#nama_tipe_absen').val('').change();
@@ -922,18 +1052,37 @@ function store() {
             $('#valid_from_hutang').val('');
         }
 
-        function btnCondition(){
-				var check = $('#kt_select2_6 option:selected').is(':checked')
-				if(check == true){
-					$('#nama_tipe_absen').prop('disabled',false)
-				}else{
-					$('#nama_tipe_absen').prop('disabled',true)
-                   
-				}
-			}
+        function btnCondition() {
+            var check = $('#kt_select2_6 option:selected').is(':checked')
+            if (check == true) {
+                $('#nama_tipe_absen').prop('disabled', false)
+            } else {
+                $('#nama_tipe_absen').prop('disabled', true)
 
-        </script>
-    
-    
+            }
+        }
+    </script>
+    <script>
+        var currentRoute = window.location.href;
+
+        // Remove the 'menu-item-active' class from all menu items
+        $('ul.menu-nav li.menu-item').removeClass('menu-item-active');
+
+        // Add the 'menu-item-active' class to the corresponding menu item based on the current route
+        if (currentRoute === "{{route('dashboard_absen')}}") {
+            console.log("A");
+            $('#menu-item-dashboard').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('pengajuan_absen')}}") {
+            console.log("B");
+            $('#menu-item-pengajuan-absen').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('absence_approver')}}") {
+            console.log("C");
+            $('#menu-item-absence-approver').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('management_saldo')}}") {
+            console.log("D");
+            $('#menu-item-management-saldo').addClass('menu-item-active');
+        }
+    </script>
+
 </body>
 @endsection

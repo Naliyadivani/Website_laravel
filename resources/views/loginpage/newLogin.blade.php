@@ -93,56 +93,7 @@
 	</div>
 	
 	<!--end::Main-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        {{-- <script>
-            function login() {
-                // Ambil nilai username dan password dari input
-                var username = document.querySelector('input[name="username"]').value;
-                var password = document.querySelector('input[name="password"]').value;
-        
-                // Lakukan validasi username dan password di sini (contoh sederhana)
-                if (username === "user" && password === "password") {
-                    alert("test")
-                    // Redirect ke halaman utama jika berhasil login
-                    window.location.href = "{{ url('dashboard') }}";
-                } else {
-                    // Tampilkan pesan error jika login gagal
-                    alert("Username atau password salah. Silakan coba lagi.");
-                }
-            }
-        </script> --}}
-
-		{{-- <script>
-			function login(){
-				var user = $('#username').val()
-       			 var pass = $("#password").val();
-				 console.log(user);
-					var dataLogin = {
-						"username":user,
-                		"password": pass
-            		}
-				$.ajax({
-					type: "post",
-					url: "http://localhost:9096/login",
-					data: dataLogin,
-					success: function (response) {
-					// 	var arr = result.response;
-					// $('#username').val(arr.user);
-					// 	window.location.href = 'dashboard'; // Change 'dashboard.html' to your actual dashboard URL
-
-						if (response.success) {
-							// Handle successful login here
-							alert('Login success!');
-							// Change 'dashboard' to your actual dashboard URL
-						} else {
-							// Redirect to the dashboard page
-							window.location.href = 'dashboard';
-						}
-					}
-				});
-			}
-		</script> --}}
-
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>

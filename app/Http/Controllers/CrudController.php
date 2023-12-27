@@ -6,6 +6,7 @@ use App\Models\M_Crud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 // Controller untuk halaman Master Kegiatan
 class CrudController extends Controller
@@ -15,40 +16,44 @@ class CrudController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     // public function indexMasterKegiatan(){
     //     return view('daftarAplikasi.masterKegiatan');
     // }
-    
+
     public function index()
     {
-    $data = M_Crud::all();
-
-    return view('daftarAplikasi.masterKegiatan', compact('data'));
+        $data = M_Crud::all();
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('daftarAplikasi.masterKegiatan', compact('data'), ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
 
     public function indexJSON()
     {
-    $data = M_Crud::all(); // M_Crud model
-        return response()->json(['status'=>200,'data'=>$data],200);
+        $data = M_Crud::all(); // M_Crud model
+        return response()->json(['status' => 200, 'data' => $data], 200);
     }
 
-    public function read(){
-        // $response = Http::post('localhost:9096/listKegiatan');
+    public function read()
+    {
+        // $response = Http::post('10.9.12.55:9096/listKegiatan');
         // $data = $response->json();
 
         // return view('daftarAplikasi.read')->with(['data' => $data]);
 
         $model = DB::table('kegiatan')->get();
-        $data1=[];
-        foreach($model as $x){
-            $data1[]=$x;
+        $data1 = [];
+        foreach ($model as $x) {
+            $data1[] = $x;
         }
-        $data=['status'=>200,
-        'data'=>$data1
+        $data = [
+            'status' => 200,
+            'data' => $data1
         ];
         return response()->json($data, 200);
-        
     }
 
     /**
@@ -58,7 +63,11 @@ class CrudController extends Controller
      */
     public function create()
     {
-        return view('daftarAplikasi.masterKegiatan');
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('daftarAplikasi.masterKegiatan', compact('data'), ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
 
     /**
@@ -69,7 +78,7 @@ class CrudController extends Controller
      */
     public function show($id)
     {
-        $data = M_Crud::findOrFail($id);//mencari string id
+        $data = M_Crud::findOrFail($id); //mencari string id
         return view('edit')->with([
             'data' => $data
         ]);
@@ -81,15 +90,15 @@ class CrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function store(Request $request)
     {
         $data = [
-                    'namaKegiatan' => $request->input('namaKegiatan'),
-                    'descKegiatan' => $request->input('descKegiatan')
-                ];
-            
-                M_Crud::insert($data);
+            'namaKegiatan' => $request->input('namaKegiatan'),
+            'descKegiatan' => $request->input('descKegiatan')
+        ];
+
+        M_Crud::insert($data);
     }
 
     /**
@@ -101,7 +110,11 @@ class CrudController extends Controller
     public function edit($id)
     {
         $data = M_Crud::findOrFail($id); // Retrieve the data to edit
-        return view('edit', compact('data'));
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('edit', compact('data'), ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
 
     /**
@@ -138,6 +151,4 @@ class CrudController extends Controller
 
         return redirect()->route('')->with('success', 'Data deleted successfully');
     }
-
-    
 }
