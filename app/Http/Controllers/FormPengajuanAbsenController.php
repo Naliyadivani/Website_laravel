@@ -190,6 +190,15 @@ class FormPengajuanAbsenController extends Controller
                 $path = 'CutiKaryawan/' . date('Y') . '/';
                 $uploadFile = $gcs->putFileAs($path, $file, $filename);
                 $extension = '.'.pathinfo($filename,PATHINFO_EXTENSION);
+                $original_name = $file->getClientOriginalName();
+                $size = $file->getSize();
+                if ($size > 2 * 1024 * 1024) { // 2MB in bytes (2 * 1024 * 1024)
+                    // Handle the case where the file size is too large
+                    return response()->json([
+                        'status' => 400,
+                        'error' => 'File size exceeds the limit (2MB)'
+                    ]);
+                }
 
                 if ($uploadFile !== false) {
                     $gcs->setVisibility($path . $filename, 'public');
@@ -197,7 +206,9 @@ class FormPengajuanAbsenController extends Controller
                     $data[] = [
                         'url' => $url,
                         'filename' => $filename,
-                        'extension'=> $extension
+                        'extension'=> $extension,
+                        'original_name'=> $original_name,
+                        'size' => $size
                     ];
                 } else {
                     // Handle the case when the file upload fails

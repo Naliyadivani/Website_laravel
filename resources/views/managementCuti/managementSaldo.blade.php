@@ -209,7 +209,7 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label>Valid From <span class="text-danger">*</span></label>
+                                                            <label>Valid From<span class="text-danger">*</span></label>
                                                             <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
                                                                 <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From" name="valid_from" id="valid_from" data-target="#kt_datetimepicker_7_1" />
                                                                 <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
@@ -218,9 +218,11 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
+                                                            <span class="form-text text-muted">Please enter start date.</span>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label>Valid To <span class="text-danger">*</span></label>
+
+                                                        <div class="form-group" id="end_Date_div">
+                                                            <label>Valid To<span class="text-danger">*</span></label>
                                                             <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
                                                                 <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#kt_datetimepicker_7_2" />
                                                                 <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
@@ -230,6 +232,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <div class="form-group">
                                                             <label for="">Maximum Debt <span class="text-danger">*</span></label>
                                                             <input class="form-control bootstrap-touchspin-vertical-btn" id="max_hutang" placeholder="0" type="number" name="max_hutang" min="0">
@@ -513,11 +516,15 @@
         }
     </script>
 
+
+
     {{-- CRUD SCRIPT  --}}
     <script>
+        $('#end_Date_div :input').prop('disabled', true);
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
+        var comp_code_pegawai = '';
         var year = $('#absence_year').val();
         // var nik = $('#nik_id').val();
         var current_year = new Date().getFullYear();
@@ -989,7 +996,9 @@
                         tipeAbsen += "<option value='" + y.id_tipe_absen + "'>" + y.nama_tipe_absen + "</option>";
 
                     });
-
+                    if (arr != null) {
+                        comp_code_pegawai = arr[0].comp_code
+                    };
                     $('#nama_tipe_absen').append(tipeAbsen);
                     $('#nama_tipe_absen').selectpicker("refresh");
 
@@ -1016,6 +1025,21 @@
             format: 'YYYY-MM-DD'
         });
 
+        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function(datetimepicker) {
+            // Get the selected date
+            var selectedDate = datetimepicker.date.toDate();
+
+            // Add 1 year to the selected date
+            var endDate = new Date()
+            if (comp_code_pegawai == 'A000') {
+                endDate = new Date(selectedDate.getFullYear() + 1, selectedDate.getMonth(), selectedDate.getDate());
+            } else {
+                endDate = new Date(selectedDate.getFullYear() + 2, selectedDate.getMonth(), selectedDate.getDate());
+            }
+
+            // Format the endDate as a string in the format 'YYYY-MM-DD' and set it to the 'end_Date' input
+            $('#valid_to').val(endDate.toISOString().slice(0, 10));
+        });
 
         // input saldo field
         $('#kt_touchspin_4').TouchSpin({

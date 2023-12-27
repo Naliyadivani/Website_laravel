@@ -609,6 +609,10 @@
                                 '<div class="card border gutter-b p-4 m-4" style="overflow-x:auto;">' +
                                 '<h6 class="font-weight-bolder mb-3">Attachment File:</h6>' +
                                 '<div class="text-dark-50 line-height-lg">' +
+                                '<div class="card-body mt-3">'+
+                                    '<div id="listPhoto${x.slug_kegiatan}" class="row">'+
+                                    '</div>'+
+                                '</div>'+
                                 //file
                                 '</div>' +
                                 '</div>' +
