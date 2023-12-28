@@ -80,6 +80,7 @@
                         <div class="container-fluid">
                             <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
                             <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                            <input class="form-control" type="hidden" id="manager" name="manager" value="{{$user['is_superior']}}" />
                             <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
                             <div class="d-flex flex-column-fluid" id="kt_content">
                                 <!--begin::Container-->
@@ -361,6 +362,7 @@
     <script>
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
+        var manager = $("#manager").val();
         var company = $("#company").val();
         var base_url_web = window.location.origin + "/";
         var year = $('#absence_year').val();
@@ -440,12 +442,18 @@
         }
 
         function getDataAbsenceAll(history = false) {
+            stats = "";
+            if(!history){
+                stats = "WaitApproved"
+            }
             $.ajax({
                 type: 'POST',
                 url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listApprovalCuti',
                 data: {
                     nik: emp_no,
                     tahun: year,
+                    status:stats,
+                    is_manager:manager,
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -502,6 +510,26 @@
                             } else {
                                 pos_id_title = '<span class="font-weight-bold text-dark-50">' + null + ' - ' + x.karyawan.pos_title + '</span>'
                             }
+
+                            var fileabsen= x.file_absen
+                            var htmlFileAbsen = ""
+                            fileabsen.forEach((item)=>{
+                                htmlFileAbsen+=` <div class="col-3 py-2 text-center">
+                                    <div class="card card-custom card-shadowless">
+                                        <div class="card-body p-0">
+                                            <div class="overlay max-w-300px max-h-200px">
+                                                <div class="overlay-wrapper symbol">
+                                                    <div class="symbol-label min-w-300px min-h-200px" style="background-image: url('https://storage.googleapis.com/lumen-oauth-storage/Tjsl/2023/14122023_084508_IMG_3164-min.JPG')"></div>
+                                                </div>
+                                                <div class="overlay-layer">
+                                                    <a href="https://storage.googleapis.com/lumen-oauth-storage/Tjsl/2023/14122023_084508_IMG_3164-min.JPG" target="_blank" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                                </div>
+                                            </div>
+                                    </div>
+                            </div>
+                            </div>`
+
+                            });
 
                             var html =
                                 `<div class="card card-custom gutter-b ${status_card} absence-individu-card">` +
@@ -606,16 +634,16 @@
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +
-                                '<div class="card border gutter-b p-4 m-4" style="overflow-x:auto;">' +
-                                '<h6 class="font-weight-bolder mb-3">Attachment File:</h6>' +
-                                '<div class="text-dark-50 line-height-lg">' +
-                                '<div class="card-body mt-3">'+
-                                    '<div id="listPhoto${x.slug_kegiatan}" class="row">'+
-                                    '</div>'+
-                                '</div>'+
-                                //file
-                                '</div>' +
-                                '</div>' +
+                                `<div class="card border gutter-b p-4 m-4">
+                                            <div class="card-header">
+                                                <b>Dokumentasi Kegiatan</b>
+                                            </div>
+                                            <div class="card-body mt-3">
+                                                <div id="listPhotonull" class="row">
+                                                   ${htmlFileAbsen}
+                            
+                            </div></div></div>
+                                        </div>`+
                                 kondisi +
                                 '</div>' +
                                 '</div>' +
@@ -623,17 +651,13 @@
                                 '</div>' +
                                 '</div>' +
                                 '</div>';
+                            }
                             $('#card-absence').append(html);
-                            // count++;
-                        }
+                        });
                         countWaitingApproval(countWaittingApproval)
                         countRejectedApproval(countRejected)
                         countApprovedApproval(countApproved)
                         countAllDataApproval(countRejected + countApproved)
-                        // console.log(x.kpi_title);
-                    });
-
-
                     KTApp.unblock('#kt_content');
                 },
                 complete: function(data) {
@@ -669,7 +693,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
+                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -712,7 +736,7 @@
                     }
 
                     $.ajax({
-                        url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/approve',
+                        url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/approve',
                         type: "POST",
                         data: obj,
                         beforeSend: function(xhr) {
@@ -755,7 +779,7 @@
             }).then(function(result) {
                 if (result.value) {
                     $.ajax({
-                        url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/approve',
+                        url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/approve',
                         type: "POST",
                         data: obj,
                         beforeSend: function(xhr) {

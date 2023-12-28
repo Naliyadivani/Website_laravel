@@ -401,7 +401,7 @@
 
     function initDropzone() {
         $('#customFile').dropzone({
-            url: `https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo`,
+            url: `https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo`,
             autoProcessQueue: true,
             uploadMultiple: true,
             parallelUploads: 5,
@@ -486,7 +486,7 @@
         function initDropzone() {
             // Initialize Dropzone
             var myDropzone = new Dropzone("#customFile", {
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo",
                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -583,7 +583,7 @@
         function readSaldo() {
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listAdminSaldo",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/listAdminSaldo",
                 // url: "http://10.9.12.223:9096/api/cuti/listAdminSaldo",
                 data: {
                     nik: emp_no,
@@ -629,7 +629,7 @@
         //show untuk edit saldo
         function show(id_saldo) {
             $.ajax({
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminSaldoCuti/" + id_saldo,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 type: "get",
                 beforeSend: function(xhr) {
@@ -682,7 +682,7 @@
                 if (result.isConfirmed) {
                     // Send an AJAX request to delete the item
                     $.ajax({
-                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
                         // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
                         type: 'DELETE',
                         beforeSend: function(xhr) {
@@ -748,7 +748,7 @@
         //             }
         //             $.ajax({
         //                 type: "post",
-        //                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo", //IP Wifi PI
+        //                 url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo", //IP Wifi PI
         //                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
         //                 data: storeSaldo,
         //                 dataType: "json",
@@ -833,7 +833,7 @@
 
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo",
                 data: storeSaldo,
                 dataType: "json",
                 beforeSend: function(xhr) {
@@ -886,7 +886,7 @@
 		 	allowClear: true,
 		 	ajax: {
                  // type: "post",
-		 		url: "https://601zgltt-9096.asse.devtunnels.ms/api/mobile/dataPegawai",
+		 		url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/dataPegawai",
 		 		dataType: 'json',
 		 		delay: 250,
 		 		data: function(params) {
@@ -936,7 +936,7 @@
             placeholder: "Masukkan Nama atau Nomor Pegawai",
             allowClear: true,
             ajax: {
-                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/mobile/dataPegawai', // Use the named route to generate the URL
+                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/dataPegawai', // Use the named route to generate the URL
                 // url: 'http://10.9.12.223:9096/api/mobile/dataPegawai',
                 dataType: 'json',
                 beforeSend: function(xhr) {
@@ -976,7 +976,7 @@
         function getTipeAbsen(x) {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminTipeAbsen?nik=" + x,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminTipeAbsen?nik=" + x,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // data: "data",
                 beforeSend: function(xhr) {

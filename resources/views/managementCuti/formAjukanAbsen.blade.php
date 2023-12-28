@@ -186,6 +186,24 @@
             flex: 0 0 100%;
             padding: 0.5rem 2rem;
         }
+        .dt-body-nowarp {
+            white-space: nowrap;
+        }
+
+        .dropzone .dz-preview .dz-image {
+            width: 200px !important;
+            height: 200px !important;
+        }
+
+        .dz-image img {
+            width: 200px !important;
+            height: 200px !important;
+        }
+
+        .dz-max-files-reached {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
     }
 </style>
 @extends('layout.tempWeb')
@@ -586,13 +604,11 @@
                         console.log(file_absen);
                         file_absen.forEach(x => {
                             var mockFile ={
-                                name: x.original_name,
+                                name: x.filename,
                                 size: x.size
                             }
-                            console.log(mockFile);
                             var img_ext = "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png"
                             if (x.extension == ".jpg" || x.extension == ".gif" || x.extension == ".jpeg" || x.extension == ".png" || x.extension == ".svg") {
-                                console.log("X");
                                 var img_ext = x.url
                             }
                             dzClosure.options.addedfile.call(this, mockFile);
@@ -614,12 +630,12 @@
                         var arr = response.data
                         // console.log(arr);
                         arr.forEach(x => {
-                            var objPhoto = x;
-                            objPhoto['id_photo'] = null;
+                            
                             file_absen.push(x)
                         })
                     });
                     dzClosure.on("removedfile", function(file) {
+                        console.log(file);
                         file_absen = file_absen.filter(function(obj) {
                             return obj.original_name != file.name;
                         });
@@ -784,9 +800,7 @@
             file_absen = []
             if (fileData.length > 0) {
                 fileData.forEach(x => {
-                var objPhoto = x;
-                objPhoto['id_photo'] = x.id_file_absen;
-                file_absen.push(objPhoto)
+                file_absen.push(x)
             })};
             // initDropzone()
                 // // Handle the file information here, you can loop through the files
@@ -799,9 +813,11 @@
                 // });
             // }
                 // console.log(arrReadFormAbsen);
+                console.log(arr);
 
                 initDropzone();
                 $('#id_pengajuan_absen').val(arr.id_pengajuan_absen);
+                console.log($('#id_pengajuan_absen').val());
                 tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
                 $('#nama_tipe_absen').prop('disabled', true)
 
@@ -815,7 +831,7 @@
                 localStorage.removeItem('arrData');
             } else {
                 // Handle the case where 'arr' data is not available
-                console.error('No data available');
+                console.log('No data available');
             }
         }
 
@@ -846,8 +862,9 @@
                 created_by: "{{$user['nik']}}"
             }
 
-            if (id_absen !== '') {
+            if (id_absen != "") {
                 storeAbsen.id_pengajuan_absen = id_absen;
+                console.log(storeAbsen);
             }
 
 
@@ -902,6 +919,7 @@
                             // Handle error jika pengiriman gagal
                             console.error('Error:', error);
                             // Tambahkan logika atau tindakan lain jika diperlukan
+                            
                             Swal.fire({
                                 text: "Maaf, Saldo Anda Tidak Cukup!",
                                 icon: "error",
@@ -935,7 +953,7 @@
         function getTipeAbsen() {
             $.ajax({
                 type: "get",
-                // url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
+                // url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -1031,71 +1049,73 @@
                                 }
 
                                 if (my_saldo != null) {
-                                    var saldo_terpakai = 0;
-                                    var newPeriode = Date();
-                                    my_saldo.forEach((y, i) => {
-                                        var result = [0, 0];
-                                        var validFrom = new Date(y['valid_from']);
-                                        var validTo = new Date(y['valid_to']);
-                                        var validFromhutang = new Date(y['valid_from_hutang']);
+                                        var saldo_terpakai = 0;
+                                        var newPeriode = Date();
+                                        my_saldo.forEach((y, i) => {
+                                            console.log(y['valid_from'], y['valid_to']);
+                                            var result = [0, 0];
+                                            var validFrom = new Date(y['valid_from']);
+                                            var validTo = new Date(y['valid_to']);
+                                            var validFromhutang = new Date(y['valid_from_hutang']);
 
-                                        if ((currentDate <= validTo) && (currentDate >= validFrom) &&
-                                            (endDate >= validTo)) {
-                                            if (saldo_digunakan <= y['saldo']) {
-                                                result = perhitungan(mulai_absen, y['valid_to']);
-                                                newPeriode = validTo;
-                                            } else if (currentDate > validFromhutang) {
-                                                if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
+                                            if ((currentDate <= validTo) && (currentDate >= validFrom) &&
+                                                (endDate >= validTo)) {
+                                                if (saldo_digunakan <= y['saldo']) {
                                                     result = perhitungan(mulai_absen, y['valid_to']);
                                                     newPeriode = validTo;
+                                                } else if (currentDate > validFromhutang) {
+                                                    if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
+                                                        result = perhitungan(mulai_absen, y['valid_to']);
+                                                        newPeriode = validTo;
+                                                    } else {
+                                                        keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
+                                                            "</b> dan Maksimal Berhutang " + y['max_hutang']
+                                                    }
                                                 } else {
                                                     keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                        "</b> dan Maksimal Berhutang " + y['max_hutang']
+                                                        "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
+                                                        y['valid_from_hutang']
                                                 }
-                                            } else {
-                                                keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                    "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
-                                                    y['valid_from_hutang']
-                                            }
-                                        } else if ((newPeriode >= validFrom) && (endDate <= validTo)) {
-                                            if (saldo_digunakan <= y['saldo'] - saldo_terpakai) {
-                                                result = perhitungan(newPeriode.addDays(1).toISOString().slice(0, 10), endDate);
-                                            } else if (currentDate > validFromhutang) {
-                                                if (saldo_digunakan <= y['saldo'] - saldo_terpakai + y['max_hutang']) {
+                                            } else if ((newPeriode >= validFrom) && (endDate <= validTo)) {
+                                                if (saldo_digunakan <= y['saldo'] - saldo_terpakai) {
                                                     result = perhitungan(newPeriode.addDays(1).toISOString().slice(0, 10), endDate);
+                                                } else if (currentDate > validFromhutang) {
+                                                    if (saldo_digunakan <= y['saldo'] - saldo_terpakai + y['max_hutang']) {
+                                                        result = perhitungan(newPeriode.addDays(1).toISOString().slice(0, 10), endDate);
+                                                    } else {
+                                                        keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] - saldo_terpakai +
+                                                            "</b> dan Maksimal Berhutang " + y['max_hutang']
+                                                    }
                                                 } else {
                                                     keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                        "</b> dan Maksimal Berhutang " + y['max_hutang']
+                                                        "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
+                                                        y['valid_from_hutang']
                                                 }
-                                            } else {
-                                                keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                    "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
-                                                    y['valid_from_hutang']
-                                            }
-                                        } else if ((currentDate >= validFrom) && (endDate <= validTo)) {
-                                            if (saldo_digunakan <= y['saldo']) {
-                                                result = perhitungan(mulai_absen, akhir_absen);
-                                            } else if (currentDate > validFromhutang) {
-                                                if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
+                                            } else if ((currentDate >= validFrom) && (endDate <= validTo)) {
+                                                if (saldo_digunakan <= y['saldo']) {
                                                     result = perhitungan(mulai_absen, akhir_absen);
+                                                } else if (currentDate > validFromhutang) {
+                                                    if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
+                                                        result = perhitungan(mulai_absen, akhir_absen);
+                                                    } else {
+                                                        keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
+                                                            "</b> dan Maksimal Berhutang " + y['max_hutang']
+                                                    }
                                                 } else {
                                                     keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                        "</b> dan Maksimal Berhutang " + y['max_hutang']
+                                                        "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
+                                                        y['valid_from_hutang']
                                                 }
-                                            } else {
-                                                keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                    "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
-                                                    y['valid_from_hutang']
                                             }
-                                        }
-                                        if (tipe_max_absen == "hari_kalender") {
-                                            saldo_terpakai += result[0]
-                                        } else if (tipe_max_absen == "hari_kerja") {
-                                            saldo_terpakai += result[1]
-                                        }
-                                    });
+                                            if (tipe_max_absen == "hari_kalender") {
+                                                saldo_terpakai += result[0]
+                                            } else if (tipe_max_absen == "hari_kerja") {
+                                                saldo_terpakai += result[1]
+                                            }
+                                        });
+                                   
                                 }
-
+                                                           
                                 if (saldo_digunakan == saldo_terpakai) {
                                     checkSaldo = true
                                 } else {

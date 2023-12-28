@@ -274,9 +274,19 @@
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
+    <script src="https://pismart-dev.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
     <!--end::Page Scripts-->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-
+    {{-- <script>
+        $(document).ready(function () {
+            $('#kt_datatable').DataTable({
+                // Add your configurations here
+                // For example, enable pagination
+                "paging": true
+            });
+        });
+    </script> --}}
+    
     <script>
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
@@ -333,10 +343,64 @@
 
         readFormAbsen()
         //read DB
+        // function readFormAbsen() {
+        //     $.ajax({
+        //         type: "get",
+        //         url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
+        //         beforeSend: function(xhr) {
+        //             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+        //         },
+        //         success: function(data) {
+        //             var arr = data.data
+        //             $('#formAbsen').html('')
+        //             if (arr != null) {
+        //                 arr.forEach((y, i) => {
+        //                     // console.log(y.status);
+        //                     if (y.status == "WaitApproved") {
+        //                         statusHtml = `
+        //                     <td>
+        //                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
+        //                     </td>`
+        //                     } else if (y.status == "Approved") {
+        //                         document.querySelectorAll('.btn-warning, .btn-danger').forEach(button => {
+        //                             button.disabled = true;
+        //                         });
+        //                         statusHtml = `
+        //                     <td>
+        //                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
+        //                     </td>`
+        //                     } else {
+        //                         statusHtml = `
+        //                     <td>
+        //                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
+        //                     </td>
+        //                     `
+        //                     }
+        //                     var html = `<tr>
+        //                 <td>${i+1}</td>
+        //                 <td>${y.tipe_absen.nama_tipe_absen}</td>
+                        
+        //                 <td>${y.mulai_absen}</td>
+        //                 <td>${y.akhir_absen}</td>
+        //                 ${statusHtml};
+		// 				<td class=" dt-body-nowarp">
+		// 					<button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+        //                         <i class="flaticon2-edit"></i>
+        //                         </button> <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
+        //                             <i class="flaticon2-trash"></i>
+        //                             </button>
+        //                             </td>
+        //                             </tr>`
+        //                     $('#formAbsen').append(html)
+        //                 });
+        //             };
+        //         }
+        //     });
+        // }
         function readFormAbsen() {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -345,50 +409,71 @@
                     $('#formAbsen').html('')
                     if (arr != null) {
                         arr.forEach((y, i) => {
-                            // console.log(y.status);
+                            let statusHtml = '';
+                            let actionButtons = '';
                             if (y.status == "WaitApproved") {
                                 statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
-                            </td>`
+                                    <td>
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
+                                    </td>`;
+                                actionButtons = `
+                                    <td class=" dt-body-nowarp">
+                                        <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                                            <i class="flaticon2-edit"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
+                                            <i class="flaticon2-trash"></i>
+                                        </button>
+                                    </td>`;
                             } else if (y.status == "Approved") {
                                 statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
-                            </td>`
+                                    <td>
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
+                                    </td>`;
+                                actionButtons = `
+                                    <td class=" dt-body-nowarp">
+                                        <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal" disabled>
+                                            <i class="flaticon2-edit"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger" disabled>
+                                            <i class="flaticon2-trash"></i>
+                                        </button>
+                                    </td>`;
                             } else {
                                 statusHtml = `
-                            <td>
-                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
-                            </td>
-                            `
+                                    <td>
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
+                                    </td>`;
+                                actionButtons = `
+                                    <td class=" dt-body-nowarp">
+                                        <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                                            <i class="flaticon2-edit"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
+                                            <i class="flaticon2-trash"></i>
+                                        </button>
+                                    </td>`;
                             }
                             var html = `<tr>
-                        <td>${i+1}</td>
-                        <td>${y.tipe_absen.nama_tipe_absen}</td>
-                        
-                        <td>${y.mulai_absen}</td>
-                        <td>${y.akhir_absen}</td>
-                        ${statusHtml};
-						<td class=" dt-body-nowarp">
-							<button type="button" onclick="showAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                                <i class="flaticon2-edit"></i>
-                                </button> <button type="button" onclick="deleteListAbsen('${y.id_pengajuan_absen}')" class="btn btn-icon my-2 btn-sm btn-danger">
-                                    <i class="flaticon2-trash"></i>
-                                    </button>
-                                    </td>
-                                    </tr>`
-                            $('#formAbsen').append(html)
+                                <td>${i+1}</td>
+                                <td>${y.tipe_absen.nama_tipe_absen}</td>
+                                <td>${y.mulai_absen}</td>
+                                <td>${y.akhir_absen}</td>
+                                ${statusHtml}
+                                ${actionButtons}
+                            </tr>`;
+                            $('#formAbsen').append(html);
                         });
-                    };
+                    }
                 }
             });
         }
 
+
         function showAbsen(id_absen) {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showPengajuanCuti/" + id_absen,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_absen,
                 data: "data",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -416,7 +501,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "DELETE",
-                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deletePengajuanCuti/" + id_absen,
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deletePengajuanCuti/" + id_absen,
                         beforeSend: function(xhr) {
                             Swal.fire({
                                 html: 'Please Wait ...',
@@ -448,16 +533,16 @@
 
         // Add the 'menu-item-active' class to the corresponding menu item based on the current route
         if (currentRoute === "{{route('dashboard_absen')}}") {
-            console.log("A");
+            // console.log("A");
             $('#menu-item-dashboard').addClass('menu-item-active');
         } else if (currentRoute === "{{route('pengajuan_absen')}}") {
-            console.log("B");
+            // console.log("B");
             $('#menu-item-pengajuan-absen').addClass('menu-item-active');
         } else if (currentRoute === "{{route('absence_approver')}}") {
-            console.log("C");
+            // console.log("C");
             $('#menu-item-absence-approver').addClass('menu-item-active');
         } else if (currentRoute === "{{route('management_saldo')}}") {
-            console.log("D");
+            // console.log("D");
             $('#menu-item-management-saldo').addClass('menu-item-active');
         }
     </script>
