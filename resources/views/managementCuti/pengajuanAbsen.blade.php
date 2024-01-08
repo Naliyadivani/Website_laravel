@@ -303,7 +303,8 @@
 
         function selectYear(year) {
             var start_year = new Date();
-            start_year.setFullYear(year - 1)
+            start_year.setFullYear(year - 1)// set year from date -1
+            // dropdown periode 
             var html =
                 '<select class="form-control selectpicker" id="absence_year" data-style="btn-primary">' +
                 '<optgroup label="Periode Tahun" id="listYear">' +
@@ -311,6 +312,7 @@
                 '</select>'
             $('#selectYear').html(html)
             var get_year = start_year.getFullYear();
+            //looping periode
             for (let i = 0; i < 3; i++) {
                 if (get_year == (current_year)) {
                     $('#listYear').append($("<option></option>").attr({
@@ -321,9 +323,9 @@
                     $('#listYear').append($("<option></option>").attr('value', get_year).text('Periode thn ' +
                         get_year));
                 }
-                get_year++
+                get_year++ //add new year
             }
-            $('absence_year').selectpicker('refresh')
+            $('#absence_year').selectpicker('refresh')
         }
         $.ajaxSetup({
             headers: {
@@ -481,9 +483,8 @@
                 success: function(response) {
                     // Store the 'arr' data in localStorage
                     localStorage.setItem('arrData', JSON.stringify(response.data));
-                    
                     // Redirect to the 'form_pengajuan_absen' page
-                    window.location.href = 'form_pengajuan_absen';
+                    window.location.href = 'edit_pengajuan_absen/' + id_absen;
                 }
             });
         }

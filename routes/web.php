@@ -48,24 +48,17 @@ Auth::routes();
 // LOGIN
 Route::get('/login', [LoginNewController::class, 'index'])->name('loginpage');
 Route::post('/login', [LoginNewController::class, 'login'])->name('loginaction');
+
 // LOGOUT
 Route::get('/logout', [LoginNewController::class, 'logout'])->name('logout');
 // HOMEPAGE
 Route::get('/dashboard', [HomeNewController::class, 'index'])->name('homepage');
 Route::get('/daftarAplikasi', [HomeNewController::class, 'indexdaftarAPK'])->name('daftarAplikasi');
+
+// modul tjsl
 Route::get('/tjsl', [HomeNewController::class, 'indexTjslPage'])->name('tjsl');
 
-// Route::get('/loginpage', [loginController::class, 'indexLogin'])->name('loginpage');
-// Route::post('/actionlogin', [loginController::class, 'loginAction'])->name('loginAction')->middleware('auth');
-
-// //halaman utama
-//untuk menggunakan route pakai name
-// Route::get('/dashboard', [HomeController::class, 'indexHome'])->name('dashboard');
-
-// //menu di daftar aplikasi
-// Route::get('/daftarAplikasi', [HomeController::class, 'indexdaftarAPK'])->name('daftarAplikasi');
-// Route::get('/tjsl', [HomeController::class, 'indexTjslPage'])->name('tjsl');
-
+//Menu Tambah Laporan
 // //tampilan tabel tambah laporan 
 Route::get('/addLaporan', [TambahLaporanController::class, 'indexAddLaporan'])->name('addLaporan');
 //tambilan ketika klik button Tambah laporan, halaman untuk pengajuan laporan
@@ -83,6 +76,9 @@ Route::get('/show/{id}', [CrudController::class, 'show']);
 Route::get('/edit/{id}', [CrudController::class, 'edit']);
 Route::get('/destroy/{id}', [CrudController::class, 'delete']);
 
+//roles
+Route::get('/show-roles', [LoginNewController::class, 'showRoles']);
+
 // Menu Management Cuti
 Route::get('/dashboard_absen', [ManagementCutiController::class, 'IndexAbsen'])->name('dashboard_absen');
 Route::get('/pengajuan_absen', [FormPengajuanAbsenController::class, 'PengajuanAbsen'])->name('pengajuan_absen');
@@ -94,7 +90,7 @@ Route::get('/read_JSON_form_absen', [FormPengajuanAbsenController::class, 'readJ
 Route::get('/create', [FormPengajuanAbsenController::class, 'create']);
 Route::post('/store', [FormPengajuanAbsenController::class, 'store']);
 Route::get('/show{id}', [FormPengajuanAbsenController::class, 'show']);
-Route::get('/edit{id}', [FormPengajuanAbsenController::class, 'edit']);
+Route::get('/edit_pengajuan_absen/{id_absen}', [FormPengajuanAbsenController::class, 'edit'])->name('edit_pengajuan_absen');
 Route::get('/destroy{id}', [FormPengajuanAbsenController::class, 'delete']);
 
 // Management Saldo Cuti

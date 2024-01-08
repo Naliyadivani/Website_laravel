@@ -69,6 +69,7 @@ class FormPengajuanAbsenController extends Controller
     public function create()
     {
         return view('managementCuti.formAjukanAbsen');
+       
     }
 
     /**
@@ -109,10 +110,16 @@ class FormPengajuanAbsenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // $formAbsen = formAjukanAbsen::findOrFail($id);
+    // return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
     public function edit($id)
     {
-        $formAbsen = formAjukanAbsen::findOrFail($id);
-        return view('edit', compact('formAbsen'));
+
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('managementCuti.formAjukanAbsen', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
     }
 
     /**
@@ -192,13 +199,7 @@ class FormPengajuanAbsenController extends Controller
                 $extension = '.'.pathinfo($filename,PATHINFO_EXTENSION);
                 $original_name = $file->getClientOriginalName();
                 $size = $file->getSize();
-                // if ($size > 2 * 1024 * 1024) { // 2MB in bytes (2 * 1024 * 1024)
-                //     // Handle the case where the file size is too large
-                //     return response()->json([
-                //         'status' => 400,
-                //         'error' => 'File size exceeds the limit (2MB)'
-                //     ]);
-                // }
+ 
                 if ($uploadFile !== false) {
                     $gcs->setVisibility($path . $filename, 'public');
                     $url = $gcs->url($path . $filename);

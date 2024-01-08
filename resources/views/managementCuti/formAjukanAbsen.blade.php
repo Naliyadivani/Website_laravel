@@ -41,7 +41,6 @@
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
     }
-
     .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
         -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -186,7 +185,11 @@
             flex: 0 0 100%;
             padding: 0.5rem 2rem;
         }
-        .dt-body-nowarp {
+    }
+</style>
+
+<style>
+    .dt-body-nowarp {
             white-space: nowrap;
         }
 
@@ -204,7 +207,6 @@
             pointer-events: none;
             cursor: not-allowed;
         }
-    }
 </style>
 @extends('layout.tempWeb')
 
@@ -601,7 +603,7 @@
                 init: function() {
                     dzClosure = this;
                     if(file_absen.length > 0 ){
-                        console.log(file_absen);
+                        // console.log(file_absen);
                         file_absen.forEach(x => {
                             var mockFile ={
                                 name: x.filename,
@@ -630,12 +632,13 @@
                         var arr = response.data
                         // console.log(arr);
                         arr.forEach(x => {
-                            
-                            file_absen.push(x)
+                            var objFiles = x;
+                            objFiles['id_files'] = x.id_file_absen;
+                            file_absen.push(objFiles)
                         })
                     });
                     dzClosure.on("removedfile", function(file) {
-                        console.log(file);
+                        // console.log(file);
                         file_absen = file_absen.filter(function(obj) {
                             return obj.original_name != file.name;
                         });
@@ -675,7 +678,8 @@
 
         function selectYear(year) {
             var start_year = new Date();
-            start_year.setFullYear(year - 1)
+            start_year.setFullYear(year - 1) //set date from date yg dibuat ke tahun yg diberi
+            //dropdown periode
             var html =
                 '<select class="form-control selectpicker" id="absence_year" data-style="btn-primary">' +
                 '<optgroup label="Periode Tahun" id="listYear">' +
@@ -848,8 +852,6 @@
             var mulai_absen = $('#start_Date').val();
             var akhir_absen = $('#end_Date').val();
 
-
-
             // console.log(id_absen, nik, tipe_absen_id, deskripsi, mulai_absen, akhir_absen,file_absen);
 
             var storeAbsen = {
@@ -885,7 +887,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeCuti",
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeCuti",
                         // data: storeAbsen,
                         data: JSON.stringify(storeAbsen),
                         contentType: "application/json",
@@ -954,7 +956,7 @@
             $.ajax({
                 type: "get",
                 // url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -1117,12 +1119,15 @@
                                 }
                                                            
                                 if (saldo_digunakan == saldo_terpakai) {
+                                    console.log("ADA");
                                     checkSaldo = true
                                 } else {
+                                    console.log("TIDAK ADA");
                                     keterangan_x = "Maaf Saldo Anda Tidak Cukup" + keterangan
                                 }
 
                                 if (checkSaldo || max_absen != null) {
+                                    console.log("MASUK");
                                     wizard.goTo(wizard.getNewStep());
                                 } else {
                                     Swal.fire({

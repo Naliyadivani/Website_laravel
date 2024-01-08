@@ -393,6 +393,7 @@
     {{-- <script src="assets/js/pages/crud/forms/widgets/select2.js"></script> --}}
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
     <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
+    <script src="https://pismart-dev.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
     {{-- <script src="assets/js/"></script> --}}
 
     {{-- UPLOAD EXCEL SCRIPT  --}}
@@ -534,6 +535,7 @@
         $("#absence_year").change(function() {
             console.log("XXXX");
             year = $('#absence_year').val();
+            readSaldo()
             // cardActive()
         });
 
@@ -1094,16 +1096,16 @@
 
         // Add the 'menu-item-active' class to the corresponding menu item based on the current route
         if (currentRoute === "{{route('dashboard_absen')}}") {
-            console.log("A");
+            // console.log("A");
             $('#menu-item-dashboard').addClass('menu-item-active');
         } else if (currentRoute === "{{route('pengajuan_absen')}}") {
-            console.log("B");
+            // console.log("B");
             $('#menu-item-pengajuan-absen').addClass('menu-item-active');
         } else if (currentRoute === "{{route('absence_approver')}}") {
-            console.log("C");
+            // console.log("C");
             $('#menu-item-absence-approver').addClass('menu-item-active');
         } else if (currentRoute === "{{route('management_saldo')}}") {
-            console.log("D");
+            // console.log("D");
             $('#menu-item-management-saldo').addClass('menu-item-active');
         }
     </script>

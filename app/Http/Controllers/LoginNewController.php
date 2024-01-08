@@ -43,4 +43,5 @@ class LoginNewController extends Controller
         // Redirect to the login page or any other page after logout
         return redirect()->route('loginpage');
     }
+
 }

@@ -55,12 +55,9 @@
                             <!--begin::Action-->
 
                             <button type="submit" class="form-control btn btn-login submit px-3 text-light">Log In</button>
-                            <!-- <p class="text-center btn-text1">
-            @if (Route::has('register'))
-            Don't have an account?<a class="btn btn-link btn-regist" href="{{ route('register') }}">{{ __('Register') }}</a>
-            @endif
-            {{-- Don't have an account?<a href="/registpage" class="btn btn-link btn-regist">Register</a> --}}
-        </p> -->
+                                <p class="mr-4" style="color:  #1D2657;">New User ?
+                                    <button type="button" class=" btn btn-link font-weight-bold" data-toggle="modal" data-target="#registerOptionModal">Register</button>
+                                </p> 
 
                             <!--end::Action-->
                             {{-- </form> --}}
@@ -69,7 +66,28 @@
                     <!--end::Signin-->
                 </div>
                 <!--end::Content body-->
-
+                <!-- Modal-->
+                    <div class="modal fade" id="registerOptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Register As</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i aria-hidden="true" class="ki ki-close"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <a href="https://pismart.pupuk-indonesia.com/magang_app/register" class="btn btn-primary btn-lg btn-block"><i class="fas fa-user-tie"></i> Peserta Magang</a>
+                                    <a href="https://pismart.pupuk-indonesia.com/vendor_app/register" class="btn btn-primary btn-lg btn-block"><i class="fas fa-user-tie"></i> Vendor</a>
+                                    <a href="https://pismart.pupuk-indonesia.com/universitas/register" class="btn btn-primary btn-lg btn-block"><i class="fas fa-user-tie"></i> Universitas</a>
+                                    <a href="https://pismart.pupuk-indonesia.com/magang_ldms/register" class="btn btn-primary btn-lg btn-block"><i class="fas fa-user-tie"></i> Peserta Magang LDMS</a>
+                                    <a href="https://pismart.pupuk-indonesia.com/pembimbing_instansi/register" class="btn btn-primary btn-lg btn-block"><i class="fas fa-user-tie"></i> Pembimbing Instansi</a>
+                                    <a href="https://pismart.pupuk-indonesia.com/vendor_outsourcing/register" class="btn btn-primary btn-lg btn-block"><i class="fas fa-user-tie"></i> Vendor Outsourcing</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Main-->
                 <!--begin::Content footer for mobile-->
                 <div class="d-flex flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
                     <div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">© 2021 PI-Smart</div>

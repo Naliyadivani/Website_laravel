@@ -61,39 +61,47 @@
 					</a>
 				</li>
 
-				<li class="menu-section menu-section--first">
-					<h4 class="menu-text">MANAGER</h4>
-					<i class="menu-icon flaticon-more-v2"></i>
-				</li>
-
-				<li id="menu-item-absence-approver" class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-					<a href="{{ route('absence_approver') }}" class="menu-link menu-toggle">
-						<span class="svg-icon menu-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<rect x="0" y="0" width="24" height="24" />
-									<path d="M12.9863016,8.83409843 C12.9953113,8.88805868 13,8.94348179 13,9 L13,11 L17,11 C18.1045695,11 19,11.8954305 19,13 L19,16 L5,16 L5,13 C5,11.8954305 5.8954305,11 7,11 L11,11 L11,9 C11,8.94348179 11.0046887,8.88805868 11.0136984,8.83409843 C9.84135601,8.42615464 9,7.31133193 9,6 C9,4.34314575 10.3431458,3 12,3 C13.6568542,3 15,4.34314575 15,6 C15,7.31133193 14.158644,8.42615464 12.9863016,8.83409843 Z" fill="#000000" />
-									<rect fill="#000000" opacity="0.3" x="5" y="18" width="14" height="2" rx="1" />
-								</g>
-							</svg><!--end::Svg Icon-->
-						</span>
-						<span class="menu-text">Absence Approver</span>
-					</a>
-				</li>
-
-				<li class="menu-section menu-section--first">
-					<h4 class="menu-text">ADMIN</h4>
-					<i class="menu-icon flaticon-more-v2"></i>
-				</li>
-
-
-				<li id="menu-item-management-saldo" class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-					<a href="{{ route('management_saldo') }}" class="menu-link menu-toggle">
-						<span class="svg-icon menu-icon flaticon-add">
-						</span>
-						<span class="menu-text">Management Saldo</span>
-					</a>
-				</li>
+					@foreach($user['roles'] as $role)
+						@if($role['name'] === 'admin_absen_Karyawan' && $role['comp_code'] === '9999')
+							<!-- You can add other sidebar elements for this role here -->
+							<li class="menu-section menu-section--first">
+								<h4 class="menu-text">MANAGER</h4>
+								<i class="menu-icon flaticon-more-v2"></i>
+							</li>
+			
+							<li id="menu-item-absence-approver" class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('absence_approver') }}" class="menu-link menu-toggle">
+									<span class="svg-icon menu-icon">
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24" />
+												<path d="M12.9863016,8.83409843 C12.9953113,8.88805868 13,8.94348179 13,9 L13,11 L17,11 C18.1045695,11 19,11.8954305 19,13 L19,16 L5,16 L5,13 C5,11.8954305 5.8954305,11 7,11 L11,11 L11,9 C11,8.94348179 11.0046887,8.88805868 11.0136984,8.83409843 C9.84135601,8.42615464 9,7.31133193 9,6 C9,4.34314575 10.3431458,3 12,3 C13.6568542,3 15,4.34314575 15,6 C15,7.31133193 14.158644,8.42615464 12.9863016,8.83409843 Z" fill="#000000" />
+												<rect fill="#000000" opacity="0.3" x="5" y="18" width="14" height="2" rx="1" />
+											</g>
+										</svg><!--end::Svg Icon-->
+									</span>
+									<span class="menu-text">Absence Approver</span>
+								</a>
+							</li>
+			
+							<li class="menu-section menu-section--first">
+								<h4 class="menu-text">ADMIN</h4>
+								<i class="menu-icon flaticon-more-v2"></i>
+							</li>
+			
+			
+							<li id="menu-item-management-saldo" class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="{{ route('management_saldo') }}" class="menu-link menu-toggle">
+									<span class="svg-icon menu-icon flaticon-add">
+									</span>
+									<span class="menu-text">Management Saldo</span>
+								</a>
+							</li>
+						@endif
+				
+						{{-- Add similar conditions for other roles if needed --}}
+					@endforeach
+				
 
 				<li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
 					<a href="{{route('homepage')}}" class="menu-link menu-toggle">
@@ -138,6 +146,7 @@
 		<!--end::Menu Container-->
 	</div>
 	<!--end::Aside Menu-->
+	
 	{{-- <div class="image-asideBar" style="background-size: cover">
 		<svg width="260px" height="400" viewBox="0 0 297 466" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<path d="M183.325 164.837C192.112 50.1692 262.77 7.4499 297 0.423706V459.515H1.00684V354.544C94.9119 371.828 172.342 308.171 183.325 164.837Z" fill="url(#paint0_linear_1871_2668)" />

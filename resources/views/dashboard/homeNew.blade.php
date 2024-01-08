@@ -587,7 +587,7 @@
 												<!--end::Body-->
 											</div>
 										</div>
-
+										
 										<div class="col-lg-12 col-xxl-12">
 											<div class="card card-custom  card-stretch gutter-b">
 												<!--begin::Header-->
@@ -829,7 +829,7 @@
 												<!--end::Body-->
 											</div>
 										</div>
-
+										
 										{{-- Start- Smart Learning body  --}}
 										<div class="col-lg-12 col-xxl-12">
 											<div class="card card-custom  card-stretch gutter-b">
@@ -935,6 +935,7 @@
 												<!--end::Body-->
 											</div>
 										</div>
+
 									</div>
 								</div>
 

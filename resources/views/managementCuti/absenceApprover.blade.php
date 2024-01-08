@@ -374,7 +374,7 @@
         $("#absence_year").change(function() {
             console.log("XXXX");
             year = $('#absence_year').val();
-            // cardActive()
+            cardActive()
         });
 
         function selectYear(year) {
@@ -448,7 +448,7 @@
             }
             $.ajax({
                 type: 'POST',
-                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listApprovalCuti',
+                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/listApprovalCuti',
                 data: {
                     nik: emp_no,
                     tahun: year,
@@ -514,15 +514,15 @@
                             var fileabsen= x.file_absen
                             var htmlFileAbsen = ""
                             fileabsen.forEach((item)=>{
-                                htmlFileAbsen+=` <div class="col-3 py-2 text-center">
+                                htmlFileAbsen+=` <div class="col-4 py-2 text-center">
                                     <div class="card card-custom card-shadowless">
                                         <div class="card-body p-0">
                                             <div class="overlay max-w-300px max-h-200px">
                                                 <div class="overlay-wrapper symbol">
-                                                    <div class="symbol-label min-w-300px min-h-200px" style="background-image: url('https://storage.googleapis.com/lumen-oauth-storage/Tjsl/2023/14122023_084508_IMG_3164-min.JPG')"></div>
+                                                    <div class="symbol-label min-w-300px min-h-200px" style="background-image: url('${item.url}')"></div>
                                                 </div>
                                                 <div class="overlay-layer">
-                                                    <a href="https://storage.googleapis.com/lumen-oauth-storage/Tjsl/2023/14122023_084508_IMG_3164-min.JPG" target="_blank" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
+                                                    <a href="${item.url}" target="_blank" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
                                                 </div>
                                             </div>
                                     </div>
@@ -636,7 +636,7 @@
                                 '</div>' +
                                 `<div class="card border gutter-b p-4 m-4">
                                             <div class="card-header">
-                                                <b>Dokumentasi Kegiatan</b>
+                                                <b>Attachment File</b>
                                             </div>
                                             <div class="card-body mt-3">
                                                 <div id="listPhotonull" class="row">
@@ -695,6 +695,17 @@
                 type: 'GET',
                 url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
                 beforeSend: function(xhr) {
+                //     KTApp.block('#kt_content', {
+                //     overlayColor: '#000000',
+                //     state: 'danger',
+                //     message: 'Please wait...',
+                //     centerY: false,
+                //     centerX: false,
+                //     css: {
+                //         position: 'fixed',
+                //         margin: 'auto'
+                //     }
+                // });
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(result) {
@@ -754,7 +765,7 @@
                                     'error'
                                 )
                             }
-                            handleUnauthorized(data);
+                            // handleUnauthorized(data);
                         }
                     })
                 }
@@ -791,7 +802,7 @@
                         },
                         error: function(data) {
                             Swal.fire("Gagal", "Proses Approved Gagal", "error");
-                            handleUnauthorized(data);
+                            // handleUnauthorized(data);
                         }
                     })
 

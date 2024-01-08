@@ -751,6 +751,7 @@
 	<script src="assets/js/pages/widgets.js"></script>
 	<!--end::Page Scripts-->
 	<script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
+	
 
 	{{-- <script>
             function jenisKegiatan(selectElement) {

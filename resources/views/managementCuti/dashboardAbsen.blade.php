@@ -257,66 +257,7 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-lg-12 col-sm-12 col-md-12 text-right">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered text-center" style="width:65%">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Warna</td>
-                                                            <td>Tipe Absen</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="card card-custom">
-                                                                    <div class="card-header bg-light ribbon ribbon-clip ribbon-right">
-                                                                        <div class="ribbon-target" style="top: 12px;">
-                                                                            <span class="ribbon-inner bg-green"></span>Cuti Tahunan
-                                                                        </div>
-
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                            <td class="text-left">
-                                                                Cuti Tahunan
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="card card-custom">
-                                                                    <div class="card-header bg-light ribbon ribbon-clip ribbon-right">
-                                                                        <div class="ribbon-target" style="top: 12px;">
-                                                                            <span class="ribbon-inner bg-green"></span>Cuti Tahunan
-                                                                        </div>
-
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                            <td class="text-left">
-                                                                Cuti Tahunan
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="card card-custom">
-                                                                    <div class="ribbon">
-                                                                        <div class="ribbon-target">
-                                                                            <span class="ribbon-inner bg-teal"></span>Cuti Besar
-                                                                        </div>
-
-                                                                    </div>
-                                                                </span>
-                                                            </td>
-                                                            <td class="text-left">
-                                                                Cuti Besar
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div> --}}
+                                        
                                     </div>
                                 </div>
                             </div>
