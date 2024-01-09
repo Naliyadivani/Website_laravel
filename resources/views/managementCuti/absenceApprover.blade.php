@@ -801,7 +801,10 @@
                             cardActive();
                         },
                         error: function(data) {
-                            Swal.fire("Gagal", "Proses Approved Gagal", "error");
+                            // console.log(data);
+                            Swal.fire("Gagal", data.responseJSON.keterangan,"error");
+                            // cardActive();
+                            // Swal.fire("Gagal", "Proses Approved Gagal", "error");
                             // handleUnauthorized(data);
                         }
                     })

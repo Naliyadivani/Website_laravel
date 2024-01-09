@@ -110,17 +110,21 @@ class FormPengajuanAbsenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // $formAbsen = formAjukanAbsen::findOrFail($id);
-    // return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
+
     public function edit($id)
     {
-
-        $user = Session::get('user');
-        if ($user != null) {
-            return view('managementCuti.formAjukanAbsen', ['user' => $user]);
-        }
-        return redirect()->route('loginpage');
+        $formAbsen = formAjukanAbsen::findOrFail($id);
+        return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
     }
+
+    // public function edit($id_absen)
+    // {
+    //     $user = Session::get('user');
+    //     if ($user != null) {
+    //         return view('managementCuti.formAjukanAbsen', ['user' => $user]);
+    //     }
+    //     return redirect()->route('loginpage');
+    // }
 
     /**
      * Update the specified resource in storage.

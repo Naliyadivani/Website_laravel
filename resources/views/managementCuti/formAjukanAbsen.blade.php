@@ -325,7 +325,7 @@
                                                     <div class="col-xl-12">
                                                         <!--begin: Wizard Form-->
                                                         <form class="form mt-0 mt-lg-10" id="kt_form">
-                                                            @csrf
+                                                           
                                                             <!--begin: Wizard Step 1-->
                                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                                                 <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
@@ -579,17 +579,18 @@
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
     {{-- <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script> --}}
     <script>
+        var file_absen = [];
         function initDropzone(){
             $('.initDropzone').html('');
             var html = ` <div class="dropzone dropzone-default dropzone-success" name="attachment[]" id="FileAbsence">
                 <div class="dropzone-msg dz-message needsclick">
-                <h3 class="dropzone-msg-title">Upload Gambar disini</h3>
-                <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
-                </div>
-                </div>`
-            $('.initDropzone').html(html)
-
-            $('#FileAbsence').dropzone({
+                    <h3 class="dropzone-msg-title">Upload Gambar disini</h3>
+                    <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
+                    </div>
+                    </div>`
+                    $('.initDropzone').html(html)
+                    
+                    $('#FileAbsence').dropzone({
                 url: "{{ url('upload_file') }}", 
                 maxFiles: 10,
                 maxFilesize: 2, // MB
@@ -602,21 +603,38 @@
                 },
                 init: function() {
                     dzClosure = this;
-                    if(file_absen.length > 0 ){
-                        // console.log(file_absen);
+                    if (file_absen.length > 0) {
+                        console.log(file_absen);
                         file_absen.forEach(x => {
-                            var mockFile ={
+                            var mockFile = {
                                 name: x.filename,
-                                size: x.size
-                            }
-                            var img_ext = "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png"
+                                size: 0 // Initialize size to 0, it will be updated later
+                            };
+
+                            var img_ext = "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png";
+
                             if (x.extension == ".jpg" || x.extension == ".gif" || x.extension == ".jpeg" || x.extension == ".png" || x.extension == ".svg") {
-                                var img_ext = x.url
+                                var img_ext = x.url;
                             }
+                            // Use AJAX to get the file size
+                            // $.ajax({
+                            //         url: x.url,
+                            //         method:"GET",
+                            //         data: {filename: x.filename},
+                            //         success: function (response) {
+                            //             console.log(response);
+                            //             // mockFile.size = xhr.
+                            //         },
+                            //         error: function (error) {
+                            //             console.error('Failed to fetch file size:', error);
+                            //         }
+                            // });
+
                             dzClosure.options.addedfile.call(this, mockFile);
                             dzClosure.options.thumbnail.call(this, mockFile, img_ext);
                             dzClosure.processQueue();
-                        })
+                        });
+                        console.log(file_absen);
                         $(".dz-progress").remove();
                     }
                     dzClosure.on('addedfile', function(file) {
@@ -626,21 +644,20 @@
                         }
                     });
                     dzClosure.on("sendingmultiple", function(data, xhr, formData) {
+                        console.log(formData);
+                        console.log("YYY");
                         formData.append('type', 'request');
                     })
                     dzClosure.on("successmultiple", function(files, response) {
                         var arr = response.data
-                        // console.log(arr);
                         arr.forEach(x => {
-                            var objFiles = x;
-                            objFiles['id_files'] = x.id_file_absen;
-                            file_absen.push(objFiles)
+                            file_absen.push(x)
                         })
+                        console.log(file_absen);
                     });
                     dzClosure.on("removedfile", function(file) {
-                        // console.log(file);
                         file_absen = file_absen.filter(function(obj) {
-                            return obj.original_name != file.name;
+                            return obj.filename != file.name;
                         });
                     });
                     dzClosure.on("errormultiple", function(files, response) {
@@ -659,7 +676,6 @@
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
-        var file_absen = [];
 
         $.ajaxSetup({
             headers: {
@@ -760,6 +776,7 @@
         function handleTipeAbsenChange(selectElement) {
             if (arrReadFormAbsen == null) {
                 clear();
+                console.log("ZZZ");
                 file_absen = [];
                 initDropzone();
             } else {
@@ -801,10 +818,14 @@
 
             var fileData = arr.files;
             console.log(fileData);
-            file_absen = []
             if (fileData.length > 0) {
                 fileData.forEach(x => {
-                file_absen.push(x)
+                var mockFile = {
+                    extension: x.extension,
+                    filename: x.filename,
+                    url:x.url
+                }
+                file_absen.push(mockFile)
             })};
             // initDropzone()
                 // // Handle the file information here, you can loop through the files
@@ -833,6 +854,7 @@
 
                 // Optionally, clear the data from localStorage if it's no longer needed
                 localStorage.removeItem('arrData');
+                console.log(file_absen);
             } else {
                 // Handle the case where 'arr' data is not available
                 console.log('No data available');
@@ -842,7 +864,7 @@
         // Call the function to read 'arr' data
         readFormAbsen();
 
-        var file_absen = new Array();
+        // var file_absen = new Array();
 
         function storeAbsen() {
             var id_absen = $('#id_pengajuan_absen').val();

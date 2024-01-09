@@ -484,7 +484,8 @@
                     // Store the 'arr' data in localStorage
                     localStorage.setItem('arrData', JSON.stringify(response.data));
                     // Redirect to the 'form_pengajuan_absen' page
-                    window.location.href = 'edit_pengajuan_absen/' + id_absen;
+                    window.location.href = 'form_pengajuan_absen/' + id_absen;
+                    // window.location.href = 'form_pengajuan_absen';
                 }
             });
         }

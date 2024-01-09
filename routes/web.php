@@ -85,12 +85,15 @@ Route::get('/pengajuan_absen', [FormPengajuanAbsenController::class, 'PengajuanA
 
 //Form pengajuan Cuti
 Route::get('/form_pengajuan_absen', [FormPengajuanAbsenController::class, 'FormAbsen'])->name('form_pengajuan_absen');
+Route::get('/form_pengajuan_absen/edit/{id_absen}', [FormPengajuanAbsenController::class, 'FormAbsen'])->name('edit_pengajuan_absen');
 Route::get('/readFormAbsen', [FormPengajuanAbsenController::class, 'readFormAbsen']);
 Route::get('/read_JSON_form_absen', [FormPengajuanAbsenController::class, 'readJSON'])->name('read_JSON_form_absen');
 Route::get('/create', [FormPengajuanAbsenController::class, 'create']);
 Route::post('/store', [FormPengajuanAbsenController::class, 'store']);
 Route::get('/show{id}', [FormPengajuanAbsenController::class, 'show']);
-Route::get('/edit_pengajuan_absen/{id_absen}', [FormPengajuanAbsenController::class, 'edit'])->name('edit_pengajuan_absen');
+// Route::get('/edit_pengajuan_absen/{id_absen}', [FormPengajuanAbsenController::class, 'edit'])->name('edit_pengajuan_absen');
+// Route::put('/update/{id_absen}', [FormPengajuanAbsenController::class, 'update'])->name('update');
+// Route::get('/edit{id}', [FormPengajuanAbsenController::class, 'edit']);
 Route::get('/destroy{id}', [FormPengajuanAbsenController::class, 'delete']);
 
 // Management Saldo Cuti
