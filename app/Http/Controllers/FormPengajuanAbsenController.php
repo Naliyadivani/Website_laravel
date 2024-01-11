@@ -31,9 +31,26 @@ class FormPengajuanAbsenController extends Controller
     {
         $user = Session::get('user');
         if ($user != null) {
-            return view('managementCuti.formAjukanAbsen', ['user' => $user]);
+            return view('managementCuti.formAjukanAbsen', ['user' => $user], ['id_pengajuan_absen' => '']);
         }
         return redirect()->route('loginpage');
+    }
+
+    public function edit($id)
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('managementCuti.formAjukanAbsen', ['user' => $user], ['id_pengajuan_absen' => $id]);
+        }
+        return redirect()->route('loginpage');
+        // $formAbsen = formAjukanAbsen::findOrFail($id);
+        // return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
+
+        // $user = Session::get('user');
+        // if ($user != null) {
+        //     return view('managementCuti.formAjukanAbsen', ['user' => $user]);
+        // }
+        // return redirect()->route('loginpage');
     }
 
     public function readJSON()
@@ -69,7 +86,6 @@ class FormPengajuanAbsenController extends Controller
     public function create()
     {
         return view('managementCuti.formAjukanAbsen');
-       
     }
 
     /**
@@ -117,19 +133,6 @@ class FormPengajuanAbsenController extends Controller
     //     // if(isset $id_absence)
     //     return view('managementCuti.formAjukanAbsen', compact('id_absence'));
     // }
-
-    public function edit($id_absen)
-    {
-        
-        $formAbsen = formAjukanAbsen::findOrFail($id);
-        return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
-
-        // $user = Session::get('user');
-        // if ($user != null) {
-        //     return view('managementCuti.formAjukanAbsen', ['user' => $user]);
-        // }
-        // return redirect()->route('loginpage');
-    }
 
     /**
      * Update the specified resource in storage.
@@ -205,17 +208,17 @@ class FormPengajuanAbsenController extends Controller
                 $filename = date('dmY_His') . '_' . uniqid() . '_' . $file->getClientOriginalName();
                 $path = 'CutiKaryawan/' . date('Y') . '/';
                 $uploadFile = $gcs->putFileAs($path, $file, $filename);
-                $extension = '.'.pathinfo($filename,PATHINFO_EXTENSION);
+                $extension = '.' . pathinfo($filename, PATHINFO_EXTENSION);
                 $original_name = $file->getClientOriginalName();
                 $size = $file->getSize();
- 
+
                 if ($uploadFile !== false) {
                     $gcs->setVisibility($path . $filename, 'public');
                     $url = $gcs->url($path . $filename);
                     $data[] = [
                         'url' => $url,
                         'filename' => $original_name,
-                        'extension'=> $extension
+                        'extension' => $extension
                         // ,
                         // 'original_name'=> $original_name,
                         // 'size' => $size

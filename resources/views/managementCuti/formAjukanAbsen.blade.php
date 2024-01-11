@@ -41,6 +41,7 @@
         border-top-left-radius: 0.5rem;
         border-top-right-radius: 0.5rem;
     }
+
     .wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper {
         -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -190,23 +191,23 @@
 
 <style>
     .dt-body-nowarp {
-            white-space: nowrap;
-        }
+        white-space: nowrap;
+    }
 
-        .dropzone .dz-preview .dz-image {
-            width: 200px !important;
-            height: 200px !important;
-        }
+    .dropzone .dz-preview .dz-image {
+        width: 200px !important;
+        height: 200px !important;
+    }
 
-        .dz-image img {
-            width: 200px !important;
-            height: 200px !important;
-        }
+    .dz-image img {
+        width: 200px !important;
+        height: 200px !important;
+    }
 
-        .dz-max-files-reached {
-            pointer-events: none;
-            cursor: not-allowed;
-        }
+    .dz-max-files-reached {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
 </style>
 @extends('layout.tempWeb')
 
@@ -325,14 +326,13 @@
                                                     <div class="col-xl-12">
                                                         <!--begin: Wizard Form-->
                                                         <form class="form mt-0 mt-lg-10" id="kt_form">
-                                                           <input type="hidden" id="id_absence" name="id_absence" value="{{ $id_absence }}">
                                                             <!--begin: Wizard Step 1-->
                                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                                                 <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
                                                                 <!--begin::Input-->
-                                                                <input type="hidden" id="id_pengajuan_absen">
+                                                                <input type="hidden" id="id_pengajuan_absen" value="{{$id_pengajuan_absen}}>
 
-                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input type=" hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
                                                                 <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
                                                                 <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
 
@@ -580,7 +580,8 @@
     {{-- <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script> --}}
     <script>
         var file_absen = [];
-        function initDropzone(){
+
+        function initDropzone() {
             $('.initDropzone').html('');
             var html = ` <div class="dropzone dropzone-default dropzone-success" name="attachment[]" id="FileAbsence">
                 <div class="dropzone-msg dz-message needsclick">
@@ -588,10 +589,10 @@
                     <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 2MB</span>
                     </div>
                     </div>`
-                    $('.initDropzone').html(html)
-                    
-                    $('#FileAbsence').dropzone({
-                url: "{{ url('upload_file') }}", 
+            $('.initDropzone').html(html)
+
+            $('#FileAbsence').dropzone({
+                url: "{{ url('upload_file') }}",
                 maxFiles: 10,
                 maxFilesize: 2, // MB
                 addRemoveLinks: true,
@@ -631,8 +632,6 @@
                         }
                     });
                     dzClosure.on("sendingmultiple", function(data, xhr, formData) {
-                        console.log(formData);
-                        console.log("YYY");
                         formData.append('type', 'request');
                     })
                     dzClosure.on("successmultiple", function(files, response) {
@@ -650,10 +649,7 @@
                     dzClosure.on("errormultiple", function(files, response) {
                         if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
                             var _this = this;
-                            // Remove all files
-                            // _this.removeAllFiles();
                         }
-                        // location.reload();
                     });
                 }
             });
@@ -663,6 +659,9 @@
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
+        var id_pengajuan_absen = $("#id_pengajuan_absen").val();
+        var tipeAbsenSelected = null
+        var arrReadFormAbsen
 
         $.ajaxSetup({
             headers: {
@@ -676,8 +675,44 @@
         var year = $('#absence_year').val();
         $("#absence_year").change(function() {
             year = $('#absence_year').val();
-            readFormAbsen()
+            if(id_pengajuan_absen != ''){
+                showAbsen(id_pengajuan_absen);
+            }
         });
+
+        if(id_pengajuan_absen != ''){
+            showAbsen(id_pengajuan_absen);
+        }
+
+        function showAbsen(id_pengajuan_absen) {
+            $.ajax({
+                type: "get",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
+                data: "data",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function(response) {
+                    var arrReadFormAbsen = response.data;
+
+                    if (arrReadFormAbsen.files.length > 0) {
+                        arrReadFormAbsen.files.forEach(x => {
+                        var mockFile = {
+                            extension: x.extension,
+                            filename: x.filename,
+                            url: x.url
+                        }
+                        file_absen.push(mockFile)
+                    })
+
+                    $('#id_pengajuan_absen').val(arrReadFormAbsen.id_pengajuan_absen);
+                    tipeAbsenSelected = arrReadFormAbsen.tipe_absen.id_tipe_absen;
+                    $('#nama_tipe_absen').prop('disabled', true);
+                    $('#deskripsi_absen').val(arrReadFormAbsen.deskripsi);
+                };
+                }
+            });
+        }
 
         function selectYear(year) {
             var start_year = new Date();
@@ -761,9 +796,8 @@
         var my_saldo
 
         function handleTipeAbsenChange(selectElement) {
-            if (arrReadFormAbsen == null) {
+            if (id_pengajuan_absen == null) {
                 clear();
-                console.log("ZZZ");
                 file_absen = [];
                 initDropzone();
             } else {
@@ -790,68 +824,6 @@
                 formValidation.enableValidator('end_Date', 'notEmpty');
             }
         }
-
-        // Read the 'arr' data from localStorage
-        var tipeAbsenSelected = null
-        var arrReadFormAbsen
-
-        function readFormAbsen() {
-            var arrData = localStorage.getItem('arrData');
-
-            if (arrData) {
-                // Parse the JSON string back to an object
-                var arr = JSON.parse(arrData);
-                arrReadFormAbsen = arr
-
-            var fileData = arr.files;
-            console.log(fileData);
-            if (fileData.length > 0) {
-                fileData.forEach(x => {
-                var mockFile = {
-                    extension: x.extension,
-                    filename: x.filename,
-                    url:x.url
-                }
-                file_absen.push(mockFile)
-            })};
-            // initDropzone()
-                // // Handle the file information here, you can loop through the files
-                // fileData.forEach(function(file) {
-                //     // Perform actions with each file data (e.g., display, manipulate, etc.)
-                //     console.log("File Name:", file.name);
-                //     console.log("File Size:", file.size);
-                //     console.log("File Type:", file.type);
-                //     // ... Handle other file properties or actions as needed
-                // });
-            // }
-                // console.log(arrReadFormAbsen);
-                console.log(arr);
-
-                initDropzone();
-                $('#id_pengajuan_absen').val(arr.id_pengajuan_absen);
-                console.log($('#id_pengajuan_absen').val());
-                tipeAbsenSelected = arr.tipe_absen.id_tipe_absen;
-                $('#nama_tipe_absen').prop('disabled', true)
-
-                $('#deskripsi_absen').val(arr.deskripsi);
-
-
-                // Now you can use the 'arr' data as needed
-                console.log(arr);
-
-                // Optionally, clear the data from localStorage if it's no longer needed
-                localStorage.removeItem('arrData');
-                console.log(file_absen);
-            } else {
-                // Handle the case where 'arr' data is not available
-                console.log('No data available');
-            }
-        }
-
-        // Call the function to read 'arr' data
-        readFormAbsen();
-
-        // var file_absen = new Array();
 
         function storeAbsen() {
             var id_absen = $('#id_pengajuan_absen').val();
@@ -930,7 +902,7 @@
                             // Handle error jika pengiriman gagal
                             console.error('Error:', error);
                             // Tambahkan logika atau tindakan lain jika diperlukan
-                            
+
                             Swal.fire({
                                 text: "Maaf, Saldo Anda Tidak Cukup!",
                                 icon: "error",
@@ -1004,7 +976,7 @@
             $('#end_Date').val('');
             $('#deskripsi_absen').val('');
             refreshDatetimepicker();
-            file_absen = []
+            file_absen = [];
         }
     </script>
 
@@ -1060,73 +1032,73 @@
                                 }
 
                                 if (my_saldo != null) {
-                                        var saldo_terpakai = 0;
-                                        var newPeriode = Date();
-                                        my_saldo.forEach((y, i) => {
-                                            console.log(y['valid_from'], y['valid_to']);
-                                            var result = [0, 0];
-                                            var validFrom = new Date(y['valid_from']);
-                                            var validTo = new Date(y['valid_to']);
-                                            var validFromhutang = new Date(y['valid_from_hutang']);
+                                    var saldo_terpakai = 0;
+                                    var newPeriode = Date();
+                                    my_saldo.forEach((y, i) => {
+                                        console.log(y['valid_from'], y['valid_to']);
+                                        var result = [0, 0];
+                                        var validFrom = new Date(y['valid_from']);
+                                        var validTo = new Date(y['valid_to']);
+                                        var validFromhutang = new Date(y['valid_from_hutang']);
 
-                                            if ((currentDate <= validTo) && (currentDate >= validFrom) &&
-                                                (endDate >= validTo)) {
-                                                if (saldo_digunakan <= y['saldo']) {
+                                        if ((currentDate <= validTo) && (currentDate >= validFrom) &&
+                                            (endDate >= validTo)) {
+                                            if (saldo_digunakan <= y['saldo']) {
+                                                result = perhitungan(mulai_absen, y['valid_to']);
+                                                newPeriode = validTo;
+                                            } else if (currentDate > validFromhutang) {
+                                                if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
                                                     result = perhitungan(mulai_absen, y['valid_to']);
                                                     newPeriode = validTo;
-                                                } else if (currentDate > validFromhutang) {
-                                                    if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
-                                                        result = perhitungan(mulai_absen, y['valid_to']);
-                                                        newPeriode = validTo;
-                                                    } else {
-                                                        keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                            "</b> dan Maksimal Berhutang " + y['max_hutang']
-                                                    }
                                                 } else {
                                                     keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                        "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
-                                                        y['valid_from_hutang']
+                                                        "</b> dan Maksimal Berhutang " + y['max_hutang']
                                                 }
-                                            } else if ((newPeriode >= validFrom) && (endDate <= validTo)) {
-                                                if (saldo_digunakan <= y['saldo'] - saldo_terpakai) {
+                                            } else {
+                                                keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
+                                                    "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
+                                                    y['valid_from_hutang']
+                                            }
+                                        } else if ((newPeriode >= validFrom) && (endDate <= validTo)) {
+                                            if (saldo_digunakan <= y['saldo'] - saldo_terpakai) {
+                                                result = perhitungan(newPeriode.addDays(1).toISOString().slice(0, 10), endDate);
+                                            } else if (currentDate > validFromhutang) {
+                                                if (saldo_digunakan <= y['saldo'] - saldo_terpakai + y['max_hutang']) {
                                                     result = perhitungan(newPeriode.addDays(1).toISOString().slice(0, 10), endDate);
-                                                } else if (currentDate > validFromhutang) {
-                                                    if (saldo_digunakan <= y['saldo'] - saldo_terpakai + y['max_hutang']) {
-                                                        result = perhitungan(newPeriode.addDays(1).toISOString().slice(0, 10), endDate);
-                                                    } else {
-                                                        keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] - saldo_terpakai +
-                                                            "</b> dan Maksimal Berhutang " + y['max_hutang']
-                                                    }
                                                 } else {
-                                                    keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                        "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
-                                                        y['valid_from_hutang']
+                                                    keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] - saldo_terpakai +
+                                                        "</b> dan Maksimal Berhutang " + y['max_hutang']
                                                 }
-                                            } else if ((currentDate >= validFrom) && (endDate <= validTo)) {
-                                                if (saldo_digunakan <= y['saldo']) {
+                                            } else {
+                                                keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
+                                                    "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
+                                                    y['valid_from_hutang']
+                                            }
+                                        } else if ((currentDate >= validFrom) && (endDate <= validTo)) {
+                                            if (saldo_digunakan <= y['saldo']) {
+                                                result = perhitungan(mulai_absen, akhir_absen);
+                                            } else if (currentDate > validFromhutang) {
+                                                if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
                                                     result = perhitungan(mulai_absen, akhir_absen);
-                                                } else if (currentDate > validFromhutang) {
-                                                    if (saldo_digunakan <= y['saldo'] + y['max_hutang']) {
-                                                        result = perhitungan(mulai_absen, akhir_absen);
-                                                    } else {
-                                                        keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                            "</b> dan Maksimal Berhutang " + y['max_hutang']
-                                                    }
                                                 } else {
                                                     keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
-                                                        "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
-                                                        y['valid_from_hutang']
+                                                        "</b> dan Maksimal Berhutang " + y['max_hutang']
                                                 }
+                                            } else {
+                                                keterangan = ", Anda memiliki <b>Saldo: " + y['saldo'] +
+                                                    "</b> dan Anda Berada diluar Masa Berlaku Hutang, Masa Berlaku hutang dimulai pada " +
+                                                    y['valid_from_hutang']
                                             }
-                                            if (tipe_max_absen == "hari_kalender") {
-                                                saldo_terpakai += result[0]
-                                            } else if (tipe_max_absen == "hari_kerja") {
-                                                saldo_terpakai += result[1]
-                                            }
-                                        });
-                                   
+                                        }
+                                        if (tipe_max_absen == "hari_kalender") {
+                                            saldo_terpakai += result[0]
+                                        } else if (tipe_max_absen == "hari_kerja") {
+                                            saldo_terpakai += result[1]
+                                        }
+                                    });
+
                                 }
-                                                           
+
                                 if (saldo_digunakan == saldo_terpakai) {
                                     console.log("ADA");
                                     checkSaldo = true

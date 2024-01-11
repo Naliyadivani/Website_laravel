@@ -340,14 +340,12 @@
                     table.clear().draw()
                     if(arr != null){
                         arr.forEach((y,i) =>{
-                            var edit_pengajuan = '{{ route("edit.form_pengajuan", ["id" =>  y.id_pengajuan_absen]) }}';
+                            id_absens = y.id_pengajuan_absen
+                            var url = "{{ route('edit.form_pengajuan', ['id' => ':id_absens']) }}".replace(':id_absens', id_absens);
                             var action = `
-                                <a href="${edit_pengajuan}" class="btn btn-icon my-2 btn-xs btn-warning">
-                                    <i class="flaticon2-edit"></i>
-                                </a>
-                                    <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                                    <a href="${url}" class="btn btn-icon my-2 btn-sm btn-warning">
                                         <i class="flaticon2-edit"></i>
-                                    </button>
+                                    </a>
                                     <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
                                         <i class="flaticon2-trash"></i>
                                     </button>`
@@ -401,11 +399,7 @@
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(response) {
-                    // Store the 'arr' data in localStorage
-                    localStorage.setItem('arrData', JSON.stringify(response.data));
-                    // Redirect to the 'form_pengajuan_absen' page
-                    window.location.href = 'form_pengajuan_absen/edit{id}' + id_pengajuan_absen;
-                    // window.location.href = 'form_pengajuan_absen';
+
                 }
             });
         }
