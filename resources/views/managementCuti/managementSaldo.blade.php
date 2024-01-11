@@ -94,18 +94,16 @@
                                         {{-- end- header  --}}
 
                                         {{-- body table  --}}
-                                        <div class="card-body">
+                                        {{-- <div class="card-body">
                                             <div class="table-responsive">
                                                 <div id="kt_datatable-wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                                     <div class="pull-left">
-                                                        {{-- search --}}
                                                         <div class="kt_datatable_filter" class="dataTables_filter">
                                                             <label>
                                                                 Search:
                                                                 <input id="my_input" type="search" class="form-control form-control-sm" aria-controls="kt_datatable">
                                                             </label>
                                                         </div>
-                                                        {{-- end-search --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,7 +134,37 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div> --}}
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered text-center table-hover display nowrap" width="100%" id="kt_datatable">
+                                                            <thead>
+                                                                <tr class="text-center" role="row">
+                                                                    <th>#</th>
+                                                                    <th>Nama Pegawai</th>
+                                                                    <th>Tipe Absen</th>
+                                                                    <th>Saldo</th>
+                                                                    <th>Valid From</th>
+                                                                    <th>Valid To</th>
+                                                                    <th>Maximum Debt</th>
+                                                                    <th>Valid From Debt</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody id="dataSaldo">
+                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                                                                <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
+                                                            </tbody>
+                                                        </table>
+                                            </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        
                                         {{-- End- body table  --}}
 
                                         {{-- modal body UPLOAD EXCEL --}}
@@ -392,132 +420,15 @@
     <!--end::Page Scripts-->
     {{-- <script src="assets/js/pages/crud/forms/widgets/select2.js"></script> --}}
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
-    <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script>
     <script src="https://pismart-dev.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
     {{-- <script src="assets/js/"></script> --}}
-
-    {{-- UPLOAD EXCEL SCRIPT  --}}
-    {{-- <script>
-    initDropzone()
-
-    function initDropzone() {
-        $('#customFile').dropzone({
-            url: `https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo`,
-            autoProcessQueue: true,
-            uploadMultiple: true,
-            parallelUploads: 5,
-            addRemoveLinks: true,
-            maxFiles: 1,
-            maxFilesize: 2,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
-                },
-            init: function() {
-                dzClosure = this;
-                file_attach.forEach(x => {
-                    var mockFile = {
-                        name: x.original_name,
-                        size: x.size
-                    }
-                    var img = "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png"
-                    if (x.extension == "xlxs") {
-                        img = x.url
-                    }
-                    dzClosure.options.addedfile.call(this, mockFile);
-                    dzClosure.options.thumbnail.call(this, mockFile, img);
-                    dzClosure.processQueue();
-                })
-                $(".dz-progress").remove();
-                dzClosure.on('addedfile', function(file) {
-
-                    var ext = file.name.split('.').pop();
-
-                    if (ext != "xlxs") {
-                        $(file.previewElement).find(".dz-image img").attr("src", "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png");
-                    }
-                });
-                dzClosure.on("sendingmultiple", function(data, xhr, formData) {
-                    // formData.append('type', 'request');
-                })
-                dzClosure.on("successmultiple", function(files, response) {
-                    var arr = response.data
-                    arr.forEach(x => {
-                        console.log('======= saat push ========')
-                        console.log(x)
-                        console.log('======= saat push ========')
-                        file_attach.push(x)
-                    })
-                });
-                dzClosure.on("removedfile", function(file) {
-                    file_attach = file_attach.filter(function(obj) {
-                        return obj.original_name != file.name;
-                    });
-                });
-                dzClosure.on("errormultiple", function(files, response) {
-                    if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
-                        var _this = this;
-                    }
-
-                    files.forEach(x => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Kesalahan Upload',
-                            text: 'Tidak Dapat Menyimpan File ' + x.upload.filename + '. Silahkan Hapus Dan Upload Kembali',
-                            showCancelButton: false,
-                            showConfirmButton: true,
-                        });
-                    });
-                    // location.reload();
-                });
-            }
-        })
-    }
-</script> --}}
+    
     <script>
         //modal upload file excel
         function uploadeExcel() {
             $('#uploadExcelFile').modal('show');
         }
-
-        initDropzone();
-
-        function initDropzone() {
-            // Initialize Dropzone
-            var myDropzone = new Dropzone("#customFile", {
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo",
-                // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
-                },
-                autoProcessQueue: true,
-                uploadMultiple: true,
-                parallelUploads: 5,
-                addRemoveLinks: true,
-                maxFiles: 1,
-                maxFilesize: 2,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            // Handle successful uploads
-            myDropzone.on("success", function(file, response) {
-                console.log('File uploaded successfully');
-                // Handle the response data as needed
-            });
-
-            // Handle errors
-            myDropzone.on("error", function(file, errorMessage, xhr) {
-                console.error('Error uploading file: ' + errorMessage);
-                // Handle the error message as needed
-            });
-        }
     </script>
-
-
 
     {{-- CRUD SCRIPT  --}}
     <script>
@@ -537,6 +448,21 @@
             year = $('#absence_year').val();
             readSaldo()
             // cardActive()
+        });
+
+        readSaldo();
+        let table = $('#kt_datatable').DataTable({
+            dom: '<"pull-left"f><"pull-right"l>tip',
+            scrollY: '80vh',
+            scrollX: true,
+            scrollCollapse: true,
+            searching: true,
+            columnDefs: [{
+                className: 'dt-body-nowarp',
+                targets: "_all"
+            }],
+            processing: true,
+            bLengthChange: true
         });
 
         function selectYear(year) {
@@ -569,17 +495,6 @@
             }
         });
 
-        $(document).ready(function() {
-            readSaldo()
-            //search on crud
-            $("#my_input").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#dataSaldo tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-
 
         //read DB
         function readSaldo() {
@@ -592,31 +507,44 @@
                     tahun: year,
                 },
                 beforeSend: function(xhr) {
+                    KTApp.block('#kt_datatable', {
+                        overlayColor: '#000000',
+                        state: 'danger',
+                        message: 'Please wait...',
+                        centerY: false,
+                        centerX: false,
+                        css: {
+                            position: 'fixed',
+                            margin: 'auto'
+                        }
+                    });
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(data) {
                     var arr = data.data
-                    $('#dataSaldo').html('')
-                    arr.forEach((y, i) => {
-                        var html = `<tr>
-                        <td>${i+1}</td>
-                        <td>${y.nik} - ${y.nama}</td>
-                        <td>${y.tipe_absen.nama_tipe_absen}</td>
-                        <td>${y.saldo}</td>
-                        <td>${y.valid_from}</td>
-                        <td>${y.valid_to}</td>
-                        <td>${y.max_hutang}</td>
-                        <td>${y.valid_from_hutang}</td>
-						<td class=" dt-body-nowarp">
-							<button type="button" onclick="show('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                            <i class="flaticon2-edit"></i>
-                            </button> <button type="button" onclick="deleteItem('${y.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
-                            <i class="flaticon2-trash"></i>
-                            </button>
-						</td>
-                    </tr>`
-                        $('#dataSaldo').append(html)
-                    });
+                    table.clear().draw()
+                    if(arr.length > 0){
+                        arr.forEach((x,i)=>{
+                            var iteration = `<span class="font-weight-bold font-size-sm text-dark-50">${i+1}</span>`
+                            var employee = `<span class="font-weight-bold font-size-sm text-dark-50">${x.nik} - ${x.nama}</span>`
+                            var tipeAbsen = `<span class="font-weight-bold font-size-sm text-dark-50">${x.tipe_absen.nama_tipe_absen}</span>`
+                            var saldo = `<span class="font-weight-bold font-size-sm text-dark-50">${x.saldo}</span>`
+                            var validFrom = `<span class="font-weight-bold font-size-sm text-dark-50">${x.valid_from}</span>`
+                            var validTo = `<span class="font-weight-bold font-size-sm text-dark-50">${x.valid_to}</span>`
+                            var maxHutang = `<span class="font-weight-bold font-size-sm text-dark-50">${x.max_hutang}</span>`
+                            var validFromHutang = `<span class="font-weight-bold font-size-sm text-dark-50">${x.valid_from_hutang}</span>`
+                            var action = `<button type="button" onclick="show('${x.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-warning">
+                                        <i class="flaticon2-edit"></i>
+                                    </button> <button type="button" onclick="deleteItem('${x.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
+                                        <i class="flaticon2-trash"></i>
+                                    </button>`
+                            table.row.add([iteration,employee,tipeAbsen,saldo,validFrom,validTo,maxHutang,validFromHutang,action]).draw(false)
+                        });
+                    }
+                    KTApp.unblock('#kt_datatable');
+                },
+                error: function(data) {
+                KTApp.unblock('#kt_datatable');
                 }
             });
         }
@@ -629,9 +557,9 @@
         var tipeAbsenSelected = null
 
         //show untuk edit saldo
-        function show(id_saldo) {
+        function show(id_saldo_cuti) {
             $.ajax({
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminSaldoCuti/" + id_saldo,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminSaldoCuti/" + id_saldo_cuti,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 type: "get",
                 beforeSend: function(xhr) {
@@ -670,7 +598,7 @@
         }
 
         //Untuk delete saldo
-        function deleteItem(id_saldo) {
+        function deleteItem(id_saldo_cuti) {
             // Use SweetAlert to confirm the deletion
             Swal.fire({
                 title: 'Apakah anda yakin ingin menghapus kegiatan ini ?',
@@ -684,88 +612,24 @@
                 if (result.isConfirmed) {
                     // Send an AJAX request to delete the item
                     $.ajax({
-                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deleteAdminSaldoCuti/" + id_saldo, //IP Wifi PI
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deleteAdminSaldoCuti/" + id_saldo_cuti,
                         // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
                         type: 'DELETE',
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                         },
                         success: function(result) {
-                            if (result.unsuccess) {
-                                // Show gagal message with SweetAlert
-                                Swal.fire('Gagal', 'Gagal Menghapus Data', 'error');
-
-                                // Optionally, remove the table row associated with the deleted item
-                                // $(`tr[data-slug="${slug}"]`).remove();
-                            } else {
-                                // Show a success message with SweetAlert
-                                Swal.fire('Berhasil', 'Berhasil Menghapus Data', 'success');
-                                readSaldo()
-                            }
+                            Swal.fire("Berhasil", "Berhasil Menghapus Data", "success");
+                            readSaldo()
                         },
-                        error: function(error) {
-                            // Handle the error (e.g., display an error message)
-                            console.error('Error:', error);
+                        error: function(data) {
+                            Swal.fire("Gagal", "Gagal Menghapus Data", "error");
+                            readSaldo(data);
                         }
                     });
                 }
             });
         }
-
-        // menyimpan data saldo
-        // function store(){
-        //     var id_saldo =$('#id_saldo_cuti').val()
-        //     var nik = $('#nik_selected').val()
-        //     // console.log(nik)
-        //     var tipe_absen_id = $('#nama_tipe_absen').val()
-        //     var saldo = $('#kt_touchspin_4').val()
-        //     var valid_from = $('#valid_from').val()
-        //     var valid_to = $('#valid_to').val()
-        //     var max_hutang = $('#max_hutang').val()
-        //     var valid_from_hutang = $('#valid_from_hutang').val()
-        //     // console.log(id_saldo,nik,tipe_absen_id,saldo,valid_from,valid_to);
-        //             var storeSaldo = {
-        //                 // created_by:emp_no
-        //                 nik:nik,
-        //                 tipe_absen_id:tipe_absen_id,
-        //                 saldo:saldo,
-        //                 valid_from:valid_from,
-        //                 valid_to:valid_to,
-        //                 max_hutang: max_hutang,
-        //                 valid_from_hutang:valid_from_hutang,
-        //                 created_by:{{ $user['nik'] }}
-        //             }
-        //             if (id_saldo != '') {
-        //                 storeSaldo = {
-        //                     nik:nik,
-        //                     tipe_absen_id:tipe_absen_id,
-        //                     saldo:saldo,
-        //                     valid_from:valid_from,
-        //                     valid_to:valid_to,
-        //                     id_saldo: id_saldo,
-        //                     max_hutang: max_hutang,
-        //                     valid_from_hutang:valid_from_hutang,
-        //                     created_by:{{ $user['nik'] }}
-        //                 }
-        //             }
-        //             $.ajax({
-        //                 type: "post",
-        //                 url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo", //IP Wifi PI
-        //                 // url: "http://10.9.12.223:9096/api/cuti/storeAdminSaldo",
-        //                 data: storeSaldo,
-        //                 dataType: "json",
-        //                 success: function (response) {
-        //                     readSaldo()
-        //                     $('#managementSaldo').modal('hide');
-        //                     clearForm()
-        //                     Swal.fire({
-        //                         title:"Berhasil",
-        //                         text:"Berhasil Menambahkan Data",
-        //                         icon: "success",
-        //                     })
-        //                 }
-        //             });
-        //         }    
 
         // menyimpan data saldo
         function store() {

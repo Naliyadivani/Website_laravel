@@ -325,7 +325,7 @@
                                                     <div class="col-xl-12">
                                                         <!--begin: Wizard Form-->
                                                         <form class="form mt-0 mt-lg-10" id="kt_form">
-                                                           
+                                                           <input type="hidden" id="id_absence" name="id_absence" value="{{ $id_absence }}">
                                                             <!--begin: Wizard Step 1-->
                                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                                                 <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
@@ -616,19 +616,6 @@
                             if (x.extension == ".jpg" || x.extension == ".gif" || x.extension == ".jpeg" || x.extension == ".png" || x.extension == ".svg") {
                                 var img_ext = x.url;
                             }
-                            // Use AJAX to get the file size
-                            // $.ajax({
-                            //         url: x.url,
-                            //         method:"GET",
-                            //         data: {filename: x.filename},
-                            //         success: function (response) {
-                            //             console.log(response);
-                            //             // mockFile.size = xhr.
-                            //         },
-                            //         error: function (error) {
-                            //             console.error('Failed to fetch file size:', error);
-                            //         }
-                            // });
 
                             dzClosure.options.addedfile.call(this, mockFile);
                             dzClosure.options.thumbnail.call(this, mockFile, img_ext);

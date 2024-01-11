@@ -93,52 +93,25 @@
                                         {{-- body table  --}}
                                         <div class="card-body py-10">
                                             <div class="table-responsive">
-                                                <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                    <div class="pull-left">
-                                                        {{-- search --}}
-                                                        <div class="kt_datatable_filter" class="dataTables_filter">
-                                                            <label>
-                                                                Search:
-                                                                <input id="my_input" type="search" class="form-control form-control-sm" aria-controls="kt_datatable">
-                                                            </label>
-                                                        </div>
-                                                        {{-- end-search --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="dataTables_scroll">
-                                                <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
-                                                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; padding-right: 15px;">
-                                                        <table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" role="grid" id="kt_datatable">
-                                                            <thead>
-                                                                <tr class="text-center" role="row">
-                                                                    <th>#</th>
-                                                                    <th>Tipe Absen</th>
-                                                                    {{-- <th>Deskripsi</th> --}}
-                                                                    <th>Tanggal Mulai</th>
-                                                                    <th>Tanggal Akhir</th>
-                                                                    <th>Status</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
+                                                <table class="table table-head-custom table-head-bg table-hover text-center display nowrap" role="grid" id="kt_datatable">
+                                                    <thead>
+                                                        <tr class="text-center" role="row">
+                                                            <th>#</th>
+                                                            <th>Tipe Absen</th>
+                                                            {{-- <th>Deskripsi</th> --}}
+                                                            <th>Tanggal Mulai</th>
+                                                            <th>Tanggal Akhir</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
 
-                                                            <tbody id="formAbsen">
-                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
-                                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
-                                                                <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="dataTables_info" id="kt_datatable_info" role="status" aria-live="polite">Showing 1 to 2 of 2 entries</div>
-                                            <div class="dataTables_paginate paging_simple_numbers" id="kt_datatable_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="kt_datatable_previous"><a href="#" aria-controls="kt_datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                                    <li class="paginate_button page-item active"><a href="#" aria-controls="kt_datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                    <li class="paginate_button page-item next disabled" id="kt_datatable_next"><a href="#" aria-controls="kt_datatable" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
-                                                </ul>
+                                                    <tbody id="formAbsen">
+                                                        <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                        <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                                                        <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -276,18 +249,14 @@
     <script src="assets/js/pages/widgets.js"></script>
     <script src="https://pismart-dev.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
     <!--end::Page Scripts-->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    {{-- <script>
-        $(document).ready(function () {
-            $('#kt_datatable').DataTable({
-                // Add your configurations here
-                // For example, enable pagination
-                "paging": true
-            });
-        });
-    </script> --}}
-    
     <script>
+        $(document).ready(function() {
+            $("body").popover({
+                selector: '[data-toggle=popover]',
+                html : true 
+            })
+        });
+
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
@@ -333,149 +302,100 @@
             }
         });
 
-        $(document).ready(function() {
-            // Function to perform table data search
-            $('#my_input').on('keyup', function() {
-                var searchText = $(this).val().toLowerCase(); // Get input value and convert to lowercase
-                $('#formAbsen tr').filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
-                });
-            });
+        readFormAbsen()
+        let table = $('#kt_datatable').DataTable({
+            dom: '<"pull-left"f><"pull-right"l>tip',
+            scrollY: '80vh',
+            scrollX: true,
+            scrollCollapse: true,
+            searching: true,
+            columnDefs: [{
+                className: 'dt-body-nowarp',
+                targets: "_all"
+            }],
+            processing: true,
+            bLengthChange: true
         });
 
-        readFormAbsen()
-        //read DB
-        // function readFormAbsen() {
-        //     $.ajax({
-        //         type: "get",
-        //         url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
-        //         beforeSend: function(xhr) {
-        //             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
-        //         },
-        //         success: function(data) {
-        //             var arr = data.data
-        //             $('#formAbsen').html('')
-        //             if (arr != null) {
-        //                 arr.forEach((y, i) => {
-        //                     // console.log(y.status);
-        //                     if (y.status == "WaitApproved") {
-        //                         statusHtml = `
-        //                     <td>
-        //                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
-        //                     </td>`
-        //                     } else if (y.status == "Approved") {
-        //                         document.querySelectorAll('.btn-warning, .btn-danger').forEach(button => {
-        //                             button.disabled = true;
-        //                         });
-        //                         statusHtml = `
-        //                     <td>
-        //                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
-        //                     </td>`
-        //                     } else {
-        //                         statusHtml = `
-        //                     <td>
-        //                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
-        //                     </td>
-        //                     `
-        //                     }
-        //                     var html = `<tr>
-        //                 <td>${i+1}</td>
-        //                 <td>${y.tipe_absen.nama_tipe_absen}</td>
-                        
-        //                 <td>${y.mulai_absen}</td>
-        //                 <td>${y.akhir_absen}</td>
-        //                 ${statusHtml};
-		// 				<td class=" dt-body-nowarp">
-		// 					<button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-        //                         <i class="flaticon2-edit"></i>
-        //                         </button> <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
-        //                             <i class="flaticon2-trash"></i>
-        //                             </button>
-        //                             </td>
-        //                             </tr>`
-        //                     $('#formAbsen').append(html)
-        //                 });
-        //             };
-        //         }
-        //     });
-        // }
         function readFormAbsen() {
             $.ajax({
                 type: "get",
                 url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
                 beforeSend: function(xhr) {
+                    KTApp.block('#kt_datatable', {
+                        overlayColor: '#000000',
+                        state: 'danger',
+                        message: 'Please wait...',
+                        centerY: false,
+                        centerX: false,
+                        css: {
+                            position: 'fixed',
+                            margin: 'auto'
+                        }
+                    });
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(data) {
                     var arr = data.data
-                    $('#formAbsen').html('')
-                    if (arr != null) {
-                        arr.forEach((y, i) => {
+                    table.clear().draw()
+                    if(arr != null){
+                        arr.forEach((y,i) =>{
+                            var edit_pengajuan = '{{ route("edit.form_pengajuan", ["id" =>  y.id_pengajuan_absen]) }}';
+                            var action = `
+                                <a href="${edit_pengajuan}" class="btn btn-icon my-2 btn-xs btn-warning">
+                                    <i class="flaticon2-edit"></i>
+                                </a>
+                                    <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
+                                        <i class="flaticon2-edit"></i>
+                                    </button>
+                                    <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
+                                        <i class="flaticon2-trash"></i>
+                                    </button>`
+
                             let statusHtml = '';
                             let actionButtons = '';
                             if (y.status == "WaitApproved") {
                                 statusHtml = `
-                                    <td>
-                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>
-                                    </td>`;
-                                actionButtons = `
-                                    <td class=" dt-body-nowarp">
-                                        <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                                            <i class="flaticon2-edit"></i>
-                                        </button>
-                                        <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
-                                            <i class="flaticon2-trash"></i>
-                                        </button>
-                                    </td>`;
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>`
+                                
+                                actionButtons = action
                             } else if (y.status == "Approved") {
                                 statusHtml = `
-                                    <td>
-                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>
-                                    </td>`;
-                                actionButtons = `
-                                    <td class=" dt-body-nowarp">
-                                        <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal" disabled>
-                                            <i class="flaticon2-edit"></i>
-                                        </button>
-                                        <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger" disabled>
-                                            <i class="flaticon2-trash"></i>
-                                        </button>
-                                    </td>`;
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>`
                             } else {
                                 statusHtml = `
-                                    <td>
-                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
-                                    </td>`;
-                                actionButtons = `
-                                    <td class=" dt-body-nowarp">
-                                        <button type="button" onclick="showAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-warning" data-toggle="modal">
-                                            <i class="flaticon2-edit"></i>
-                                        </button>
-                                        <button type="button" onclick="deleteListAbsen(${y.id_pengajuan_absen})" class="btn btn-icon my-2 btn-sm btn-danger">
-                                            <i class="flaticon2-trash"></i>
-                                        </button>
-                                    </td>`;
+                                                <div class="d-flex align-items-center p-0 rounded">
+                                                    <div class="mr-1 flex-shrink-0 text-right">
+                                                        <i class="fas fa-info-circle text-primary" data-toggle="popover" data-trigger="click" data-content="${y.keterangan}" data-original-title title aria-describedby="popover88969"></i>
+                                                    </div>
+                                                    <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
+                                                </div>`
+
+                                actionButtons = action
                             }
-                            var html = `<tr>
-                                <td>${i+1}</td>
-                                <td>${y.tipe_absen.nama_tipe_absen}</td>
-                                <td>${y.mulai_absen}</td>
-                                <td>${y.akhir_absen}</td>
-                                ${statusHtml}
-                                ${actionButtons}
-                            </tr>`;
-                            $('#formAbsen').append(html);
+                            table.row.add([
+                                i + 1,
+                                y.tipe_absen.nama_tipe_absen,
+                                y.mulai_absen,
+                                y.akhir_absen,
+                                statusHtml,
+                                actionButtons
+                            ]).draw(false)
                         });
                     }
+                    KTApp.unblock('#kt_datatable')
+                },
+                error: function(data) {
+                KTApp.unblock('#kt_datatable')
                 }
             });
         }
 
 
-        function showAbsen(id_absen) {
+        function showAbsen(id_pengajuan_absen) {
             $.ajax({
                 type: "get",
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_absen,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
                 data: "data",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -484,13 +404,13 @@
                     // Store the 'arr' data in localStorage
                     localStorage.setItem('arrData', JSON.stringify(response.data));
                     // Redirect to the 'form_pengajuan_absen' page
-                    window.location.href = 'form_pengajuan_absen/' + id_absen;
+                    window.location.href = 'form_pengajuan_absen/edit{id}' + id_pengajuan_absen;
                     // window.location.href = 'form_pengajuan_absen';
                 }
             });
         }
 
-        function deleteListAbsen(id_absen) {
+        function deleteListAbsen(id_pengajuan_absen) {
             swal.fire({
                 title: 'Apakah anda yakin ingin Menghapus Permohonan Pengajuan Absen ini ?',
                 text: 'Mohon untuk melakukan pengecekan data kembali',
@@ -503,7 +423,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "DELETE",
-                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deletePengajuanCuti/" + id_absen,
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deletePengajuanCuti/" + id_pengajuan_absen,
                         beforeSend: function(xhr) {
                             Swal.fire({
                                 html: 'Please Wait ...',
@@ -548,6 +468,8 @@
             $('#menu-item-management-saldo').addClass('menu-item-active');
         }
     </script>
+
+ 
 
 </body>
 @endsection

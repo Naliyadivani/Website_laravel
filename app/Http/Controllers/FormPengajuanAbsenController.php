@@ -111,20 +111,25 @@ class FormPengajuanAbsenController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit($id)
+    // public function edit(Request $request, $id_absence == null)
+    // {
+    //     //varibel
+    //     // if(isset $id_absence)
+    //     return view('managementCuti.formAjukanAbsen', compact('id_absence'));
+    // }
+
+    public function edit($id_absen)
     {
+        
         $formAbsen = formAjukanAbsen::findOrFail($id);
         return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
-    }
 
-    // public function edit($id_absen)
-    // {
-    //     $user = Session::get('user');
-    //     if ($user != null) {
-    //         return view('managementCuti.formAjukanAbsen', ['user' => $user]);
-    //     }
-    //     return redirect()->route('loginpage');
-    // }
+        // $user = Session::get('user');
+        // if ($user != null) {
+        //     return view('managementCuti.formAjukanAbsen', ['user' => $user]);
+        // }
+        // return redirect()->route('loginpage');
+    }
 
     /**
      * Update the specified resource in storage.

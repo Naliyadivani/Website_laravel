@@ -514,12 +514,17 @@
                             var fileabsen= x.file_absen
                             var htmlFileAbsen = ""
                             fileabsen.forEach((item)=>{
+                                var img_ext = "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png";
+
+                                if (item.extension == ".jpg" || item.extension == ".gif" || item.extension == ".jpeg" || item.extension == ".png" || item.extension == ".svg") {
+                                    var img_ext = item.url;
+                                }
                                 htmlFileAbsen+=` <div class="col-4 py-2 text-center">
                                     <div class="card card-custom card-shadowless">
                                         <div class="card-body p-0">
                                             <div class="overlay max-w-300px max-h-200px">
                                                 <div class="overlay-wrapper symbol">
-                                                    <div class="symbol-label min-w-300px min-h-200px" style="background-image: url('${item.url}')"></div>
+                                                    <div class="symbol-label min-w-300px min-h-200px" style="background-image: url('${img_ext}')"></div>
                                                 </div>
                                                 <div class="overlay-layer">
                                                     <a href="${item.url}" target="_blank" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
