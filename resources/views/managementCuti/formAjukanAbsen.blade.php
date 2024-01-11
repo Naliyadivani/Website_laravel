@@ -681,7 +681,6 @@
         });
 
         if(id_pengajuan_absen != ''){
-            // alert('masda')
             showAbsen(id_pengajuan_absen);
         }
 
@@ -694,8 +693,9 @@
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(response) {
-                    var arrReadFormAbsen = response.data;
+                    arrReadFormAbsen = response.data;
 
+                    console.log(arrReadFormAbsen.files);
                     if (arrReadFormAbsen.files.length > 0) {
                         arrReadFormAbsen.files.forEach(x => {
                         var mockFile = {
@@ -705,12 +705,11 @@
                         }
                         file_absen.push(mockFile)
                     })
-
+                }
                     $('#id_pengajuan_absen').val(arrReadFormAbsen.id_pengajuan_absen);
                     tipeAbsenSelected = arrReadFormAbsen.tipe_absen.id_tipe_absen;
                     $('#nama_tipe_absen').prop('disabled', true);
                     $('#deskripsi_absen').val(arrReadFormAbsen.deskripsi);
-                };
                 }
             });
         }
@@ -797,12 +796,13 @@
         var my_saldo
 
         function handleTipeAbsenChange(selectElement) {
-            if (id_pengajuan_absen == null) {
+            if (id_pengajuan_absen == '') {
                 clear();
                 file_absen = [];
                 initDropzone();
             } else {
                 refreshDatetimepicker();
+                initDropzone();
                 $('#start_Date').val(arrReadFormAbsen.mulai_absen);
                 $('#end_Date').val(arrReadFormAbsen.akhir_absen);
             }
