@@ -330,9 +330,9 @@
                                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                                                 <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
                                                                 <!--begin::Input-->
-                                                                <input type="hidden" id="id_pengajuan_absen" value="{{$id_pengajuan_absen}}>
+                                                                <input type="hidden" id="id_pengajuan_absen" value="{{$id_pengajuan_absen}}"/>
 
-                                                                <input type=" hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
                                                                 <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
                                                                 <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
 
@@ -681,6 +681,7 @@
         });
 
         if(id_pengajuan_absen != ''){
+            // alert('masda')
             showAbsen(id_pengajuan_absen);
         }
 

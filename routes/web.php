@@ -91,7 +91,7 @@ Route::get('/read_JSON_form_absen', [FormPengajuanAbsenController::class, 'readJ
 Route::get('/create', [FormPengajuanAbsenController::class, 'create']);
 Route::post('/store', [FormPengajuanAbsenController::class, 'store']);
 Route::get('/show{id}', [FormPengajuanAbsenController::class, 'show']);
-Route::get('/form_pengajuan_absen/edit/{id}', [FormPengajuanAbsenController::class, 'edit'])->name('edit.form_pengajuan');
+// Route::get('/form_pengajuan_absen/edit/{id}', [FormPengajuanAbsenController::class, 'edit'])->name('edit.form_pengajuan');
 Route::get('/destroy{id}', [FormPengajuanAbsenController::class, 'delete']);
 
 // Management Saldo Cuti

@@ -27,11 +27,19 @@ class FormPengajuanAbsenController extends Controller
         return redirect()->route('loginpage');
     }
 
-    public function FormAbsen()
+    public function FormAbsen(Request $request)
     {
+        $id = null;
+        if (isset($request->id) && $request->id != '') {
+            $id = $request->id;
+        }
+        $data=[];
+        $data['id_pengajuan_absen'] = $id;
         $user = Session::get('user');
         if ($user != null) {
-            return view('managementCuti.formAjukanAbsen', ['user' => $user], ['id_pengajuan_absen' => '']);
+            $data['user'] = $user;
+            // dd($data);
+            return view('managementCuti.formAjukanAbsen', $data);
         }
         return redirect()->route('loginpage');
     }

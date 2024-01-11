@@ -341,7 +341,7 @@
                     if(arr != null){
                         arr.forEach((y,i) =>{
                             id_absens = y.id_pengajuan_absen
-                            var url = "{{ route('edit.form_pengajuan', ['id' => ':id_absens']) }}".replace(':id_absens', id_absens);
+                            var url = '{{ url('form_pengajuan_absen') }}?id='+id_absens
                             var action = `
                                     <a href="${url}" class="btn btn-icon my-2 btn-sm btn-warning">
                                         <i class="flaticon2-edit"></i>
