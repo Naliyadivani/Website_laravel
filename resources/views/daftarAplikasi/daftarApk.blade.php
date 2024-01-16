@@ -723,6 +723,31 @@
                                             </a>
                                             <!--end::Callout-->
                                         </div>
+                                        <div class="col-lg-4 mb-5">
+                                            <!--begin::Callout-->
+                                            <a href="{{ route('kalibrasi') }}" class="card card-custom-new mb-8 mb-lg-0 shadow-sm wave">
+                                                <div class="card-body px-0">
+                                                    <div class="d-flex align-items-center p-6">
+                                                        <!--begin::Icon-->
+                                                        <div class="mr-6">
+                                                            <span class="svg-icon svg-icon-primary svg-icon-4x">
+                                                                <img src="" alt="Kalibrasi" width="50px">
+                                                            </span>
+                                                        </div>
+                                                        <!--end::Icon-->
+                                                        <!--begin::Content-->
+                                                        <div class="d-flex flex-column">
+                                                            <h3 class="text-dark h3 mb-3">Kalibrasi</h3>
+                                                            {{-- <div class="text-dark-50">Tanggung Jawab Sosial dan
+                                                                Lingkungan
+                                                            </div> --}}
+                                                        </div>
+                                                        <!--end::Content-->
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <!--end::Callout-->
+                                        </div>
                                     </div>
                                 </div>
                                 <!--end::Section-->

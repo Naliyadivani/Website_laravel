@@ -1,22 +1,24 @@
 <?php
 
-use App\Http\Controllers\AbsenceApproverController;
 use App\Models\KoordinatorKegiatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\daftarApkController;
-// use App\Http\Controllers\FilePdfController;
-use App\Http\Controllers\FormPengajuanAbsenController;
 use App\Http\Controllers\HomeNewController;
-use App\Http\Controllers\TambahLaporanController;
-use App\Http\Controllers\KoordinatorKegiatanController;
 use App\Http\Controllers\LoginNewController;
+use App\Http\Controllers\RegisterController;
+// use App\Http\Controllers\FilePdfController;
+use App\Http\Controllers\daftarApkController;
+use App\Http\Controllers\CalibrationController;
+use App\Http\Controllers\ImportExcelController;
+use App\Http\Controllers\TambahLaporanController;
 use App\Http\Controllers\ManagementCutiController;
+use App\Http\Controllers\AbsenceApproverController;
 use App\Http\Controllers\ManagementSaldoController;
+use App\Http\Controllers\FormPengajuanAbsenController;
+use App\Http\Controllers\KoordinatorKegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,7 +110,8 @@ Route::get('/destroy{id}', [ManagementSaldoController::class, 'delete']);
 Route::get('/searchData', [ManagementSaldoController::class, 'searchData']);
 
 //Upload excel file menu management saldo
-// Route::get('/upload', [ManagementSaldoController::class, 'uploadExcel']);
+// Route::get('/import', [ImportExcelController::class, 'index']);
+ 
 
 // Menu Absence Approver
 Route::get('/absence_approver', [AbsenceApproverController::class, 'Index'])->name('absence_approver');
@@ -116,5 +119,8 @@ Route::get('/absence_approver', [AbsenceApproverController::class, 'Index'])->na
 //Upload file 
 Route::post('/upload_file',[FormPengajuanAbsenController::class,'uploadFile'])->name('upload');
 
-//file pdf
-// Route::get('/filePdf',[FilePdfController::class,'viewFile'])->name('filePdf');
+// MODUL KALIBRASI
+// Route::get('/kalibrasi', [HomeNewController::class, 'indexKalibrasi'])->name('kalibrasi');
+Route::get('/kalibrasi', [CalibrationController::class, 'indexKalibrasi'])->name('kalibrasi');
+
+

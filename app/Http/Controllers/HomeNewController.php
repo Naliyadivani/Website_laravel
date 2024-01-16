@@ -31,4 +31,14 @@ class HomeNewController extends Controller
         }
         return redirect()->route('loginpage');
     }
+
+    // modul KALIBRASI
+    // public function indexKalibrasi()
+    // {
+    //     $user = Session::get('user');
+    //     if ($user != null) {
+    //         return view('Kalibrasi.dashboardCalibration', ['user' => $user]);
+    //     }
+    //     return redirect()->route('loginpage');
+    // }
 }

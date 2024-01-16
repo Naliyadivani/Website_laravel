@@ -581,6 +581,8 @@
     <script>
         var file_absen = [];
 
+        // console.log({{ $user['comp_code'] }});
+
         function initDropzone() {
             $('.initDropzone').html('');
             var html = ` <div class="dropzone dropzone-default dropzone-success" name="attachment[]" id="FileAbsence">

@@ -5,17 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class ManagementCutiController extends Controller
+class CalibrationController extends Controller
 {
-    public function IndexAbsen()
+    public function indexKalibrasi()
     {
         $user = Session::get('user');
-        // var_dump($user);
-        // die();
         if ($user != null) {
-            return view('managementCuti.dashboardAbsen', ['user' => $user]);
+            return view('Kalibrasi.dashboardCalibration', ['user' => $user]);
         }
         return redirect()->route('loginpage');
     }
-
 }

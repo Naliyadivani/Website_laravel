@@ -181,7 +181,7 @@
                                                     <div class="modal-body">
                                                         <input type="hidden" id="id_upload_excel">
 
-                                                        <div class="form-group">
+                                                        {{-- <div class="form-group">
                                                             <label>Upload File Excel <span class="text-muted">(.xlxs)</span></label>
                                                             <div class="dropzone dropzone-default dropzone-success dz-clickable" name="attachment[]" id="customFile">
                                                                 <div class="dropzone-msg dz-message needsclick">
@@ -189,12 +189,16 @@
                                                                     <span class="dropzone-msg-desc">Upload up to 15 files and file size maximum 50MB</span>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="card-footer text-right">
-                                                            <button class="btn btn-outline-danger font-weight-bold">Cancel</button>
-                                                            <button class="btn btn-primary font-weight-bold" id="btn-submit">Submit</button>
-                                                        </div>
+                                                        </div> --}}
+                                                        <form id="excelForm" action="{{ url('/import') }}" method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="file" name="excel_file">
+                                                            
+                                                            <div class="card-footer text-right">
+                                                                <button class="btn btn-outline-danger font-weight-bold">Cancel</button>
+                                                                <button class="btn btn-primary font-weight-bold" id="btn-submit" type="submit">Import</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -428,6 +432,43 @@
         function uploadeExcel() {
             $('#uploadExcelFile').modal('show');
         }
+
+    $(document).ready(function () {
+        $("#excelForm").submit(function (e) {
+            e.preventDefault();
+
+            var formData = new FormData($(this)[0]);
+
+            $.ajax({
+                url: '/import',
+                type: 'POST', 
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    // Assuming data is an array, you may need to adjust accordingly
+                    $('#kt_datatable').DataTable({
+                        data: data,
+                        columns: [
+                            { data: 'nik' },
+                            { data: 'tipe_Absen' },
+                            { data: 'saldo' },
+                            { data: 'valid_from' },
+                            { data: 'valid_to' },
+                            { data: 'max_hutang' },
+                            { data: 'valid_from_hutang' },
+                            // Add more columns as needed
+                        ]
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+
+
     </script>
 
     {{-- CRUD SCRIPT  --}}
