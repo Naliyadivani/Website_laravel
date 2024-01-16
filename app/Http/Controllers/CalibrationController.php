@@ -15,4 +15,12 @@ class CalibrationController extends Controller
         }
         return redirect()->route('loginpage');
     }
+    public function PerformanceKalibrasi()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('Kalibrasi.performanceCalibration', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
+    }
 }

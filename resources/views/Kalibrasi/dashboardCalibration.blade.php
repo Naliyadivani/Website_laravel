@@ -1,3 +1,17 @@
+<style>
+    .input-group {
+    position: relative;
+}
+
+.input-group-addon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right spacing as needed */
+    transform: translateY(-50%);
+    cursor: pointer; /* Add cursor pointer for better usability */
+}
+
+</style>
 @extends('KalibrasiLayout.tempKalibrasi')
 
 @section('kalibrasiPage')
@@ -79,7 +93,7 @@
                             <div class="d-flex flex-column-fluid">
                                 <div class="container-fluid p-0">
                                     <div class="row">
-                                        <div class="col-xl-3">
+                                        <div class="col-xl-4">
                                             <!--begin::Stats Widget 4-->
                                             <div class="card card-custom card-stretch gutter-b">
                                                 <!--begin::Body-->
@@ -94,7 +108,7 @@
                                             </div>
                                             <!--end::Stats Widget 4-->
                                         </div>
-                                        <div class="col-xl-3">
+                                        <div class="col-xl-4">
                                             <!--begin::Stats Widget 5-->
                                             <div class="card card-custom card-stretch gutter-b">
                                                 <!--begin::Body-->
@@ -109,22 +123,8 @@
                                             </div>
                                             <!--end::Stats Widget 5-->
                                         </div>
-                                        <div class="col-xl-3">
-                                            <!--begin::Stats Widget 5-->
-                                            <div class="card card-custom card-stretch gutter-b">
-                                                <!--begin::Body-->
-                                                <div class="card-body d-flex align-items-center py-0 mt-8">
-                                                    <div class="d-flex flex-column flex-grow-1 mb-5 py-2 py-lg-5">
-                                                        <a href="#" class="card-title font-weight-boldest mb-1 text-hover-primary" style="font-size: 35px; color:#FB9811;">23</a>
-                                                        <span class="font-weight-bold text-muted font-size-lg">Belum di Kalibrasi</span>
-                                                    </div>
-                                                    <!-- <img src="http://pismart-web:8888/public/assets/media/svg/avatars/004-boy-1.svg" alt="" class="align-self-end h-100px"> -->
-                                                </div>
-                                                <!--end::Body-->
-                                            </div>
-                                            <!--end::Stats Widget 5-->
-                                        </div>
-                                        <div class="col-xl-3">
+                                        
+                                        <div class="col-xl-4">
                                             <!--begin::Stats Widget 6-->
                                             <div class="card card-custom card-stretch gutter-b">
                                                 <!--begin::Body-->
@@ -146,25 +146,150 @@
                                             <div class="card-title">
                                                 <label>Dashboard Calibration</label>
                                             </div>
-                                            
+                                            <div class="card-toolbar">
+                                                <button type="button" class="btn btn-primary btn-sm font-weight-bold" onclick="clearForm()" data-toggle="modal" data-target="#addCalibration">
+                                                    <i class="flaticon2-plus icon-sm"></i> Tambah Kalibrasi
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="pull-left"><div id="kt_datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable"></label></div></div><div class="pull-right"></div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1114.5px; padding-right: 0px;"><table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" role="grid" style="margin-left: 0px; width: 1114.5px;"><thead>
-                                                        <tr class="text-center" role="row"><th style="min-width: 5px; color: black !important; width: 75.9875px;" class="dt-body-nowarp sorting_asc" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="#: activate to sort column descending" aria-sort="ascending">#</th><th style="min-width: 100px; color: black !important; width: 348px;" class="dt-body-nowarp sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="Nama Kegiatan: activate to sort column ascending">Nama Kegiatan</th><th style="min-width: 100px; color: black !important; width: 421.788px;" class="dt-body-nowarp sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="Deskripsi Kegiatan: activate to sort column ascending">Deskripsi Kegiatan</th><th style="min-width: 80px; color: black !important; width: 268.725px;" class="dt-body-nowarp sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th></tr>
-                                                    </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%; max-height: 80vh;"><table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center dataTable no-footer" id="kt_datatable" role="grid" aria-describedby="kt_datatable_info" style="width: 1116px;"><thead>
-                                                        <tr class="text-center" role="row" style="height: 0px;"><th style="min-width: 5px; color: black !important; width: 75.9875px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" class="dt-body-nowarp sorting_asc" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="#: activate to sort column descending" aria-sort="ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">#</div></th><th style="min-width: 100px; color: black !important; width: 348px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" class="dt-body-nowarp sorting" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="Nama Kegiatan: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Nama Kegiatan</div></th><th style="min-width: 100px; color: black !important; width: 421.788px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" class="dt-body-nowarp sorting" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="Deskripsi Kegiatan: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Deskripsi Kegiatan</div></th><th style="min-width: 80px; color: black !important; width: 268.725px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" class="dt-body-nowarp sorting" aria-controls="kt_datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Action</div></th></tr>
+                                                <table class="table table-head-custom table-head-bg table-hover text-center table-vertical-center" id="kt_datatable">
+                                                    <thead>
+                                                        <tr class="text-center">
+                                                            <th style="min-width: 5px; color:black!important;">No</th>
+                                                            <th style="min-width: 100px; color:black!important;">Nama Batch</th>
+                                                            <th style="min-width: 100px; color:black!important;">Tanggal Dibuat</th>
+                                                            <th style="min-width: 100px; color:black!important;">Status</th>
+                                                            <th style="min-width: 80px; color:black!important;">Dikalibrasi Oleh</th>
+                                                        </tr>
                                                     </thead>
-                                                    
                                                     <tbody>
-                                                    <tr class="odd"><td valign="top" colspan="4" class="dataTables_empty">No data available in table</td></tr></tbody>
-                                                </table></div></div><div class="dataTables_info" id="kt_datatable_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div><div class="dataTables_paginate paging_simple_numbers" id="kt_datatable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="kt_datatable_previous"><a href="#" aria-controls="kt_datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item next disabled" id="kt_datatable_next"><a href="#" aria-controls="kt_datatable" data-dt-idx="1" tabindex="0" class="page-link">Next</a></li></ul></div></div>
+                                                        <tr class="odd">
+                                                            <td class="dt-body-nowarp sorting_1">1</td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">Kalibrasi Departemen SDM/ Budaya & 
+                                                                    Pembelajaran <i class="flaticon-eye" style="color: black"></i>
+                                                                </td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">10/11/2023</td>
+                                                                <td class=" dt-body-nowarp">
+                                                                    <span class="label label-danger label-inline font-weight-bolder" style="color:#ffff; background-color:#FFA52B;">Drafted</span>
+                                                                
+                                                                </td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">Martha Aliya</td>
+                                                        </tr>
+                                                        <tr class="even">
+                                                            <td class="dt-body-nowarp sorting_1">2</td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">Kalibrasi Departemen Transformasi
+                                                                    Bisnis/ Digitalisasi & Data Science <i class="flaticon-eye" style="color: black"></i>
+                                                                </td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">10/11/2023</td>
+                                                                <td class=" dt-body-nowarp">
+                                                                    <span class="label label-danger label-inline font-weight-bolder" style="color:#ffff; background-color:#1FC5BD;">Calibrated</span>
+                                                                
+                                                                </td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">Agus Salim</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                         {{-- modal body  ADD SALDO --}}
+                         <div class="modal fade" id="addCalibration" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="addCalibrationLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addCalibrationLabel">Tambah Kalibrasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearForm()">
+                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <input type="hidden" id="id_saldo_cuti">
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Nama Batch</label>
+                                                    <input class="form-control form-control-md" type="text" placeholder="Tulis Nama Batch">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Tanggal Dibuat</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" style="border-radius: 0.42rem;" placeholder="Pilih Tanggal" id="kt_datepicker_1" />
+                                                        <span class="input-group-addon">
+                                                            <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M4.16667 10.2C3.93056 10.2 3.73278 10.1184 3.57333 9.9552C3.41389 9.792 3.33389 9.59027 3.33333 9.35C3.33333 9.10917 3.41333 8.90743 3.57333 8.7448C3.73333 8.58217 3.93111 8.50057 4.16667 8.5C4.40278 8.5 4.60083 8.5816 4.76083 8.7448C4.92083 8.908 5.00056 9.10973 5 9.35C5 9.59083 4.92 9.79285 4.76 9.95605C4.6 10.1192 4.40222 10.2006 4.16667 10.2ZM7.5 10.2C7.26389 10.2 7.06611 10.1184 6.90667 9.9552C6.74722 9.792 6.66722 9.59027 6.66667 9.35C6.66667 9.10917 6.74667 8.90743 6.90667 8.7448C7.06667 8.58217 7.26444 8.50057 7.5 8.5C7.73611 8.5 7.93417 8.5816 8.09417 8.7448C8.25417 8.908 8.33389 9.10973 8.33333 9.35C8.33333 9.59083 8.25333 9.79285 8.09333 9.95605C7.93333 10.1192 7.73555 10.2006 7.5 10.2ZM10.8333 10.2C10.5972 10.2 10.3994 10.1184 10.24 9.9552C10.0806 9.792 10.0006 9.59027 10 9.35C10 9.10917 10.08 8.90743 10.24 8.7448C10.4 8.58217 10.5978 8.50057 10.8333 8.5C11.0694 8.5 11.2675 8.5816 11.4275 8.7448C11.5875 8.908 11.6672 9.10973 11.6667 9.35C11.6667 9.59083 11.5867 9.79285 11.4267 9.95605C11.2667 10.1192 11.0689 10.2006 10.8333 10.2ZM1.66667 17C1.20833 17 0.816111 16.8337 0.49 16.501C0.163889 16.1684 0.000555556 15.7681 0 15.3V3.4C0 2.9325 0.163333 2.53243 0.49 2.1998C0.816667 1.86717 1.20889 1.70057 1.66667 1.7H2.5V0H4.16667V1.7H10.8333V0H12.5V1.7H13.3333C13.7917 1.7 14.1842 1.8666 14.5108 2.1998C14.8375 2.533 15.0006 2.93307 15 3.4V15.3C15 15.7675 14.8369 16.1678 14.5108 16.501C14.1847 16.8342 13.7922 17.0006 13.3333 17H1.66667ZM1.66667 15.3H13.3333V6.8H1.66667V15.3Z" fill="#7A8CAC"/>
+                                                             </svg>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Dikalibrasi Oleh</label>
+                                                    <input class="form-control form-control-md" type="text" placeholder="Masukkan Nama">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Departemen</label>
+                                                    <select class="form-control selectpicker">
+                                                        <option value="">Pilih Departemen</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Kompartemen</label>
+                                                    <select class="form-control selectpicker">
+                                                        <option value="">Pilih Kompartemen</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Grade</label>
+                                                    <select class="form-control selectpicker">
+                                                        <option value="">Pilih Grade</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light-primary font-weight-bold" onclick="clearForm()" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary font-weight-bold" onclick="store()" data-dismiss="modal" id="btn-save">Save</button>
+                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        {{-- End- modal body  --}}
                     </div>
                     <!--end::Entry Dashboard Page-->
 
@@ -290,11 +415,44 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
+    <script src="assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
+    <script src="https://pismart-dev.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+
 
     <script>
-        function modalWorkFlow() {
-            $('#modalWorkFlow').modal('show');
+
+        $(document).ready(function () {
+            $('#kt_datepicker_1').datepicker({
+                format: 'DD-MM-YYYY'
+             });
+        });
+
+        let table = $('#kt_datatable').DataTable({
+            dom: '<"pull-left"f><"pull-right"l>tip',
+            scrollY: '80vh',
+            scrollX: true,
+            scrollCollapse: true,
+            searching: false,
+            columnDefs: [{
+                className: 'dt-body-nowarp',
+                targets: "_all"
+            }],
+            processing: true,
+            bLengthChange: true
+        });
+
+        function addCalibration() {
+            $('#addCalibration').modal('show');
         }
+
+        function clearForm() {
+
+        }
+        function store() {
+
+        }   
+
+
     </script>
     <script>
         var currentRoute = window.location.href;

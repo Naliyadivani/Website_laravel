@@ -122,5 +122,7 @@ Route::post('/upload_file',[FormPengajuanAbsenController::class,'uploadFile'])->
 // MODUL KALIBRASI
 // Route::get('/kalibrasi', [HomeNewController::class, 'indexKalibrasi'])->name('kalibrasi');
 Route::get('/kalibrasi', [CalibrationController::class, 'indexKalibrasi'])->name('kalibrasi');
+Route::get('/performanceCalibration', [CalibrationController::class, 'PerformanceKalibrasi'])->name('performanceCalibration');
+
 
 
