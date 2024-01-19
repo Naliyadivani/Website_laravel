@@ -621,23 +621,47 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                    
                                                                 <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">100</strong><span
-                                                                            class="font-size-sm"> %</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
+                                                                    <div class="mb-0"></div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="font-weight-bold text-success"></div>
+                                                                    <div class="mb-0">
+                                                                        <strong
+                                                                            class="font-weight-bolder font-size-lg">
+                                                                        </strong>
+                                                                        <span class="font-size-sm"> </span>
+                                                                    </div>
+                                                                    <div class="font-weight-bold text-success"></div>
+                                                                    <div class="mb-0">
+                                                                        <strong
+                                                                            class="font-weight-bolder font-size-lg">
+                                                                        </strong>
+                                                                        <span class="font-size-sm"> </span>
                                                                     </div>
                                                                 </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td nowrap="nowrap" class="text-center"><a
-                                                                        href="/performance/monitoring/detail/184615"
-                                                                        class="btn btn-icon btn-light btn-sm"><span
-                                                                            class="svg-icon svg-icon-md svg-icon-success"><i
-                                                                                class="la la-angle-right"></i></span></a>
+                                                                <td nowrap="nowrap">
+                                                                    <div class="d-flex flex-column w-100 mr-2">
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-center ">
+                                                                            <i class="flaticon-warning"style="font-size: 40px; color: #FF9843;"></i>
+                                                                        </div>
+                                                                        <div class="d-flex text-dark font-weight-bolder align-items-center justify-content-center">
+                                                                            Inactive
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -656,50 +680,46 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="mb-0">Maximize</div>
+                                                                    <div class="mb-0"></div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">100</strong><span
-                                                                            class="font-size-sm"> %</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
+                                                                    <div class="font-weight-bold text-success"></div>
+                                                                    <div class="mb-0">
+                                                                        <strong
+                                                                            class="font-weight-bolder font-size-lg">
+                                                                        </strong>
+                                                                        <span class="font-size-sm"> </span>
                                                                     </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">100</strong><span
-                                                                            class="font-size-sm"> %</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">0</strong><span
-                                                                            class="font-size-sm"> %</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
+                                                                    <div class="font-weight-bold text-success"></div>
+                                                                    <div class="mb-0">
+                                                                        <strong
+                                                                            class="font-weight-bolder font-size-lg">
+                                                                        </strong>
+                                                                        <span class="font-size-sm"> </span>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap="nowrap">
                                                                     <div class="d-flex flex-column w-100 mr-2">
                                                                         <div
-                                                                            class="d-flex align-items-center justify-content-between mb-2">
-                                                                            <span
-                                                                                class="text-muted mr-2 font-size-sm font-weight-bold">0%</span><span
-                                                                                class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                                            class="d-flex align-items-center justify-content-center ">
+                                                                            <i class="flaticon-warning"style="font-size: 40px; color: #FF9843;"></i>
                                                                         </div>
-                                                                        <div class="progress progress-xs w-100">
-                                                                            <div class="progress-bar bg-danger"
-                                                                                role="progressbar" style="width: 0%;"
-                                                                                aria-valuenow="0" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                        <div class="d-flex text-dark font-weight-bolder align-items-center justify-content-center">
+                                                                            Inactive
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td nowrap="nowrap" class="text-center"><a
-                                                                        href="/performance/monitoring/detail/184616"
-                                                                        class="btn btn-icon btn-light btn-sm"><span
-                                                                            class="svg-icon svg-icon-md svg-icon-success"><i
-                                                                                class="la la-angle-right"></i></span></a>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -719,50 +739,46 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="mb-0">Maximize</div>
+                                                                    <div class="mb-0"></div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">2</strong><span
-                                                                            class="font-size-sm"> Improvement</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
+                                                                    <div class="font-weight-bold text-success"></div>
+                                                                    <div class="mb-0">
+                                                                        <strong
+                                                                            class="font-weight-bolder font-size-lg">
+                                                                        </strong>
+                                                                        <span class="font-size-sm"> </span>
                                                                     </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">2</strong><span
-                                                                            class="font-size-sm"> Improvement</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="mb-0"><strong
-                                                                            class="font-weight-bolder font-size-lg">3</strong><span
-                                                                            class="font-size-sm"> Improvement</span></div>
-                                                                    <div class="font-weight-bold text-muted">Bobot : 20%
+                                                                    <div class="font-weight-bold text-success"></div>
+                                                                    <div class="mb-0">
+                                                                        <strong
+                                                                            class="font-weight-bolder font-size-lg">
+                                                                        </strong>
+                                                                        <span class="font-size-sm"> </span>
                                                                     </div>
                                                                 </td>
                                                                 <td nowrap="nowrap">
                                                                     <div class="d-flex flex-column w-100 mr-2">
                                                                         <div
-                                                                            class="d-flex align-items-center justify-content-between mb-2">
-                                                                            <span
-                                                                                class="text-muted mr-2 font-size-sm font-weight-bold">150%</span><span
-                                                                                class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                                            class="d-flex align-items-center justify-content-center ">
+                                                                            <i class="flaticon-warning"style="font-size: 40px; color: #FF9843;"></i>
                                                                         </div>
-                                                                        <div class="progress progress-xs w-100">
-                                                                            <div class="progress-bar bg-success"
-                                                                                role="progressbar" style="width: 150%;"
-                                                                                aria-valuenow="3" aria-valuemin="0"
-                                                                                aria-valuemax="2"></div>
+                                                                        <div class="d-flex text-dark font-weight-bolder align-items-center justify-content-center">
+                                                                            Inactive
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td nowrap="nowrap" class="text-center"><a
-                                                                        href="/performance/monitoring/detail/184617"
-                                                                        class="btn btn-icon btn-light btn-sm"><span
-                                                                            class="svg-icon svg-icon-md svg-icon-success"><i
-                                                                                class="la la-angle-right"></i></span></a>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="mb-0"><strong
+                                                                            class="font-weight-bolder font-size-lg"></strong>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -788,14 +804,14 @@
                                                                     <div class="font-weight-bold text-success">Target:</div>
                                                                     <div class="mb-0">
                                                                         <strong
-                                                                            class="font-weight-bolder font-size-lg">84.00
+                                                                            class="font-weight-bolder font-size-lg">90.00
                                                                         </strong>
                                                                         <span class="font-size-sm"> %</span>
                                                                     </div>
                                                                     <div class="font-weight-bold text-success">Realisasi:</div>
                                                                     <div class="mb-0">
                                                                         <strong
-                                                                            class="font-weight-bolder font-size-lg">84.85
+                                                                            class="font-weight-bolder font-size-lg">100.00
                                                                         </strong>
                                                                         <span class="font-size-sm"> %</span>
                                                                     </div>
@@ -825,6 +841,7 @@
                                                                 <td>
                                                                     <div class="mb-0"><strong
                                                                             class="font-weight-bolder font-size-lg">20%</strong>
+                                                                    </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="mb-0"><strong
@@ -837,11 +854,39 @@
                                                             <tr>
                                                                 <th></th>
                                                                 <th></th>
-                                                                <th>
-                                                                    <div class="">Total Bobot : <span
-                                                                            id="total_bobot">100%</span></div>
+                                                                <th></th>
+                                                                <th colspan="2">
+                                                                    <div class="d-flex flex-column align-items-end">
+                                                                        Total Bobot dan KPI Aktif:
+                                                                    </div>
                                                                 </th>
-
+                                                                <th>
+                                                                        <span
+                                                                            id="total_bobot">100%
+                                                                        </span>
+                                                                </th>
+                                                                <th>
+                                                                    <span
+                                                                        id="total_kpi">100%
+                                                                    </span>
+                                                                 </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th></th>
+                                                                <th colspan="2">
+                                                                    <div class="d-flex flex-column align-items-end">
+                                                                        <span>Pencapaian Skor KPI:
+                                                                        </span> 
+                                                                    </div>
+                                                                </th>
+                                                                <th colspan="2">
+                                                                    <div class="d-flex flex-column align-items-center" style="font-size: 17px;">
+                                                                        <span>200%
+                                                                        </span> 
+                                                                    </div>
+                                                                </th>    
                                                             </tr>
                                                         </tfoot>
 
@@ -937,6 +982,27 @@
                                                     method="POST">
                                                     <!--begin::Body-->
                                                     <div class="card-body">
+                                                        <div class="timeline timeline-2">
+                                                            <div class="timeline-bar"></div>
+                                                            <div class="timeline-item">
+                                                                <div class="timeline-badge"></div>
+                                                                <div class="timeline-content d-flex align-items-center justify-content-between">
+                                                                    <span class="mr-3">
+                                                                        <a href="#">12 new users registered and pending for activation</a> <span class="label label-light-success font-weight-bolder">8</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="timeline-item">
+                                                                <span class="timeline-badge bg-success"></span>
+                                                                <div class="timeline-content d-flex align-items-center justify-content-between">
+                                                                    <span class="mr-3">
+                                                                        Scheduled system reboot completed.
+                                                                        <span class="label label-inline label-light-primary font-weight-bolder">new</span>
+                                                                        <span class="label label-inline label-light-danger font-weight-bolder">hot</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <!--begin::Header-->
                                                         <h5 class="card-label">Tahun 2022</h5>
                                                         <!--end::Header-->
