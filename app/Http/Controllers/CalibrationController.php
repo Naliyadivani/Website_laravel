@@ -23,4 +23,20 @@ class CalibrationController extends Controller
         }
         return redirect()->route('loginpage');
     }
+    public function SettingKalibrasi()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('Kalibrasi.CalibrationSetting', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
+    }
+    public function detailInfo()
+    {
+        $user = Session::get('user');
+        if ($user != null) {
+            return view('Kalibrasi.detailInfo', ['user' => $user]);
+        }
+        return redirect()->route('loginpage');
+    }
 }

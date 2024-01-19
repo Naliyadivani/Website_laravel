@@ -164,7 +164,7 @@
 					</div>
 
 					<!--begin::Menu Nav-->
-					<div style="position: relative; left:0; top:0; width:100%; height:100%">
+					{{-- <div style="position: relative; left:0; top:0; width:100%; height:100%">
 						<svg preserveAspectRatio="none" width="265px" height="400px" viewBox="0 0 265 400" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							<path d="M183.325 164.837C192.112 50.1692 262.77 7.4499 297 0.423706V459.515H1.00684V354.544C94.9119 371.828 172.342 308.171 183.325 164.837Z" fill="url(#paint0_linear_1871_2668)" />
 							<path d="M146.292 327.332C137.901 238.276 45.2677 207.866 0 203.793V463.542H297V443.631C250.26 441.972 154.683 416.389 146.292 327.332Z" fill="url(#paint1_linear_1871_2668)" fill-opacity="0.8" />
@@ -189,7 +189,7 @@
 							</defs>
 						</svg>
 
-					</div>
+					</div> --}}
 
 					<!--end::Menu Container-->
 				</div>

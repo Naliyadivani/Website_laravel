@@ -60,7 +60,7 @@
 				</li>
 
 				<li class="menu-item" aria-haspopup="true" data-menu-toggle="hover">
-					<a href="{{route('homepage')}}" class="menu-link menu-toggle">
+					<a href="{{route('CalibrationSetting')}}" class="menu-link menu-toggle">
 						<span class="svg-icon menu-icon">
 							<!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
 							<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
