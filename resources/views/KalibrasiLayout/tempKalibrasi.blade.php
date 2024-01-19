@@ -70,10 +70,15 @@ License: You must have a valid license purchased only from themeforest(the above
         .kanban-drag {
             background-color: white;
         }
-        .kanban-board{
-            background: #ffff
+        .kanban-board[data-id]{
+            background: white;
         }
-        
+
+        /* .timeline-media{
+            max-width: 35px;
+            max-width: 35px;
+        } */
+
     </style>
 </head>
 

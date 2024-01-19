@@ -137,7 +137,7 @@
                                         </div> --}}
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table table-bordered text-center table-hover display nowrap" width="100%" id="kt_datatable">
+                                                <table class="table table-head-custom table-head-bg table-hover text-center display nowrap" width="100%" id="kt_datatable">
                                                             <thead>
                                                                 <tr class="text-center" role="row">
                                                                     <th>#</th>

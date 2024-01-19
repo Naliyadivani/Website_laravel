@@ -508,19 +508,16 @@
             $('ul.menu-nav li.menu-item').removeClass('menu-item-active');
 
             // Add the 'menu-item-active' class to the corresponding menu item based on the current route
-            if (currentRoute === "{{route('dashboard_absen')}}") {
+            if (currentRoute === "{{route('kalibrasi')}}") {
                 // console.log("A");
                 $('#menu-item-dashboard').addClass('menu-item-active');
-            } else if (currentRoute === "{{route('pengajuan_absen')}}") {
+            } else if (currentRoute === "{{route('performanceCalibration')}}") {
                 // console.log("B");
-                $('#menu-item-pengajuan-absen').addClass('menu-item-active');
-            } else if (currentRoute === "{{route('absence_approver')}}") {
+                $('#menu-item-performance').addClass('menu-item-active');
+            } else if (currentRoute === "{{route('CalibrationSetting')}}") {
                 // console.log("C");
-                $('#menu-item-absence-approver').addClass('menu-item-active');
-            } else if (currentRoute === "{{route('management_saldo')}}") {
-                // console.log("D");
-                $('#menu-item-management-saldo').addClass('menu-item-active');
-            }
+                $('#menu-item-setting').addClass('menu-item-active');
+            } 
         </script>
 
 </body>

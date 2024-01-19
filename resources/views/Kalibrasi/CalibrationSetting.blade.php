@@ -244,6 +244,24 @@
 
 
     </script>
+    <script>
+        var currentRoute = window.location.href;
+
+        // Remove the 'menu-item-active' class from all menu items
+        $('ul.menu-nav li.menu-item').removeClass('menu-item-active');
+
+        // Add the 'menu-item-active' class to the corresponding menu item based on the current route
+        if (currentRoute === "{{route('kalibrasi')}}") {
+            // console.log("A");
+            $('#menu-item-dashboard').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('performanceCalibration')}}") {
+            // console.log("B");
+            $('#menu-item-performance').addClass('menu-item-active');
+        } else if (currentRoute === "{{route('CalibrationSetting')}}") {
+            // console.log("C");
+            $('#menu-item-setting').addClass('menu-item-active');
+        } 
+    </script>
   
 </body>
 @endsection

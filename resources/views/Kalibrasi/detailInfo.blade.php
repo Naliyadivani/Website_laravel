@@ -290,8 +290,7 @@
                                                                     <div class="image-input-wrapper h-100">
                                                                         <img src="assets/media/logos/foto_pribadi.png"
                                                                             alt="profile"
-                                                                            class="img-fluid image-input image-input-outline"
-                                                                            style="max-height: 104px;">
+                                                                            class="img-fluid image-input image-input-outline">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -982,55 +981,94 @@
                                                     method="POST">
                                                     <!--begin::Body-->
                                                     <div class="card-body">
-                                                        <div class="timeline timeline-2">
-                                                            <div class="timeline-bar"></div>
-                                                            <div class="timeline-item">
-                                                                <div class="timeline-badge"></div>
-                                                                <div class="timeline-content d-flex align-items-center justify-content-between">
-                                                                    <span class="mr-3">
-                                                                        <a href="#">12 new users registered and pending for activation</a> <span class="label label-light-success font-weight-bolder">8</span>
-                                                                    </span>
+                                                        <div class="timeline timeline-5">
+                                                            <div class="timeline-items">
+                                                                <!--begin::Item-->
+                                                                <div class="timeline-item">
+                                                                    <!--begin::Icon-->
+                                                                    <div class="timeline-media bg-success">
+                                                                        <span class="svg-icon-primary svg-icon-md">
+                                                                        </span>
+                                                                    </div>
+                                                                    <!--end::Icon-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="timeline-desc timeline-desc-success">
+                                                                        <span class="card-label font-weight-bolder" style="font-size: 17px;">Tahun 2022</span>
+                                                                        <div class="card card-custom card-fit card-border">
+                                                                            <div class="card-body pt-2">Lorem Ipsum is simply dummy text of
+                                                                                the printing and typesetting industry. Lorem Ipsum has been
+                                                                                the industry's standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s, when an unknown
+                                                                                printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s, when an unknown
+                                                                                printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end::Info-->
                                                                 </div>
-                                                            </div>
-                                                            <div class="timeline-item">
-                                                                <span class="timeline-badge bg-success"></span>
-                                                                <div class="timeline-content d-flex align-items-center justify-content-between">
-                                                                    <span class="mr-3">
-                                                                        Scheduled system reboot completed.
-                                                                        <span class="label label-inline label-light-primary font-weight-bolder">new</span>
-                                                                        <span class="label label-inline label-light-danger font-weight-bolder">hot</span>
-                                                                    </span>
+                                                                <!--end::Item-->
+                                                        
+                                                                <!--begin::Item-->
+                                                                <div class="timeline-item">
+                                                                    <!--begin::Icon-->
+                                                                    <div class="timeline-media bg-success">
+                                                                        <span class="svg-icon-primary svg-icon-md">
+                                                                        </span>
+                                                                    </div>
+                                                                    <!--end::Icon-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="timeline-desc timeline-desc-success">
+                                                                        <span class="card-label font-weight-bolder" style="font-size: 17px;">Tahun 2023</span>
+                                                                        <div class="card card-custom card-fit card-border">
+                                                                            <div class="card-body pt-2">Lorem Ipsum is simply dummy text of
+                                                                                the printing and typesetting industry. Lorem Ipsum has been
+                                                                                the industry's standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s, when an unknown
+                                                                                printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s, when an unknown
+                                                                                printer took a galley of type and scrambled.
+                                                                                Lorem Ipsum is simply dummy text of the printing and
+                                                                                typesetting industry. Lorem Ipsum has been the industry's
+                                                                                standard dummy text ever since the 1500s,
+                                                                                when an unknown printer took a galley of type and scrambled.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end::Info-->
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--begin::Header-->
-                                                        <h5 class="card-label">Tahun 2022</h5>
-                                                        <!--end::Header-->
-                                                        <div class="card card-custom card-fit card-border">
-                                                            <div class="card-body pt-2">Lorem Ipsum is simply dummy text of
-                                                                the printing and typesetting industry. Lorem Ipsum has been
-                                                                the industry's standard dummy text ever since the 1500s,
-                                                                when an unknown printer took a galley of type and scrambled.
-                                                                Lorem Ipsum is simply dummy text of the printing and
-                                                                typesetting industry. Lorem Ipsum has been the industry's
-                                                                standard dummy text ever since the 1500s,
-                                                                when an unknown printer took a galley of type and scrambled.
-                                                                Lorem Ipsum is simply dummy text of the printing and
-                                                                typesetting industry. Lorem Ipsum has been the industry's
-                                                                standard dummy text ever since the 1500s, when an unknown
-                                                                printer took a galley of type and scrambled.
-                                                                Lorem Ipsum is simply dummy text of the printing and
-                                                                typesetting industry. Lorem Ipsum has been the industry's
-                                                                standard dummy text ever since the 1500s,
-                                                                when an unknown printer took a galley of type and scrambled.
-                                                                Lorem Ipsum is simply dummy text of the printing and
-                                                                typesetting industry. Lorem Ipsum has been the industry's
-                                                                standard dummy text ever since the 1500s, when an unknown
-                                                                printer took a galley of type and scrambled.
-                                                                Lorem Ipsum is simply dummy text of the printing and
-                                                                typesetting industry. Lorem Ipsum has been the industry's
-                                                                standard dummy text ever since the 1500s,
-                                                                when an unknown printer took a galley of type and scrambled.
+                                                                <!--end::Item-->
+                                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1360,6 +1398,7 @@
 
             }
         </script>
+        
 
     </body>
 @endsection
