@@ -363,10 +363,11 @@
                             } else {
                                 statusHtml = `
                                                 <div class="d-flex align-items-center p-0 rounded">
-                                                    <div class="mr-1 flex-shrink-0 text-right">
+                                                    <div class="mr-12 flex-shrink-0">
                                                         <i class="fas fa-info-circle text-primary" data-toggle="popover" data-trigger="click" data-content="${y.keterangan}" data-original-title title aria-describedby="popover88969"></i>
                                                     </div>
-                                                    <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}</span>
+                                                    <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}
+                                                    </span>
                                                 </div>`
 
                                 actionButtons = action

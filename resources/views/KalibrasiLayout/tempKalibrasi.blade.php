@@ -74,10 +74,9 @@ License: You must have a valid license purchased only from themeforest(the above
             background: white;
         }
 
-        /* .timeline-media{
-            max-width: 35px;
-            max-width: 35px;
-        } */
+        .navi.navi-active .navi-item .navi-link.active {
+            background-color: #f3f6f9;
+        }
 
     </style>
 </head>

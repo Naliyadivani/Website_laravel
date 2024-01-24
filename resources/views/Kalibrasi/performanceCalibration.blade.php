@@ -253,17 +253,25 @@
                                 'class': 'white',
                                 'item': [{
                                         'title': `
-                                            <div class="d-flex align-items-center">
-                                                    <div class="symbol symbol-success mb-3 mr-3">
-                                                        <img alt="Pic" src="assets/media/users/300_24.jpg" />
-                                                    </div>
-                                                    <div class="d-flex flex-column align-items-start">
-                                                    <span class="text-dark font-weight-bolder">Surya Saputra <a href="{{route('detail_info')}}" onclick="redirectTo()"><i class="flaticon-more"></i></a></span>
-                                                        <span class="text-dark font-weight-bold">2198998</span>
-                                                        <span class="text-dark font-weight-bold ">Nilai <span class="text-dark font-weight-boldest">100.03</span></span>
+                                        <div class="d-flex align-items-center">
+                                            <div class="symbol symbol-success mb-3 mr-3">
+                                                <img alt="Pic" src="assets/media/users/300_24.jpg" />
+                                            </div>
+                                            <div class="d-flex flex-column align-items-start">
+                                                <div class="dropdown">
+                                                    <span class="text-dark font-weight-bolder" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Surya Saputra <i class="flaticon-more"></i>
+                                                    </span>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <!-- Dropdown items go here -->
+                                                        <a class="dropdown-item" href="{{route('detail_info')}}" onclick="redirectTo()">Detail Info</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Catatan</a>
                                                     </div>
                                                 </div>
-                                            `,
+                                                <span class="text-dark font-weight-bold">2198998</span>
+                                                <span class="text-dark font-weight-bold ">Nilai <span class="text-dark font-weight-boldest">100.03</span></span>
+                                            </div>                                            `,
                                     },
                                     {
                                         'title': `
@@ -448,6 +456,26 @@
                             }
                         ]
                     });
+
+                    var boardWidths = {
+                        '_todo': '500px',
+                        '_working': '500px',
+                    };
+
+                    var kb_container = document.querySelector('.kanban-container')
+                    kb_container.style.width = '1500px'
+
+                    for (var boardId in boardWidths) {
+                        var boardElement = document.querySelector('.kanban-board[data-id="' + boardId + '"]');
+                        var dragElement = boardElement.querySelector('.kanban-drag')
+                        boardElement.style.width = boardWidths[boardId];
+                        dragElement.style.display = 'grid'; // Fix: Set display to 'grid'
+                        // dragElement.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                        dragElement.style.gridTemplateColumns = '50% 50%'; 
+                        dragElement.style.gridColumnGap= '20px';
+                        dragElement.style.gridAutoRows = "98.38px";
+                        // dragElement.style.gridAutoColumns = "10px";
+                    }
                 }
 
                 // Public functions

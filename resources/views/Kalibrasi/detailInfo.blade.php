@@ -122,7 +122,7 @@
                                                     <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
                                                         <div class="navi-item mb-2 active"
                                                             onclick="showCard('detail_info_data_diri')" id="nav-data-diri">
-                                                            <a href="#" class="navi-link py-4 ">
+                                                            <a href="#" class="navi-link py-4 active ">
                                                                 <span class="navi-icon mr-2">
                                                                     <span class="svg-icon">
                                                                         <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->

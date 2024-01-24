@@ -422,6 +422,9 @@
                                                                 </div>
                                                                 <div class="separator separator-dashed my-5"></div>
                                                                 <h6 class="font-weight-bolder mb-3">Approver:</h6>
+                                                                <div class="text-dark-50 line-height-lg">
+                                                                    <div class="row" id="list_approver"></div>
+                                                                </div>
                                                                 <!--end::Section-->
 
                                                             </div>
@@ -581,7 +584,65 @@
     <script>
         var file_absen = [];
 
-        // console.log({{ $user['comp_code'] }});
+        // function getApprover(nik){
+        //     $.ajax({
+        //         type: "get",
+        //         url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/getAtasanPegawai?"+nik,
+        //         data: "data",
+        //         beforeSend: function(xhr) {
+        //             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+        //         },
+        //         success: function (response) {
+        //             if(response.status == 200){
+        //                 var list_approver = $('#list_approver')
+        //                 list_approver.html('')
+        //                 var array = response.data
+        //                 array.forEach((x,i)=>{
+        //                     var objApprover = {
+        //                         "nik": x.emp_no,
+        //                         "status":x.status
+        //                     }
+        //                     arr_approver.push(objApprover)
+        //                     var approver =  `<span class="label label-light-info label-inline font-weight-bolder font-size-sm label-sm">${x.status}</span>`
+        //                         if (i == 1) {
+        //                             aprover = `<span class="label label-light-warning label-inline font-weight-bolder font-size-sm label-sm"  style="background-color:#E2FFD9; color:#67A653">${x.status}</span>`
+        //                         } else if (i == 2) {
+        //                             aprover = `<span class="label label-light-danger label-inline font-weight-bolder font-size-sm label-sm" style="background-color:#FFE9D4; color:#DF9651">${x.status}</span>`
+        //                         }
+        //                         var html = `<div class="d-flex align-items-center mb-5 mr-3">
+        //                                                         <!--begin::Symbol-->
+        //                                                         <div class="symbol symbol-50 mr-5">
+        //                                                             <img src="" class="h-85 align-self-center" alt="approver">
+        //                                                         </div>
+        //                                                         <!--end::Symbol-->
+        //                                                         <!--begin::Text-->
+        //                                                         <div class="d-flex flex-column font-weight-bold">
+        //                                                             <span class="text-dark text-hover-primary font-size-sm mb-1">-</span>
+        //                                                             <span class="text-dark text-hover-primary font-size-sm mb-1"></span>
+        //                                                             ${aprover}
+        //                                                         </div>
+        //                                                         <!--end::Text-->
+        //                                                     </div>`
+        //                     list_approver.append(html)
+        //                 })
+        //             }
+        //                 else {
+        //                   Swal.fire({
+        //                     text: result.ResponseString,
+        //                     icon: "error",
+        //                     buttonsStyling: false,
+        //                     confirmButtonText: "Ok, got it!",
+        //                     customClass: {
+        //                         confirmButton: "btn font-weight-bold btn-primary",
+        //                     }
+        //                   });
+        //                 }
+        //             },
+        //             error: function(data) {
+        //                 console.log('Error check budget')
+        //             }
+        //     })
+        // }
 
         function initDropzone() {
             $('.initDropzone').html('');
@@ -932,14 +993,13 @@
             });
         }
 
-
+        // getApprover()
         getTipeAbsen()
         var arrTipeCuti = [];
 
         function getTipeAbsen() {
             $.ajax({
                 type: "get",
-                // url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=91010187&tahun=2023"+ x,
                 url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);

@@ -671,6 +671,7 @@
                 }
             });
         }
+        
 
         // menyimpan data saldo
         function store() {
@@ -678,27 +679,11 @@
             var id_saldo = $('#id_saldo_cuti').val();
             var nik = $('#nik_selected').val();
             var tipe_absen_id = $('#nama_tipe_absen').val();
-            var saldo = $('#kt_touchspin_4').val();
+            var saldo = parseInt($('#kt_touchspin_4').val());
             var valid_from = $('#valid_from').val();
             var valid_to = $('#valid_to').val();
-            var max_hutang = $('#max_hutang').val();
+            var max_hutang = parseInt($('#max_hutang').val());
             var valid_from_hutang = $('#valid_from_hutang').val();
-            // console.log(id_saldo, nik,tipe_absen_id,saldo,valid_from,valid_to,max_hutang,valid_from_hutang);
-            // Cek apakah semua field telah diisi
-            // if (
-            //     nik.trim() === '' ||
-            //     tipe_absen_id.trim() === '' ||
-            //     saldo.trim() === '' ||
-            //     valid_from.trim() === '' ||
-            //     valid_to.trim() === ''
-            // ) {
-            //     Swal.fire({
-            //         title: "Peringatan",
-            //         text: "Harap isi semua data yang diperlukan",
-            //         icon: "warning",
-            //     });
-            //     return; // Menghentikan eksekusi jika ada field yang kosong
-            // }
 
             if (nik === '' || tipe_absen_id === '' || saldo === '' || valid_from === '' || valid_to === '' || max_hutang === '' || valid_from_hutang === '') {
                 Swal.fire({
@@ -720,20 +705,6 @@
                 created_by: "{{$user['nik']}}"
             }
 
-            // if (id_saldo !== '') {
-            //     storeSaldo = {
-            //         nik: nik,
-            //         tipe_absen_id: tipe_absen_id,
-            //         saldo: saldo,
-            //         valid_from: valid_from,
-            //         valid_to: valid_to,
-            //         id_saldo: id_saldo,
-            //         max_hutang: max_hutang,
-            //         valid_from_hutang: valid_from_hutang,
-            //         created_by: {{ $user['nik'] }}
-            //     }
-            // }
-
             if (id_saldo !== '') {
                 storeSaldo.id_saldo = id_saldo;
             }
@@ -741,7 +712,8 @@
             $.ajax({
                 type: "post",
                 url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo",
-                data: storeSaldo,
+                data: JSON.stringify(storeSaldo),
+                contentType: "application/json",
                 dataType: "json",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -759,73 +731,6 @@
             });
         }
     </script>
-
-    {{-- <script>
-         function formatRepo(repo){
-         if(repo.loading) return repo.text;
-         
-         var markup=`<div class="d-flex align-items-center">
-             <div class="symbol symbol-40 symbol-light-success flex-shrink-0">
-                 <img class="" src="" alt="photo">
-                 </div>
-                 <div class="ml-4">
-                     <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">${repo.nama} - ${repo.nik}</div>
-                     <a href="#" class="text-muted font-weight-bold text-hover-primary">${repo.company.name}</a>
-                    </div>
-                </div>`;
-                return markup;
-            }
-            function formatRepoSelection1(repo){
-                if (repo.text == '') {
-         return repo.nama + ' - ' + repo.nik + ' | ' + repo.company.name;
-        } else {
-            return repo.text;
-        }
-        
-        $('#kt_select2_6').on('select2:select', function(e) {
-            
-            getTipeAbsen()
-     });
-
-     }
-		 $("#kt_select2_6").select2({
-             placeholder: "Masukkan Nama atau Nomor Pegawai",
-		 	allowClear: true,
-		 	ajax: {
-                 // type: "post",
-		 		url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/dataPegawai",
-		 		dataType: 'json',
-		 		delay: 250,
-		 		data: function(params) {
-                     return {
-                         key: params.term, // search term
-		 				page: params.page
-                    };
-                },
-                processResults: function(data, params) {
-		 			params.page = params.page || 1;
-                     
-                     data.forEach(function(entry, index){
-                         entry.id_saldo_cuti= entry.nik
-                        })
-                        
-                        return {
-                            results: data,
-                            pagination: {
-                                more: (params.page * 30) < data.total_count
-                            }
-                        };
-                    },
-                    cache: true
-                },
-		 	escapeMarkup: function(markup) {
-		 		return markup;
-            }, 
-		 	minimumInputLength: 4,
-		 	templateResult: formatRepo,
-		 	templateSelection: formatRepoSelection1 
-        });
-    </script> --}}
 
     <script>
         // onchange pilih karyawan
