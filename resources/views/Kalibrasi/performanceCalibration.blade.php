@@ -1,3 +1,6 @@
+<style>
+    
+</style>
 @extends('KalibrasiLayout.tempKalibrasi')
 
 @section('kalibrasiPage')
@@ -93,17 +96,17 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="card-body">
-                                            <div id="kt_kanban_4">
+                                    </div>
+                                    
+                                    <div class="row row-cols-7 g-3">
+                                        <div class="col">
+                                            <div class="card sm-3">
+
                                             </div>
-                                            {{-- <div class="mt-4">
-                                                <button class="btn font-weight-bold btn-light-primary mr-5" id="addDefault">Add "Default" board</button>
-                                                <button class="btn font-weight-bold btn-light-danger mr-5" id="addToDo">Add element in "To Do" Board</button>
-                                                <button class="btn font-weight-bold btn-light-success" id="removeBoard">Remove "Done" Board</button>
-                                            </div> --}}
                                         </div>
                                     </div>
-                                    <!--end::Card-->
+
+
                                 </div>
                             </div>
 
@@ -239,7 +242,7 @@
         <script src="assets/plugins/custom/kanban/kanban.bundle.js"></script>
         <!-- <script src="assets/js/pages/features/miscellaneous/kanban-board.js"></script> -->
 
-        <script>
+        {{-- <script>
             "use strict";
 
             var KTKanbanBoardDemo = function() {
@@ -494,7 +497,7 @@
             function redirectTo(){
                 window.location.href='detail_info'
             }
-        </script>
+        </script> --}}
 
         <script>
             $(document).ready(function() {

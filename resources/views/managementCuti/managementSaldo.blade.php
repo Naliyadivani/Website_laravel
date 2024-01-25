@@ -135,7 +135,64 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-                                        <div class="card-body">
+                                        <div class="card-body pt-0">
+                                             <!--begin::Search Form-->
+                                            <div class="mt-2 mb-5 mt-lg-5 mb-lg-5">
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-12 col-xl-12">
+                                                        <div class="row align-items-center">
+                                                            <div class="row w-100 mx-1">
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Direktorat :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" id="direktorat" onchange="getValDirektorat(this);">
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Kompartemen :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" id="kompartemen" onchange="getValKompartemen(this);">
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Departemen :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" id="departemen" onchange="getValDepartemen(this);">
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12 my-2">
+                                                                <div class="input-icon">
+                                                                    <input type="text" class="form-control" placeholder="Search..." id="key_search" />
+                                                                    <span><i class="flaticon2-search-1 text-muted"></i></span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 text-right my-2">
+                                                                <a onClick="clearForm()" class="btn btn-light-warning px-6 font-weight-bold">
+                                                                    Reset
+                                                                </a>
+                                                                <a onClick="readSaldo()" class="btn btn-light-primary px-6 font-weight-bold">
+                                                                    Search
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end::Search Form-->
                                             <div class="table-responsive">
                                                 <table class="table table-head-custom table-head-bg table-hover text-center display nowrap" width="100%" id="kt_datatable">
                                                             <thead>
@@ -480,6 +537,10 @@
         var comp_code_pegawai = '';
         var year = $('#absence_year').val();
         // var nik = $('#nik_id').val();
+        
+        var kompartemen = '';
+        var departemen = '';
+        var key = '';
         var current_year = new Date().getFullYear();
         selectYear(current_year)
 
@@ -497,7 +558,7 @@
             scrollY: '80vh',
             scrollX: true,
             scrollCollapse: true,
-            searching: true,
+            searching: false,
             columnDefs: [{
                 className: 'dt-body-nowarp',
                 targets: "_all"
@@ -541,10 +602,14 @@
         function readSaldo() {
             $.ajax({
                 type: "post",
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/listAdminSaldo",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listAdminSaldo",
                 // url: "http://10.9.12.223:9096/api/cuti/listAdminSaldo",
                 data: {
                     nik: emp_no,
+                    key: key,
+                    direktorat: direktorat,
+                    kompartemen: kompartemen,
+                    departemen: departemen,
                     tahun: year,
                 },
                 beforeSend: function(xhr) {
@@ -576,7 +641,8 @@
                             var validFromHutang = `<span class="font-weight-bold font-size-sm text-dark-50">${x.valid_from_hutang}</span>`
                             var action = `<button type="button" onclick="show('${x.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-warning">
                                         <i class="flaticon2-edit"></i>
-                                    </button> <button type="button" onclick="deleteItem('${x.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
+                                    </button> 
+                                    <button type="button" onclick="deleteItem('${x.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
                                         <i class="flaticon2-trash"></i>
                                     </button>`
                             table.row.add([iteration,employee,tipeAbsen,saldo,validFrom,validTo,maxHutang,validFromHutang,action]).draw(false)
@@ -600,7 +666,7 @@
         //show untuk edit saldo
         function show(id_saldo_cuti) {
             $.ajax({
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminSaldoCuti/" + id_saldo_cuti,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminSaldoCuti/" + id_saldo_cuti,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminSaldoCuti/" + id_saldo,
                 type: "get",
                 beforeSend: function(xhr) {
@@ -653,7 +719,7 @@
                 if (result.isConfirmed) {
                     // Send an AJAX request to delete the item
                     $.ajax({
-                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deleteAdminSaldoCuti/" + id_saldo_cuti,
+                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deleteAdminSaldoCuti/" + id_saldo_cuti,
                         // url: "http://10.9.12.223:9096/api/cuti/deleteAdminSaldoCuti/" + slug,
                         type: 'DELETE',
                         beforeSend: function(xhr) {
@@ -711,7 +777,7 @@
 
             $.ajax({
                 type: "post",
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo",
                 data: JSON.stringify(storeSaldo),
                 contentType: "application/json",
                 dataType: "json",
@@ -748,7 +814,7 @@
             placeholder: "Masukkan Nama atau Nomor Pegawai",
             allowClear: true,
             ajax: {
-                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/dataPegawai', // Use the named route to generate the URL
+                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/mobile/dataPegawai', // Use the named route to generate the URL
                 // url: 'http://10.9.12.223:9096/api/mobile/dataPegawai',
                 dataType: 'json',
                 beforeSend: function(xhr) {
@@ -788,7 +854,7 @@
         function getTipeAbsen(x) {
             $.ajax({
                 type: "get",
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminTipeAbsen?nik=" + x,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminTipeAbsen?nik=" + x,
                 // url: "http://10.9.12.223:9096/api/cuti/getAdminTipeAbsen?nik="+ x,
                 // data: "data",
                 beforeSend: function(xhr) {
@@ -796,8 +862,6 @@
                 },
                 success: function(response) {
                     var arr = response.data
-                    // console.log(arr);
-                    // return arr
                     $('#nama_tipe_absen').html('')
                     var tipeAbsen = '';
                     var awal = '<option value="">Pilih Tipe Absen</option>';
@@ -824,6 +888,116 @@
                     }
                 }
             });
+        }
+        getDirektorat();
+
+        //Get Direktorat
+        function getDirektorat(){
+            $.ajax({
+                type: "post",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getDirektorat",
+                data:{
+                    company: company,
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function (response) {
+                    var arr = response.data
+                    $('#direktorat').empty();
+                    var direktorat = '';
+                    $direktorat.append('<option value="">-Pilih Direktorat-</option>');
+                    var $direktorat = $('#direktorat');
+                    arr.forEach((x,i)=>{
+                        direktorat += "<option value='" + x.dir_id + "'>" + x.dir_title + "</option>";
+                    });
+                    $('#direktorat').append(direktorat);
+                },
+                error: function(data) {
+                    Swal.fire("Tidak Ditemukan", "Data Direktorat Tidak Ditemukan", "error");
+                    // handleUnauthorized(data)
+                }
+            });
+        }
+
+        //Get Kompartemen
+        function getKompartemen(){
+            $.ajax({
+                type: "post",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getKompartemen",
+                data: {
+                    company: company,
+                    direktorat: direktorat,
+                },
+                dataType: "dataType",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function (response) {
+                    $('#kompartemen').empty();
+                    var $kompartemen = $('#kompartemen');
+                    $kompartemen.append('<option value="">-Pilih Kompartemen-</option>');
+                    var jsonData = JSON.parse(JSON.stringify(result));
+                    $.each(jsonData.data, function(key, value) {
+                        $('#kompartemen').append('<option value=' + value['komp_id'] + '>' + value[
+                            'komp_title'] + '</option>');
+                    });
+                },
+                error: function(data) {
+                    Swal.fire("Tidak Ditemukan", "Data Kompartemen Tidak Ditemukan", "error");
+                    handleUnauthorized(data);
+                }
+            });
+        }
+
+        //Get Departemen
+        function getDepartemen(){
+            $.ajax({
+                type: "post",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getDepartemen",
+                data: {
+                    company: company,
+                    // direktorat: direktorat,
+                    kompartemen: kompartemen,
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function (response) {
+                    $('#departemen').empty();
+                    var $departemen = $('#departemen');
+                    $departemen.append('<option value="">-Pilih Departemen-</option>');
+                    var jsonData = JSON.parse(JSON.stringify(result));
+                    $.each(jsonData.data, function(key, value) {
+                        $('#departemen').append('<option value=' + value['dept_id'] + '>' + value[
+                            'dept_title'] + '</option>');
+                    });
+                },
+                error: function(data) {
+                    Swal.fire("Tidak Ditemukan", "Data Departemen Tidak Ditemukan", "error");
+                    handleUnauthorized(data);
+                }
+            });
+        }
+
+        function getValDirektorat(data) {
+            $('#direktorat').val(data.value);
+            direktorat = data.value;
+            getKompartemen();
+            $('#kompartemen').empty();
+            $('#departemen').empty();
+        }
+
+        function getValKompartemen(data) {
+            $('#kompartemen').val(data.value);
+            kompartemen = data.value;
+            getDepartemen()
+            $('#departemen').empty();
+        }
+
+        function getValDepartemen(data) {
+            $('#departemen').val(data.value);
+            departemen = data.value;
         }
 
         $('#kt_datetimepicker_7_1').datetimepicker({
@@ -873,12 +1047,6 @@
             $('#kt_select2_6').val('').change();
             $('#kt_select2_6').prop('disabled', false)
             $('#nama_tipe_absen').prop('disabled', false)
-            // if($('#kt_select2_6').val() != null){
-            //     console.log("A");
-            //     $('#nama_tipe_absen').prop('disabled',true)
-            //     $('#kt_select2_6 option:selected').prop('disabled',true)
-            // }
-            // btnCondition()
             $('#nama_tipe_absen').val('').change();
             $('#nik_selected').val('');
             $('#kt_touchspin_4').val('');
@@ -886,6 +1054,14 @@
             $('#valid_to').val('');
             $('#max_hutang').val('');
             $('#valid_from_hutang').val('');
+            $('#direktorat').val('');
+            $('#kompartemen').val('');
+            $('#departemen').val('');
+            $('#key_search').val('');
+            direktorat = '';
+            kompartemen = '';
+            departemen = '';
+            key = '';
         }
 
         function btnCondition() {

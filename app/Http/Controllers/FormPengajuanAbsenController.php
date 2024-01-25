@@ -35,9 +35,10 @@ class FormPengajuanAbsenController extends Controller
         $data=[];
         $data['id_pengajuan_absen'] = $id;
         $user = Session::get('user');
+        $userdev = Session::get('userdev');
         if ($user != null) {
             $data['user'] = $user;
-            // dd($data);
+            $data['userdev'] = $userdev;
             return view('managementCuti.formAjukanAbsen', $data);
         }
         return redirect()->route('loginpage');

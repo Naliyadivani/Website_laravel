@@ -161,7 +161,9 @@
                                                             <th style="min-width: 100px; color:black!important;">Nama Batch</th>
                                                             <th style="min-width: 100px; color:black!important;">Tanggal Dibuat</th>
                                                             <th style="min-width: 100px; color:black!important;">Status</th>
+                                                            <th style="min-width: 100px; color:black!important;">Periode Tahun</th>
                                                             <th style="min-width: 80px; color:black!important;">Dikalibrasi Oleh</th>
+                                                            <th style="min-width: 80px; color:black!important;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -175,7 +177,16 @@
                                                                     <span class="label label-danger label-inline font-weight-bolder" style="color:#ffff; background-color:#FFA52B;">Drafted</span>
                                                                 
                                                                 </td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">2024</td>
                                                                 <td class=" dt-body-nowarp font-weight-bolder">Martha Aliya</td>
+                                                                <td>
+                                                                    <button type="button"class="btn btn-icon my-2 btn-sm btn-warning">
+                                                                        <i class="flaticon2-edit"></i>
+                                                                    </button> 
+                                                                    <button type="button" class="btn btn-icon my-2 btn-sm btn-danger">
+                                                                        <i class="flaticon2-trash"></i>
+                                                                    </button>
+                                                                </td>
                                                         </tr>
                                                         <tr class="even">
                                                             <td class="dt-body-nowarp sorting_1">2</td>
@@ -187,7 +198,16 @@
                                                                     <span class="label label-danger label-inline font-weight-bolder" style="color:#ffff; background-color:#1FC5BD;">Calibrated</span>
                                                                 
                                                                 </td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">2023</td>
                                                                 <td class=" dt-body-nowarp font-weight-bolder">Agus Salim</td>
+                                                                <td>
+                                                                    <button type="button"class="btn btn-icon my-2 btn-sm btn-warning">
+                                                                        <i class="flaticon2-edit"></i>
+                                                                    </button> 
+                                                                    <button type="button" class="btn btn-icon my-2 btn-sm btn-danger">
+                                                                        <i class="flaticon2-trash"></i>
+                                                                    </button>
+                                                                </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -199,7 +219,7 @@
 
                          {{-- modal body  ADD SALDO --}}
                          <div class="modal fade" id="addCalibration" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="addCalibrationLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="addCalibrationLabel">Tambah Kalibrasi</h5>
@@ -209,8 +229,6 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <input type="hidden" id="id_saldo_cuti">
-
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <div class="form-group">
@@ -237,27 +255,61 @@
                                                     <input class="form-control form-control-md" type="text" placeholder="Masukkan Nama">
                                                 </div>
                                             </div>
-                                        </div>
+                                        
 
-                                        <div class="row">
                                             <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Departemen</label>
-                                                    <select class="form-control selectpicker">
-                                                        <option value="">Pilih Departemen</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
+                                                <div class="form-group row">
+                                                    <label>Direktorat</label>
+                                                    <select class="form-control select2" style="width: 100%;" id="kt_select2_3" multiple="multiple">
+                                                        <option value=""></option>
+                                                        <option>Direktorat Utama</option>
+                                                        <option>Direktorat Keuangan</option>
+                                                        <option>Direktorat Pemasaran</option>
+                                                        <option>Direktorat Sumber Daya Manusia</option>
+                                                        <option>Direktorat Transformasi Bisnis</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <div class="form-group">
+                                                <div class="form-group row">
                                                     <label>Kompartemen</label>
+                                                    <select class="form-control select2" style="width: 100%;" id="pilih_Kompartemen" multiple="multiple">
+                                                        <option value=""></option>
+                                                        <option>Kompartemen IFRI</option>
+                                                        <option>Kompartemen Teknologi Informasi</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label>Departemen</label>
+                                                    <select class="form-control select2" style="width: 100%;" id="pilih_Departemen" multiple="multiple">
+                                                        <option value=""></option>
+                                                        <option>Departemen Operasional Sistem TI</option>
+                                                        <option>Departemen Infrastruktur & Layanan TI</option>
+                                                        <option>Departemen Strategi & Tata Kelola TI</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group row">
+                                                    <label>Grade</label>
+                                                    <select class="form-control select2" style="width: 100%;" id="pilih_Grade" multiple="multiple">
+                                                        <option value=""></option>
+                                                        <option>1A</option>
+                                                        <option>1B</option>
+                                                        <option>2A</option>
+                                                        <option>2B</option>
+                                                        <option>3A</option>
+                                                        <option>3B</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Periode Tahun</label>
                                                     <select class="form-control selectpicker">
-                                                        <option value="">Pilih Kompartemen</option>
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
@@ -268,20 +320,47 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label>Grade</label>
+                                                    <label>Label Presentase Kalibrasi</label>
                                                     <select class="form-control selectpicker">
                                                         <option value="">Pilih Grade</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>5</option>
+                                                        <option>A</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                        <option>E</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    {{-- search --}}
+                                                    <label>Ketua Komite</label>
+                                                    <select class="form-control selectpicker">
+                                                        <option value="">Pilih Grade</option>
+                                                        <option>A</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                        <option>E</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Komite</label>
+                                                    <select class="form-control selectpicker">
+                                                        <option value="">Pilih Grade</option>
+                                                        <option>A</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                        <option>E</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-light-primary font-weight-bold" onclick="clearForm()" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn font-weight-bold btn-outline-warning" onclick="clearForm()" data-dismiss="modal">Draft</button>
                                             <button type="button" class="btn btn-primary font-weight-bold" onclick="store()" data-dismiss="modal" id="btn-save">Save</button>
                                         </div>
                                         {{-- </div> --}}
@@ -416,6 +495,7 @@
     <script src="assets/js/pages/widgets.js"></script>
     <!--end::Page Scripts-->
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
+    {{-- <script src="assets/js/pages/crud/forms/widgets/select2.js"></script> --}}
     <script src="https://pismart-dev.pupuk-indonesia.com/public/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
 
 
@@ -425,7 +505,22 @@
             $('#kt_datepicker_1').datepicker({
                 format: 'DD-MM-YYYY'
              });
-        });
+
+             // multi select
+            $('#kt_select2_3, #kt_select2_3_validate').select2({
+                placeholder:'Pilih Direktorat'
+            });
+            $('#pilih_Kompartemen, #pilih_Kompartemen_validate').select2({
+                placeholder:'Pilih Kompartemen'
+            });
+            $('#pilih_Departemen, #pilih_Departemen_validate').select2({
+                placeholder:'Pilih Departemen'
+            });
+            $('#pilih_Grade, #pilih_Grade_validate').select2({
+                placeholder:'Pilih Departemen'
+            });
+
+         });
 
         let table = $('#kt_datatable').DataTable({
             dom: '<"pull-left"f><"pull-right"l>tip',
@@ -444,7 +539,7 @@
         function addCalibration() {
             $('#addCalibration').modal('show');
         }
-
+        
         function clearForm() {
 
         }

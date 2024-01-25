@@ -19,7 +19,7 @@ class LoginNewController extends Controller
 
     public function login(Request $request)
     {
-        $response = Http::post('https://api-pismart-dev.pupuk-indonesia.com/golang/login', [
+        $response = Http::post('https://601zgltt-9096.asse.devtunnels.ms/login', [
             'username' => $request->input('username'),
             'password' => $request->input('password'),
         ]);
@@ -27,6 +27,13 @@ class LoginNewController extends Controller
         if ($response->status() == 200) {
             $user = $response->json();
             Session::put('user', $user);
+            $respDev = Http::post('https://api-pismart-dev.pupuk-indonesia.com/oauth_api/user/login', [
+                'username' => $request->input('username'),
+                'password' => $request->input('password'),
+            ]);
+            $userdev = $respDev->json();
+            Session::put('userdev', $userdev);
+
             return redirect()->route('homepage');
         }
         return redirect()->route('loginpage')->withErrors(['authentication' => 'Authentication failed.']);

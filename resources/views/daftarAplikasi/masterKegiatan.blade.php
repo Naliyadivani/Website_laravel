@@ -778,7 +778,7 @@
 		function read() {
 			$.ajax({
 				type: "post",
-				url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/tjsl/listKegiatan",
+				url: "https://601zgltt-9096.asse.devtunnels.ms/api/tjsl/listKegiatan",
 				data: {
 					nik: emp_no,
 					tahun: year,
@@ -870,7 +870,7 @@
 			$.ajax({
 				type: "post", // Use "post" method for storing data
 
-				url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/tjsl/storeMasterKegiatan",
+				url: "https://601zgltt-9096.asse.devtunnels.ms/api/tjsl/storeMasterKegiatan",
 
 				data: dataStore,
 				beforeSend: function(xhr) {
@@ -894,7 +894,7 @@
 		// Untuk modal halaman edit (show)
 		function show(slug) {
 			$.ajax({
-				url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/tjsl/getMasterKegiatan/" + slug,
+				url: "https://601zgltt-9096.asse.devtunnels.ms/api/tjsl/getMasterKegiatan/" + slug,
 				type: "get",
 				beforeSend: function(xhr) {
 					xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);

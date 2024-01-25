@@ -329,10 +329,12 @@
                                                             <!--begin: Wizard Step 1-->
                                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                                                 <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
+                                                                    <button class="btn btn-success" id="lihat_saldo" data-toggle="modal" data-target="#lihatSaldo">Lihat Saldo</button>
                                                                 <!--begin::Input-->
                                                                 <input type="hidden" id="id_pengajuan_absen" value="{{$id_pengajuan_absen}}"/>
 
                                                                 <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                                <input type="hidden" id="token_oauth_dev" name="token_oauth_dev" value="{{$userdev['token']['access_token']}}" />
                                                                 <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
                                                                 <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
 
@@ -435,7 +437,8 @@
                                                                     <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
                                                                 </div>
                                                                 <div>
-                                                                    <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4 btn-submit" data-wizard-type="action-submit" onclick="storeAbsen()">Submit</button>
+                                                                    <button type="button" class="btn btn-warning font-weight-bolder text-uppercase px-9 py-4 btn-draft" data-wizard-type="action-submit" onclick="storeAbsen('Drafted')">Save As Draft</button>
+                                                                    <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4 btn-submit" data-wizard-type="action-submit" onclick="storeAbsen('Submitted')">Submit</button>
                                                                     <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
                                                                 </div>
                                                             </div>
@@ -446,7 +449,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--end: Wizard Bpdy-->
+                                        <!--end: Wizard Body-->
+
+                                        {{-- modal --}}
+                                        <div class="modal fade" id="lihatSaldo" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="lihatSaldoLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="lihatSaldoLabel">Saldo Absen</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="card-label">
+                                                            hahaha
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                     <!--end: Wizard-->
                                 </div>
@@ -584,65 +609,46 @@
     <script>
         var file_absen = [];
 
-        // function getApprover(nik){
-        //     $.ajax({
-        //         type: "get",
-        //         url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/getAtasanPegawai?"+nik,
-        //         data: "data",
-        //         beforeSend: function(xhr) {
-        //             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
-        //         },
-        //         success: function (response) {
-        //             if(response.status == 200){
-        //                 var list_approver = $('#list_approver')
-        //                 list_approver.html('')
-        //                 var array = response.data
-        //                 array.forEach((x,i)=>{
-        //                     var objApprover = {
-        //                         "nik": x.emp_no,
-        //                         "status":x.status
-        //                     }
-        //                     arr_approver.push(objApprover)
-        //                     var approver =  `<span class="label label-light-info label-inline font-weight-bolder font-size-sm label-sm">${x.status}</span>`
-        //                         if (i == 1) {
-        //                             aprover = `<span class="label label-light-warning label-inline font-weight-bolder font-size-sm label-sm"  style="background-color:#E2FFD9; color:#67A653">${x.status}</span>`
-        //                         } else if (i == 2) {
-        //                             aprover = `<span class="label label-light-danger label-inline font-weight-bolder font-size-sm label-sm" style="background-color:#FFE9D4; color:#DF9651">${x.status}</span>`
-        //                         }
-        //                         var html = `<div class="d-flex align-items-center mb-5 mr-3">
-        //                                                         <!--begin::Symbol-->
-        //                                                         <div class="symbol symbol-50 mr-5">
-        //                                                             <img src="" class="h-85 align-self-center" alt="approver">
-        //                                                         </div>
-        //                                                         <!--end::Symbol-->
-        //                                                         <!--begin::Text-->
-        //                                                         <div class="d-flex flex-column font-weight-bold">
-        //                                                             <span class="text-dark text-hover-primary font-size-sm mb-1">-</span>
-        //                                                             <span class="text-dark text-hover-primary font-size-sm mb-1"></span>
-        //                                                             ${aprover}
-        //                                                         </div>
-        //                                                         <!--end::Text-->
-        //                                                     </div>`
-        //                     list_approver.append(html)
-        //                 })
-        //             }
-        //                 else {
-        //                   Swal.fire({
-        //                     text: result.ResponseString,
-        //                     icon: "error",
-        //                     buttonsStyling: false,
-        //                     confirmButtonText: "Ok, got it!",
-        //                     customClass: {
-        //                         confirmButton: "btn font-weight-bold btn-primary",
-        //                     }
-        //                   });
-        //                 }
-        //             },
-        //             error: function(data) {
-        //                 console.log('Error check budget')
-        //             }
-        //     })
-        // }
+        function getApprover(nik){
+            $.ajax({
+                type: "get",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/getAtasanPegawai/" + nik,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function (response) {
+                    var list_approver = $('#list_approver')
+                    list_approver.html('')
+                    var array = response.data
+                    array.forEach((x, i) => {
+                        var aprover = `<span class="label label-light-info label-inline font-weight-bolder font-size-sm label-sm">${x.status}</span>`
+                        if (i == 1) {
+                            aprover = `<span class="label label-light-warning label-inline font-weight-bolder font-size-sm label-sm"  style="background-color:#E2FFD9; color:#67A653">${x.status}</span>`
+                        } else if (i == 2) {
+                            aprover = `<span class="label label-light-danger label-inline font-weight-bolder font-size-sm label-sm" style="background-color:#FFE9D4; color:#DF9651">${x.status}</span>`
+                        }
+                        var html = `<div class="d-flex align-items-center mb-5 mr-3">
+                                        <!--begin::Symbol-->
+                                        <div class="symbol symbol-50 mr-5">
+                                            <img src="${x.photo}" class="h-85 align-self-center" alt="approver">
+                                        </div>
+                                        <!--end::Symbol-->
+                                        <!--begin::Text-->
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <span class="text-dark text-hover-primary font-size-sm mb-1">${x.emp_data.emp_no} - ${x.emp_data.nama}</span>
+                                            <span class="text-dark text-hover-primary font-size-sm mb-1">${x.emp_data.pos_title}</span>
+                                            ${aprover}
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>`
+                                list_approver.append(html)
+                    })
+                },
+                error: function(data) {
+                    console.log('Error check budget')
+                }
+            })
+        }
 
         function initDropzone() {
             $('.initDropzone').html('');
@@ -720,6 +726,7 @@
         }
 
         var token_oauth = $('#token_oauth').val();
+        var token_oauth_dev = $('#token_oauth_dev').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
         var id_pengajuan_absen = $("#id_pengajuan_absen").val();
@@ -740,17 +747,21 @@
             year = $('#absence_year').val();
             if(id_pengajuan_absen != ''){
                 showAbsen(id_pengajuan_absen);
+            }else{
+                getApprover(emp_no);
             }
         });
 
         if(id_pengajuan_absen != ''){
             showAbsen(id_pengajuan_absen);
+        }else{
+            getApprover(emp_no);
         }
 
         function showAbsen(id_pengajuan_absen) {
             $.ajax({
                 type: "get",
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
                 data: "data",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -758,7 +769,6 @@
                 success: function(response) {
                     arrReadFormAbsen = response.data;
 
-                    console.log(arrReadFormAbsen.files);
                     if (arrReadFormAbsen.files.length > 0) {
                         arrReadFormAbsen.files.forEach(x => {
                         var mockFile = {
@@ -767,8 +777,45 @@
                             url: x.url
                         }
                         file_absen.push(mockFile)
+                        })
+                    }
+                    var list_approver = $('#list_approver')
+                    list_approver.html('')
+                    var array = arrReadFormAbsen.approved_by
+                    console.log(array);
+                    array.forEach((x, i) => {
+                        var stats = "";
+                        if (x.status == "WaitApv"){
+                            stats = "Waiting Approval"
+                        }
+                        if (x.status == "Rejected"){
+                            stats = "Rejected"
+                        }
+                        if (x.status == "Approved"){
+                            stats = "Approval " + i++
+                        }
+                        var aprover = `<span class="label label-light-info label-inline font-weight-bolder font-size-sm label-sm">${stats}</span>`
+                        if (i == 1) {
+                            aprover = `<span class="label label-light-warning label-inline font-weight-bolder font-size-sm label-sm"  style="background-color:#E2FFD9; color:#67A653">${stats}</span>`
+                        } else if (i == 2) {
+                            aprover = `<span class="label label-light-danger label-inline font-weight-bolder font-size-sm label-sm" style="background-color:#FFE9D4; color:#DF9651">${stats}</span>`
+                        }
+                        var html = `<div class="d-flex align-items-center mb-5 mr-3">
+                                        <!--begin::Symbol-->
+                                        <div class="symbol symbol-50 mr-5">
+                                            <img src="${x.photo}" class="h-85 align-self-center" alt="approver">
+                                        </div>
+                                        <!--end::Symbol-->
+                                        <!--begin::Text-->
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <span class="text-dark text-hover-primary font-size-sm mb-1">${x.nik} - ${x.name}</span>
+                                            <span class="text-dark text-hover-primary font-size-sm mb-1">${x.position}</span>
+                                            ${aprover}
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>`
+                                list_approver.append(html)
                     })
-                }
                     $('#id_pengajuan_absen').val(arrReadFormAbsen.id_pengajuan_absen);
                     tipeAbsenSelected = arrReadFormAbsen.tipe_absen.id_tipe_absen;
                     $('#nama_tipe_absen').prop('disabled', true);
@@ -889,13 +936,14 @@
             }
         }
 
-        function storeAbsen() {
+        function storeAbsen(_status) {
             var id_absen = $('#id_pengajuan_absen').val();
             var nik = "{{ $user['nik'] }}";
             var tipe_absen_id = $('#nama_tipe_absen').val();
             var deskripsi = $('#deskripsi_absen').val();
             var mulai_absen = $('#start_Date').val();
             var akhir_absen = $('#end_Date').val();
+            var status = _status
 
             // console.log(id_absen, nik, tipe_absen_id, deskripsi, mulai_absen, akhir_absen,file_absen);
 
@@ -906,7 +954,8 @@
                 mulai_absen: mulai_absen,
                 akhir_absen: akhir_absen,
                 file_absen: file_absen,
-                created_by: "{{$user['nik']}}"
+                created_by: "{{$user['nik']}}",
+                status: status
             }
 
             if (id_absen != "") {
@@ -932,7 +981,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeCuti",
+                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeCuti",
                         // data: storeAbsen,
                         data: JSON.stringify(storeAbsen),
                         contentType: "application/json",
@@ -1000,7 +1049,7 @@
         function getTipeAbsen() {
             $.ajax({
                 type: "get",
-                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -1068,8 +1117,8 @@
                     if (wizard.getStep() > wizard.getNewStep()) {
                         return; // Skip if stepped back
                     }
-                    // Call the function to fetch and update data
                     fetchDataAndUpdateLabels();
+                    // Call the function to fetch and update data
 
 
                     // Validate form before change wizard step
@@ -1186,19 +1235,7 @@
                                 }
 
                                 KTUtil.scrollTop();
-                            } else {
-                                // Swal.fire({
-                                // 	text: "Sorry, looks like there are some errors detected, please try again.",
-                                // 	icon: "error",
-                                // 	buttonsStyling: false,
-                                // 	confirmButtonText: "Ok, got it!",
-                                // 	customClass: {
-                                // 		confirmButton: "btn font-weight-bold btn-light"
-                                // 	}
-                                // }).then(function () {
-                                // 	KTUtil.scrollTop();
-                                // });
-                            }
+                            } 
                         });
                     }
 
@@ -1243,7 +1280,7 @@
                     // });
                 });
             }
-
+        
             var _initValidation = function() {
                 // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
                 // Step 1
