@@ -931,7 +931,7 @@
 				if (result.isConfirmed) {
 					// Send an AJAX request to delete the item
 					$.ajax({
-						url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/tjsl/deleteMasterKegiatan/" + slug, // Replace with your API endpoint
+						url: "https://601zgltt-9096.asse.devtunnels.ms/api/tjsl/deleteMasterKegiatan/" + slug, // Replace with your API endpoint
 						type: 'DELETE',
 						beforeSend: function(xhr) {
 							xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);

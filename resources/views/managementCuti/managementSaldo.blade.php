@@ -99,7 +99,14 @@
                                             <div class="col-lg-12 col-xl-12">
                                                 <div class="row align-items-center">
                                                     <div class="row w-100 mx-1">
-                                                        <div class="col-md-4 px-0">
+                                                        <div class="col-md-3 px-0">
+                                                            <div class="form-group m-4">
+                                                                <label>Perusahaan :
+                                                                    <span class="text-danger">*</span></label>
+                                                                <select class="form-control" name="perusahaan" id="perusahaan_key" onchange="getValPerusahaan(this);"></select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 px-0">
                                                             <div class="form-group m-4">
                                                                 <label>Direktorat :
                                                                     <span class="text-danger">*</span></label>
@@ -108,7 +115,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 px-0">
+                                                        <div class="col-md-3 px-0">
                                                             <div class="form-group m-4">
                                                                 <label>Kompartemen :
                                                                     <span class="text-danger">*</span></label>
@@ -117,7 +124,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 px-0">
+                                                        <div class="col-md-3 px-0">
                                                             <div class="form-group m-4">
                                                                 <label>Departemen :
                                                                     <span class="text-danger">*</span></label>
@@ -532,10 +539,12 @@
         });
 
         function clearFormReset() {
-            $('#direktorat').val('');
+            $('#perusahaan_key').val('');
+            $('#direktorat').empty('');
             $('#kompartemen').empty();
             $('#departemen').empty();
             $('#key_search').val('');
+            company = '';
             direktorat = '';
             kompartemen = '';
             departemen = '';
@@ -878,7 +887,31 @@
                 }
             });
         }
-        getDirektorat();
+        getCompany()
+        // get Company
+        function getCompany(){
+            $.ajax({
+                type: "get",
+                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getCompany",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
+                },
+                success: function (response) {
+                    var arr = response.data
+                    $('#perusahaan_key').empty();
+                    var $dataPerusahaan = $('#perusahaan_key')
+                    $('#perusahaan_key').append('<option value="">-Pilih Perusahaan-</option>');
+                    arr.forEach((x, i) => {
+                        $dataPerusahaan += "<option value='" + x.code + "'>" + x.name + "</option>";
+                    });
+                    $('#perusahaan_key').append($dataPerusahaan);
+                },
+                error: function(data) {
+                    Swal.fire("Tidak Ditemukan", data.responseJSON.keterangan, "error");
+                }
+            });
+        }
+        // getDirektorat();
 
         //Get Direktorat
         function getDirektorat() {
@@ -964,6 +997,15 @@
                     handleUnauthorized(data);
                 }
             });
+        }
+
+        function getValPerusahaan(data){
+            $('#perusahaan_key').val(data.value);
+            company = data.value;
+            getDirektorat();
+            $('#direktorat').empty();
+            $('#kompartemen').empty();
+            $('#departemen').empty();
         }
 
         function getValDirektorat(data) {

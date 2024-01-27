@@ -27,7 +27,7 @@ class LoginNewController extends Controller
         if ($response->status() == 200) {
             $user = $response->json();
             Session::put('user', $user);
-            $respDev = Http::post('https://api-pismart-dev.pupuk-indonesia.com/oauth_api/user/login', [
+            $respDev = Http::post('https://601zgltt-9096.asse.devtunnels.ms/oauth_api/user/login', [
                 'username' => $request->input('username'),
                 'password' => $request->input('password'),
             ]);
