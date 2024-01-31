@@ -51,14 +51,6 @@ class FormPengajuanAbsenController extends Controller
             return view('managementCuti.formAjukanAbsen', ['user' => $user], ['id_pengajuan_absen' => $id]);
         }
         return redirect()->route('loginpage');
-        // $formAbsen = formAjukanAbsen::findOrFail($id);
-        // return view('managementCuti.formAjukanAbsen',compact('formAbsen'));
-
-        // $user = Session::get('user');
-        // if ($user != null) {
-        //     return view('managementCuti.formAjukanAbsen', ['user' => $user]);
-        // }
-        // return redirect()->route('loginpage');
     }
 
     public function readJSON()

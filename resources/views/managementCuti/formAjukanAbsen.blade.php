@@ -328,10 +328,13 @@
                                                         <form class="form mt-0 mt-lg-10" id="kt_form">
                                                             <!--begin: Wizard Step 1-->
                                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                                                                <div class="mb-10 font-weight-bold text-dark">Enter your Account Details</div>
-                                                                    <button class="btn btn-success" id="lihat_saldo" data-toggle="modal" data-target="#lihatSaldo">Lihat Saldo</button>
+                                                                <div class="mb-10 font-weight-bold text-dark" style="display: flex; justify-content: space-between; align-items: center;">
+                                                                    <span>Enter your Account Details</span>
+                                                                    <button class="btn btn-success" id="lihat_saldo">Lihat Saldo</button>
+                                                                </div>
+                                                                <!-- <button class="btn btn-success" id="lihat_saldo" data-toggle="modal" data-target="#lihatSaldo">Lihat Saldo</button> -->
                                                                 <!--begin::Input-->
-                                                                <input type="hidden" id="id_pengajuan_absen" value="{{$id_pengajuan_absen}}"/>
+                                                                <input type="hidden" id="id_pengajuan_absen" value="{{$id_pengajuan_absen}}" />
 
                                                                 <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
                                                                 <input type="hidden" id="token_oauth_dev" name="token_oauth_dev" value="{{$userdev['token']['access_token']}}" />
@@ -452,20 +455,20 @@
                                         <!--end: Wizard Body-->
 
                                         {{-- modal --}}
-                                        <div class="modal fade" id="lihatSaldo" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="lihatSaldoLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                        <div class="modal fade" id="saldoModal" tabindex="-1" role="dialog" aria-labelledby="saldoModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="lihatSaldoLabel">Saldo Absen</h5>
+                                                        <h5 class="modal-title" id="saldoModalLabel">Saldo Information</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                                            <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-
                                                     <div class="modal-body">
-                                                        <div class="card-label">
-                                                            hahaha
-                                                        </div>
+                                                        <div class="card-label"></div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -607,16 +610,41 @@
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js"></script>
     {{-- <script src="assets/js/pages/crud/file-upload/dropzonejs.js"></script> --}}
     <script>
+        var token_oauth = $('#token_oauth').val();
+        var token_oauth_dev = $('#token_oauth_dev').val();
+        var emp_no = $("#nik_user").val();
+        var company = $("#company").val();
+        var id_pengajuan_absen = $("#id_pengajuan_absen").val();
+        var tipeAbsenSelected = null
+        var arrReadFormAbsen
         var file_absen = [];
+        var current_year = new Date().getFullYear();
+        selectYear(current_year)
 
-        function getApprover(nik){
+        var year = $('#absence_year').val();
+        $("#absence_year").change(function() {
+            year = $('#absence_year').val();
+            if (id_pengajuan_absen != '') {
+                showAbsen(id_pengajuan_absen);
+            } else {
+                getApprover(emp_no);
+            }
+        });
+
+        if (id_pengajuan_absen != '') {
+            showAbsen(id_pengajuan_absen);
+        } else {
+            getApprover(emp_no);
+        }
+
+        function getApprover(nik) {
             $.ajax({
                 type: "get",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/getAtasanPegawai/" + nik,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
-                success: function (response) {
+                success: function(response) {
                     var list_approver = $('#list_approver')
                     list_approver.html('')
                     var array = response.data
@@ -641,7 +669,7 @@
                                         </div>
                                         <!--end::Text-->
                                     </div>`
-                                list_approver.append(html)
+                        list_approver.append(html)
                     })
                 },
                 error: function(data) {
@@ -725,44 +753,16 @@
 
         }
 
-        var token_oauth = $('#token_oauth').val();
-        var token_oauth_dev = $('#token_oauth_dev').val();
-        var emp_no = $("#nik_user").val();
-        var company = $("#company").val();
-        var id_pengajuan_absen = $("#id_pengajuan_absen").val();
-        var tipeAbsenSelected = null
-        var arrReadFormAbsen
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-        var current_year = new Date().getFullYear();
-        selectYear(current_year)
-
-        var year = $('#absence_year').val();
-        $("#absence_year").change(function() {
-            year = $('#absence_year').val();
-            if(id_pengajuan_absen != ''){
-                showAbsen(id_pengajuan_absen);
-            }else{
-                getApprover(emp_no);
-            }
-        });
-
-        if(id_pengajuan_absen != ''){
-            showAbsen(id_pengajuan_absen);
-        }else{
-            getApprover(emp_no);
-        }
-
         function showAbsen(id_pengajuan_absen) {
             $.ajax({
                 type: "get",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
-                data: "data",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -771,12 +771,12 @@
 
                     if (arrReadFormAbsen.files.length > 0) {
                         arrReadFormAbsen.files.forEach(x => {
-                        var mockFile = {
-                            extension: x.extension,
-                            filename: x.filename,
-                            url: x.url
-                        }
-                        file_absen.push(mockFile)
+                            var mockFile = {
+                                extension: x.extension,
+                                filename: x.filename,
+                                url: x.url
+                            }
+                            file_absen.push(mockFile)
                         })
                     }
                     var list_approver = $('#list_approver')
@@ -785,14 +785,17 @@
                     console.log(array);
                     array.forEach((x, i) => {
                         var stats = "";
-                        if (x.status == "WaitApv"){
+                        if (x.status == "WaitApv") {
                             stats = "Waiting Approval"
                         }
-                        if (x.status == "Rejected"){
+                        if (x.status == "Rejected") {
                             stats = "Rejected"
                         }
-                        if (x.status == "Approved"){
+                        if (x.status == "Approved") {
                             stats = "Approval " + i++
+                        }
+                        if (x.status == null) {
+                            stats = null
                         }
                         var aprover = `<span class="label label-light-info label-inline font-weight-bolder font-size-sm label-sm">${stats}</span>`
                         if (i == 1) {
@@ -814,7 +817,7 @@
                                         </div>
                                         <!--end::Text-->
                                     </div>`
-                                list_approver.append(html)
+                        list_approver.append(html)
                     })
                     $('#id_pengajuan_absen').val(arrReadFormAbsen.id_pengajuan_absen);
                     tipeAbsenSelected = arrReadFormAbsen.tipe_absen.id_tipe_absen;
@@ -1043,7 +1046,7 @@
         }
 
         // getApprover()
-        getTipeAbsen()
+        getTipeAbsen();
         var arrTipeCuti = [];
 
         function getTipeAbsen() {
@@ -1089,6 +1092,67 @@
             $('#deskripsi_absen').val('');
             refreshDatetimepicker();
             file_absen = [];
+        }
+    </script>
+
+    <script>
+        $('#lihat_saldo').click(function(e) {
+            e.preventDefault();
+            fetchSaldoInformation();
+            $('#saldoModal').modal('show');
+        });
+
+        function fetchSaldoInformation() {
+            $('.modal-body .card-label').empty();
+
+            // Assuming arrTipeCuti is an array containing your saldo information
+            for (var i = 0; i < arrTipeCuti.length; i += 3) {
+                // Create a row for every three cards
+                var row = $('<div class="row mb-3"></div>');
+
+                // Create three cards for each row
+                for (var j = i; j < i + 3 && j < arrTipeCuti.length; j++) {
+                    var entry = arrTipeCuti[j];
+
+                    // Create a card for each entry
+                    var card = $('<div class="col-md-4"><div class="card mb-3"></div></div>');
+
+                    // Add card header with the tipe_absen name
+                    var cardHeader = $('<div class="card-header">' + entry.nama_tipe_absen + '</div>');
+                    card.find('.card').append(cardHeader);
+
+                    // Add card body with saldo information if my_saldo is not null
+                    if (entry.my_saldo !== null) {
+                        var cardBody = $('<div class="card-body"></div>');
+
+                        // Iterate through each saldo entry in my_saldo
+                        entry.my_saldo.forEach(function(saldo) {
+                            // Append saldo information to card body
+                            cardBody.append('<p>Saldo: ' + saldo.saldo + '</p>');
+                            cardBody.append('<p>Valid From: ' + saldo.valid_from + '</p>');
+                            cardBody.append('<p>Valid To: ' + saldo.valid_to + '</p>');
+                            cardBody.append('<p>Periode: ' + saldo.periode + '</p>');
+                            // Add more information as needed
+
+                            // Add separator between saldo entries
+                            cardBody.append('<hr>');
+                        });
+
+                        // Append card body to card
+                        card.find('.card').append(cardBody);
+                    } else {
+                        // If my_saldo is null, add a message
+                        var noSaldoMessage = $('<p class="mt-5 mr-5 mb-5 ml-5">Tidak ada informasi saldo yang tersedia untuk jenis tipe absen ini.</p>');
+                        card.find('.card').append(noSaldoMessage);
+                    }
+
+                    // Append the card to the row
+                    row.append(card);
+                }
+
+                // Append the row to the modal content
+                $('.modal-body .card-label').append(row);
+            }
         }
     </script>
 
@@ -1235,7 +1299,7 @@
                                 }
 
                                 KTUtil.scrollTop();
-                            } 
+                            }
                         });
                     }
 
@@ -1280,7 +1344,7 @@
                     // });
                 });
             }
-        
+
             var _initValidation = function() {
                 // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
                 // Step 1

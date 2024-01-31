@@ -160,8 +160,8 @@
                                                             <th style="min-width: 5px; color:black!important;">No</th>
                                                             <th style="min-width: 100px; color:black!important;">Nama Batch</th>
                                                             <th style="min-width: 100px; color:black!important;">Tanggal Dibuat</th>
-                                                            <th style="min-width: 100px; color:black!important;">Status</th>
                                                             <th style="min-width: 100px; color:black!important;">Periode Tahun</th>
+                                                            <th style="min-width: 100px; color:black!important;">Status</th>
                                                             <th style="min-width: 80px; color:black!important;">Dikalibrasi Oleh</th>
                                                             <th style="min-width: 80px; color:black!important;">Action</th>
                                                         </tr>
@@ -169,15 +169,15 @@
                                                     <tbody>
                                                         <tr class="odd">
                                                             <td class="dt-body-nowarp sorting_1">1</td>
-                                                                <td class=" dt-body-nowarp font-weight-bolder">Kalibrasi Departemen SDM/ Budaya & 
+                                                                <td class=" dt-body-nowarp font-weight-bolder" style="text-align: left;">Kalibrasi Departemen SDM/ Budaya & 
                                                                     Pembelajaran <i class="flaticon-eye" style="color: black"></i>
                                                                 </td>
                                                                 <td class=" dt-body-nowarp font-weight-bolder">10/11/2023</td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">2024</td>
                                                                 <td class=" dt-body-nowarp">
                                                                     <span class="label label-danger label-inline font-weight-bolder" style="color:#ffff; background-color:#FFA52B;">Drafted</span>
                                                                 
                                                                 </td>
-                                                                <td class=" dt-body-nowarp font-weight-bolder">2024</td>
                                                                 <td class=" dt-body-nowarp font-weight-bolder">Martha Aliya</td>
                                                                 <td>
                                                                     <button type="button"class="btn btn-icon my-2 btn-sm btn-warning">
@@ -190,15 +190,15 @@
                                                         </tr>
                                                         <tr class="even">
                                                             <td class="dt-body-nowarp sorting_1">2</td>
-                                                                <td class=" dt-body-nowarp font-weight-bolder">Kalibrasi Departemen Transformasi
+                                                                <td class=" dt-body-nowarp font-weight-bolder" style="text-align: left;">Kalibrasi Departemen Transformasi
                                                                     Bisnis/ Digitalisasi & Data Science <i class="flaticon-eye" style="color: black"></i>
                                                                 </td>
                                                                 <td class=" dt-body-nowarp font-weight-bolder">10/11/2023</td>
+                                                                <td class=" dt-body-nowarp font-weight-bolder">2023</td>
                                                                 <td class=" dt-body-nowarp">
                                                                     <span class="label label-danger label-inline font-weight-bolder" style="color:#ffff; background-color:#1FC5BD;">Calibrated</span>
                                                                 
                                                                 </td>
-                                                                <td class=" dt-body-nowarp font-weight-bolder">2023</td>
                                                                 <td class=" dt-body-nowarp font-weight-bolder">Agus Salim</td>
                                                                 <td>
                                                                     <button type="button"class="btn btn-icon my-2 btn-sm btn-warning">
@@ -255,8 +255,6 @@
                                                     <input class="form-control form-control-md" type="text" placeholder="Masukkan Nama">
                                                 </div>
                                             </div>
-                                        
-
                                             <div class="col-sm-4">
                                                 <div class="form-group row">
                                                     <label>Direktorat</label>
@@ -291,7 +289,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            {{-- <div class="col-sm-4">
                                                 <div class="form-group row">
                                                     <label>Grade</label>
                                                     <select class="form-control select2" style="width: 100%;" id="pilih_Grade" multiple="multiple">
@@ -330,13 +328,13 @@
                                                         <option>E</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-sm-4">
                                                 <div class="form-group">
                                                     {{-- search --}}
-                                                    <label>Ketua Komite</label>
+                                                    <label>Pilih Ketua Komite</label>
                                                     <select class="form-control selectpicker">
-                                                        <option value="">Pilih Grade</option>
+                                                        <option value="">Pilih Ketua Komite</option>
                                                         <option>A</option>
                                                         <option>B</option>
                                                         <option>C</option>
@@ -347,15 +345,87 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-group">
-                                                    <label>Komite</label>
+                                                    <label>Pilih Komite</label>
                                                     <select class="form-control selectpicker">
-                                                        <option value="">Pilih Grade</option>
+                                                        <option value="">Pilih Komite</option>
                                                         <option>A</option>
                                                         <option>B</option>
                                                         <option>C</option>
                                                         <option>D</option>
                                                         <option>E</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-5 mt-5">
+                                            <div class="col-sm-2">
+                                                <div class="card" style="background-color: #F5F9FF; height: 78px;">
+                                                    <div class="card-body pt-3">
+                                                        <div class="font-weight-bold" style="font-size:16px">
+                                                            Kalibrasi A
+                                                        </div>
+                                                        <div class="mb-0">
+                                                            <strong class="font-weight-boldest" style="font-size:24px">10
+                                                            </strong>
+                                                            <span class="font-weight-boldest" style="font-size:24px"> %</span>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card" style="background-color: #F5F9FF; height: 78px;">
+                                                    <div class="card-body pt-3">
+                                                        <div class="font-weight-bold" style="font-size:16px">
+                                                            Kalibrasi B
+                                                        </div>
+                                                        <div class="mb-0">
+                                                            <strong class="font-weight-boldest" style="font-size:24px">35
+                                                            </strong>
+                                                            <span class="font-weight-boldest" style="font-size:24px"> %</span>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card" style="background-color: #F5F9FF; height: 78px;">
+                                                    <div class="card-body pt-3">
+                                                        <div class="font-weight-bold" style="font-size:16px">
+                                                            Kalibrasi C
+                                                        </div>
+                                                        <div class="mb-0">
+                                                            <strong class="font-weight-boldest" style="font-size:24px">35
+                                                            </strong>
+                                                            <span class="font-weight-boldest" style="font-size:24px"> %</span>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card" style="background-color: #F5F9FF; height: 78px;">
+                                                    <div class="card-body pt-3">
+                                                        <div class="font-weight-bold" style="font-size:16px">
+                                                            Kalibrasi D
+                                                        </div>
+                                                        <div class="mb-0">
+                                                            <strong class="font-weight-boldest" style="font-size:24px">15
+                                                            </strong>
+                                                            <span class="font-weight-boldest" style="font-size:24px"> %</span>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card" style="background-color: #F5F9FF; height: 78px;">
+                                                    <div class="card-body pt-3">
+                                                        <div class="font-weight-bold" style="font-size:16px">
+                                                            Kalibrasi E
+                                                        </div>
+                                                        <div class="mb-0">
+                                                            <strong class="font-weight-boldest" style="font-size:24px">5
+                                                            </strong>
+                                                            <span class="font-weight-boldest" style="font-size:24px"> %</span>
+                                                        </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>

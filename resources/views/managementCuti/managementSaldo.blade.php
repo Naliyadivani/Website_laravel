@@ -92,225 +92,225 @@
                                             </div>
                                         </div>
                                         {{-- end- header  --}}
-                                <div class="card-body pt-0">
-                                    <!--begin::Search Form-->
-                                    <div class="mt-2 mb-5 mt-lg-5 mb-lg-5">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-12 col-xl-12">
+                                        <div class="card-body pt-0">
+                                            <!--begin::Search Form-->
+                                            <div class="mt-2 mb-5 mt-lg-5 mb-lg-5">
                                                 <div class="row align-items-center">
-                                                    <div class="row w-100 mx-1">
-                                                        <div class="col-md-3 px-0">
-                                                            <div class="form-group m-4">
-                                                                <label>Perusahaan :
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="form-control" name="perusahaan" id="perusahaan_key" onchange="getValPerusahaan(this);"></select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 px-0">
-                                                            <div class="form-group m-4">
-                                                                <label>Direktorat :
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="form-control" id="direktorat" onchange="getValDirektorat(this);">
+                                                    <div class="col-lg-12 col-xl-12">
+                                                        <div class="row align-items-center">
+                                                            <div class="row w-100 mx-1">
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Perusahaan :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" name="perusahaan" id="perusahaan_key" onchange="getValPerusahaan(this);"></select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Direktorat :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" id="direktorat" onchange="getValDirektorat(this);">
 
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 px-0">
-                                                            <div class="form-group m-4">
-                                                                <label>Kompartemen :
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="form-control" id="kompartemen" onchange="getValKompartemen(this);">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Kompartemen :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" id="kompartemen" onchange="getValKompartemen(this);">
 
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 px-0">
-                                                            <div class="form-group m-4">
-                                                                <label>Departemen :
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="form-control" id="departemen" onchange="getValDepartemen(this);">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 px-0">
+                                                                    <div class="form-group m-4">
+                                                                        <label>Departemen :
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select class="form-control" id="departemen" onchange="getValDepartemen(this);">
 
-                                                                </select>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
                                                             </div>
+
+
+                                                            <div class="col-md-12 my-2">
+                                                                <div class="input-icon">
+                                                                    <input type="text" class="form-control" placeholder="Search..." id="key_search" />
+                                                                    <span><i class="flaticon2-search-1 text-muted"></i></span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 text-right my-2">
+                                                                <a onClick="clearFormReset()" class="btn btn-light-warning px-6 font-weight-bold">
+                                                                    Reset
+                                                                </a>
+                                                                <a onClick="readSaldo()" class="btn btn-light-primary px-6 font-weight-bold">
+                                                                    Search
+                                                                </a>
+                                                            </div>
+
                                                         </div>
                                                     </div>
-
-
-                                                    <div class="col-md-12 my-2">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" placeholder="Search..." id="key_search" />
-                                                            <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-12 text-right my-2">
-                                                        <a onClick="clearFormReset()" class="btn btn-light-warning px-6 font-weight-bold">
-                                                            Reset
-                                                        </a>
-                                                        <a onClick="readSaldo()" class="btn btn-light-primary px-6 font-weight-bold">
-                                                            Search
-                                                        </a>
-                                                    </div>
-
                                                 </div>
+                                            </div>
+                                            <!--end::Search Form-->
+                                            <div class="table-responsive">
+                                                <table class="table table-head-custom table-head-bg table-hover text-center display nowrap" width="100%" id="kt_datatable">
+                                                    <thead>
+                                                        <tr class="text-center" role="row">
+                                                            <th>#</th>
+                                                            <th>Nama Pegawai</th>
+                                                            <th>Tipe Absen</th>
+                                                            <th>Saldo</th>
+                                                            <th>Valid From</th>
+                                                            <th>Valid To</th>
+                                                            <th>Periode</th>
+                                                            <th>Maximum Debt</th>
+                                                            <th>Valid From Debt</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody id="dataSaldo">
+                                                        <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
+                                                        <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
+                                                        <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--end::Search Form-->
-                                    <div class="table-responsive">
-                                        <table class="table table-head-custom table-head-bg table-hover text-center display nowrap" width="100%" id="kt_datatable">
-                                            <thead>
-                                                <tr class="text-center" role="row">
-                                                    <th>#</th>
-                                                    <th>Nama Pegawai</th>
-                                                    <th>Tipe Absen</th>
-                                                    <th>Saldo</th>
-                                                    <th>Valid From</th>
-                                                    <th>Valid To</th>
-                                                    <th>Periode</th>
-                                                    <th>Maximum Debt</th>
-                                                    <th>Valid From Debt</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
+                                </div>
+                            </div>
+                            {{-- End- body table  --}}
 
-                                            <tbody id="dataSaldo">
-                                                <input type="hidden" id="token_oauth" name="token_oauth" value="{{$user['token']['access_token']}}" />
-                                                <input class="form-control" type="hidden" id="nik_user" name="nik_user" value="{{$user['nik']}}" />
-                                                <input class="form-control" type="hidden" id="company" name="company" value="{{$user['comp_code']}}" />
-                                            </tbody>
-                                        </table>
+                            {{-- modal body UPLOAD EXCEL --}}
+                            <div class="modal fade" id="uploadExcelFile" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="uploadExcelFileLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="uploadExcelFileLabel">Upload File Excel</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <input type="hidden" id="id_upload_excel">
+                                            <form id="excelForm" action="{{ url('/import') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="file" name="excel_file">
+
+                                                <div class="card-footer text-right">
+                                                    <button class="btn btn-outline-danger font-weight-bold">Cancel</button>
+                                                    <button class="btn btn-primary font-weight-bold" id="btn-submit" type="submit">Import</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    {{-- End- body table  --}}
+                            {{-- END- modal body UPLOAD EXCEL --}}
 
-            {{-- modal body UPLOAD EXCEL --}}
-            <div class="modal fade" id="uploadExcelFile" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="uploadExcelFileLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="uploadExcelFileLabel">Upload File Excel</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <i aria-hidden="true" class="ki ki-close"></i>
-                            </button>
-                        </div>
+                            {{-- modal body  ADD SALDO --}}
+                            <div class="modal fade" id="managementSaldo" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="managementSaldoLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="managementSaldoLabel">Input Saldo Cuti Karyawan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearForm()">
+                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                            </button>
+                                        </div>
 
-                        <div class="modal-body">
-                            <input type="hidden" id="id_upload_excel">
-                            <form id="excelForm" action="{{ url('/import') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" name="excel_file">
+                                        <div class="modal-body">
+                                            <input type="hidden" id="id_saldo_cuti">
 
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-outline-danger font-weight-bold">Cancel</button>
-                                    <button class="btn btn-primary font-weight-bold" id="btn-submit" type="submit">Import</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- END- modal body UPLOAD EXCEL --}}
+                                            <div class="form-group">
+                                                <input type="hidden" id="nik_selected">
+                                                <label>Pilih Karyawan <span class="text-danger">*</span></label>
+                                                <select class="form-control select2" id="kt_select2_6" name="key" style="width: 100% !important;">
+                                                    <option value="nik"></option>
+                                                </select>
+                                            </div>
 
-            {{-- modal body  ADD SALDO --}}
-            <div class="modal fade" id="managementSaldo" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="managementSaldoLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="managementSaldoLabel">Input Saldo Cuti Karyawan</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearForm()">
-                                <i aria-hidden="true" class="ki ki-close"></i>
-                            </button>
-                        </div>
+                                            {{-- <div class="form_tipeCuti" style="display: none"> --}}
+                                            <div class="form-group" id="select_cuti">
+                                                <label>Tipe Absen <span class="text-danger">*</span></label>
+                                                <select class="form-control selectpicker" id="nama_tipe_absen" name="nama_tipe_absen">
+                                                    <option selected value="">Pilih Tipe Absen</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Saldo Cuti <span class="text-danger">*</span></label>
+                                                <input class="form-control bootstrap-touchspin-vertical-btn" id="kt_touchspin_4" placeholder="0" type="number" name="saldo" min="0">
+                                                <span id="error-message" class="text-danger"></span>
+                                            </div>
 
-                        <div class="modal-body">
-                            <input type="hidden" id="id_saldo_cuti">
+                                            <div class="form-group">
+                                                <label>Valid From<span class="text-danger">*</span></label>
+                                                <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From" name="valid_from" id="valid_from" data-target="#kt_datetimepicker_7_1" />
+                                                    <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
+                                                        <span class="input-group-text">
+                                                            <i class="ki ki-calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <span class="form-text text-muted">Please enter start date.</span>
+                                            </div>
 
-                            <div class="form-group">
-                                <input type="hidden" id="nik_selected">
-                                <label>Pilih Karyawan <span class="text-danger">*</span></label>
-                                <select class="form-control select2" id="kt_select2_6" name="key" style="width: 100% !important;">
-                                    <option value="nik"></option>
-                                </select>
-                            </div>
+                                            <div class="form-group" id="end_Date_div">
+                                                <label>Valid To<span class="text-danger">*</span></label>
+                                                <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#kt_datetimepicker_7_2" />
+                                                    <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
+                                                        <span class="input-group-text">
+                                                            <i class="ki ki-calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="form_periode_tahun">
 
-                            {{-- <div class="form_tipeCuti" style="display: none"> --}}
-                            <div class="form-group" id="select_cuti">
-                                <label>Tipe Absen <span class="text-danger">*</span></label>
-                                <select class="form-control selectpicker" id="nama_tipe_absen" name="nama_tipe_absen">
-                                    <option selected value="">Pilih Tipe Absen</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Saldo Cuti <span class="text-danger">*</span></label>
-                                <input class="form-control bootstrap-touchspin-vertical-btn" id="kt_touchspin_4" placeholder="0" type="number" name="saldo" min="0">
-                                <span id="error-message" class="text-danger"></span>
-                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Maximum Debt <span class="text-danger">*</span></label>
+                                                <input class="form-control bootstrap-touchspin-vertical-btn" id="max_hutang" placeholder="0" type="number" name="max_hutang" min="0">
+                                                <span id="error-message" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Valid From Debt <span class="text-danger">*</span></label>
+                                                <div class="input-group date" id="kt_datetimepicker_7_3" data-target-input="nearest">
+                                                    <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From Debt" name="valid_from_hutang" id="valid_from_hutang" data-target="#kt_datetimepicker_7_3" />
+                                                    <div class="input-group-append" data-target="#kt_datetimepicker_7_3" data-toggle="datetimepicker">
+                                                        <span class="input-group-text">
+                                                            <i class="ki ki-calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                            <div class="form-group">
-                                <label>Valid From<span class="text-danger">*</span></label>
-                                <div class="input-group date" id="kt_datetimepicker_7_1" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From" name="valid_from" id="valid_from" data-target="#kt_datetimepicker_7_1" />
-                                    <div class="input-group-append" data-target="#kt_datetimepicker_7_1" data-toggle="datetimepicker">
-                                        <span class="input-group-text">
-                                            <i class="ki ki-calendar"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <span class="form-text text-muted">Please enter start date.</span>
-                            </div>
-
-                            <div class="form-group" id="end_Date_div">
-                                <label>Valid To<span class="text-danger">*</span></label>
-                                <div class="input-group date" id="kt_datetimepicker_7_2" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid To" name="valid_to" id="valid_to" data-target="#kt_datetimepicker_7_2" />
-                                    <div class="input-group-append" data-target="#kt_datetimepicker_7_2" data-toggle="datetimepicker">
-                                        <span class="input-group-text">
-                                            <i class="ki ki-calendar"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group" id="periode_tahun">
-                                
-                            </div>
-                            <div class="form-group">
-                                <label for="">Maximum Debt <span class="text-danger">*</span></label>
-                                <input class="form-control bootstrap-touchspin-vertical-btn" id="max_hutang" placeholder="0" type="number" name="max_hutang" min="0">
-                                <span id="error-message" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label>Valid From Debt <span class="text-danger">*</span></label>
-                                <div class="input-group date" id="kt_datetimepicker_7_3" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" readonly data-toggle="datetimepicker" placeholder="Valid From Debt" name="valid_from_hutang" id="valid_from_hutang" data-target="#kt_datetimepicker_7_3" />
-                                    <div class="input-group-append" data-target="#kt_datetimepicker_7_3" data-toggle="datetimepicker">
-                                        <span class="input-group-text">
-                                            <i class="ki ki-calendar"></i>
-                                        </span>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold" onclick="clearForm()" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary font-weight-bold" onclick="store()" data-dismiss="modal" id="btn-save">Save</button>
+                                            </div>
+                                            {{-- </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light-primary font-weight-bold" onclick="clearForm()" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary font-weight-bold" onclick="store()" data-dismiss="modal" id="btn-save">Save</button>
-                            </div>
-                            {{-- </div> --}}
+                            {{-- End- modal body  --}}
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- End- modal body  --}}
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    <!--end::Entry Dashboard Page-->
+        <!--end::Entry Dashboard Page-->
 
     </div>
     <!--end::Content Subheader-->
@@ -498,9 +498,9 @@
         $('#end_Date_div :input').prop('disabled', true);
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
-        var company = $("#company").val();
-        var year = $('#absence_year').val();
-        var periode = $('#pilih_periode_tahun').val();
+        var company_emp = $("#company").val();
+        var comp_code_pegawai = '';
+        var perusahaan = '';
         var direktorat = '';
         var kompartemen = '';
         var departemen = '';
@@ -514,16 +514,11 @@
             year = $('#absence_year').val();
         });
 
-        // periode tahun modal
-        var current_periode = new Date().getFullYear();
-        periodeTahun(current_periode)
-
-        var periode =  $('#pilih_periode_tahun').val();
-        $('#pilih_periode_tahun').change(function(){
-            periode = $('#pilih_periode_tahun').val();
+        var form_periode_tahun = $('#pilih_periode_tahun').val();
+        $('#pilih_periode_tahun').change(function() {
+            form_periode_tahun = $('#pilih_periode_tahun').val();
         });
 
-        // readSaldo();
         let table = $('#kt_datatable').DataTable({
             dom: '<"pull-left"f><"pull-right"l>tip',
             scrollY: '80vh',
@@ -544,7 +539,7 @@
             $('#kompartemen').empty();
             $('#departemen').empty();
             $('#key_search').val('');
-            company = '';
+            perusahaan = '';
             direktorat = '';
             kompartemen = '';
             departemen = '';
@@ -582,30 +577,31 @@
         });
 
         //Periode Tahun
-        function periodeTahun(periode) {
-            var pilih_periode = new Date();
-            pilih_periode.setFullYear(periode-1)
+        function periodeTahun(periode_awal, periode_akhir, selectedPeriode) {
             var html = `<label>Periode Tahun <span class="text-danger">*</span></label>
-                        <select class="form-control selectpicker" id="pilih_periode_tahun" name="pilih_periode_tahun">
-                             <optgroup label="Pilih Periode Tahun" id="listPeriode"</optgroup>
-                        </select>`
-            $('#periode_tahun').html(html)
-            var get_periode = pilih_periode.getFullYear();
-            for (let i = 0; i < 3; i++) {
-                if (get_periode == (current_periode)) {
+                <select class="form-control selectpicker" id="pilih_periode_tahun" name="pilih_periode_tahun">
+                    <optgroup label="Pilih Periode Tahun" id="listPeriode"></optgroup>
+                </select>`;
+            $('#form_periode_tahun').html(html);
+
+            var get_periode = periode_awal - 1;
+            while (get_periode <= periode_akhir) {
+                if (get_periode == selectedPeriode) {
+                    console.log(get_periode);
                     $('#listPeriode').append($("<option></option>").attr({
                         value: get_periode,
                         selected: 'selected'
                     }).text('Periode tahun ' + get_periode));
                 } else {
+                    console.log(get_periode);
                     $('#listPeriode').append($("<option></option>").attr('value', get_periode).text('Periode tahun ' +
                         get_periode));
                 }
-                get_periode++
+                get_periode++;
             }
-            $('pilih_periode_tahun').selectpicker('refresh')
-        }
 
+            $('#pilih_periode_tahun').selectpicker('refresh');
+        }
 
         //read DB
         function readSaldo() {
@@ -613,10 +609,10 @@
             $.ajax({
                 type: "post",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listAdminSaldo",
-                // url: "http://10.9.12.223:9096/api/cuti/listAdminSaldo",
                 data: {
                     nik: emp_no,
                     key: key,
+                    perusahaan: perusahaan,
                     direktorat: direktorat,
                     kompartemen: kompartemen,
                     departemen: departemen,
@@ -656,7 +652,7 @@
                                     <button type="button" onclick="deleteItem('${x.id_saldo_cuti}')" class="btn btn-icon my-2 btn-sm btn-danger">
                                         <i class="flaticon2-trash"></i>
                                     </button>`
-                            table.row.add([iteration, employee, tipeAbsen, saldo, validFrom, validTo,periodeThn, maxHutang, validFromHutang, action]).draw(false)
+                            table.row.add([iteration, employee, tipeAbsen, saldo, validFrom, validTo, periodeThn, maxHutang, validFromHutang, action]).draw(false)
                         });
                     }
                     KTApp.unblock('#kt_datatable');
@@ -688,8 +684,6 @@
                     readSaldo()
                     clearForm()
                     var arr = result.data;
-                    // Populate modal content here
-                    // console.log(arr.id_saldo_cuti);
                     $('#id_saldo_cuti').val(arr.id_saldo_cuti);
                     var option = new Option(arr.nik + ' - ' + arr.nama + ' | ' + arr.company.name, arr.nik, true, true);
                     $('#kt_select2_6').append(option).change();
@@ -698,7 +692,11 @@
                     $('#kt_touchspin_4').val(arr.saldo);
                     $('#valid_from').val(arr.valid_from);
                     $('#valid_to').val(arr.valid_to);
-                    $('#periode_tahun').val(arr.periode);
+
+                    var form_periode_awal = arr.valid_from.substring(0, 4);
+                    var form_periode_akhir = arr.valid_to.substring(0, 4);
+                    periodeTahun(form_periode_awal, form_periode_akhir, arr.periode);
+
                     $('#max_hutang').val(arr.max_hutang);
                     $('#valid_from_hutang').val(arr.valid_from_hutang);
                     $('#nama_tipe_absen').prop('disabled', true)
@@ -752,11 +750,11 @@
             var saldo = parseInt($('#kt_touchspin_4').val());
             var valid_from = $('#valid_from').val();
             var valid_to = $('#valid_to').val();
-            var periode = $('#periode_tahun').val();
+            var form_periode_tahun = $('#pilih_periode_tahun').val();
             var max_hutang = parseInt($('#max_hutang').val());
             var valid_from_hutang = $('#valid_from_hutang').val();
 
-            if (nik === '' || tipe_absen_id === '' || saldo === '' || valid_from === '' || valid_to === '' || periode === '' || max_hutang === '' || valid_from_hutang === '') {
+            if (nik === '' || tipe_absen_id === '' || saldo === '' || valid_from === '' || valid_to === '' || form_periode_tahun === '' || max_hutang === '' || valid_from_hutang === '') {
                 Swal.fire({
                     title: "Gagal Menyimpan Data",
                     text: "Semua Data Harus Diisi",
@@ -771,7 +769,7 @@
                 saldo: saldo,
                 valid_from: valid_from,
                 valid_to: valid_to,
-                periode: periode,
+                periode: form_periode_tahun,
                 max_hutang: max_hutang,
                 valid_from_hutang: valid_from_hutang,
                 created_by: "{{$user['nik']}}"
@@ -812,7 +810,6 @@
             if ($('#kt_select2_6').val() != null) {
                 getTipeAbsen(val)
             }
-            // btnCondition()
         });
 
         // onchange pilih periode after select valid_from
@@ -887,16 +884,17 @@
                 }
             });
         }
-        getCompany()
+
+        getCompany();
         // get Company
-        function getCompany(){
+        function getCompany() {
             $.ajax({
                 type: "get",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getCompany",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
-                success: function (response) {
+                success: function(response) {
                     var arr = response.data
                     $('#perusahaan_key').empty();
                     var $dataPerusahaan = $('#perusahaan_key')
@@ -919,7 +917,7 @@
                 type: "post",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getDirektorat",
                 data: {
-                    company: company,
+                    company: perusahaan,
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -946,7 +944,7 @@
                 type: "post",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getKompartemen",
                 data: {
-                    company: company,
+                    company: perusahaan,
                     direktorat: direktorat,
                 },
                 beforeSend: function(xhr) {
@@ -975,7 +973,7 @@
                 type: "post",
                 url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getDepartemen",
                 data: {
-                    company: company,
+                    company: perusahaan,
                     kompartemen: kompartemen,
                 },
                 beforeSend: function(xhr) {
@@ -999,13 +997,16 @@
             });
         }
 
-        function getValPerusahaan(data){
+        function getValPerusahaan(data) {
             $('#perusahaan_key').val(data.value);
-            company = data.value;
+            perusahaan = data.value;
             getDirektorat();
             $('#direktorat').empty();
             $('#kompartemen').empty();
             $('#departemen').empty();
+            direktorat = '';
+            kompartemen = '';
+            departemen = '';
         }
 
         function getValDirektorat(data) {
@@ -1014,6 +1015,8 @@
             getKompartemen();
             $('#kompartemen').empty();
             $('#departemen').empty();
+            kompartemen = '';
+            departemen = '';
         }
 
         function getValKompartemen(data) {
@@ -1021,6 +1024,7 @@
             kompartemen = data.value;
             getDepartemen()
             $('#departemen').empty();
+            departemen = '';
         }
 
         function getValDepartemen(data) {
@@ -1039,19 +1043,25 @@
             format: 'YYYY-MM-DD'
         });
 
-        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function(datetimepicker) {
+        $('#kt_datetimepicker_7_1').on('change.datetimepicker', function(event) {
             // Get the selected date
-            var selectedDate = datetimepicker.date.toDate();
+            var selectedDate = event.date.toDate();
+            var form_periode_awal = selectedDate.getFullYear();
 
-            // Add 1 year to the selected date
-            var endDate = new Date()
+            // Add 1 or 2 years to the selected date based on the condition
+            var endDate = new Date();
             if (comp_code_pegawai == 'A000') {
-                endDate = new Date(selectedDate.getFullYear() + 1, selectedDate.getMonth(), selectedDate.getDate());
+                endDate.setFullYear(selectedDate.getFullYear() + 1, selectedDate.getMonth(), selectedDate.getDate());
             } else {
-                endDate = new Date(selectedDate.getFullYear() + 2, selectedDate.getMonth(), selectedDate.getDate());
+                endDate.setFullYear(selectedDate.getFullYear() + 2, selectedDate.getMonth(), selectedDate.getDate());
             }
-            // Format the endDate as a string in the format 'YYYY-MM-DD' and set it to the 'end_Date' input
+
+            // Format the endDate as a string in the format 'YYYY-MM-DD' and set it to the 'valid_to' input
             $('#valid_to').val(endDate.toISOString().slice(0, 10));
+            var form_periode_akhir = endDate.getFullYear();
+            var pilihan_periode = form_periode_awal;
+
+            periodeTahun(form_periode_awal, form_periode_akhir, pilihan_periode);
         });
 
         // input saldo field
@@ -1079,6 +1089,7 @@
             $('#kt_touchspin_4').val('');
             $('#valid_from').val('');
             $('#valid_to').val('');
+            $('#form_periode_tahun').empty();
             $('#max_hutang').val('');
             $('#valid_from_hutang').val('');
         }
@@ -1091,10 +1102,6 @@
                 $('#nama_tipe_absen').prop('disabled', true)
 
             }
-        }
-
-        function handlePeriode(){
-            var check_periode = $('#valid_from ')
         }
     </script>
     <script>

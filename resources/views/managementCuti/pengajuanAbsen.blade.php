@@ -253,14 +253,14 @@
         $(document).ready(function() {
             $("body").popover({
                 selector: '[data-toggle=popover]',
-                html : true 
+                html: true
             })
         });
 
         var token_oauth = $('#token_oauth').val();
         var emp_no = $("#nik_user").val();
         var company = $("#company").val();
-        
+
         var current_year = new Date().getFullYear();
         selectYear(current_year)
 
@@ -272,7 +272,7 @@
 
         function selectYear(year) {
             var start_year = new Date();
-            start_year.setFullYear(year - 1)// set year from date -1
+            start_year.setFullYear(year - 1) // set year from date -1
             // dropdown periode 
             var html =
                 '<select class="form-control selectpicker" id="absence_year" data-style="btn-primary">' +
@@ -338,10 +338,13 @@
                 success: function(data) {
                     var arr = data.data
                     table.clear().draw()
-                    if(arr != null){
-                        arr.forEach((y,i) =>{
+                    if (arr != null) {
+                        arr.forEach((y, i) => {
+                            approval = y.approved_by;
+                            console.log(approval);
+
                             id_absens = y.id_pengajuan_absen
-                            var url = '{{ url('form_pengajuan_absen') }}?id='+id_absens
+                            var url = `{{ url('form_pengajuan_absen') }}?id=` + id_absens
                             var action = `
                                     <a href="${url}" class="btn btn-icon my-2 btn-sm btn-warning">
                                         <i class="flaticon2-edit"></i>
@@ -352,23 +355,45 @@
 
                             let statusHtml = '';
                             let actionButtons = '';
-                            if (y.status == "WaitApproved") {
+                            var statusApprov = '';
+                            var keteranganRejected = [];
+                            var jumlahApproval = 0;
+                            var jumlahApproved = 0;
+                            if (y.status == "Drafted") {
+                                statusApprov = "Draft";
+
                                 statusHtml = `
-                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;"> ${y.status} </span>`
-                                
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;">` + statusApprov + ` </span>`
+
                                 actionButtons = action
-                            } else if (y.status == "Approved") {
+                            } else if (y.status == "Submitted") {
+                                approval.forEach((z, i) => {
+                                    jumlahApproval = i + 1; // Increment i to get the correct count
+                                    if (z.status == "Approved") {
+                                        jumlahApproved++;
+                                    }
+                                });
+
+                                statusHtml = `
+                                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;">
+                                                (${jumlahApproved}/${jumlahApproval}) ${y.status}
+                                                </span>`;
+                                actionButtons = action;
+                            } else if (y.status == "Completed") {
                                 statusHtml = `
                                         <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;"> ${y.status} </span>`
                             } else {
+                                approval.forEach((z, i) => {
+                                    if (z.status == "Rejected") {
+                                        keteranganRejected.push(`${z.type_approver} : ${z.keterangan}`)
+                                    }
+                                })
+                                var keteranganRejectedHtml = keteranganRejected.map(item => `<span>${item}</span>`).join('\n');
                                 statusHtml = `
-                                                <div class="d-flex align-items-center p-0 rounded">
-                                                    <div class="mr-12 flex-shrink-0">
-                                                        <i class="fas fa-info-circle text-primary" data-toggle="popover" data-trigger="click" data-content="${y.keterangan}" data-original-title title aria-describedby="popover88969"></i>
-                                                    </div>
-                                                    <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6;">${y.status}
-                                                    </span>
-                                                </div>`
+                                <div style="display: inline-block; position: relative;">
+                                        <i class="fas fa-info-circle text-primary" data-toggle="popover" data-trigger="click" data-content="${keteranganRejectedHtml}" data-original-title title aria-describedby="popover88969"></i>
+                                        <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#E03046; background-color:#FFD6D6; margin-left: 5px;">${y.status}</span>
+                                    </div>`
 
                                 actionButtons = action
                             }
@@ -385,7 +410,7 @@
                     KTApp.unblock('#kt_datatable')
                 },
                 error: function(data) {
-                KTApp.unblock('#kt_datatable')
+                    KTApp.unblock('#kt_datatable')
                 }
             });
         }
@@ -464,7 +489,7 @@
         }
     </script>
 
- 
+
 
 </body>
 @endsection

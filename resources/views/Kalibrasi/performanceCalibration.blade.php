@@ -77,46 +77,72 @@
                     <!--end::Subheader-->
 
                     <!--begin::Entry Dashboard Page-->
-                    <div class="d-flex flex-column-fluid">
-                        <div class="container-fluid">
-                            <div class="d-flex flex-column-fluid">
-                                <div class="container-fluid p-0">
-                                    <!--begin::Card-->
-                                    <div class="card card-custom gutter-b">
-                                        <div class="card-header">
-                                            <div class="card-title">
-                                                <div class="card-label">
-                                                    <h4 class="text-dark font-weight-bolder">Transformasi Bisnis</h4>
-                                                    <h6 class="text-dark">Teknologi Informasi</h6>
+                        <div class="d-flex flex-column-fluid">
+                            <div class="container-fluid">
+                                <div class="d-flex flex-column-fluid">
+                                    <div class="container-fluid p-0">
+                                        <!--begin::Card-->
+                                        <div class="card card-custom gutter-b">
+                                            <div class="card-header">
+                                                <div class="card-title">
+                                                    <div class="card-label">
+                                                        <h4 class="text-dark font-weight-bolder">Transformasi Bisnis</h4>
+                                                        <h6 class="text-dark">Teknologi Informasi</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="card-toolbar">
+                                                    <button type="button" class="btn btn-primary btn-sm font-weight-bold" onclick="clearForm()" data-toggle="modal" data-target="#addCalibration">
+                                                        <i class="flaticon2-plus icon-sm"></i> Tambah Talent
+                                                    </button>
                                                 </div>
                                             </div>
-                                            <div class="card-toolbar">
-                                                <button type="button" class="btn btn-primary btn-sm font-weight-bold" onclick="clearForm()" data-toggle="modal" data-target="#addCalibration">
-                                                    <i class="flaticon2-plus icon-sm"></i> Tambah Talent
-                                                </button>
+                                        </div>
+
+                                        <div class="card-body d-flex flex-row">
+                                            <div class="col-sm-2">
+                                                <div class="card">
+                                                    <div class="font-weight-bold" style="font-size:16px">
+                                                        Kalibrasi A
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card">
+                                                    <div class="font-weight-bold" style="font-size:16px">
+                                                        Kalibrasi B
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card">
+                                                    <div class="font-weight-bold" style="font-size:16px">
+                                                        Kalibrasi C
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card">
+                                                    <div class="font-weight-bold" style="font-size:16px">
+                                                        Kalibrasi D
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="card">
+                                                    <div class="font-weight-bold" style="font-size:16px">
+                                                        Kalibrasi E
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
-                                    
-                                    <div class="row row-cols-7 g-3">
-                                        <div class="col">
-                                            <div class="card sm-3">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
                                 </div>
                             </div>
-
                         </div>
                         <!--end::Entry Dashboard Page-->
-
-                    </div>
-                    <!--end::Entry Dashboard Page-->
                 </div>
-                    <!--end::Content Subheader-->
+                <!--end::Content Subheader-->
 
                     <!--begin::Footer-->
                     <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">

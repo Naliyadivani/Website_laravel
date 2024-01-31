@@ -366,13 +366,11 @@
         var company = $("#company").val();
         var base_url_web = window.location.origin + "/";
         var year = $('#absence_year').val();
-        // var nik = $('#nik_id').val();
         var current_year = new Date().getFullYear();
         selectYear(current_year)
 
         var year = $('#absence_year').val();
         $("#absence_year").change(function() {
-            console.log("XXXX");
             year = $('#absence_year').val();
             cardActive()
         });
@@ -443,8 +441,8 @@
 
         function getDataAbsenceAll(history = false) {
             stats = "";
-            if(!history){
-                stats = "WaitApproved"
+            if (!history) {
+                stats = "Submitted"
             }
             $.ajax({
                 type: 'POST',
@@ -452,8 +450,8 @@
                 data: {
                     nik: emp_no,
                     tahun: year,
-                    status:stats,
-                    is_manager:manager,
+                    status: stats,
+                    is_manager: manager,
                 },
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -462,32 +460,158 @@
                     var countWaittingApproval = 0;
                     var countRejected = 0;
                     var countApproved = 0;
-                    
+
                     var arr = result.data;
 
-                    arr.forEach(x => {
+                    arr.forEach((x, p) => {
                         if (x.karyawan != null) {
                             var kondisi = '';
                             var status_badge = '';
                             var status_card = 'not-waiting-card';
-                            if (x.status == 'WaitApproved') {
-                                countWaittingApproval++
-                                status_card = 'waiting-card'
-                                kondisi = '<div class="float-right mr-3">' +
-                                    '<a onclick="rejectedAction(\'' + x.id_pengajuan_absen + '\', \'Rejected\')" data-target="#detailRevisi" data-toggle="modal" class="btn btn-light-danger mr-2">Reject</a>' +
-                                    '<a onclick="approvalAction(\'' + x.id_pengajuan_absen + '\',\'Approved\')" class="btn btn-light-primary">Approve</a>' +
-                                    '</div>'
+                            var data_approved = x.approved_by
 
-                                status_badge = 'label-light-warning';
-                            } else if (x.status == 'Rejected') {
-                                countRejected++
+                            if (x.status === 'Submitted') {
+                                if (manager) {
+                                    data_approved.forEach((z) => {
+                                        if (emp_no === z.nik) {
+                                            if (z.status === 'WaitApv') {
+                                                x.status = 'Waiting Approval';
+                                                countWaittingApproval++;
+
+                                                status_card = 'waiting-card';
+                                                kondisi = '<div class="float-right mr-3">' +
+                                                    '<a onclick="rejectedAction(\'' + x.id_pengajuan_absen + '\', \'Rejected\')" data-target="#detailRevisi" data-toggle="modal" class="btn btn-light-danger mr-2">Reject</a>' +
+                                                    '<a onclick="approvalAction(\'' + x.id_pengajuan_absen + '\',\'Approved\')" class="btn btn-light-primary">Approve</a>' +
+                                                    '</div>';
+
+                                                status_badge = 'label-light-warning';
+                                            } else if (z.status === 'Approved') {
+                                                x.status = 'Approved';
+
+                                                countApproved++;
+                                                status_card = 'approved-card';
+                                                status_badge = 'label-light-success';
+                                            } else if (z.status === 'Rejected') {
+                                                x.status = 'Rejected';
+
+                                                countRejected++;
+                                                status_card = 'rejected-card';
+                                                status_badge = 'label-light-danger';
+                                            }
+                                        }
+                                    });
+                                } else {
+
+                                    let shouldBreak = false;
+                                    data_approved.forEach((z, i, arr) => {
+                                        if (shouldBreak) {
+                                            return;
+                                        }
+                                        if (z.status === 'WaitApv') {
+                                            x.status = 'Waiting Approval';
+                                            countWaittingApproval++;
+
+                                            status_card = 'waiting-card';
+                                            kondisi = '<div class="float-right mr-3">' +
+                                                '<a onclick="rejectedAction(\'' + x.id_pengajuan_absen + '\', \'Rejected\')" data-target="#detailRevisi" data-toggle="modal" class="btn btn-light-danger mr-2">Reject</a>' +
+                                                '<a onclick="approvalAction(\'' + x.id_pengajuan_absen + '\',\'Approved\')" class="btn btn-light-primary">Approve</a>' +
+                                                '</div>';
+
+                                            status_badge = 'label-light-warning';
+                                            shouldBreak = true;
+                                        } else if (z.status === 'Approved') {
+                                            if ($('.card-history-approval.card-information-active').length > 0) {
+                                                if (arr[i + 1] != undefined) {
+                                                    if (arr[i + 1].status === 'WaitApv') {
+                                                        x.status = 'Approved';
+
+                                                        countApproved++;
+                                                        countWaittingApproval++;
+                                                        status_card = 'approved-card';
+                                                        status_badge = 'label-light-success';
+
+                                                        shouldBreak = true;
+                                                    } else if (arr[i + 1].status === "Rejected") {
+                                                        countRejected++;
+                                                        status_card = 'rejected-card';
+                                                        status_badge = 'label-light-danger';
+                                                        shouldBreak = true;
+                                                    } else {
+                                                        x.status = 'Approved';
+
+                                                        countApproved++;
+                                                        status_card = 'approved-card';
+                                                        status_badge = 'label-light-success';
+
+                                                        shouldBreak = true;
+                                                    }
+                                                } else {
+                                                    x.status = 'Approved';
+
+                                                    countApproved++;
+                                                    status_card = 'approved-card';
+                                                    status_badge = 'label-light-success';
+
+                                                    shouldBreak = true;
+                                                }
+                                            } else {
+                                                if (arr[i + 1] != undefined) {
+                                                    if (arr[i + 1].status === 'WaitApv') {
+                                                        x.status = 'Waiting Approval';
+
+                                                        countWaittingApproval++;
+
+                                                        status_card = 'waiting-card';
+                                                        kondisi = '<div class="float-right mr-3">' +
+                                                            '<a onclick="rejectedAction(\'' + x.id_pengajuan_absen + '\', \'Rejected\')" data-target="#detailRevisi" data-toggle="modal" class="btn btn-light-danger mr-2">Reject</a>' +
+                                                            '<a onclick="approvalAction(\'' + x.id_pengajuan_absen + '\',\'Approved\')" class="btn btn-light-primary">Approve</a>' +
+                                                            '</div>';
+
+                                                        status_badge = 'label-light-warning';
+                                                        shouldBreak = true;
+                                                    } else if (arr[i + 1].status === "Rejected") {
+                                                        countRejected++;
+                                                        status_card = 'rejected-card';
+                                                        status_badge = 'label-light-danger';
+                                                        shouldBreak = true;
+                                                    } else {
+                                                        x.status = 'Approved';
+
+                                                        countApproved++;
+                                                        status_card = 'approved-card';
+                                                        status_badge = 'label-light-success';
+
+                                                        shouldBreak = true;
+                                                    }
+                                                } else {
+                                                    x.status = 'Approved';
+
+                                                    countApproved++;
+                                                    status_card = 'approved-card';
+                                                    status_badge = 'label-light-success';
+
+                                                    shouldBreak = true;
+                                                }
+                                            }
+                                        } else if (z.status === 'Rejected') {
+                                            countRejected++;
+                                            status_card = 'rejected-card';
+                                            status_badge = 'label-light-danger';
+                                            shouldBreak = true;
+                                        }
+                                    });
+                                }
+                            } else if (x.status === 'Rejected') {
+                                countRejected++;
                                 status_card = 'rejected-card';
                                 status_badge = 'label-light-danger';
-                            } else if (x.status == 'Approved') {
-                                countApproved++
+                            } else if (x.status === 'Completed') {
+                                x.status = 'Approved';
+                                countApproved++;
                                 status_card = 'approved-card';
                                 status_badge = 'label-light-success';
                             }
+
 
                             if (x.tipe_absen.nama_tipe_absen == 'Cuti Tahunan') {
                                 status_tipe_absen = 'ribbon-inner bg-green'
@@ -505,21 +629,35 @@
                                 status_tipe_absen = 'ribbon-inner bg-pink'
                             }
 
-                            if (x.karyawan.pos_id != 0) {
-                                pos_id_title = '<span class="font-weight-bold text-dark-50">' + x.karyawan.pos_id + ' - ' + x.karyawan.pos_title + '</span>'
-                            } else {
-                                pos_id_title = '<span class="font-weight-bold text-dark-50">' + null + ' - ' + x.karyawan.pos_title + '</span>'
+                            if (x.karyawan.pos_id == 0 || x.karyawan.pos_id == null) {
+                                x.karyawan.pos_id = null
+                            }
+                            if (x.karyawan.pos_title == '' || x.karyawan.pos_title == null) {
+                                x.karyawan.pos_title = null
                             }
 
-                            var fileabsen= x.file_absen
+                            if (x.karyawan.dept_id == 0 || x.karyawan.dept_id == null) {
+                                x.karyawan.dept_id = null
+                            }
+                            if (x.karyawan.dept_title == '' || x.karyawan.dept_title == null) {
+                                x.karyawan.dept_title = null
+                            }
+
+                            pos_id_title = '<span class="font-weight-bold text-dark-50">' + x.karyawan.pos_id + ' - ' + x.karyawan.pos_title + '</span>'
+                            dept_id_title = '<span class="font-weight-bold text-dark-50">' + x.karyawan.dept_id +
+                                ' - ' + x.karyawan.dept_title + '</span>' +
+                                '</div>'
+
+
+                            var fileabsen = x.file_absen
                             var htmlFileAbsen = ""
-                            fileabsen.forEach((item)=>{
+                            fileabsen.forEach((item) => {
                                 var img_ext = "https://pismart-dev.pupuk-indonesia.com/public/assets/media/icon-menu/icon_file_travel.png";
 
                                 if (item.extension == ".jpg" || item.extension == ".gif" || item.extension == ".jpeg" || item.extension == ".png" || item.extension == ".svg") {
                                     var img_ext = item.url;
                                 }
-                                htmlFileAbsen+=` <div class="col-4 py-2 text-center">
+                                htmlFileAbsen += ` <div class="col-4 py-2 text-center">
                                     <div class="card card-custom card-shadowless">
                                         <div class="card-body p-0">
                                             <div class="overlay max-w-300px max-h-200px">
@@ -578,9 +716,7 @@
                                 .pos_title + '</a>' +
                                 '</div>' +
                                 pos_id_title +
-                                '<span class="font-weight-bold text-dark-50">' + x.karyawan.dept_id +
-                                ' - ' + x.karyawan.dept_title + '</span>' +
-                                '</div>' +
+                                dept_id_title +
 
                                 '</div>' +
                                 '</div>' +
@@ -648,7 +784,7 @@
                                                    ${htmlFileAbsen}
                             
                             </div></div></div>
-                                        </div>`+
+                                        </div>` +
                                 kondisi +
                                 '</div>' +
                                 '</div>' +
@@ -656,13 +792,13 @@
                                 '</div>' +
                                 '</div>' +
                                 '</div>';
-                            }
-                            $('#card-absence').append(html);
-                        });
-                        countWaitingApproval(countWaittingApproval)
-                        countRejectedApproval(countRejected)
-                        countApprovedApproval(countApproved)
-                        countAllDataApproval(countRejected + countApproved)
+                        }
+                        $('#card-absence').append(html);
+                    });
+                    countWaitingApproval(countWaittingApproval)
+                    countRejectedApproval(countRejected)
+                    countApprovedApproval(countApproved)
+                    countAllDataApproval(countRejected + countApproved)
                     KTApp.unblock('#kt_content');
                 },
                 complete: function(data) {
@@ -700,17 +836,17 @@
                 type: 'GET',
                 url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
                 beforeSend: function(xhr) {
-                //     KTApp.block('#kt_content', {
-                //     overlayColor: '#000000',
-                //     state: 'danger',
-                //     message: 'Please wait...',
-                //     centerY: false,
-                //     centerX: false,
-                //     css: {
-                //         position: 'fixed',
-                //         margin: 'auto'
-                //     }
-                // });
+                    //     KTApp.block('#kt_content', {
+                    //     overlayColor: '#000000',
+                    //     state: 'danger',
+                    //     message: 'Please wait...',
+                    //     centerY: false,
+                    //     centerX: false,
+                    //     css: {
+                    //         position: 'fixed',
+                    //         margin: 'auto'
+                    //     }
+                    // });
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
                 success: function(result) {
@@ -747,6 +883,8 @@
                 if (result.value) {
                     var obj = {
                         id_pengajuan_absen: id,
+                        nik: emp_no,
+                        is_manager: manager,
                         status: status_laporan,
                         keterangan: result.value,
                     }
@@ -780,6 +918,8 @@
         function approvalAction(id, status_laporan) {
             var obj = {
                 id_pengajuan_absen: id,
+                nik: emp_no,
+                is_manager: manager,
                 status: status_laporan,
                 keterangan: '',
             }
@@ -800,14 +940,14 @@
                         data: obj,
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
-                        },  
+                        },
                         success: function(result) {
                             Swal.fire("Approved Berhasil", "Pengajuan Absence berhasil disetujui.", "success");
                             cardActive();
                         },
                         error: function(data) {
                             // console.log(data);
-                            Swal.fire("Gagal", data.responseJSON.keterangan,"error");
+                            Swal.fire("Gagal", data.responseJSON.keterangan, "error");
                             // cardActive();
                             // Swal.fire("Gagal", "Proses Approved Gagal", "error");
                             // handleUnauthorized(data);
