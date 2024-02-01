@@ -608,7 +608,7 @@
             key = $('#key_search').val();
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listAdminSaldo",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/listAdminSaldo",
                 data: {
                     nik: emp_no,
                     key: key,
@@ -673,7 +673,7 @@
         //show untuk edit saldo
         function show(id_saldo_cuti) {
             $.ajax({
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminSaldoCuti/" + id_saldo_cuti,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminSaldoCuti/" + id_saldo_cuti,
                 type: "get",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -724,7 +724,7 @@
                 if (result.isConfirmed) {
                     // Send an AJAX request to delete the item
                     $.ajax({
-                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deleteAdminSaldoCuti/" + id_saldo_cuti,
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deleteAdminSaldoCuti/" + id_saldo_cuti,
                         type: 'DELETE',
                         beforeSend: function(xhr) {
                             xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -781,7 +781,7 @@
 
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeAdminSaldo",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeAdminSaldo",
                 data: JSON.stringify(storeSaldo),
                 contentType: "application/json",
                 dataType: "json",
@@ -819,7 +819,7 @@
             placeholder: "Masukkan Nama atau Nomor Pegawai",
             allowClear: true,
             ajax: {
-                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/mobile/dataPegawai', // Use the named route to generate the URL
+                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/mobile/dataPegawai', // Use the named route to generate the URL
                 dataType: 'json',
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -854,7 +854,7 @@
         function getTipeAbsen(x) {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getAdminTipeAbsen?nik=" + x,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getAdminTipeAbsen?nik=" + x,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -890,7 +890,7 @@
         function getCompany() {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getCompany",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getCompany",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -915,7 +915,7 @@
         function getDirektorat() {
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getDirektorat",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getDirektorat",
                 data: {
                     company: perusahaan,
                 },
@@ -942,7 +942,7 @@
         function getKompartemen() {
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getKompartemen",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getKompartemen",
                 data: {
                     company: perusahaan,
                     direktorat: direktorat,
@@ -971,7 +971,7 @@
         function getDepartemen() {
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getDepartemen",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getDepartemen",
                 data: {
                     company: perusahaan,
                     kompartemen: kompartemen,

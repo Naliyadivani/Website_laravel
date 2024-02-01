@@ -640,7 +640,7 @@
         function getApprover(nik) {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/getAtasanPegawai/" + nik,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/getAtasanPegawai/" + nik,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -762,7 +762,7 @@
         function showAbsen(id_pengajuan_absen) {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -984,7 +984,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/storeCuti",
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/storeCuti",
                         // data: storeAbsen,
                         data: JSON.stringify(storeAbsen),
                         contentType: "application/json",
@@ -1052,7 +1052,7 @@
         function getTipeAbsen() {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/getTipeAbsenSaldoPengajuan?nik=" + "{{$user['nik']}}" + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
                 },
@@ -1113,6 +1113,7 @@
                 // Create three cards for each row
                 for (var j = i; j < i + 3 && j < arrTipeCuti.length; j++) {
                     var entry = arrTipeCuti[j];
+                    var tipe_hari = "";
 
                     // Create a card for each entry
                     var card = $('<div class="col-md-4"><div class="card mb-3"></div></div>');
@@ -1126,11 +1127,17 @@
                         var cardBody = $('<div class="card-body"></div>');
 
                         // Iterate through each saldo entry in my_saldo
-                        entry.my_saldo.forEach(function(saldo) {
+                        entry.my_saldo.forEach(function(saldo,i) {
                             // Append saldo information to card body
                             cardBody.append('<p>Saldo: ' + saldo.saldo + '</p>');
                             cardBody.append('<p>Valid From: ' + saldo.valid_from + '</p>');
                             cardBody.append('<p>Valid To: ' + saldo.valid_to + '</p>');
+                            if (arrTipeCuti[i].tipe_max_absen == "hari_kerja"){
+                                tipe_hari = "Hari Kerja"
+                            }else if (arrTipeCuti[i].tipe_max_absen == "hari_kalender"){
+                                tipe_hari = "Hari Kalender"
+                            }
+                            cardBody.append('<p>Tipe Hari: ' + tipe_hari + '</p>');
                             cardBody.append('<p>Periode: ' + saldo.periode + '</p>');
                             // Add more information as needed
 

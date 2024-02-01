@@ -19,7 +19,7 @@ class LoginNewController extends Controller
 
     public function login(Request $request)
     {
-        $response = Http::post('https://601zgltt-9096.asse.devtunnels.ms/login', [
+        $response = Http::post('https://api-pismart-dev.pupuk-indonesia.com/golang/login', [
             'username' => $request->input('username'),
             'password' => $request->input('password'),
         ]);

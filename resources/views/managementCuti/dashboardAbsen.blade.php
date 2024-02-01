@@ -150,15 +150,23 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;">Waiting Approval</span>
+                                                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;">(0/0) Submitted</span>
                                                             </td>
                                                             <td class="text-left">
-                                                                User Mengajukan Absen
+                                                                Pengajuan Absen telah diajukan dan menunggu di approve oleh atasan
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;">Approved</span>
+                                                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#D8891D; background-color:#FFE7C7;">Draft</span>
+                                                            </td>
+                                                            <td class="text-left">
+                                                                Pengajuan Absen belum diajukan secara resmi kepada atasan
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="label label-primary label-lg label-inline font-weight-bolder" style="color:#299233; background-color:#E6FFD2;">Completed</span>
                                                             </td>
                                                             <td class="text-left">
                                                                 Pengajuan Absen sudah di Setujui oleh Approver

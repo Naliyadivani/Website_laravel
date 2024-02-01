@@ -267,7 +267,7 @@
         function readAbsenceApprover(){
             $.ajax({
                 type: "post",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listApprovalCuti",
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/listApprovalCuti",
                 data: {
                     nik:emp_no,
                     tahun:year,

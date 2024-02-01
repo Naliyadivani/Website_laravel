@@ -320,7 +320,7 @@
         function readFormAbsen() {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/myCuti?nik=" + emp_no + "&tahun=" + year,
                 beforeSend: function(xhr) {
                     KTApp.block('#kt_datatable', {
                         overlayColor: '#000000',
@@ -419,7 +419,7 @@
         function showAbsen(id_pengajuan_absen) {
             $.ajax({
                 type: "get",
-                url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
+                url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showPengajuanCuti/" + id_pengajuan_absen,
                 data: "data",
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + token_oauth);
@@ -443,7 +443,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "DELETE",
-                        url: "https://601zgltt-9096.asse.devtunnels.ms/api/cuti/deletePengajuanCuti/" + id_pengajuan_absen,
+                        url: "https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/deletePengajuanCuti/" + id_pengajuan_absen,
                         beforeSend: function(xhr) {
                             Swal.fire({
                                 html: 'Please Wait ...',

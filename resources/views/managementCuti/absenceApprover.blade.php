@@ -446,7 +446,7 @@
             }
             $.ajax({
                 type: 'POST',
-                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/listApprovalCuti',
+                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/listApprovalCuti',
                 data: {
                     nik: emp_no,
                     tahun: year,
@@ -834,7 +834,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
+                url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/showApprovalPengajuanCuti/' + id_pengajuan,
                 beforeSend: function(xhr) {
                     //     KTApp.block('#kt_content', {
                     //     overlayColor: '#000000',
@@ -890,7 +890,7 @@
                     }
 
                     $.ajax({
-                        url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/approve',
+                        url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/approve',
                         type: "POST",
                         data: obj,
                         beforeSend: function(xhr) {
@@ -935,7 +935,7 @@
             }).then(function(result) {
                 if (result.value) {
                     $.ajax({
-                        url: 'https://601zgltt-9096.asse.devtunnels.ms/api/cuti/approve',
+                        url: 'https://api-pismart-dev.pupuk-indonesia.com/golang/api/cuti/approve',
                         type: "POST",
                         data: obj,
                         beforeSend: function(xhr) {
