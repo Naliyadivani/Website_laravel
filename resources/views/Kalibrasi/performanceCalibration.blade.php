@@ -81,61 +81,18 @@
                             <div class="container-fluid">
                                 <div class="d-flex flex-column-fluid">
                                     <div class="container-fluid p-0">
-                                        <!--begin::Card-->
-                                        <div class="card card-custom gutter-b">
-                                            <div class="card-header">
-                                                <div class="card-title">
-                                                    <div class="card-label">
-                                                        <h4 class="text-dark font-weight-bolder">Transformasi Bisnis</h4>
-                                                        <h6 class="text-dark">Teknologi Informasi</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="card-toolbar">
-                                                    <button type="button" class="btn btn-primary btn-sm font-weight-bold" onclick="clearForm()" data-toggle="modal" data-target="#addCalibration">
-                                                        <i class="flaticon2-plus icon-sm"></i> Tambah Talent
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body d-flex flex-row">
-                                            <div class="col-sm-2">
-                                                <div class="card">
-                                                    <div class="font-weight-bold" style="font-size:16px">
-                                                        Kalibrasi A
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="card">
-                                                    <div class="font-weight-bold" style="font-size:16px">
-                                                        Kalibrasi B
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="card">
-                                                    <div class="font-weight-bold" style="font-size:16px">
-                                                        Kalibrasi C
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="card">
-                                                    <div class="font-weight-bold" style="font-size:16px">
-                                                        Kalibrasi D
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="card">
-                                                    <div class="font-weight-bold" style="font-size:16px">
-                                                        Kalibrasi E
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                       <!--begin::Card-->
+								<div class="card card-custom gutter-b">
+									<div class="card-header">
+										<div class="card-title">
+											<h3 class="card-label">Interactivity Example</h3>
+										</div>
+									</div>
+									<div class="card-body">
+										<div id="kt_kanban_4"></div>
+									</div>
+								</div>
+								<!--end::Card-->
                                     </div>
                                 </div>
                             </div>
@@ -268,7 +225,7 @@
         <script src="assets/plugins/custom/kanban/kanban.bundle.js"></script>
         <!-- <script src="assets/js/pages/features/miscellaneous/kanban-board.js"></script> -->
 
-        {{-- <script>
+        <script>
             "use strict";
 
             var KTKanbanBoardDemo = function() {
@@ -523,7 +480,7 @@
             function redirectTo(){
                 window.location.href='detail_info'
             }
-        </script> --}}
+        </script>
 
         <script>
             $(document).ready(function() {
